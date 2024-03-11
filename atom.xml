@@ -45,6 +45,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://s.tilnel.com/2024/03/11/20240311-update/"/>
+    <id>https://s.tilnel.com/2024/03/11/20240311-update/</id>
+    <published>2024-03-11T09:22:18.960Z</published>
+    <updated>2024-03-11T09:22:36.915Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>IOT 认证技术</title>
     <link href="https://s.tilnel.com/2024/01/12/20240112-iot/"/>
     <id>https://s.tilnel.com/2024/01/12/20240112-iot/</id>
@@ -532,33 +545,6 @@
     
     
     <category term="情感" scheme="https://s.tilnel.com/categories/%E6%83%85%E6%84%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>9月工作要点</title>
-    <link href="https://s.tilnel.com/2023/09/19/20230919_points/"/>
-    <id>https://s.tilnel.com/2023/09/19/20230919_points/</id>
-    <published>2023-09-19T03:06:21.000Z</published>
-    <updated>2023-09-19T09:22:34.879Z</updated>
-    
-    <content type="html"><![CDATA[<p>一些题外话：商院那边的校对工作可以挑选一个状态不太好的时间去做。尽量自动化吧</p><p>主题当然还是：用我们的系统调用拦截机制去跑一个进程。甚至是两个进程。</p><p>比较方便的一个小玩具是一个 Server-Client 的系统，比如天气查询系统之类的。可以集齐获取时间、日期这些要素。</p><p>之前提过两个东西。一个是可以去读写内存的地址空间，那就使用 &#x2F;proc&#x2F;pid&#x2F;memory 这个文件？让我先试试。</p><p>第二个是使用 clone 系统调用来管理</p><p>得想办法设计一下架构</p><p>1、用 procfs 重写地址空间读写</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;一些题外话：商院那边的校对工作可以挑选一个状态不太好的时间去做。尽量自动化吧&lt;/p&gt;
-&lt;p&gt;主题当然还是：用我们的系统调用拦截机制去跑一个进程。甚至是两个进程。&lt;/p&gt;
-&lt;p&gt;比较方便的一个小玩具是一个 Server-Client</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
