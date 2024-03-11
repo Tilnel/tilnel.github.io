@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tilnel&#39;s Blog</title>
+  <icon>https://s.tilnel.com/icon.png</icon>
+  <subtitle>我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</subtitle>
+  <link href="https://s.tilnel.com/atom.xml" rel="self"/>
+  
+  <link href="https://s.tilnel.com/"/>
+  <updated>2023-10-31T07:55:19.549Z</updated>
+  <id>https://s.tilnel.com/</id>
+  
+  <author>
+    <name>Tilnel</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>置顶必读</title>
+    <link href="https://s.tilnel.com/2099/12/31/20231017-top/"/>
+    <id>https://s.tilnel.com/2099/12/31/20231017-top/</id>
+    <published>2099-12-31T15:59:59.000Z</published>
+    <updated>2023-10-31T07:55:19.549Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个小站只有在校园网里才能看见。</p><p>只要是我在电脑里写下的文字，除了少量牵扯到对其他人的看法的，几乎都会在这里出现。</p><p>我是一个看起来很正常的不正常的人。经常喝酒，轻度抽烟。喜欢花但是不太懂，养一些容易养活的盆栽，不过不想花太多精力。</p><p>正在努力学习调酒；并且努力取得练习调酒的经济条件。毕竟一瓶一两百的酒要比两块多的可乐要难获取得多。以低价格经营着一家宿舍内的酒吧；当然也可以做外送。</p><p>我用右耳的人体的穿刺警示着来往的人；尽管所有人都觉得我的性格没什么问题——甚至可以说性格极好。但经过23年的人生短跑，我知道自己可以对朋友很好，但完全没有耐心去搞这个年代里时兴的那种亲密关系。</p><p>我否认所有对爱情的普遍的模式化的定义：“爱谁就该怎么做”；我否认爱情中可以存在两个人：爱情顶多是两个人各自的爱情，其指向也不是别的，而正是与对方的身形刚好错位的幻影；我否认爱情是“崇高”、“神圣”的：不要拘泥于外界的灌输影响下你对爱情的各种幻想，爱情顶多是“独特”的。</p><p>我会认真思考每一个社会契约中的隐含条款，并在不逃避责任的情况下享受权利；或是通过<strong>拒绝行使权利与拒不承担责任</strong>来表达我对该条款的抗议。所以请不要通过<strong>附加隐含条款的“好意”</strong>将压力给到我头上。</p><p>有任何要求，任何疑惑，任何不满：</p><h1 id="讲。"><a href="#讲。" class="headerlink" title="讲。"></a>讲。</h1><p>我从来都不生气。请不要再当谜语人了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这个小站只有在校园网里才能看见。&lt;/p&gt;
+&lt;p&gt;只要是我在电脑里写下的文字，除了少量牵扯到对其他人的看法的，几乎都会在这里出现。&lt;/p&gt;
+&lt;p&gt;我是一个看起来很正常的不正常的人。经常喝酒，轻度抽烟。喜欢花但是不太懂，养一些容易养活的盆栽，不过不想花太多精力。&lt;/p&gt;
+&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://s.tilnel.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://s.tilnel.com/2024/01/12/20240112-iot/"/>
+    <id>https://s.tilnel.com/2024/01/12/20240112-iot/</id>
+    <published>2024-01-12T13:04:32.412Z</published>
+    <updated>2024-01-12T13:07:24.047Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>认证技术</th><th>优点</th><th>缺点</th></tr></thead><tbody><tr><td>指纹识别</td><td>高度准确，辨识度高。 便于使用，用户体验良好。 可以嵌入到设备的物理按键或屏幕中。</td><td>指纹信息可能被复制（尽管现代系统采用活体检测）。 需要专门的硬件支持。 部分人可能有阻碍指纹录入的情况。</td></tr><tr><td>面部识别</td><td>便于使用，用户体验良好。 无需接触设备即可进行认证。 部分系统采用3D面部扫描，提高安全性。</td><td>部分面部识别系统可能被攻击，例如使用照片欺骗。 在低光环境或夜间光线不足时可能准确度降低。 部分系统对面部变化敏感。</td></tr><tr><td>虹膜扫描</td><td>生物特征独一无二，辨识度高。 无需接触设备即可进行认证。 对于眼镜、隐形眼镜等外部因素的影响较小。</td><td>需要专门的硬件支持。 目前较为昂贵。 可能在低光环境下工作不佳。 部分用户可能对虹膜扫描有顾虑。</td></tr><tr><td>声纹识别</td><td>无需接触设备即可进行认证。 对语音特征的辨识度较高。 不受外部环境光线等条件限制。</td><td>受到环境噪音的干扰。 可能受到声音录制或模仿的攻击。 不适合在公共场合等需要保持安静的环境中使用。</td></tr><tr><td>手势识别</td><td>通过分析用户的手势，可以实现动态认证。 无需接触设备即可进行认证。 增加了用户体验的创新性。</td><td>安全性相对较低，容易被模仿。 部分用户可能不喜欢在公共场合使用手势认证。 部分系统可能对手势的识别准确度有限。</td></tr><tr><td>行为分析和生物特征融合认证</td><td>通过结合用户行为和生物特征进行认证，提高了系统的安全性。 具备持续认证的能力，不仅仅局限于静态认证。 可以适应不同使用环境。</td><td>需要复杂的算法和分析。 在初期阶段可能存在准确度和鲁棒性方面的挑战。 部分系统可能对用户行为的监测引起隐私担忧。</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;认证技术&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;指纹识别&lt;/td&gt;
+&lt;td&gt;高度准确，辨识度高。 便于使用，用户体验良好。</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Raft 实验报告</title>
+    <link href="https://s.tilnel.com/2024/01/10/20240110-raft/"/>
+    <id>https://s.tilnel.com/2024/01/10/20240110-raft/</id>
+    <published>2024-01-10T13:09:45.000Z</published>
+    <updated>2024-01-10T14:18:49.383Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="分布式系统课程实验报告"><a href="#分布式系统课程实验报告" class="headerlink" title="分布式系统课程实验报告"></a>分布式系统课程实验报告</h1><p>502023330051 孙博文</p><h2 id="实现目标"><a href="#实现目标" class="headerlink" title="实现目标"></a>实现目标</h2><p>基于所给go语言框架实现了一个简单的 Raft 协议，包括选举、复制。最终通过了如下的测试(包含 Part1 和 Part2 的全部测试)：</p><img src="20240110-raft.assets/image-20240110214418292.png" alt="image-20240110214418292" style="zoom:50%;" /><h2 id="分析与设计"><a href="#分析与设计" class="headerlink" title="分析与设计"></a>分析与设计</h2><p>定义角色</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">LEADER = <span class="number">-1</span></span><br><span class="line">FOLLOWER = <span class="number">-2</span></span><br><span class="line">CANDIDATE = <span class="number">-3</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>并设置时间相关变量</p><ul><li>选举超时间隔 100-500ms</li><li>心跳间隔100ms</li></ul><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">ElectionTOMin = <span class="number">100</span></span><br><span class="line">ElectionTOMax = <span class="number">500</span></span><br><span class="line">HBInterval = <span class="number">100</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>定义日志项</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Entry <span class="keyword">struct</span> &#123;</span><br><span class="line">Command <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">Term    <span class="type">int</span></span><br><span class="line">Index   <span class="type">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Raft结构体定义</p><p>为了实现选举，心跳机制和日志追加等内容，还引入了一些其他字段</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">log    []Entry     <span class="comment">// 日志</span></span><br><span class="line">lastApplied   <span class="type">int</span>    <span class="comment">// 已应用</span></span><br><span class="line">role           <span class="type">int</span>         <span class="comment">// 角色</span></span><br><span class="line">leaderID       <span class="type">int</span>  </span><br><span class="line">electionTimer  *time.Timer <span class="comment">// 选举超时</span></span><br><span class="line">heartBeatTimer *time.Timer <span class="comment">// 心跳间隔</span></span><br><span class="line">applyCh        <span class="keyword">chan</span> ApplyMsg <span class="comment">// 日志应用</span></span><br></pre></td></tr></table></figure><h4 id="RPC相关"><a href="#RPC相关" class="headerlink" title="RPC相关"></a>RPC相关</h4><p>RequestVote 和 AppendEntries, 和论文基本一致</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> RequestVoteArgs <span class="keyword">struct</span> &#123;</span><br><span class="line">Term         <span class="type">int</span></span><br><span class="line">CandidatedId <span class="type">int</span></span><br><span class="line">LastLogIndex <span class="type">int</span></span><br><span class="line">LastLogTerm  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> RequestVoteReply <span class="keyword">struct</span> &#123;</span><br><span class="line">Term        <span class="type">int</span> </span><br><span class="line">VoteGranted <span class="type">bool</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> AppendEntriesArgs <span class="keyword">struct</span> &#123;</span><br><span class="line">Term         <span class="type">int</span>       </span><br><span class="line">LeaderId     <span class="type">int</span>       </span><br><span class="line">PrevLogIndex <span class="type">int</span>       </span><br><span class="line">PrevLogTerm  <span class="type">int</span>       </span><br><span class="line">Entries      []Entry</span><br><span class="line">LeaderCommit <span class="type">int</span>       </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> AppendEntriesReply <span class="keyword">struct</span> &#123;</span><br><span class="line">Term      <span class="type">int</span> </span><br><span class="line">Success   <span class="type">bool</span></span><br><span class="line">NextIndex <span class="type">int</span>  <span class="comment">// 之后应用的Log索引</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="协议实现"><a href="#协议实现" class="headerlink" title="协议实现"></a>协议实现</h2><p>节点启动后, 将创建3个goroutine:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go rf.LeaderElection()</span><br><span class="line">go rf.HeartBeat()</span><br><span class="line">go rf.LogApply()</span><br></pre></td></tr></table></figure><p>分别对应选举, 心跳, 与日志应用</p><h3 id="节点选举"><a href="#节点选举" class="headerlink" title="节点选举"></a>节点选举</h3><p>首先节点需要在三个角色中切换. 因此设计了:</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> goLeader()</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> goCandidate()</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> goFollower(term <span class="type">int</span>)</span><br></pre></td></tr></table></figure><p>其中转换到 Follower 需要对应的任期.</p><p>节点启动后,都初始化为 Follower, 并设置选举超时. 进入 LeaderElection 协程后, 等待一个随机的选举超时, 如果自身是 Follower 或 Candidate, 则 <code>goCandidate()</code>, 任期 + 1, 发起选举, 给自己投一票, 然后发送 <code>RequestVote</code>RPC. 发送时即接收回复, 收到多数派承认则成为 Leader.</p><h3 id="心跳"><a href="#心跳" class="headerlink" title="心跳"></a>心跳</h3><p>对于 Leader, 等待心跳间隔后发送一个 <code>AppendEntry</code>, 附加上 nextIndex 指示的一部分 Log, 发给所有的 Follower 即可.</p><h3 id="日志复制"><a href="#日志复制" class="headerlink" title="日志复制"></a>日志复制</h3><p>发送者发送心跳后, 会受到回复.</p><p>如果 reply.Term &gt; currentTerm, 此时发送者已经不是 Leader, 无需响应;</p><p>如果 reply 成功, 则更新对应节点的 matchIndex 等信息, 并尝试更新 commitIndex;</p><p>如果 reply 失败, 则可能后退任期进行重试.</p><p>而接收者的行为可以概括为:</p><ul><li>拒绝 Term 小于自身任期的请求</li><li>lastLogIndex 小于心跳包的 PrevLogIndex, 说明节点日志陈旧, 通过回复 Leader 一个 NextIndex 来指示下次的发送</li><li>除此之外, 覆盖原有条目</li><li>接收 LeaderCommit, 更新 commitIndex</li></ul><h3 id="日志应用"><a href="#日志应用" class="headerlink" title="日志应用"></a>日志应用</h3><p>通过 LogApply() 中的循环, 不断更新最新被应用的条目, 直到不超过 commitIndex 的条目.</p><h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>Raft 相比于 Paxos 已经较为容易理解，但是在实现过程中，依然难以完美。主要问题出现在并发程序上。一共三个节点，加上每个节点有3个&#x2F;实际是4个协程，各种打印信息交织在一起，很难分析出问题的原因。</p><img src="20240110-raft.assets/image-20240110213025465.png" alt="image-20240110213025465" style="zoom: 50%;" /><p>▲没有大写RPC相关结构体的字段浪费了大量时间，直到看到了这段提示</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;分布式系统课程实验报告&quot;&gt;&lt;a href=&quot;#分布式系统课程实验报告&quot; class=&quot;headerlink&quot; title=&quot;分布式系统课程实验报告&quot;&gt;&lt;/a&gt;分布式系统课程实验报告&lt;/h1&gt;&lt;p&gt;502023330051 孙博文&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Distributed Systems" scheme="https://s.tilnel.com/categories/Distributed-Systems/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>自由</title>
+    <link href="https://s.tilnel.com/2024/01/02/20240102-free/"/>
+    <id>https://s.tilnel.com/2024/01/02/20240102-free/</id>
+    <published>2024-01-02T05:53:23.000Z</published>
+    <updated>2024-01-08T11:30:30.914Z</updated>
+    
+    <content type="html"><![CDATA[<p>自由是个倒装。它的本意就是「由自」，一切认识与实践，皆由自我而开辟出来。这才是最具解放性的：不预设一个超越性的维度，不需要任何高级的存在为自己背书，一切矛盾都是我和我自己的矛盾。对于世界而言，一切的矛盾就是世界和世界它自己的矛盾。</p><p>对于差异性的抹平要比差异本身更加难以为继。随着温度下降，四大基本作用一个一个地分离出来，不同的粒子在此时创造出来。从来都是从一致的东西当中产生断裂，诞生差异，扬弃了原先的那个整全，才是世界的运动方向。不是东风压了西风，就是西风压了东风。</p><p>只是没人有勇气接受这样的「自由」。没有人敢「自由」。这需要主体价值观的「惊险一跃」：先是感受到绝对的自由的无限性；然而这无限性归根结底是单一的：除了「不存在不存在」以外，什么规定也没有做出。一贯的、平整的无限性，对于人类的理智而言是无法把握的。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;自由是个倒装。它的本意就是「由自」，一切认识与实践，皆由自我而开辟出来。这才是最具解放性的：不预设一个超越性的维度，不需要任何高级的存在为自己背书，一切矛盾都是我和我自己的矛盾。对于世界而言，一切的矛盾就是世界和世界它自己的矛盾。&lt;/p&gt;
+&lt;p&gt;对于差异性的抹平要比差异本身</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://s.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DMCK 第?次汇报前准备</title>
+    <link href="https://s.tilnel.com/2023/12/25/20231225-dmck/"/>
+    <id>https://s.tilnel.com/2023/12/25/20231225-dmck/</id>
+    <published>2023-12-24T20:31:38.000Z</published>
+    <updated>2023-12-24T20:33:50.907Z</updated>
+    
+    <content type="html"><![CDATA[<p>总的来说，要做的是这几件事：</p><p>1、尽量把带malloc，带page变动的恢复做出来</p><p>2、完善状态恢复的实现</p><p>3、做一个交互式的控制台</p><p>4、模拟网络相关系统调用</p><p>5、环境部分的代码</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;总的来说，要做的是这几件事：&lt;/p&gt;
+&lt;p&gt;1、尽量把带malloc，带page变动的恢复做出来&lt;/p&gt;
+&lt;p&gt;2、完善状态恢复的实现&lt;/p&gt;
+&lt;p&gt;3、做一个交互式的控制台&lt;/p&gt;
+&lt;p&gt;4、模拟网络相关系统调用&lt;/p&gt;
+&lt;p&gt;5、环境部分的代码&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="Distributed System" scheme="https://s.tilnel.com/categories/Distributed-System/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>思政课作业</title>
+    <link href="https://s.tilnel.com/2023/11/27/20231127-politics/"/>
+    <id>https://s.tilnel.com/2023/11/27/20231127-politics/</id>
+    <published>2023-11-27T06:30:00.000Z</published>
+    <updated>2023-11-27T10:15:59.042Z</updated>
+    
+    <content type="html"><![CDATA[<p>502023330051 孙博文 计算机科学与技术系 计算机科学与技术专业</p><h2 id="我是谁，我要做什么"><a href="#我是谁，我要做什么" class="headerlink" title="我是谁，我要做什么"></a><center>我是谁，我要做什么</center></h2><p>​我是孙博文，来自计算机科学与技术专业。我出生于一个无产阶级家庭：父亲是建筑工人，母亲是保洁工人。从小家教相对严格，加上在初高中时期都遇上了欣赏我的老师，使得我拥有努力上进的部分先决条件。</p><p>​作为市民社会的成员，我的未来规划无非是利用所学知识成为异化的生产关系中被异化的劳动者。异化在劳动所在之处，而人不能不劳动，就像人不能不吃饭。但低头做事之余，依然要仰望星空。我想要把哲学的思辨与实践作为我终身热心的事业。</p><p>​人生的意义无非在于认识世界与改造世界。认识是将自然的规律完全精神化，化为直观和思维的规律，整个自然借助意识将自己溶化为一种理智的理论（谢林. 先验唯心论体系）。而相对应的实践是将思维中的概念实现为自然世界中的实在。这两种相会合的活动是自然的必然的倾向，是人类自社会产生以来都坚持着的主题。</p><p>​这样谈论人生意义似乎显得太大了，一个人能够产生的影响是非常有限的。但我们能够说，因为这一影响微不足道因而它就是没有必要的吗？我认为不是。这也反映出当下的一种焦虑症，对应一种虚无主义的世界观。很多人都抛弃了实践当中最细微的那些，仿佛它们不配被称为实践；同时又对于翻天覆地的改变抱有幻想。</p><p>​这就不得不引到我对当前社会发展所抱有的最大困惑：青年人的思想工作到底应该如何开展。</p><p>​当下的青年有一种小资产阶级化的倾向。当然，想要“小资产阶级化”的无产阶级还是无产阶级。许多人的愿望竟然是不劳动就能获得幸福的生活。在当前的生产力与生产关系下，实现这一目标的唯一途径就是实现他们自己从无产阶级到小资产阶级的历史反向运动。这一反向运动，对于整个无产阶级是必然失败的。但我们竟不能够严肃地批判，因为当前的形势毕竟没有发展成剧烈的“你死我活的斗争”。不严肃的、不清醒的想法毕竟还不至于使人变得走投无路。</p><p>​同时，当下的青年似乎也没有自信力。形势并没有到令人沮丧的地步，以至于中年人们显得比青年人有信心。更具体地来说，青年的自信心有一种分化：一派抱有适当的信心，而另一派则非常沮丧，甚至在南大这样的高等学府，这种信心的丧失更甚：他们都认为自己以后找不到工作。</p><p>​因而，我也希望将哲学作为精神分析学的引子，以期找到其原因与解决办法。</p><h2 id="思政课要为学生先"><a href="#思政课要为学生先" class="headerlink" title="思政课要为学生先"></a><center>思政课要为学生先</center></h2><p>​学生们需要一个子弹头、钢笔尖式的人物。</p><p>​而这样的一个人物，所能起的最大作用，就是给所有人带来理论上的理性。教师这一身份最合适。</p><p>​二十出头的年纪是大多数学生对于政治话题最敏感的时期，就算对政治再不感兴趣的人也会形成他自己的观点。而同学们在上面讲一些东西并不会引发更多的认同。毕竟大家在台上讲得内容和他们平时关注的内容相差甚远。作为教师和学生的距离虽然比较远，但老师毕竟也有做学生的时期。所以学生的心理是好推断的。</p><p>​我们提倡自由和包容；时代的主题还是和平与发展。这些基调不是大学的思政课程能够影响的，因而我们不可能讨论太尖锐的话题，同时也就失去了在这些话题上进行教育的可能。不过，即使我们一点也不能奢求所有同学都对社会现实的问题都抱有相同的立场，但是至少要抱有对于他所处的社会经济地位中合理的立场。这就需要一些分析方法的介入：阶级分析和意识形态分析。 </p><p>​介绍这些分析方法，是有一些积极作用的。首先它是一种正确的独立思考的工具。很多时候我们对自诩“独立思考”的人感到头疼，都是因为他在本质上仍然是道听途说，拾人牙慧，把别人具有感染力的观点不加以批判地使用。而这样的人其实在某种程度上是“驳不倒的”，因为他之所以从众多看法中采取了这个或那个看法，其来源多半是基于他的某些信仰。而一些有偏差的信仰，往往又是他并不能把我到自己在切身利益中的真正立场。</p><p>​其次它能够给予朴素的情感与观点一些切实的信心。总是说“劝同志们读一点书，免得受知识分子的骗”。朴素的想法最容易迷茫。它从“人的感受”的质料中最直接地产生出来，也最容易受到各种方面的批判。有了分析的方法来应证这些观点，我们就容易有理论上的自信，就不容易“受知识分子的骗”了。</p><p>​在积极作用之外，还有一些“消极”的作用。这里的消极是说，虽然它不能够带来正面的认识增加，但至少告诉我们哪些看法是不可取的。</p><p>​这些完全客观的理论工具一经被把握，便成为青年学生对抗意识形态渗透的最好工具，而不需要再多言其他的。信念动摇的来源在于没有信心，而喜欢理性的人的特性就是喜欢从理论出发推出当前的处境。如果能够运用分析的工具确定无疑地判断当下的形势，疑虑也就自然地消解了。</p><h2 id="同一和综合的统一——谈谈对辩证法的认识"><a href="#同一和综合的统一——谈谈对辩证法的认识" class="headerlink" title="同一和综合的统一——谈谈对辩证法的认识"></a><center>同一和综合的统一——谈谈对辩证法的认识</center></h2><h6 id="毛泽东-在延安文艺座谈会上的讲话、实践论、矛盾论-读后感"><a href="#毛泽东-在延安文艺座谈会上的讲话、实践论、矛盾论-读后感" class="headerlink" title="毛泽东 在延安文艺座谈会上的讲话、实践论、矛盾论 读后感"></a><center>毛泽东 在延安文艺座谈会上的讲话、实践论、矛盾论 读后感</center></h6><p>​“唯心论者是强调动机否认效果的，机械唯物论者是强调效果否认动机的，我们和这两者相反，我们是辩证唯物主义的动机和效果的统一论者…………检验一个作家的主观愿望即其动机是否正确，是否善良，不是看他的宣言，而是看他的行为（主要是作品）在社会大众中产生的效果。”（毛泽东. 在延安文艺座谈会上的讲话，1942）</p><p>​从康德的范畴表开始，到黑格尔时已经自觉地使用“正反合”作为辩证法的形式了。提出一对截然相反的论题A和非A，在这里辩证法的答案是：A又非A，因为A是非A。</p><p>​我们应该如何理解这样的说法？ 形式逻辑的矛盾律与同一律绝对不允许辩证法如此这般的操作。但辩证法的实质是什么？</p><p>​“列宁说，‘就本来的意义讲，辩证法是研究对象的本质自身中的矛盾’”（毛泽东. 矛盾论，1937）。我们在使用形式逻辑的时候，仅仅是在形式上使用它。我们形式地说A是A的时候，总是不管A到底是什么的，就算A本身是不存在的、不正确的，我们依然说“A是A”是对的，因为形式逻辑只管抽离了其中的对象而言的形式上的正确性。而辩证法是“研究对象本质”的。对于辩证法而言，不管是A还是非A，它里面到底装了什么还是要打问号的。所以它超越形式上的逻辑，而成为一种内容的逻辑。</p><p>​对于辩证法而言，它极力要达到的终点是弥合、修补、消除矛盾，把所有的东西都统筹在一起。对于两个不相容的概念之间的连接，我们称之为综合；而从一个概念中分析出其中既有的东西叫做分析。“同一”则是分析的极限：从一个东西分析出它自己，一步也没有进。辩证法做的就是这样的一件事：对于矛盾的双方既综合又同一。</p><p>回到一开始引用的例子。首先提出，</p><p>正题：强调动机否认效果</p><p>反题：强调效果否认动机</p><p>合题：效果就是动机的体现</p><p>​这个合题是如何达到的？在辩证法里，“合题”不如说是“裂题”。辩证法不是把黑的白的放到一起搅合成灰的，而是看到问题本身的裂隙；看到被讨论的概念其自身的矛盾；看到概念超出形式规定的“内容”；看到问题本身所分裂出来的那个“更值得被问的问题”。</p><p>​这里的正题和反题一列出来，我们从形式上看，它们是水火不容的。但是这种“水火不容”当中暗含的预设是，动机和效果一点关系都没有。那么我们立马就要反应过来，动机和效果果真是没有一点关系的吗？动机是我们的认识，效果是我们的实践，我们要做到主观和客观、理论和实践、知和行的具体的历史的统一（毛泽东. 实践论，1937）， 因而，只有在实践中达到了预想的结果，人的认识才被证实了。换言之，只有文艺工作达到了预期的效果，才能说明文艺工作者的动机是清楚而没有偏差的。</p><p>​这样，矛盾的双方就被我们通过对双方概念的实际分析，综合而同一地统一起来了。可以这样说：辩证法就是对原问题的扬弃。</p><h2 id="阶级斗争的形式正在起变化——共产党宣言读后感"><a href="#阶级斗争的形式正在起变化——共产党宣言读后感" class="headerlink" title="阶级斗争的形式正在起变化——共产党宣言读后感"></a><center>阶级斗争的形式正在起变化——共产党宣言读后感</center></h2><p>​共产党宣言诞生的185年后，阶级斗争除了原来的形式之外，已经产生了新的形式。而当今的世界在普遍进入资本主义社会形态之后，俨然成为广大无产阶级和资产阶级最终的决斗场。</p><p>​但是通过广泛的矛盾转移的手段，当今阶级斗争的烈度已经达到一种低谷。而伴随着消费主义，出现的是资本主义新的现代统治形式。通过用景观社会取代商品社会，通过一种甜蜜的意识形态控制，消解主体的反抗性和批判性。在没有“你死我活”的斗争的情况下，人们是容易被这样的一种景观遮蔽的。人们只能单向度地盲从并丧失对本真的生活的渴望和要求。</p><p>​现代资本主义，同样生产穷人。这部分穷人必须是相对而言的，而不是赤贫，作为社会阶层的底层结构出现。与美轮美奂的景观社会不同，它们是被资本主义社会生产出来充当被比较对象的，其作用是为另外一些人提供比较而言的满足感。</p><p>​在一般的视角下，无产阶级是物质财富的生产者，资产阶级是消费者；而在辩证法的视角下，资产阶级俨然也是生产者：他们为社会生产一种上层的奢华的景观，和底层的悲惨的景观，供无产阶级和小资产阶级消费，实现对新的资产阶级的再生产，以维持这个体系。</p><p>​就更不用论证艺术、教育等意识形态宰制和高福利、政治体制等政治经济手段所带来的影响了。其中就以意识形态的影响最为深远，包括但不限于人性论、资产阶级的理论人道主义。在这些手段的影响下，有的人不相信共产主义；有的人认为自己能够跃升为小资产阶级或资产阶级。</p><p>​这与共产党宣言创作时期的背景已经相去甚远。但我们依然坚持马克思主义，依然不忘初心。因为我们能够认识到，这些转变其实是历史发展的内在症结，资本主义社会中诞生的一切都是资本主义自身的特殊性质带来的，正如资本主义诞生了无产阶级，作为扬弃资本主义自身的力量。所以我们并不惧怕这种斗争形式的变化，而是接受历史的必然性，把握这种变化，然后诞生新的理论与新的实践。这就是马克思主义的本来面貌：它不是在固定僵死的历史背景下的认识以及斗争方法，也不是给出一个放之四海而皆准的某种答案，而是告诉我们如何做突破历史的局限性的尝试，用普遍又特殊的分析方法分析具体的情景。</p><p>​马克思主义哲学的核心就在于，找到人自身所蕴含的革命性和解放性的力量。所以，与黑格尔将认识和实践作为绝对精神运动中的阶段相比，马克思主义哲学将实践抬到了最高的位置，这标志着人的直接现实的能动性被提到了最高的位置，从康德提“人为自然界立法”以来，人的实践理性在这里获得了最高的尊严。</p><p>​因此，我们要不忘初心，并且与时俱进，了解到当前世界资本主义的新的发展，斗争的新的形式与形势。并且发挥自己的能动性，去进行改造世界的实践。</p><p>​作为辩证唯物主义者，要时时感受到自己的新生。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;502023330051 孙博文 计算机科学与技术系 计算机科学与技术专业&lt;/p&gt;
+&lt;h2 id=&quot;我是谁，我要做什么&quot;&gt;&lt;a href=&quot;#我是谁，我要做什么&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>timing</title>
+    <link href="https://s.tilnel.com/2023/11/16/20231116-timing/"/>
+    <id>https://s.tilnel.com/2023/11/16/20231116-timing/</id>
+    <published>2023-11-15T16:23:00.000Z</published>
+    <updated>2023-11-15T16:24:38.861Z</updated>
+    
+    <content type="html"><![CDATA[<p>可喜可贺，作业都交上了</p><p>从现在开始就是组会时间。。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;可喜可贺，作业都交上了&lt;/p&gt;
+&lt;p&gt;从现在开始就是组会时间。。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>组会前时间表</title>
+    <link href="https://s.tilnel.com/2023/11/14/20231114-timing/"/>
+    <id>https://s.tilnel.com/2023/11/14/20231114-timing/</id>
+    <published>2023-11-14T09:33:52.000Z</published>
+    <updated>2023-11-15T16:22:48.627Z</updated>
+    
+    <content type="html"><![CDATA[<p>要点：</p><ul><li>分布式系统作业 - 还挺简单的 - 2h</li><li>软件分析作业 - 今晚搞定</li><li>程序设计语言的形式语义作业 - 还挺简单的 - 2h</li><li>（16日）ISER proposal - 组会开完之后马不停蹄</li><li>组会</li></ul><p>11.14 </p><p>19-24 软分</p><p>11.15</p><p>0-6 休息</p><p>6-8 组会</p><p>8-10 SEM</p><p>10-12 dissys</p><p>12-13 休息</p><p>13-24 组会</p><p>11.16</p><p>0-7 休息</p><p>7-13 组会</p><p>13-14 休息</p><p>14-16组会</p><p>16-24 iser</p><p>总计：20小时组会准备 </p><p>8 + 2 + 2 + 5</p><p>每天都有7小时休息</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;要点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分布式系统作业 - 还挺简单的 - 2h&lt;/li&gt;
+&lt;li&gt;软件分析作业 - 今晚搞定&lt;/li&gt;
+&lt;li&gt;程序设计语言的形式语义作业 - 还挺简单的 - 2h&lt;/li&gt;
+&lt;li&gt;（16日）ISER proposal -</summary>
+        
+      
+    
+    
+    
+    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DMCK 中期报告草稿</title>
+    <link href="https://s.tilnel.com/2023/11/07/20231107-dmckMID/"/>
+    <id>https://s.tilnel.com/2023/11/07/20231107-dmckMID/</id>
+    <published>2023-11-07T06:34:00.000Z</published>
+    <updated>2023-11-16T05:58:33.111Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>科研选题：基于 ptrace 实现的适用于分布式系统测试的操控执行框架</p><h3 id="1-1-研究背景"><a href="#1-1-研究背景" class="headerlink" title="1.1 研究背景"></a>1.1 研究背景</h3><p>分布式系统运行的过程中往往会出现大量不确定性的因素。在多个节点上运行的进程协同工作，会产生通信、调度上的偶然变化，构造分布式系统的时候往往无法穷举这些情况，程序的异常处理不完善导致系统潜在的崩溃可能。并且在错误发生之后，引发问题的执行路径通常难以还原，导致最终定位不到问题所在。</p><p>面对这一问题，通常的做法是模型检测。使用 TLA+ 等形式化验证工具对分布式算法进行建模。然而，面对真实而复杂的系统实现，强行使用形式化的方法进行建模则面临着困难的约简：约简过多，则与实际系统偏差越远；约简越少，则执行的分支越多，容易出现“状态爆炸”的问题。</p><p>为了解决上述问题，Mandanlal 等人提出了 CMC，一个用于直接对代码进行模型检测的执行框架。在工作中，他们对一个 ad-hoc 网络协议 AODV 的三种实现进行了模型检测。Junfeng Yang 等人提出了 eXplode 对文件系统进行穷举式的测试。后提出了一个在 Windows 上对实现级的分布式系统进行透明的模型检验的 MoDist 框架。类似的工作还有 MaceMC、CristalBall 等。</p><h3 id="1-2-ptrace-简介"><a href="#1-2-ptrace-简介" class="headerlink" title="1.2 ptrace 简介"></a>1.2 ptrace 简介</h3><p>ptrace 是 Linux 内核提供的进程跟踪的系统调用，它允许父进程检查和替换子进程的内核镜像（包括寄存器）的值。</p><p>子进程调用 ptrace(PTRACE_TRACEME) 且父进程调用 ptrace(PTRACE_SEIZE) 后，父进程即可对子进程的执行进行控制：在子进程进行系统调用前或系统调用返回后停止；获取子进程系统调用信息；读写子进程内存和寄存器的值；模拟系统调用执行等。通过几种基本操作，能够实现程序的确定性执行。</p><h2 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2 系统设计"></a>2 系统设计</h2><p>单线程程序从一个特定的状态出发，其状态转换分为两类。一是进行系统调用，对操作系统对象进行创建、删除、读写；二是系统调用以外的运算逻辑。对于第二类而言，其代表的状态转换是确定性的，即给定进程状态和代码，执行代码达到的目标状态是唯一确定的；对于第一类而言，则状态转换还要取决于操作系统对象的状态。比如同样执行 read() 系统调用，如果文件的内容正同时被其他进程改变，则产生的结果不确定。</p><p>在多线程程序以及分布式系统中，由于其由多个独立执行的程序组成，因而其执行路径还受到各执行流之间的调度的影响。 </p><p>因此，为了对分布式系统进行模型检验，首先需要穷尽系统调用的可能结果；同时穷尽系统所有节点的各操作执行的先后顺序。</p><h3 id="2-1-整体框架"><a href="#2-1-整体框架" class="headerlink" title="2.1 整体框架"></a>2.1 整体框架</h3><p>对于 n 个节点的分布式系统，我们用 n + 1 个进程进行整个系统的操控执行：</p><ul><li>一个 tracer 进程，用以控制所有的进程</li><li>n 个 tracee 节点进程，即受控运行的分布式系统</li></ul><p>以 3 个节点为例，对于一个运行中的分布式系统，其状态为 $S&#x3D; &lt;Env, Node1, Node2, Node3&gt;$，其中：</p><p>$Node$N$ 代表节点的状态，包括节点的堆、栈、寄存器。</p><p>$Env$ 代表节点之外的环境，包括被节点使用的操作系统对象的状态，如网络消息，系统时间，打开的文件等。</p><p>在分布式系统执行的过程中，能够引发状态不确定性的分歧操作包括：消息的先后顺序，消息是否到达，以及消息等待是否超时。</p><p>tracer 进程每次从一个状态 $S$ 开始控制其中一个节点，运行到下一个分歧操作前，即：消息发送前，消息接受前，以及请求系统时间之前。之后对于每一个节点，都由 Choose() 函数根据运行时的上下文决定下一个分歧操作可能的状态转换集合$Transfer$，且对于每一种可能性 $t \in Transfer$，生成如下的“转换边”：  $(Node$N.t(), &lt;Env, Node1, Node2, Node3)&gt;)$ </p><p>它表示，状态的下一次转换从状态四元组出发，通过 $Node$N$ 执行 $p()$ 所代表的转换可达到下一个状态：</p><p>$(Node$1.p(), &lt;Env, Node1, Node2, Node3)&gt;)\rightarrow &lt;Env’, Node1’, Node2, Node3)&gt;$ </p><p>$(Node$2.p(), &lt;Env, Node1, Node2, Node3)&gt;)\rightarrow &lt;Env’’, Node1, Node2’, Node3)&gt;$ </p><p>$(Node$3.p(), &lt;Env, Node1, Node2, Node3)&gt;)\rightarrow &lt;Env’’’, Node1, Node2, Node3’)&gt;$ </p><p>总的工作流程是：设置一个状态转换边的队列；每一次从中取出一条边并执行达到新的状态，在新的状态的基础上，生成新的转换边并入队。</p><p>对于 DMCK 的实现有两种，一种是 stateful，即通过保存和恢复节点的内存、寄存器等信息来重现状态；一种是 stateless，通过重放记录的执行路径来重现状态。我们的工作主要是 stateful 的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">S = &lt;Env, Node1, Node2, Node3&gt;</span><br><span class="line"></span><br><span class="line">q.add(Edge(skip, S))</span><br><span class="line">while (!q.empty()) &#123;</span><br><span class="line">    edge = q.deque()</span><br><span class="line">    S&#x27; = edge.transfer()</span><br><span class="line">    forall (node in Nodes) &#123;</span><br><span class="line">        // 只根据 node 的状态就可以算出当前执行上下文了</span><br><span class="line">    Transfers = Choose(node)    </span><br><span class="line">    forall (t in Transfers) &#123;</span><br><span class="line">    q.add(Edge(t, S&#x27;))</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def transfer(edge) &#123;</span><br><span class="line">S = edge.getState()</span><br><span class="line">t = edge.getTransfer()</span><br><span class="line">node = t.getNode()</span><br><span class="line">nodeState = S.getNodeState(node)</span><br><span class="line">nodeState.t()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-2-相关工作"><a href="#2-2-相关工作" class="headerlink" title="2.2 相关工作"></a>2.2 相关工作</h3><p>CMC 是一个 stateful 的模型检测工具，能够对 C 代码直接进行模型检测，被用于检测网络协议和文件系统（FiSC）。但是 CMC 的检测需要侵入式地修改源程序代码，以使得被测程序运行在 CMC 的地址空间内。</p><p>MaceMC 使用深度优先搜索和随机行走来检测网络协议实现中的 liveness 问题，但是被测系统需要是 Mace 生成的 C&#x2F;C++ 实现。Yabandeh 等人基于 MaceMC 提出的 CrystalBall 增加了 Steering Execution，在运行的过程中分析未来的错误状态，并通过控制执行来避免。</p><p>Yang 等人提出的 MoDist 是一个适用于 Windows 上的分布式系统的模型检测框架。它与 MaceMC 一样是 stateless 的。</p><h3 id="2-3-目标场景（与相关工作不一样的）"><a href="#2-3-目标场景（与相关工作不一样的）" class="headerlink" title="2.3 目标场景（与相关工作不一样的）"></a>2.3 目标场景（与相关工作不一样的）</h3><ul><li>支持对 go 语言编写的程序进行检测</li><li>stateful，不用每次都从头开始控制获得最新状态（节省运算性能，可能更占用空间）</li><li>无侵入性（不用修改实现的源码）</li></ul><h2 id="3-被测案例"><a href="#3-被测案例" class="headerlink" title="3 被测案例"></a>3 被测案例</h2><h3 id="3-1-计数器"><a href="#3-1-计数器" class="headerlink" title="3.1 计数器"></a>3.1 计数器</h3><p>被测的程序是 3 个独立的递增计数器，由 tracer 同时控制其运行，能够生成并执行 3 个进程的全部可能的调度顺序。</p><h3 id="3-2-client-x2F-server"><a href="#3-2-client-x2F-server" class="headerlink" title="3.2 client&#x2F;server"></a>3.2 client&#x2F;server</h3><p>客户端定时向服务端发送心跳消息，服务端每次收到心跳消息就刷新计时器，若超时则打印一条超时信息。tracer 通过调度顺序以及虚拟时钟模拟延迟，通过截获网络的调用模拟丢包，进行错误注入。</p><h3 id="3-3-共识"><a href="#3-3-共识" class="headerlink" title="3.3 共识"></a>3.3 共识</h3><h4 id="3-3-1-编程作业"><a href="#3-3-1-编程作业" class="headerlink" title="3.3.1 编程作业"></a>3.3.1 编程作业</h4><h4 id="3-3-2-开源案例-待测"><a href="#3-3-2-开源案例-待测" class="headerlink" title="3.3.2 开源案例(待测)"></a>3.3.2 开源案例(待测)</h4><p><a href="github.com/willemt/raft">github.com&#x2F;willemt&#x2F;raft</a> 是一个 C 实现的 Raft 共识协议。其优势在于单线程，且本身没有指定通信方式。数据发送与接收的接口在 raft 运行实例启动时由使用者通过注册回调函数自定义，因而可以自由选取节点间的通信协议。</p><p>TODO: 另选取一个 go 语言的实现。</p><h2 id="4-实现方法"><a href="#4-实现方法" class="headerlink" title="4 实现方法"></a>4 实现方法</h2>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;科研选题：基于 ptrace 实现的适用于分布式系统测试的操控执行框架&lt;/p&gt;
+&lt;h3 id=&quot;1-1-研究背景&quot;&gt;&lt;a href=&quot;#1-1-研究背景&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第十周工作重点</title>
+    <link href="https://s.tilnel.com/2023/11/07/20231107-work/"/>
+    <id>https://s.tilnel.com/2023/11/07/20231107-work/</id>
+    <published>2023-11-07T06:30:11.000Z</published>
+    <updated>2023-11-07T06:33:52.017Z</updated>
+    
+    <content type="html"><![CDATA[<p>列举一下本周工作：</p><ul><li>软件分析A4</li><li>Semantic作业</li><li>PL作业</li><li>ISER proposal</li><li>DMCK main</li><li>…</li></ul><p>其他方面的就不在这里写了。现在是14：32，到19：00还有270分钟。我们抓紧把DMCK多搞一点。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;列举一下本周工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;软件分析A4&lt;/li&gt;
+&lt;li&gt;Semantic作业&lt;/li&gt;
+&lt;li&gt;PL作业&lt;/li&gt;
+&lt;li&gt;ISER proposal&lt;/li&gt;
+&lt;li&gt;DMCK</summary>
+        
+      
+    
+    
+    
+    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>仔细地考察一下皮肤问题的解决</title>
+    <link href="https://s.tilnel.com/2023/11/03/20231103-skin/"/>
+    <id>https://s.tilnel.com/2023/11/03/20231103-skin/</id>
+    <published>2023-11-03T07:55:00.000Z</published>
+    <updated>2023-11-07T06:27:26.867Z</updated>
+    
+    <content type="html"><![CDATA[<p>前情提要：</p><p>作息饮食和锻炼是正道。仅为应急处理方法</p><p>痤疮是<em>一谱系疾病</em>，从微粉刺到广泛瘢痕的聚合性痤疮。</p><p>在正常的代谢过程中，毛囊皮脂腺导管上皮细胞脱屑，皮脂腺分泌皮脂，皮脂携带脱屑从毛囊口排出，其中可含有大量的皮肤正常菌群，如痤疮丙酸杆菌、需氧葡萄球菌及马拉色菌等。</p><p>痤疮是一种具有损容性的毛囊皮脂腺的慢性炎症性皮肤病。</p><p><strong>一、生理性粉刺</strong></p><p><strong>1. 微粉刺</strong></p><p>微粉刺是全部痤疮损害的基础，肉眼不可见。微粉刺在表皮下继续演变发展成肉眼见的痤疮皮疹大约需8周时间</p><img src="20231103-skin.assets/v2-489e9e6ad71fac7870e500e8f233813d_1440w.webp" alt="img" style="zoom:33%;" /><p>毛孔内部存在明显的导管角化过度和由此引起的毛囊皮脂腺导管的堵塞，形成微粉刺。</p><p><strong>2.</strong> <strong>白头粉刺</strong></p><p>白头粉刺又称封闭性粉刺(Closed Comedo)，由微粉刺发展而来。外观为皮肤表面出现的白色稍隆起的小疙瘩。皮损为针尖到针头大小灰白色球形小丘疹，类似粟丘疹。肉眼看不到毛囊开口部，只有当皮肤被过度的伸拉时，才可以看到，并可挤压出白色糊状物。</p><img src="20231103-skin.assets/v2-290187a0ce5b2ee51bfba121d5a7eb6b_1440w.webp" alt="img" style="zoom:33%;" /><p><strong>3.</strong> <strong>黑头粉刺</strong></p><p>黑头粉刺(blackhead)又称开放性粉刺(open come-do)由白头粉刺发展而来，或直接来源于微粉刺。外观为明显扩大的毛孔中的小黑点，略高于皮面或与皮面平行，可挤出乳白色的豆腐渣样的粉刺栓。开始暴露的角栓头小于1mm，随着毛囊口的扩大，暴露越多，一些可达5mm。</p><p><img src="/20231103-skin.assets/v2-e8c8fb61a2e71e39b005ee19a59b8cbf_1440w.webp" alt="img"></p><p><strong>二、炎症性痤疮</strong></p><p><strong>1. 丘疹性痤疮</strong></p><p>丘疹性痤疮(papules)由白头粉刺发展而来。随着白头粉刺扩张，毛囊皮脂腺导管破裂，导致炎性损害的形成，位置较深的粉刺破裂可以形成丘疹。皮肤表面为红色坚实丘疹，一般为米粒到绿豆大小，暗红色，顶端略尖而稍硬的小丘疹，有的丘疹中心可有黑头粉刺或顶端未变黑的皮脂栓。</p><p>丘疹是痤疮最基本损害，具有代表性的损害。</p><img src="20231103-skin.assets/v2-5172635ae79d396d6aa0c01fdb593b6d_1440w.webp" alt="img" style="zoom: 25%;" /><p>丘疹性痤疮 图5-1</p><p><strong>丘疹性痤疮病理显示：</strong>在毛囊漏斗部闭塞的情况下，形成毛囊皮脂腺内缺氧的环境。厌氧性痤疮丙酸杆菌大量繁殖，分解皮脂，产生化学趋化因子，白细胞聚集而发生炎症性丘疹。</p><img src="20231103-skin.assets/v2-13a1294d6cca3c94c106d5f103c7b941_1440w.webp" alt="img" style="zoom:33%;" ><p>丘疹性痤疮病理示意图 图5-2</p><p><strong>2.</strong> <strong>脓疱性痤疮</strong></p><img src="20231103-skin.assets/v2-7d6adb5c9c6719e56d39976eec795b96_1440w.webp" alt="img" style="zoom:50%;" /><p>脓疱性痤疮 图6-1</p><p>脓疱性痤疮(pustule)由白头粉刺发展而来。 随着白头粉刺的扩张，毛囊皮脂腺导管破裂，导致炎性损害的形成。脓疱多位于丘疹顶端，可以像豌豆大小或更大。如果损害较浅，突出于表皮，几天内脓疱破裂，脓液排出，可见粉刺栓与脓液流到皮面皮肤愈合且没有瘢痕的形成。如果是丘疹性痤疮的继发感染，则脓疱较深，可以引起凹陷性疤痕或瘢痕疙瘩。</p><p>脓疱还可以形成几种转归，上皮重新角化过度，炎症后粉刺继续生长，内容物往往排到深层组织，引起广泛而严重的炎症反应。继发的粉刺比原损害大，可以重复破裂形成大的囊肿。</p><p><strong>脓疱性痤疮病理显示：</strong>在封闭的毛囊皮脂腺结构中大量中性粒细胞被游离脂肪酸和白细胞趋化因子吸引过来，消灭、吞噬痤疮丙酸杆菌，发生剧烈炎症反应，白细胞形成脓细胞，形成脓腔，腔内还可以看到坏死、脱落的毛囊组织。</p><p><img src="/20231103-skin.assets/v2-97e1dea84db1c2ffda9fd12c9e0682ad_1440w.webp" alt="img"></p><p>脓疱性痤疮病理示意图 图6-2</p><p><strong>3. 结节性痤疮</strong></p><p>结节性痤疮(nodule)由丘疹脓疱性痤疮发展而来。丘疹脓疱性痤疮的炎症继续扩大深入，则于皮下形成大小不等的淡红色、暗红色或紫红色厚壁的结节。通常位于面颊上部的两侧以及关节活动区域的前后。</p><p>损害一般位置较深，可高出皮面呈半球形或圆锥形隆起，也可不高出皮面，基底有明显的浸润、潮红，触之有压痛。结节范围较大，一个大的结节可包含几个毛囊和粉刺。直径5～10mm的结节称为小结节，大于1 cm称为大结节，有的结节常达到2～3cm。结节刚开始较坚实，周围很红，以后可变软，表面还可破溃形成出血性痂。此种损害可持续数月，或以后逐渐吸收，或化脓破溃形成瘢痕。</p><p><img src="/20231103-skin.assets/v2-8e025974c5ab8537fdb481ab0d6d709d_1440w.webp" alt="img"></p><p>结节性痤疮 图7-1</p><p><strong>结节性痤疮病理显示：</strong>在脓疱的基础上，毛囊皮脂腺内大量的角质物、皮脂、脓细胞堆积，大量皮脂排不出去，引来大量中性粒细胞，吞噬、消火痤疮丙酸杆菌，炎症较剧烈，部位又较深，使毛囊皮脂腺结构破坏。结节结节多为两个或两个以上毗邻的粉刺破裂融合而成。包含的毛囊、血管、神经和汗腺等结构被完全破坏，损害内可有出血或渗出的血清，并可见残存的毛发和角化物。损害中出现大量的异物巨细胞，以后逐出现早核细胞和组织细胞。</p><img src="20231103-skin.assets/v2-3804cbef221a4d01b8e9ce19cd78baf6_1440w.webp" alt="img" style="zoom:33%;" /><p>结节性痤疮病理示意图图7-2</p><p><strong>4. 囊肿性痤疮</strong></p><p>囊肿性痤疮(acne cystica)由结节发展而来，是最轻的聚合性痤疮，皮损主要为大小不等的囊肿，囊肿表现为光滑、圆顶、稍高出皮肤的圆形或是卵圆形结构，质软，挤压时有波动感，直径常为1 cm左右，呈暗红或正常皮色。该皮损常较结节易破裂，破裂后形成出血性痂。囊肿多侵犯患者的背部，会出现于面、颈和项部。以后可以发生很明显的瘢痕，甚至成为瘢痕疙瘩。有时可继发化脓菌感染，破溃后流脓，常经久不愈，可持续5～10年。</p><img src="20231103-skin.assets/v2-81edcb8a3da6c25bab632d105618906f_1440w.webp" alt="img" style="zoom:33%;" /><p>囊肿性痤疮 图8-1</p><p><strong>囊肿性痤疮病理显示：</strong>在结节的基础上，毛囊皮脂腺结构内大量脓细胞的聚集，剧烈的炎症把整个毛囊皮脂腺正常结构破坏掉，形成固态或液态的物质聚积，既有脓液、细菌残体、皮脂和角化物，又有炎症浸润。较深部位的囊腔里的内容物逐渐地向皮肤表面移动，最后穿破皮肤，排出内容物。其排出物所经过的通道形成纤维化的管道，形成瘘管。单纯性囊肿性痤疮往往无化脓或轻微化脓。</p><img src="20231103-skin.assets/v2-7d5634d6af1230e8cde57e5f1559d438_1440w.webp" alt="img" style="zoom:33%;" /><p>囊肿性痤疮病理示意图 图8-2</p><p><strong>三、瘢痕</strong></p><p>瘢痕分为两种：</p><p>（一）萎缩性瘢痕，如冰渣样瘢痕、纤维凹陷性瘢痕、萎缩性斑疹、毛囊性斑状萎缩、毛囊周围弹力纤维变性性瘢痕。</p><img src="20231103-skin.assets/v2-87bafdde28775e1fff7d522bf6571680_1440w.webp" alt="img" style="zoom:33%;" /><p>瘢痕 图9-1</p><p><strong>萎缩性瘢痕病理显示：</strong>表皮层甚至真皮层缺失，胶原组织的萎缩，局部纤维化，弹性纤维消失等。</p><p>萎缩性瘢痕病理示意图</p><img src="20231103-skin.assets/v2-4a703c00e3ce08b9d64195a9a002b46f_1440w.webp" alt="img" style="zoom:33%;" /><p>图9-2</p><img src="20231103-skin.assets/v2-40d819ea29a9440ba4c2eb1b8efd9d8e_1440w.webp" alt="img" style="zoom:33%;" /><p>图9-3</p><img src="20231103-skin.assets/v2-efcf27ce5c2622152ab4df083223f599_1440w.webp" alt="img" style="zoom:33%;" /><p>图9-4</p><p>（二）增生性瘢痕，如瘢痕疙瘩、软化瘢痕等。</p><p>增生性瘢痕</p><p><strong>增生性瘢痕病理显示：</strong>胶原组织增生。</p><p>至此各位应该已经对什么是痤疮以及痤疮的类型有了较为系统的了解，下篇将为各位痘友详细介绍痤疮的病因和影响因素，有兴趣的小伙伴可移步下篇。</p><p><img src="/20231103-skin.assets/v2-8b7d3e79b1de31402226e6e62464f443_r.jpg" alt="img"></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;前情提要：&lt;/p&gt;
+&lt;p&gt;作息饮食和锻炼是正道。仅为应急处理方法&lt;/p&gt;
+&lt;p&gt;痤疮是&lt;em&gt;一谱系疾病&lt;/em&gt;，从微粉刺到广泛瘢痕的聚合性痤疮。&lt;/p&gt;
+&lt;p&gt;在正常的代谢过程中，毛囊皮脂腺导管上皮细胞脱屑，皮脂腺分泌皮脂，皮脂携带脱屑从毛囊口排出，其中可含有大量的皮肤</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://s.tilnel.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>随便写写</title>
+    <link href="https://s.tilnel.com/2023/11/03/20231103-dontknow/"/>
+    <id>https://s.tilnel.com/2023/11/03/20231103-dontknow/</id>
+    <published>2023-11-03T07:25:01.000Z</published>
+    <updated>2023-11-03T09:33:35.746Z</updated>
+    
+    <content type="html"><![CDATA[<p>有能力打开20把锁的钥匙。</p><p>我现在实在是想象不到被一段感情拴着有多恐怖。</p><p>并不是说我不能够专一。我只是希望两个人在一起就随意一点，不要没事摆个批脸质问对方为什么没做到什么什么。。。</p><p>我只能handle这种关系。我对人的控制欲是0，希望能将心比心，不要来对我施加控制。</p><p>有点要买的东西</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;有能力打开20把锁的钥匙。&lt;/p&gt;
+&lt;p&gt;我现在实在是想象不到被一段感情拴着有多恐怖。&lt;/p&gt;
+&lt;p&gt;并不是说我不能够专一。我只是希望两个人在一起就随意一点，不要没事摆个批脸质问对方为什么没做到什么什么。。。&lt;/p&gt;
+&lt;p&gt;我只能handle这种关系。我对人的控制欲是0，希</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://s.tilnel.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>不知道该咋整</title>
+    <link href="https://s.tilnel.com/2023/10/31/20231031-untitled/"/>
+    <id>https://s.tilnel.com/2023/10/31/20231031-untitled/</id>
+    <published>2023-10-31T07:31:00.000Z</published>
+    <updated>2023-10-31T07:31:54.130Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚tmd到工位。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;刚tmd到工位。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://s.tilnel.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>置之死地</title>
+    <link href="https://s.tilnel.com/2023/10/30/20231030-death/"/>
+    <id>https://s.tilnel.com/2023/10/30/20231030-death/</id>
+    <published>2023-10-30T08:58:00.000Z</published>
+    <updated>2023-10-30T09:30:37.005Z</updated>
+    
+    <content type="html"><![CDATA[<p>「置之死地」</p><p>对于地球的千万种生命，乙醇足以致命。腐败的食物中散发出的发酵气息昭示着凶险。 为了取得生存必需的养料 ，动物进化出了脱氢酶。而人类作为最特殊的那一个，甚至发掘其作为快感来源之一。</p><p>酒——aqua vitae——生命之水，是一种让人「接近死亡」的饮料。完全醉酒前的回光返照，则是人主观意识最接近活着的时候。玻璃瓶中的酒只需一饮而尽，而后迸发的是生命的极致体验——濒死感。</p><p>鲜花易逝，有好事者摘取并作为装饰，生命即进入倒计时，仅能在短期内绽放。</p><p>我们都是要将自己燃尽的。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;「置之死地」&lt;/p&gt;
+&lt;p&gt;对于地球的千万种生命，乙醇足以致命。腐败的食物中散发出的发酵气息昭示着凶险。 为了取得生存必需的养料 ，动物进化出了脱氢酶。而人类作为最特殊的那一个，甚至发掘其作为快感来源之一。&lt;/p&gt;
+&lt;p&gt;酒——aqua</summary>
+        
+      
+    
+    
+    
+    <category term="观点" scheme="https://s.tilnel.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>心想事成</title>
+    <link href="https://s.tilnel.com/2023/10/30/20231030-willing/"/>
+    <id>https://s.tilnel.com/2023/10/30/20231030-willing/</id>
+    <published>2023-10-30T06:54:00.000Z</published>
+    <updated>2023-10-30T08:47:02.436Z</updated>
+    
+    <content type="html"><![CDATA[<p>「心想事成」</p><p>有一个古老的关于戒烟的传说。戒烟的人在决定戒烟的那一刻就要想着：「我已经戒烟了」，而不是想着「我从今天开始戒烟」。</p><p>这不是简单的心理暗示。</p><p>我已经戒烟了。从此抽烟没有任何借口。而当实在忍不住去抽了一根的时候，也并不意味着戒烟这件事宣告破产。嘬两口，弹弹烟灰，再掐灭它，继续埋头戒烟。</p><p>饭桌上朋友发你一根：</p><p>你摇摇头说「我正在戒烟」，朋友会劝你「哎呀就一根，不影响你戒」，你会动摇「是啊，慢慢戒呗，少抽点没事的」。</p><p>你摆摆手说「我早就戒了」，朋友会羡慕「哎呀真厉害，你怎么戒的」，你会骄傲「说戒就戒了，有什么难的」。</p><p>最忌讳的想法是从客观的角度审视自己「戒烟失败」，进而思想上滑了坡：抽一根已经失败，抽一包一条也是失败，不如抽个爽。</p><hr><p>在情绪的泥沼里无法自拔的人，尽管他们想摆脱——至少表面上如此；尽管他们有所行动——至少从外界看来，已经足够努力。但一次又一次只是同一个模式的循环。</p><p>这种死结消除不了的根本原因在于，人根本「不愿意」去消除。恰恰相反，他们以这个无限循环的死结产生的创伤为养料，维持着一个想象性的自我认同。就像胎记标示着一个独一无二的人一样。</p><p>「什么档次，竟然敢称理解我」。于是任何理解都被否认。「你根本就不懂」。</p><p>每个人都用同种可悲的方式，维持着自我。于是并不是不可接受。</p><p>但是想要破解此局并不困难，只需要问两个问题：</p><p>谁规定了什么叫放下？——我说我放下了，别人可能觉得不是，那是别人的事。</p><p>凭什么要放下？——就好像放不下是什么难以启齿的事，就好像放不下会毁了一辈子，其实根本无伤大雅。</p><p>将评判的标准交由所谓客观理性，那么总有一个角度能给出否定的论证。只有收回决定和判断的权利，才有可能实现主观的意愿。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;「心想事成」&lt;/p&gt;
+&lt;p&gt;有一个古老的关于戒烟的传说。戒烟的人在决定戒烟的那一刻就要想着：「我已经戒烟了」，而不是想着「我从今天开始戒烟」。&lt;/p&gt;
+&lt;p&gt;这不是简单的心理暗示。&lt;/p&gt;
+&lt;p&gt;我已经戒烟了。从此抽烟没有任何借口。而当实在忍不住去抽了一根的时候，也并不意味</summary>
+        
+      
+    
+    
+    
+    <category term="观点" scheme="https://s.tilnel.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>软件分析A1 实验前后</title>
+    <link href="https://s.tilnel.com/2023/10/17/20231017-taieA1/"/>
+    <id>https://s.tilnel.com/2023/10/17/20231017-taieA1/</id>
+    <published>2023-10-17T12:33:57.000Z</published>
+    <updated>2023-10-23T09:07:47.871Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然我赶时间，但还是要小心地对待这个作业。</p><p>看看 tai-e 的结构：我们这次要关注的有哪些？</p><p>要提交的包括</p><ul><li>LiveVariableAnalysis.java</li><li>Solver.java</li><li>IterativeSolver.java</li></ul><p>活跃变量分析，solver，和递归求解器</p><p>我估计：</p><p>活跃变量分析调用递归求解器，递归求解器调用求解器。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class LiveVariableAnalysis &#123;</span><br><span class="line">public SetFact&lt;Var&gt; newBoundaryFact(CFG&lt;Stmt&gt; cfg);</span><br><span class="line"></span><br><span class="line">public SetFact&lt;Var&gt; newInitialFact();</span><br><span class="line"></span><br><span class="line">public void meetInto(SetFact&lt;Var&gt; fact, SetFact&lt;Var&gt; target);</span><br><span class="line"></span><br><span class="line">public boolean transferNode(Stmt stme, SetFact&lt;Var&gt; in, SetFact&lt;var&gt; out);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IterativeSolver::doSolveBackward();</span><br><span class="line"></span><br><span class="line">Solver&lt;Node, Fact&gt;::initializeBackward();</span><br></pre></td></tr></table></figure><p>我做完了，事实证明我全猜反了</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;虽然我赶时间，但还是要小心地对待这个作业。&lt;/p&gt;
+&lt;p&gt;看看 tai-e</summary>
+        
+      
+    
+    
+    
+    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>债</title>
+    <link href="https://s.tilnel.com/2023/10/17/20231017-publishversion/"/>
+    <id>https://s.tilnel.com/2023/10/17/20231017-publishversion/</id>
+    <published>2023-10-17T02:13:00.000Z</published>
+    <updated>2023-10-17T03:53:26.759Z</updated>
+    
+    <content type="html"><![CDATA[<p>爱不生债。谁也不欠谁的。若我自认欠债，则将对方至于隐形放债人的不义地位。反过来也如此。</p><p>我认真地考虑在自己的身上添加一个警示标志，以表示我并非正常人，并没有任何正常恋爱的可能。因而劝退不能理解我的所谓“正常人”。</p><p>每个人都反常，只是他们不自知罢了。</p><p>此种表达的徒劳无功——并非错误，而是从歇斯底里的质问中得到沉默的响应，并转而求诸自身。</p><p>我决定这个月就去打耳桥。</p><p>有说点什么的冲动，但是已经不知道该说什么了…每次面对纸笔就充满表达欲，面对屏幕则立即消失了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;爱不生债。谁也不欠谁的。若我自认欠债，则将对方至于隐形放债人的不义地位。反过来也如此。&lt;/p&gt;
+&lt;p&gt;我认真地考虑在自己的身上添加一个警示标志，以表示我并非正常人，并没有任何正常恋爱的可能。因而劝退不能理解我的所谓“正常人”。&lt;/p&gt;
+&lt;p&gt;每个人都反常，只是他们不自知罢了</summary>
+        
+      
+    
+    
+    
+    <category term="情感" scheme="https://s.tilnel.com/categories/%E6%83%85%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>迎新讲话</title>
+    <link href="https://s.tilnel.com/2023/10/14/20231014-talk/"/>
+    <id>https://s.tilnel.com/2023/10/14/20231014-talk/</id>
+    <published>2023-10-14T08:12:02.000Z</published>
+    <updated>2023-10-17T02:11:25.427Z</updated>
+    
+    <content type="html"><![CDATA[<p>当然也不尽然是在写讲稿。主要是思路。</p><p>要求：讲一讲怎么在大学里面过得舒服。侧重生活、生活与工作分离这些内容。让大家放下心来，缓解小年轻们的焦虑。</p><p>此外，需要幽默有梗一点，不要太绷着</p><p>首先声明，我们这个根本不算是脱口秀。</p><p>所有内容仅代表个人观点</p><p>任何商品请从正规网站购买</p><p>不要贪图低价商品</p><p>只要坚持认为自己不可能这么幸运，就可以避免90%诈骗</p><h2 id="一个本科生的自我修养：心态"><a href="#一个本科生的自我修养：心态" class="headerlink" title="一个本科生的自我修养：心态"></a>一个本科生的自我修养：心态</h2><h3 id="你先别急"><a href="#你先别急" class="headerlink" title="你先别急"></a><del>你先别急</del></h3><p>因为急也没用。</p><p>我们的社会总是要求大家在20多岁的时候得到30多岁的时候的东西。</p><p>事业、思想成熟、<del>爱情</del></p><p>大家自己没啥事也都喜欢拿这些事pua自己。</p><p><strong>建议在看到别人有什么的时候，仔细想想他有的东西是不是那么个事儿</strong></p><p>没有什么东西是天经地义地“就是好”的。要根据自己最深刻的愿望形成价值观。</p><p><strong>如果你反复问自己，我到底要的是什么？</strong></p><p>我想要钱-&gt;我要的其实是金钱带来的丰富的物质生活，而钱只是一个中介罢了-&gt;丰富的物质生活？什么算丰富？谁规定的？-&gt;我要的明明是那个理想，为什么最后都落到money上？-&gt;有钱只是社会对我的期许罢了。</p><p>我想要成功-&gt;怎么算成功？依然是社会的期许？</p><p>社会不期许你有钱、成功…只要对社会有用，一点微小的作用。</p><p>人不可避免地要“生产”某些东西。总有人会享受到你创造的价值，而人能够通过生产这些有价值的东西感到满足。</p><p>&#x3D;&gt;只有那些兜售成功学的人才会希望你向往成功（是的，他们甚至都不希望你成功）</p><p>手段是多种多样的。做出科研成果，投入到现实应用中是一种；进行知识分享，让他人也获得知识；生产可供消费的商品与服务同样也是。</p><p>喜欢做菜的人学炒菜&#x3D;&gt;大家都很喜欢吃。</p><p>​</p><p>多花点时间，好好考虑，自己到底喜欢什么。</p><p>过得从容一点。</p><h2 id="大学生存指南"><a href="#大学生存指南" class="headerlink" title="大学生存指南"></a>大学生存指南</h2><p>工作生活分离。生活区域（特指宿舍）就要有生活气息。</p><p>——只有我工作时间摸鱼，杜绝休闲时间加班。</p><p>足够的照明（多买点灯装点一下）、 适量的书（当然全是书也行）、个人电脑&#x2F;显示器。</p><p>卫生打扫干净， 住起来会更惬意<del>（仙林的水泥地面超容易起灰简直没法住）</del></p><p>合适的装饰：绿色植物，花卉，购买的&#x2F;自制的手工艺品，瓶瓶罐罐；运动装备；喜欢的海报；etc</p><p>生活电器：咖啡机&#x2F;电热锅&#x2F;烤面包机&#x2F;冰箱（一筐违章电器，总有办法的）</p><p><del>买个折叠桌，冬天炖炖火锅围着吃</del></p><p>工作区域：图书馆，或者你喜欢的任何教室</p><p>南大图书馆的环境普遍还是很好的。就是不能机械键盘炸馆。（使用电脑的同学可以去机房自习）</p><p>只要不在宿舍，摸鱼的动机就减少了80%</p><p>建议准点上下班：早9晚5，或者其他的什么安排。</p><p><del>一定不要养成这个干不完就不睡觉的习惯</del></p><p><del>尤其是你们计算机的</del></p><p>多去户外，多出学校。我院的巨大优势之一是学生普遍压力不高；巨大缺陷是学生之间交流太少（全员自闭）。到了大四发现错过了培养社交能力的黄金时期，大呼上当。</p><p>——实际上，大家都在宿舍里躺尸。可千万不要再这样了。</p><p>读研，尤其是读博之后，你就知道有朋友、会交朋友是多么重要的事情了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;当然也不尽然是在写讲稿。主要是思路。&lt;/p&gt;
+&lt;p&gt;要求：讲一讲怎么在大学里面过得舒服。侧重生活、生活与工作分离这些内容。让大家放下心来，缓解小年轻们的焦虑。&lt;/p&gt;
+&lt;p&gt;此外，需要幽默有梗一点，不要太绷着&lt;/p&gt;
+&lt;p&gt;首先声明，我们这个根本不算是脱口秀。&lt;/p&gt;
+&lt;p</summary>
+        
+      
+    
+    
+    
+    <category term="讲稿" scheme="https://s.tilnel.com/categories/%E8%AE%B2%E7%A8%BF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>小总结</title>
+    <link href="https://s.tilnel.com/2023/09/19/20230919_whatislove/"/>
+    <id>https://s.tilnel.com/2023/09/19/20230919_whatislove/</id>
+    <published>2023-09-19T06:47:53.000Z</published>
+    <updated>2023-09-19T07:00:37.008Z</updated>
+    
+    <content type="html"><![CDATA[<p>获取信心的关键在于：各种各样的人都能获得幸福。但是他们也都是像我一样有太多缺陷的普通人。就算并不优于他们，但也不算逊色。</p><p>如果我最终失败了，并不是因为我不好，而是我在这一段中的表现并不符合对方的期待。我有这样的能力，我有这样的意愿，展示出对方喜欢的一面。</p><p>既然如此那就自信地拿出来就好了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;获取信心的关键在于：各种各样的人都能获得幸福。但是他们也都是像我一样有太多缺陷的普通人。就算并不优于他们，但也不算逊色。&lt;/p&gt;
+&lt;p&gt;如果我最终失败了，并不是因为我不好，而是我在这一段中的表现并不符合对方的期待。我有这样的能力，我有这样的意愿，展示出对方喜欢的一面。&lt;/p</summary>
+        
+      
+    
+    
+    
+    <category term="情感" scheme="https://s.tilnel.com/categories/%E6%83%85%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>9月工作要点</title>
+    <link href="https://s.tilnel.com/2023/09/19/20230919_points/"/>
+    <id>https://s.tilnel.com/2023/09/19/20230919_points/</id>
+    <published>2023-09-19T03:06:21.000Z</published>
+    <updated>2023-09-19T09:22:34.879Z</updated>
+    
+    <content type="html"><![CDATA[<p>一些题外话：商院那边的校对工作可以挑选一个状态不太好的时间去做。尽量自动化吧</p><p>主题当然还是：用我们的系统调用拦截机制去跑一个进程。甚至是两个进程。</p><p>比较方便的一个小玩具是一个 Server-Client 的系统，比如天气查询系统之类的。可以集齐获取时间、日期这些要素。</p><p>之前提过两个东西。一个是可以去读写内存的地址空间，那就使用 &#x2F;proc&#x2F;pid&#x2F;memory 这个文件？让我先试试。</p><p>第二个是使用 clone 系统调用来管理</p><p>得想办法设计一下架构</p><p>1、用 procfs 重写地址空间读写</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一些题外话：商院那边的校对工作可以挑选一个状态不太好的时间去做。尽量自动化吧&lt;/p&gt;
+&lt;p&gt;主题当然还是：用我们的系统调用拦截机制去跑一个进程。甚至是两个进程。&lt;/p&gt;
+&lt;p&gt;比较方便的一个小玩具是一个 Server-Client</summary>
+        
+      
+    
+    
+    
+    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+  </entry>
+  
+</feed>
