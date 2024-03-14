@@ -45,14 +45,31 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>组会主题</title>
     <link href="https://s.tilnel.com/2024/03/15/20240315-progres/"/>
     <id>https://s.tilnel.com/2024/03/15/20240315-progres/</id>
-    <published>2024-03-14T22:02:26.536Z</published>
-    <updated>2024-03-14T22:02:26.536Z</updated>
+    <published>2024-03-14T22:00:00.000Z</published>
+    <updated>2024-03-14T22:04:41.349Z</updated>
+    
+    <content type="html"><![CDATA[<p>尼玛早上6点就有人进来了，刚夜里3点还有人在隔壁通宵，今天疑似有点撞大运了。</p><p>这次的工作量可能不太够，所以尽量就啰嗦一点。</p><ul><li>bakery算法，完整版，去掉choose版，</li></ul>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;尼玛早上6点就有人进来了，刚夜里3点还有人在隔壁通宵，今天疑似有点撞大运了。&lt;/p&gt;
+&lt;p&gt;这次的工作量可能不太够，所以尽量就啰嗦一点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bakery算法，完整版，去掉choose版，&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+        
+      
     
     
     
+    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
