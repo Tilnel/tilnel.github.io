@@ -317,7 +317,7 @@ div {
   padding-top: 15px;
   text-align: justify;
   text-justify: distribute;
-  word-break: normal;
+  word-break: break-word;
 }
 .post .post-content h2 {
   margin: 1.4em 0 1.1em;
@@ -1968,10 +1968,44 @@ html[data-dark=true] img {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /*这里设置第几行显示省略号，可以设置第一行或者其他行*/
+  -webkit-line-clamp: 3;
+  /*这里设置第几行显示省略号，可以设置第一行或者其他行*/
 }
 
 .waline-comment-content-author {
   text-align: end;
   margin-bottom: 6px;
+}
+
+/* article tags  */
+.article-tag-list-item {
+  font-size: 14px;
+  line-height: 24px;
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 3px;
+  background: #f6f6f6;
+  min-width: 30px;
+  text-align: center;
+  margin: 3px;
+}
+
+.article-tag-list-item a {
+  text-align: center;
+  color: #555;
+}
+
+.article-tag-list-item a::before {
+  content: "\f02b";
+  font-family: FontAwesome;
+  margin-right: 4px;
+}
+
+.article-tag-list-item:hover {
+  color: #555;
+  background: #efefef;
+}
+
+.article-tag-list {
+  padding-left: 0rem;
 }
