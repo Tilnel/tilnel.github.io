@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="正经人谁写日记啊"><title>Distributed Algorithm - syllabus | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Distributed Algorithm - syllabus</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Distributed Algorithm - syllabus</h1><div class="post-meta">2022-09-22<span> | </span><span class="category"><a href="/categories/DisAlg/">DisAlg</a></span></div><a class="disqus-comment-count" href="/20220922-Distributed_Algorithm_syllabus/#vcomment"><span class="valine-comment-count" data-xid="/20220922-Distributed_Algorithm_syllabus/"></span><span> 条评论</span></a><div class="post-content"><p>Syllabus</p>
+<p>从基础问题到研究问题，到系统和工具</p>
+<ul>
+<li><p>Model of computation</p>
+<ul>
+<li>Different dimensions in defining a computation model</li>
+</ul>
+</li>
+<li><p>Basic problems</p>
+<ul>
+<li>Basic message-passing algorithms</li>
+<li>Leader election in rings</li>
+<li>Mutual exclusion in shared memory</li>
+<li>Fault-tolerant consensus</li>
+</ul>
+</li>
+<li><p>Research problems</p>
+<ul>
+<li>Distributed algorithms<ul>
+<li>Consensus algorithms: Paxos, Raft, Zab</li>
+<li>Specificaiton, verification, testing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>From algorithms to systems</p>
+<ul>
+<li>Data replication: TPaxos, ParallelRaft (Ali PolarDB)</li>
+<li>Coordination service: Zookeeper (Apache)</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p>Outline</p>
+<ul>
+<li><p>Distrubuted Algorithms (DAs)</p>
+<ul>
+<li>Fundamental concepts</li>
+</ul>
+</li>
+<li><p>Model of computation</p>
+<ul>
+<li>Basic idea</li>
+<li>RAM model for sequential algorithms</li>
+</ul>
+</li>
+<li><p>Model of computationsfor DAs</p>
+<ul>
+<li>Communication medium, Timing model</li>
+<li>Failure model, progress condition</li>
+<li>Correctness condition: specification of the problem</li>
+<li>Simulation among models</li>
+</ul>
+</li>
+<li><p>Algorithms</p>
+<ul>
+<li>Abstract: designed over an abstract machine (the model of computation)</li>
+<li>Formal: rigid mathematical treatments</li>
+</ul>
+</li>
+<li><p>Distributed algotrithms</p>
+<ul>
+<li>Model of distributed computation</li>
+<li>Mathematical proofs, analysis, …</li>
+<li>In relation to other concepts<ul>
+<li>Distributed conputing theory</li>
+<li>Distributed systems</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Computing and Computer</p>
+<ul>
+<li><p>The computer seems to be able to do anything</p>
+</li>
+<li><p>But something cannot be efficiently done by a computer</p>
+</li>
+<li><p>Computing</p>
+<ul>
+<li>Encoding everything into ‘0’s and ‘1’s</li>
+<li>Operations over ‘1’s and ‘0’s</li>
+<li>Decoding the ‘1’s and ‘0’s</li>
+</ul>
+</li>
+<li><p>Computer</p>
+<ul>
+<li>A set of operations it can do<ul>
+<li>Limited operations, unlimited combinations</li>
+</ul>
+</li>
+<li>Perform specified operations<ul>
+<li>Quickly, inexhaustibly, with no intelligence</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>计算机只能做简单重复的事情。</p>
+<p>Algorithm</p>
+<ul>
+<li><p>Algorithm is the spirit of computing</p>
+<ul>
+<li>To solve a specific problem (so called an algorithmic problem)</li>
+<li>Combination of basic operations<ul>
+<li>in a precise and elegant way</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Essential issues</p>
+<ul>
+<li>Model of computation</li>
+<li>Algorithm design</li>
+<li>Algorithm analysis</li>
+</ul>
+</li>
+</ul>
+<p>Model of Computation</p>
+<ul>
+<li><p>Problem 1</p>
+<ul>
+<li>Why the algorithms we learn can run almost everywhere?</li>
+</ul>
+</li>
+<li><p>Problem 2</p>
+<ul>
+<li>Why the algorithms we learn can be implemented in any language?</li>
+</ul>
+</li>
+<li><p>Machine-independent algorithms run on an abstract machine</p>
+<ul>
+<li>Turing machine: over-qualify</li>
+<li>RAM model: simple but powerful</li>
+</ul>
+</li>
+</ul>
+<p>Turing Machine</p>
+<ul>
+<li><p>Tape in</p>
+<ul>
+<li>Encoding the input</li>
+</ul>
+</li>
+<li><p>Tape out</p>
+<ul>
+<li>Recording the output</li>
+</ul>
+</li>
+<li><p>Control of the read-write head</p>
+<ul>
+<li>Operations the machine can do</li>
+</ul>
+</li>
+</ul>
+<p>RAM Model</p>
+<ul>
+<li><p>Each simple operation takes one time step</p>
+<ul>
+<li>E.g., key comparison, +&#x2F;-, memory access, …</li>
+</ul>
+</li>
+<li><p>Complex operations shoule be decomposed</p>
+<ul>
+<li>Loop, Subroutine</li>
+</ul>
+</li>
+<li><p>Memory</p>
+<ul>
+<li>Memory access is a simple operation</li>
+<li>Unlimited memory</li>
+</ul>
+</li>
+</ul>
+<p>Model of Computation for DAs</p>
+<p>Communicaion medium: message passing &amp; shared memory</p>
+<p>Progess method: synchronous &amp; asynchronous</p>
+<p>Why one model can’t cover DA?</p>
+<ul>
+<li><p>Single serialized machine: low complexity to cover</p>
+</li>
+<li><p>Distributed systems vary</p>
+</li>
+</ul>
+<p>Message-passing Model</p>
+<ul>
+<li><p>Processors</p>
+<ul>
+<li>p_0, p_1, …, p_n-1 are nodes of the graph</li>
+<li>Each modeled as a state machine</li>
+</ul>
+</li>
+<li><p>Channel from p_i to p_j</p>
+<ul>
+<li>outbuf variable of p_i (physical channel)</li>
+<li>inbuf variable of p_j (incoming message queue)</li>
+</ul>
+</li>
+</ul>
+<p>Comfiguraition of the System</p>
+<ul>
+<li><p>A snapshot of the entire system</p>
+<ul>
+<li>Processor states</li>
+<li>Channels states</li>
+</ul>
+</li>
+<li><p>Formally, a vector of </p>
+<ul>
+<li>Local variables</li>
+<li>Incoming message queues</li>
+<li>outbufs</li>
+</ul>
+</li>
+</ul>
+<p>Event: Delivery (送达)</p>
+<ul>
+<li>Moves a message from sender’s outbuf to receiver’s inbuf<ul>
+<li>Message will be abailable next time receiver takes a step</li>
+</ul>
+</li>
+</ul>
+<p>Event: Computation</p>
+<ul>
+<li><p>Start with old accessible state</p>
+<ul>
+<li>Local vars + incoming messages</li>
+</ul>
+</li>
+<li><p>Apply the state machine transition function</p>
+<ul>
+<li>Handle all incoming messages</li>
+</ul>
+</li>
+<li><p>End with new accessible state</p>
+<ul>
+<li>Empty inbufs</li>
+<li>New outgoing messages</li>
+</ul>
+</li>
+</ul>
+<p>Asynchronous Execution</p>
+<ul>
+<li><p>System execution</p>
+<ul>
+<li>&lt;config, event, config, event, config, …&gt;</li>
+</ul>
+</li>
+<li><p>Initial configuration</p>
+<ul>
+<li>Esch processor is in its initial state</li>
+<li>All inbufs are empty</li>
+</ul>
+</li>
+<li><p>System progress</p>
+<ul>
+<li>&lt;config_old, event, config_new&gt;<ul>
+<li>config_new is the same as config_old except:<ul>
+<li>a) if delivery (msgReceive) event<ul>
+<li>Spedified msg is transgerred from sender’s outbur to receiver’s inbuf</li>
+</ul>
+</li>
+<li>b) if computation event<ul>
+<li>Specified processor’s state (including outbufs) change according to transition function</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>An execution is admissible in a (reliable) asynchronous model if</p>
+<ul>
+<li>Every message in an outbuf is eventually delivered</li>
+<li>Every processor takes an infinite number of steps</li>
+<li>No constraints on when these events take place<ul>
+<li>Arbitrary message delays</li>
+<li>Relative processor speeds</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Reliability lies in that</p>
+<ul>
+<li>No message is lost</li>
+<li>No processor stops working</li>
+</ul>
+</li>
+</ul>
+<p>Complexity Measures</p>
+<ul>
+<li>Message complexity (发多少消息才能完成这件事)<ul>
+<li>Maximum number of messages sent in any admissible execution</li>
+</ul>
+</li>
+<li>Time complexity<ul>
+<li>Maximum “time” until all processes terminalte in any admissible execution</li>
+<li>How to measure time in an asynchronous execurion?<ul>
+<li>Produce a timed execution by assigning non-decreading real times to events so that time between sengding and receiving any message is at most  1.</li>
+<li>Time complexity: maximum time until termination in any timed admissible execution.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Synchronous Executions</p>
+<ul>
+<li>Admissible execution<ul>
+<li>An infinite sequence of rounds<ul>
+<li>A round is a sequence of deliver events moving all messages in transit into inbufs, followed by a sequence of computation events, one for each processor</li>
+</ul>
+</li>
+<li>Progress in lockstep<ul>
+<li>Every message sent is delivered</li>
+<li>Every processor takes an infinite number of steps</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Time complexity<ul>
+<li>The number of rounds until termination</li>
+</ul>
+</li>
+</ul>
+<p>Shared Memory Model</p>
+<ul>
+<li>Processors communicate via a set of shared variables (also called shared registers)<ul>
+<li>Each shared variable has a type, defining a set of primitive operations (performed atomiacally)</li>
+</ul>
+</li>
+<li>Shared variables<ul>
+<li>read, write</li>
+<li>compare &amp; swap (CAS)</li>
+<li>read-modify-write (RMW)</li>
+</ul>
+</li>
+</ul>
+<p>Execution</p>
+<ul>
+<li><p>Configuration</p>
+<p>(q0, q1, …, qn-1, r0, r1, …, rm-1)</p>
+<p> process states      shared variables</p>
+</li>
+<li><p>Events</p>
+<ul>
+<li>Computation steps taken by the process</li>
+<li>At each computation step, the shared variable is accessed</li>
+</ul>
+</li>
+<li><p>Admissible execution</p>
+<ul>
+<li>An execution is admissible if evety processor takes infinite number of steps</li>
+</ul>
+</li>
+<li><p>Shared variable access</p>
+<ul>
+<li><p>At each computation step by p_i, the following happen atomically:</p>
+<p>a) p_i chooses a ashared variable to access with a specific operation, based on p_i’s current state;</p>
+<p>b) The specified operation is performed on the shared variable;</p>
+<p>c) p_i’s state changes according to p_i’s transition function, based on p_i’s current state and the value the shared memory operation performed.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Complexity Measures</p>
+<ul>
+<li>Shared variables<ul>
+<li>Number of distinct shared variables required</li>
+</ul>
+</li>
+<li>Shared space<ul>
+<li>Amount of shared space</li>
+<li>E.g, # of bits, # of distinct values, …</li>
+</ul>
+</li>
+</ul>
+<p>Changes from the MSG Model</p>
+<ul>
+<li>Communication medium changes<ul>
+<li>No inbuf and outbuf state components</li>
+<li>Configuration includes values for shared variables</li>
+</ul>
+</li>
+<li>Execution manner changes<ul>
+<li>One event type: one computation step by a process<ul>
+<li>p_i’s state in old configuration specifies whith shared variable is to be accessed and with which primitive</li>
+<li>shared variable’s value in the new configuration changes according to the primitive’s semantics</li>
+<li>p_i’s state in the new configuration changes according to its old state and the result of the primitive</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Google: data center as a computer</p>
+<p>Correctness Condition</p>
+<ul>
+<li>How to specify an algorithmic problem?<ul>
+<li>E.g., GCD(Euclid), Sorting</li>
+</ul>
+</li>
+<li>How to speicify a distributed-algorithmic problem?<ul>
+<li>A reactive system</li>
+<li>Safety</li>
+<li>Liveness</li>
+</ul>
+</li>
+</ul>
+<p>DAs are always running.</p>
+<p>不同模型可以互相模拟</p>
+<p>Simulation among MoCs</p>
+<ul>
+<li>Example 1: Synchronizer<ul>
+<li>Illusion of synchronous rounds</li>
+<li>Over asynchronous communication</li>
+</ul>
+</li>
+<li>2: Distributed Shared Memory (DSM)<ul>
+<li>Illusion of a shared memory</li>
+<li>Over message passing</li>
+</ul>
+</li>
+</ul>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20220925-DBsystem/">Course Introduction Relational Model (CMU Databases Systems Fall 2019)</a><a class="next" href="/20220911-rest/">克服焦虑 - 慢慢改</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  serverURLs:'',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://s.tilnel.com"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/20231017-top/">置顶必读</a></li><li class="post-list-item"><a class="post-list-link" href="/20240603-intheNameofPeople/">人民的名义</a></li><li class="post-list-item"><a class="post-list-link" href="/20240603-week2/">夕拾 第二周</a></li><li class="post-list-item"><a class="post-list-link" href="/20240601-yvonne/">The.Scent.of.Yvonne.1994</a></li><li class="post-list-item"><a class="post-list-link" href="/20240530-aml/">高级机器学习：二分类</a></li><li class="post-list-item"><a class="post-list-link" href="/20240529-sexpsychology/">性心理学 - 读书</a></li><li class="post-list-item"><a class="post-list-link" href="/20240528-nightandfog/">天水围的夜与雾.Night.and.Fog.2009</a></li><li class="post-list-item"><a class="post-list-link" href="/20240529-filth/">污垢.Filth.2013</a></li><li class="post-list-item"><a class="post-list-link" href="/20240528-psycoInOpposSexComm/">异性交往中的心理学 - 陈昌凯</a></li><li class="post-list-item"><a class="post-list-link" href="/20240527-germanideology/">德意志意识形态 - 摘录</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://www.njujb.com" title="张天昀的主页" target="_blank">张天昀的主页</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>

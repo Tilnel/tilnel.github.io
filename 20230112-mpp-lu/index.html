@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="正经人谁写日记啊"><title>并行 LU 分解 | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">并行 LU 分解</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">并行 LU 分解</h1><div class="post-meta">2023-01-12<span> | </span><span class="category"><a href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></span></div><a class="disqus-comment-count" href="/20230112-mpp-lu/#vcomment"><span class="valine-comment-count" data-xid="/20230112-mpp-lu/"></span><span> 条评论</span></a><div class="post-content"><h1 id="实验2-LU-分解-（OMP-与-MPI-实现）"><a href="#实验2-LU-分解-（OMP-与-MPI-实现）" class="headerlink" title="实验2 LU 分解 （OMP 与 MPI 实现）"></a>实验2 LU 分解 （OMP 与 MPI 实现）</h1><p>191240046 孙博文</p>
+<h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><p>在线性代数中，LU 分解是矩阵分解的一种，可以将一个矩阵分解为一个下三角矩阵和一个上三角矩阵的乘积（有时是它们和一个置换矩阵的乘积）。LU分解主要应用在数值分析中，用来解线性方程、求反矩阵或计算行列式。</p>
+<p>在 LU 分解的过程中主要的计算是利用主行 i 对其余各行 就 (j &gt; i)  做初等行变化，各行计算之间没有数据相关关系。因此可以对矩阵按行划分来实现并行计算。考虑到计算过程中处理器负载的均衡，对矩阵采用行交叉划分；假设处理器个数为 p，矩阵的阶数为 n，则每个处理器处理的行数为 $m &#x3D; \lceil n &#x2F; p\rceil$。</p>
+<p>OpenMP 是基于线程的编程模型，设计基于多线程的 OpenMP 的 LU 分解算法，其主要思想为：外层设置一个列循环，在每次循环中开设 THREAD_NUMS 个线程，每个线程处理的矩阵 A 的行为上述的 m，一次循环过后则完成对应列的变换，这样在 n 次循环过后便可完成矩阵 A 的 LU 分解。即 L 为 A 中下三角部分的元素，其对角线上元素为 1，其他为 0。U 为 A 中 的上三角部分。</p>
+<p>对于 MPI 而言，则是将矩阵数据由 0 进程按行交叉划分发送到各个进程中。在计算过程中，主行数据所在的进程将主行的数据广播到其他各进程。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>核心伪代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Begin</span><br><span class="line">  对所有处理器，同时执行如下算法：</span><br><span class="line">  for i = 0 to m - 1 do</span><br><span class="line">    for j = 0 to p - 1 do</span><br><span class="line">      if (my_rank=j) then</span><br><span class="line">        v = i * p + j   // 主行</span><br><span class="line">        for k = v to n - 1 do</span><br><span class="line">          f[k] = a[k, v]</span><br><span class="line">        end for</span><br><span class="line">        将 f 广播到所有处理器</span><br><span class="line">      else</span><br><span class="line">        v = i * p + j</span><br><span class="line">        接收广播的主行到 f</span><br><span class="line">      end if</span><br><span class="line">      u = i * p + my_rank</span><br><span class="line">      if (my_rank &lt;= j) then</span><br><span class="line">        for k = u + my_rank to n - 1 step p do</span><br><span class="line">          a[k, v] = a[k, v] / f[v]</span><br><span class="line">          for w = v + 1 to n - 1 do</span><br><span class="line">            a[k, w] = a[k, w] - f[w] * a[k, v]</span><br><span class="line">          end for</span><br><span class="line">        end for</span><br><span class="line">      else</span><br><span class="line">        for k = u to n - 1 step p do</span><br><span class="line">          a[k, v] = a[k, v] / f[v]</span><br><span class="line">          for w = v + 1 to n - 1 do</span><br><span class="line">            a[k, w] = a[k, w] - f[w] * a[k, v]</span><br><span class="line">          end for</span><br><span class="line">        end for</span><br><span class="line">      end if</span><br><span class="line">    end for</span><br><span class="line">  end for</span><br><span class="line">End     </span><br></pre></td></tr></table></figure>
+
+<p>对于 MPI 来说，仅仅是使用 Bcast 而已；而对于 OMP 编程，除了对第二层循环添加 <code>#pragma omp parallel</code> 以外，还要在 j 循环的末尾加上 <code>#pragma omp barrier</code>，保证当前主行的运算全部结束后，才能选出下一个主行。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><h3 id="OMP"><a href="#OMP" class="headerlink" title="OMP"></a>OMP</h3><p>在 LU 分解运算开始之前用 <code>omp_get_wtime()</code> 记录下开始的时间，在运算完成后再用当前时间减去开始时间得到运算过程持续的时间。</p>
+<p>输入的矩阵阶数 $n &#x3D; 1000$，是一个下三角矩阵和上三角矩阵的乘积。期望 LU 分解能将其还原。</p>
+<div>
+$$
+A = \begin{aligned}
+\begin{bmatrix}
+1 & 0 & 0 & ... & 0\\
+2 & 1 & 0 & ... & 0\\
+3 & 2 & 1 & ... & 0\\
+... & ... & ... & ... & ...\\
+n & n - 1 & n - 2 & ... & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 & 3 & ... & n\\
+0 & 1 & 2 & ... & n - 1\\
+0 & 0 & 1 & ... & n - 2\\
+... & ... & ... & ... & ...
+0 & 0 & 0 & ... & 1\\
+\end{bmatrix}
+\end{aligned}
+$$
+</div>
+
+<p>编译时开启优化选项 <code>-O2</code>，得到的可执行程序在 6 核心 12 线程，3.4GHz 的平台上，得到计算过程的运行时间结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>线程数</th>
+<th>1</th>
+<th>2</th>
+<th>4</th>
+<th>8</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.233030</td>
+<td>0.150938</td>
+<td>0.093188</td>
+<td>0.069713</td>
+<td>0.108846</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.226725</td>
+<td>0.146629</td>
+<td>0.097024</td>
+<td>0.066818</td>
+<td>0.113264</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.244155</td>
+<td>0.170408</td>
+<td>0.094506</td>
+<td>0.069337</td>
+<td>0.151547</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.259125</td>
+<td>0.161575</td>
+<td>0.096396</td>
+<td>0.070211</td>
+<td>0.186803</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.215795</td>
+<td>0.149947</td>
+<td>0.099653</td>
+<td>0.072364</td>
+<td>0.166726</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>0.235766</td>
+<td>0.155899</td>
+<td>0.096153</td>
+<td>0.069689</td>
+<td>0.145437</td>
+</tr>
+<tr>
+<td>加速比</td>
+<td>1.00</td>
+<td>1.51</td>
+<td>2.45</td>
+<td>3.38</td>
+<td>1.62</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>1.00</td>
+<td>0.75</td>
+<td>0.61</td>
+<td>0.42</td>
+<td>0.10</td>
+</tr>
+</tbody></table>
+<h3 id="MPI"><a href="#MPI" class="headerlink" title="MPI"></a>MPI</h3><p>输入与上述相同，结果为：</p>
+<table>
+<thead>
+<tr>
+<th>线程数</th>
+<th>1</th>
+<th>2</th>
+<th>4</th>
+<th>8</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.252182</td>
+<td>0.177158</td>
+<td>0.065233</td>
+<td>0.066492</td>
+<td>0.086463</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.240585</td>
+<td>0.173630</td>
+<td>0.077885</td>
+<td>0.064615</td>
+<td>0.086954</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.251120</td>
+<td>0.156510</td>
+<td>0.083122</td>
+<td>0.062328</td>
+<td>0.101553</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.223808</td>
+<td>0.168837</td>
+<td>0.077668</td>
+<td>0.067501</td>
+<td>0.087048</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.289730</td>
+<td>0.164849</td>
+<td>0.085826</td>
+<td>0.066900</td>
+<td>0.138214</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>0.251485</td>
+<td>0.168197</td>
+<td>0.077947</td>
+<td>0.065567</td>
+<td>0.100046</td>
+</tr>
+<tr>
+<td>加速比</td>
+<td>1.00</td>
+<td>1.49</td>
+<td>3.23</td>
+<td>3.84</td>
+<td>2.51</td>
+</tr>
+<tr>
+<td>效率</td>
+<td>1.00</td>
+<td>0.75</td>
+<td>0.81</td>
+<td>0.48</td>
+<td>0.16</td>
+</tr>
+</tbody></table>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230113-artperformance/">Art Performance Lecture Notes</a><a class="next" href="/20230112-mpp-mul/">并行矩阵乘法</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  serverURLs:'',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://s.tilnel.com"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/20231017-top/">置顶必读</a></li><li class="post-list-item"><a class="post-list-link" href="/20240603-intheNameofPeople/">人民的名义</a></li><li class="post-list-item"><a class="post-list-link" href="/20240603-week2/">夕拾 第二周</a></li><li class="post-list-item"><a class="post-list-link" href="/20240601-yvonne/">The.Scent.of.Yvonne.1994</a></li><li class="post-list-item"><a class="post-list-link" href="/20240530-aml/">高级机器学习：二分类</a></li><li class="post-list-item"><a class="post-list-link" href="/20240529-sexpsychology/">性心理学 - 读书</a></li><li class="post-list-item"><a class="post-list-link" href="/20240528-nightandfog/">天水围的夜与雾.Night.and.Fog.2009</a></li><li class="post-list-item"><a class="post-list-link" href="/20240529-filth/">污垢.Filth.2013</a></li><li class="post-list-item"><a class="post-list-link" href="/20240528-psycoInOpposSexComm/">异性交往中的心理学 - 陈昌凯</a></li><li class="post-list-item"><a class="post-list-link" href="/20240527-germanideology/">德意志意识形态 - 摘录</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://www.njujb.com" title="张天昀的主页" target="_blank">张天昀的主页</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
