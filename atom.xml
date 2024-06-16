@@ -45,6 +45,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://s.tilnel.com/20240616-computTH/"/>
+    <id>https://s.tilnel.com/20240616-computTH/</id>
+    <published>2024-06-16T07:01:13.271Z</published>
+    <updated>2024-06-16T07:01:13.271Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>夕拾 第三周</title>
     <link href="https://s.tilnel.com/20240609-week3/"/>
     <id>https://s.tilnel.com/20240609-week3/</id>
@@ -527,35 +540,6 @@
     
     
     <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>组会主题</title>
-    <link href="https://s.tilnel.com/20240315-progres/"/>
-    <id>https://s.tilnel.com/20240315-progres/</id>
-    <published>2024-03-14T22:00:00.000Z</published>
-    <updated>2024-04-10T14:04:37.654Z</updated>
-    
-    <content type="html"><![CDATA[<p>尼玛早上6点就有人进来了，刚夜里3点还有人在隔壁通宵，今天疑似有点撞大运了。</p><p>这次的工作量可能不太够，所以尽量就啰嗦一点。</p><ul><li>bakery算法，完整版，去掉choosing版，atomic和safe寄存器的考量</li><li>一个raft协议的考察，使用udp去实现</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">process(i) &#123;</span><br><span class="line">    while (true) &#123;</span><br><span class="line">        choosing[i] = true;</span><br><span class="line">        number[i] = 1 + max(number[1], number[2], ..., number[n-1]);</span><br><span class="line">        choosing[i] = false;</span><br><span class="line">        </span><br><span class="line">        for (j = 0; j &lt; n; j++) &#123;</span><br><span class="line">            while (choosing[j]);</span><br><span class="line">            while (number[j] != 0 &amp;&amp; (number[j], j) &lt; (number[i], i));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &lt;critical section&gt;</span><br><span class="line"></span><br><span class="line">        number[i] = 0; </span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1: Send(T2, REQUEST_VOTE, term = 1)</span><br><span class="line">T1: Send(T3, REQUEST_VOTE, term = 1)</span><br><span class="line">T3: Recv(T1, REQUEST_VOTE, term = 1)</span><br><span class="line">T2: Recv(T1, REQUEST_VOTE, term = 1)</span><br><span class="line">T2: Send(T1, GRANT_VOTE)</span><br><span class="line">T3: Send(T1, GRANT_VOTE)</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1: Send(T2, REQUEST_VOTE, term = 1)</span><br><span class="line">T2: Recv(T1, REQUEST_VOTE, term = 1)</span><br><span class="line">T2: Send(T1, GRANT_VOTE)</span><br><span class="line">T1: Send(T3, REQUEST_VOTE, term = 1)</span><br><span class="line">T3: Recv(T1, REQUEST_VOTE, term = 1)</span><br><span class="line">T3: Send(T1, GRANT_VOTE)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;尼玛早上6点就有人进来了，刚夜里3点还有人在隔壁通宵，今天疑似有点撞大运了。&lt;/p&gt;
-&lt;p&gt;这次的工作量可能不太够，所以尽量就啰嗦一点。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;bakery算法，完整版，去掉choosing版，atomic和safe寄存器的考量&lt;/li&gt;
-&lt;li&gt;一个r</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
