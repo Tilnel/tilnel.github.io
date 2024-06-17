@@ -45,6 +45,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://s.tilnel.com/20240618-aml/"/>
+    <id>https://s.tilnel.com/20240618-aml/</id>
+    <published>2024-06-17T16:57:41.274Z</published>
+    <updated>2024-06-17T16:57:41.274Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>计算模型导引复习</title>
     <link href="https://s.tilnel.com/20240616-computTH/"/>
     <id>https://s.tilnel.com/20240616-computTH/</id>
@@ -528,31 +541,6 @@
     
     
     <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>图形绘制技术Lab1</title>
-    <link href="https://s.tilnel.com/20240415-CGLab1/"/>
-    <id>https://s.tilnel.com/20240415-CGLab1/</id>
-    <published>2024-04-15T12:00:00.000Z</published>
-    <updated>2024-05-10T10:07:04.066Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="图形绘制技术-Lab1"><a href="#图形绘制技术-Lab1" class="headerlink" title="图形绘制技术 Lab1"></a><center>图形绘制技术 Lab1</center></h1><h5 id="复杂光源的实现"><a href="#复杂光源的实现" class="headerlink" title="复杂光源的实现"></a><center>复杂光源的实现</center></h5><center>502023330051 孙博文</center><h2 id="1-恒定功率光源"><a href="#1-恒定功率光源" class="headerlink" title="1 恒定功率光源"></a>1 恒定功率光源</h2><p>根据<br>$$<br>\Phi_e &#x3D; \int_{Area}\int_{Hemisphere}L_e(x, \omega)\cos\theta d\omega dA<br>&#x3D;L\pi S<br>$$<br>可知 Radiance 为 $Power &#x2F; (\pi * shape.getArea())$</p><img src="image-20240415213747112.png" alt="image-20240415213747112" style="zoom:50%;"><p>结果：</p><p><img src="1-1713188409799.png" alt="1"></p><h2 id="2-球面光源"><a href="#2-球面光源" class="headerlink" title="2 球面光源"></a>2 球面光源</h2><p>按俯仰角 $\phi$ 对球面面积进行微分，得到：</p><p>$$<br>dS &#x3D; 2\pi R^2 \cos\phi\ d\phi &#x3D; 2\pi R^2 d\sin\phi &#x3D; 2\pi Rdz<br>$$<br>直观的理解是，将球面在 $z$ 轴上分割为高相等的无穷细的圆环，它们之间的面积相等。因而按 $z$ 坐标与方位角 $\theta$ 均匀采样可以等可能地采样到球面上的每一个点。</p><p>于是设置两个随机变量：$z &#x3D; 1 - 2u, \theta &#x3D; 2\pi v\ (u, v\in [0, 1])$ </p><p>根据 $z$ 偏移量与方位角算出法向量，并乘以半径再加上球心 $\boldsymbol {pos}$ 得到交点。</p><p>pdf 即为 1 &#x2F; 球表面积</p><img src="image-20240415213523699.png" alt="image-20240415213523699" style="zoom:50%;"><p>结果：</p><p><img src="2.png" alt="2"></p><h2 id="3-三角形网格光源"><a href="#3-三角形网格光源" class="headerlink" title="3 三角形网格光源"></a>3 三角形网格光源</h2><p>首先在 <code>TriangleMesh</code> 中添加面积累加得到的数列，在构造函数中，对各三角形面积累加计算总面积，并构造数列。</p><p>然后使用 <code>u * getArea()</code>，在数列中进行二分查找得到采样的目标三角形，编号为L。</p><p>为了在三角形内的采样均匀，计算新的 u<br>$$<br>u &#x3D; \dfrac{u * getArea() - area_L}{area_{L + 1} - area_L}<br>$$<br>这样，对于任意的三角形，$u$ 仍然遵循在 $[0, 1]$ 间的均匀分布，虽然精度有所下降。</p><p>为了在三角形内均匀采样，需要判断 $u + v &gt; 1$ 如果成立，则采样点超出三角形外。此时只要使得：</p><p>$u &#x3D; 1 - u, v &#x3D; 1 - v$，即可修正到三角形内并保持均匀采样。<br>pdf 即为 1 &#x2F; 总表面积</p><p><img src="image-20240415213631568.png" alt="image-20240415213631568"></p><p>结果：</p><p><img src="3.png" alt="3"></p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;图形绘制技术-Lab1&quot;&gt;&lt;a href=&quot;#图形绘制技术-Lab1&quot; class=&quot;headerlink&quot; title=&quot;图形绘制技术 Lab1&quot;&gt;&lt;/a&gt;&lt;center&gt;图形绘制技术 Lab1&lt;/center&gt;&lt;/h1&gt;&lt;h5 id=&quot;复杂光源的实现&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
