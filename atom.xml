@@ -45,14 +45,29 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>镜头光晕 分析</title>
     <link href="https://s.tilnel.com/20240627-lensflare/"/>
     <id>https://s.tilnel.com/20240627-lensflare/</id>
-    <published>2024-06-27T11:16:48.351Z</published>
-    <updated>2024-06-27T11:16:48.351Z</updated>
+    <published>2024-06-27T11:17:15.000Z</published>
+    <updated>2024-06-27T11:18:04.549Z</updated>
+    
+    <content type="html"><![CDATA[<p>直观上来看：</p><ol><li>图片上的圆形和光斑是由于光线在镜头和光圈之间“来回反射”（反射）造成的。 </li><li>特定方向上的光线尖峰很可能是由于光线在相机传感器（数字相机上是网格状的）和&#x2F;或光圈光阑上的衍射造成的。 </li><li>光源周围的光晕（我这里不是说任何大气效应）是由于强光在镜头的玻璃材料中的散射造成的。</li></ol><p>为了实现1和3，需要扩展现实相机模型。我们必须考虑一些在镜头上反射的光线，除了那些仅通过它们折射的光线。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;直观上来看：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;图片上的圆形和光斑是由于光线在镜头和光圈之间“来回反射”（反射）造成的。 &lt;/li&gt;
+&lt;li&gt;特定方向上的光线尖峰很可能是由于光线在相机传感器（数字相机上是网格状的）和&amp;#x2F;或光圈光阑上的衍射造成的。</summary>
+        
+      
     
     
     
+    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
