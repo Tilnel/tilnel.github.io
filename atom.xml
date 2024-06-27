@@ -45,6 +45,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://s.tilnel.com/20240627-lensflare/"/>
+    <id>https://s.tilnel.com/20240627-lensflare/</id>
+    <published>2024-06-27T11:16:48.351Z</published>
+    <updated>2024-06-27T11:16:48.351Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>AML复习</title>
     <link href="https://s.tilnel.com/20240618-aml/"/>
     <id>https://s.tilnel.com/20240618-aml/</id>
@@ -523,33 +536,6 @@
     <summary type="html">&lt;p&gt;做了什么：&lt;/p&gt;
 &lt;p&gt;用 willemt&amp;#x2F;raft，做了一个基于 UDP 通信的被测程序&lt;/p&gt;
 &lt;p&gt;对 tracer，实现了 emu_socket, emu_sendto, emu_recvfrom 等多个网络相关函数，完全模拟 SOCK_DGRAM</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>DMCK工作</title>
-    <link href="https://s.tilnel.com/20240504-dmck/"/>
-    <id>https://s.tilnel.com/20240504-dmck/</id>
-    <published>2024-05-04T10:48:39.000Z</published>
-    <updated>2024-05-12T14:31:32.733Z</updated>
-    
-    <content type="html"><![CDATA[<p>这次至少要把 raft 跑起来</p><p>还缺的内容：</p><p>1、根据 raft 框架写一个应用程序 <font color="gree">OK</font></p><p>2、把规约所需的语义信息爬出来</p><p>3、environment</p><p>首先做environment 模拟网络通信。写一个一主一备来测试。</p><ul><li>socket管理</li><li>数据报队列</li></ul><p>4、hash去重</p><p>UDP 测试程序 OK</p><p>分析 environment</p><p>1、对socket、connect、listen、send、recv等的拦截</p><ul><li>拦截与模拟 <font color="gree">OK</font></li><li>tracer 与 tracee 之间的数据拷贝 <font color="red">NO</font></li></ul><p>2、对数据报的管理 - 数据结构 <font color="gree">OK</font></p><p>观察 ticketd 是怎么做初始化的</p><p>main</p><ul><li>传参</li><li>raft_new</li><li>set callbacks</li><li>start server for client</li><li>add self</li><li>start socket</li></ul>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;这次至少要把 raft 跑起来&lt;/p&gt;
-&lt;p&gt;还缺的内容：&lt;/p&gt;
-&lt;p&gt;1、根据 raft 框架写一个应用程序 &lt;font</summary>
         
       
     
