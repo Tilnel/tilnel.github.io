@@ -45,6 +45,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://s.tilnel.com/Untitled/"/>
+    <id>https://s.tilnel.com/Untitled/</id>
+    <published>2024-06-29T19:54:58.960Z</published>
+    <updated>2024-06-29T19:54:58.960Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>镜头光晕 分析</title>
     <link href="https://s.tilnel.com/20240627-lensflare/"/>
     <id>https://s.tilnel.com/20240627-lensflare/</id>
@@ -530,33 +543,6 @@
     
     
     <category term="生活" scheme="https://s.tilnel.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>组会大纲</title>
-    <link href="https://s.tilnel.com/20240513-dmck/"/>
-    <id>https://s.tilnel.com/20240513-dmck/</id>
-    <published>2024-05-12T23:25:00.000Z</published>
-    <updated>2024-05-13T03:29:56.526Z</updated>
-    
-    <content type="html"><![CDATA[<p>做了什么：</p><p>用 willemt&#x2F;raft，做了一个基于 UDP 通信的被测程序</p><p>对 tracer，实现了 emu_socket, emu_sendto, emu_recvfrom 等多个网络相关函数，完全模拟 SOCK_DGRAM </p><p>care:</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SYS_sendto</span><br><span class="line">SYS_recvfrom</span><br><span class="line">SYS_write</span><br><span class="line">SYS_read</span><br><span class="line">SYS_clock_nanosleep</span><br></pre></td></tr></table></figure><p>1、对socket、connect、listen、send、recv等的拦截</p><ul><li>拦截与模拟 <font color="gree">OK</font></li><li>tracer 与 tracee 之间的数据拷贝 <font color="gree">yes</font></li></ul><p>2、对数据报的管理 - 数据结构 <font color="gree">OK</font></p><p>3、用 raft 写简易被测程序，研究其性质</p><p>4、手动操控模式，随机模式 —- 一条线走下去</p><p>5、稍作划分；还是强耦合</p><ul><li>tracer: 调度、控制</li><li>state: 状态（结构体、序列和反序列化）</li><li>guest: tracer 与 tracee 交互</li><li>network: 网络行为的模拟</li></ul><p><img src="image-20240513082647413.png" alt="image-20240513082647413"></p><p>实际设计上，消息队列归属于节点状态了。相当于为每一个节点添加了一个 recvbuffer</p><p>不需要choose：</p><ul><li>超时。通过调度的枚举即可。在 sleep 处打上点即可。<ul><li>譬如，先 send_applyentries 再退出 sleep；或反之 sleep 后先判是否收到心跳，再 send_applyentries。</li></ul></li></ul><p>对于 willemt&#x2F;raft，要求周期性 raft_periodic(msec_since_last_period)。</p><p>它做两件事，一是计算 time_elapsed，用于判定心跳超时和选举超时。二是 apply_log</p><p>几乎所有的信息都在 raft_server_private_t 里。也就是说只要把 raft_server_t *raft 的指针地址找到即可 —— 这比较简单。然后引用 raft_private.h 对结构体进行解析。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="type">raft_term_t</span> current_term;</span><br><span class="line">  <span class="type">raft_node_id_t</span> voted_for;</span><br><span class="line">  </span><br><span class="line">  <span class="type">raft_index_t</span> commit_idx;</span><br><span class="line">  <span class="type">raft_index_t</span> last_applied_idx;</span><br><span class="line">  <span class="type">int</span> state;</span><br><span class="line">  <span class="type">int</span> timeout_elapsed;</span><br><span class="line">  </span><br><span class="line">  <span class="type">raft_node_t</span>* nodes;</span><br><span class="line">  <span class="type">int</span> num_nodes;</span><br><span class="line">  </span><br><span class="line">  <span class="type">raft_node_t</span> *current_leader;</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="type">raft_server_private_t</span>;</span><br></pre></td></tr></table></figure><p>代价：为这个结构体编写反序列化函数。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *addr = get_var_addr(<span class="string">&quot;raft&quot;</span>);</span><br><span class="line"><span class="type">raft_server_private_t</span> *raft = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(*raft));</span><br><span class="line">memcpy_guest2host(raft, addr, <span class="keyword">sizeof</span>(*raft));   <span class="comment">// 此时里面的指针还是在 tracee 进程的地址</span></span><br><span class="line"></span><br><span class="line"><span class="type">raft_node_t</span> *nodes = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(*nodes));</span><br><span class="line">memcpy_guest2host(nodes, raft-&gt;nodes, <span class="keyword">sizeof</span>(*nodes));</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>running state (procfs)  &lt;=&#x3D;&gt;  recorded state (structure)  &lt;=&#x3D;&gt;  stored state (serialized)</p><p>目前的状况</p><ul><li><p>运行起 raft 协议</p></li><li><p>逻辑比较琐碎。数据结构管理混乱，有一些 bug（结构体倒来倒去）</p><ul><li>经典：用链表存的消息队列，serialize deserialize不停。每跑一次就得复制一份。一会儿用的是以前留下的，一会儿用的是从文件里读的。最终导致网络的行为有问题。</li></ul></li><li><p>数据结构不连续，不适合映射到磁盘上。需调整。</p><ul><li>数组，预分配</li></ul></li></ul>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;做了什么：&lt;/p&gt;
-&lt;p&gt;用 willemt&amp;#x2F;raft，做了一个基于 UDP 通信的被测程序&lt;/p&gt;
-&lt;p&gt;对 tracer，实现了 emu_socket, emu_sendto, emu_recvfrom 等多个网络相关函数，完全模拟 SOCK_DGRAM</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
