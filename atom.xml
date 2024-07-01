@@ -49,16 +49,16 @@
     <link href="https://s.tilnel.com/20240701-dmck/"/>
     <id>https://s.tilnel.com/20240701-dmck/</id>
     <published>2024-06-30T23:54:13.000Z</published>
-    <updated>2024-06-30T23:58:41.092Z</updated>
+    <updated>2024-07-01T00:00:13.813Z</updated>
     
-    <content type="html"><![CDATA[<p>我也不知道怎么回事，在后台有一个不停读写lock的程序没有关掉的情况下，测试程序一直能打出长度一样、顺序一样、甚至内容也一样</p>]]></content>
+    <content type="html"><![CDATA[<p>我也不知道怎么回事，在后台有一个随机读写lock的程序忘了kill的情况下，测试程序一直能打出长度一样、顺序一样、甚至内容也一样的log，企图骗我这就是执行路径。CS套路深，我要回农村</p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;我也不知道怎么回事，在后台有一个不停读写lock的程序没有关掉的情况下，测试程序一直能打出长度一样、顺序一样、甚至内容也一样&lt;/p&gt;
+    <summary type="html">&lt;p&gt;我也不知道怎么回事，在后台有一个随机读写lock的程序忘了kill的情况下，测试程序一直能打出长度一样、顺序一样、甚至内容也一样的log，企图骗我这就是执行路径。CS套路深，我要回农村&lt;/p&gt;
 </summary>
         
       
