@@ -4,7 +4,7 @@
 <p>显然是B。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ssite_t</span> <span class="title function_">write</span><span class="params">(<span class="type">int</span> fd, <span class="type">const</span> <span class="type">void</span> buf[.count], <span class="type">size_t</span> count)</span>;</span><br></pre></td></tr></table></figure>
 
-<p>注意 buf 是 <code>const</code> 意思是写之前和写之后是同一个状态。但是 $\mathbb{A}$ 状态下，write 的参数未必准备好了。只有到系统调用的前一刻，其所有的参数才被准备好。想要从 $\mathbb{B} </p>
+<p>注意 buf 是 <code>const</code> 意思是写之前和写之后是同一个状态。但是 $\mathbb{A}$ 状态下，write 的参数未必准备好了。只有到系统调用的前一刻，其所有的参数才被准备好。想要从 $\mathbb{B} $ 之前获取参数并不是什么问题，关键在于「向前多少」</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20231017-top/">置顶必读</a><a class="next" href="/20240630-allegro/">内心快板一则</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
