@@ -185,7 +185,7 @@
     <link href="https://s.tilnel.com/20240616-computTH/"/>
     <id>https://s.tilnel.com/20240616-computTH/</id>
     <published>2024-06-16T07:02:14.000Z</published>
-    <updated>2024-06-16T07:47:38.810Z</updated>
+    <updated>2024-06-16T13:19:21.751Z</updated>
     
     <content type="html"><![CDATA[<p>题型分析</p><p>基础概念 1，2-图灵机（16，17）3-一般、原始、部分递归函数，Lambda演算的CR性质（18）4-配对函数组，停机问题（19）5-（20） Lambda不动点算子（21）6-（22） 7-通用图灵机（22） 8-（23）9-Turing。。。算法可以达到的绝对极限（23）</p><p>函数 1，3，5，7，9，11，13-判定数论函数类（16，17，18，19，20，21，22）2-构造函数（16）4-构造函数（17）6，12-一元递归函数性质证明（18，21） 8-证明初等函数（19） 10-构造什么什么定义数论全函数 14，16-函数和Godel编码（22，23）15-一元递归函数性质，函数周期性等（23）</p><p>Lambda演算 1，2，3，4，5，6，7，8-添加公理的证明（16，17，18，19，20，21，22，23）</p><p>图灵机 1-求输出（16） 2，7，8，9，10，11-构造图灵机计算函数（16，19，20，21，22，23）3，5-从输入输出构造函数（17，18）4，6-停机问题证明（17，18） </p><p>其他：1，3，4，8，9-证明sinh&#x2F;其他函数的第n位 f(n) 为Turing可计算（23），进而证明是初等函数。（18，19，20，22）  2-可判定的证明（19） 5-证明Turing可计算函数为一般递归函数（20）  6-看不懂（21.6） 7-证明不动点结合子（21.7） 8-算中国剩余定理（23）</p>]]></content>
     
@@ -211,7 +211,7 @@
     <link href="https://s.tilnel.com/20240609-week3/"/>
     <id>https://s.tilnel.com/20240609-week3/</id>
     <published>2024-06-09T15:33:35.000Z</published>
-    <updated>2024-06-11T17:52:08.109Z</updated>
+    <updated>2024-06-19T07:51:31.944Z</updated>
     
     <content type="html"><![CDATA[<p>上周除了电视剧以外基本没看什么。明天补一点吧。</p><p>我找到一本书。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Z:/ZijingBT/kindle电子书资源/kindle人的资源打包/自制21-40/ZZ21-22/数码摄影构图与用光.pdf</span><br></pre></td></tr></table></figure><p>本周来把它看掉。</p><p>看雍正王朝（已过半）</p><p>​</p>]]></content>
     
@@ -323,7 +323,7 @@
     <link href="https://s.tilnel.com/20240530-aml/"/>
     <id>https://s.tilnel.com/20240530-aml/</id>
     <published>2024-05-30T06:06:36.000Z</published>
-    <updated>2024-05-31T11:27:32.020Z</updated>
+    <updated>2024-05-31T13:40:23.226Z</updated>
     
     <content type="html"><![CDATA[<p>任务：</p><ul><li>读描述，下载数据集</li></ul><p>数据集：客户id，名字，信用点，位置，性别，年龄，年限，存款，产品数量，有信用卡，活跃，月薪</p><p>预测：客户是不是跑路了</p><p>实现：任何算法，任何语言。</p><p><strong>网络设计</strong>：根据问题的具体需求设计神经网络的结构。对于简单的二分类问题，一个两到三个隐藏层的小型 MLP 通常就足够。</p><p><strong>激活函数</strong>：对于隐藏层可以使用 ReLU 激活函数，因为它有助于解决梯度消失问题，并且计算上比较高效。输出层因为是二分类问题，所以建议使用 sigmoid 激活函数。</p><p><strong>损失函数</strong>：使用交叉熵损失函数（binary cross-entropy），这是处理二分类问题的标准选择。</p><p><strong>优化器</strong>：可以使用 Adam 或 SGD（带动量），这些优化器能帮助快速收敛且通常表现良好。</p><p><strong>正则化</strong>：为了避免过拟合，可以在训练过程中加入 Dropout 层或使用 L2 权重正则化。</p><p>**可以作一些仔细的分析。</p><p>输出：$yourId.txt，1000 lines，没有文件头的结果。</p><ul><li>实现算法，输出预测</li><li>写报告</li></ul><p>1）你的理解和分析</p><p>2）算法的动机，介绍算法的背景</p><p>3）算法的技术细节，特别是要包括伪代码</p><p>4）描述或分析算法的表现</p><p>5）总结和（可选的）讨论</p><p>使用 LaTeX 模板撰写含有英文摘要的中文报告。命名为 report.pdf</p><ul><li>提交</li></ul><p>1）$yourId.txt</p><p>2）report.pdf</p><p>3）源代码</p><p>打包zip，命名为 $Id_v$version.zip。e.g. 1912xxx_v1.zip</p><p>使用南大表格提交</p><p>Baselines:</p><p>经典算法包括随机森林，逻辑回归，XGBoost GBST，SVM，MLP，GBDT 等等。可以参考这些算法的表现。</p><table><thead><tr><th>alg</th><th>f1</th></tr></thead><tbody><tr><td>RF</td><td>0.583</td></tr><tr><td>LR</td><td>0.487</td></tr><tr><td>SVM</td><td>0.568</td></tr><tr><td>MLP</td><td>0.586</td></tr><tr><td>GBDT</td><td>0.603</td></tr><tr><td>RFE (n&#x3D;9)</td><td>0.609</td></tr></tbody></table><p>算法选择</p><p>CatBoost 是一种流行的梯度提升决策树（Gradient Boosting Decision Tree, GBDT）算法，由 Yandex 开发。它是专门为处理分类特征而优化的机器学习算法，同时也适用于回归问题。CatBoost 有几个显著的优点：</p><ol><li><strong>对分类特征的原生支持</strong>：CatBoost 可以直接处理分类特征，无需进行预处理（如独热编码）。这简化了数据预处理步骤，并通常能提高模型的性能。</li><li><strong>避免过拟合</strong>：CatBoost 实现了几种机制来减少过拟合的风险，例如具有有序提升的默认树学习策略。这种技术在训练每棵树时使用不同的数据子集，从而提高了模型的泛化能力。</li></ol><table><thead><tr><th>性能</th><th>baseline</th><th>smoothing + binning</th><th></th></tr></thead><tbody><tr><td>f1</td><td>0.598446</td><td>0.630029</td><td></td></tr><tr><td>acc</td><td>0.827778</td><td>0.846667</td><td></td></tr><tr><td>recall</td><td>0.641667</td><td>0.652778</td><td></td></tr><tr><td>precision</td><td>0.560680</td><td>0.608808</td><td></td></tr><tr><td>auprc</td><td>0.691654</td><td>0.693995</td><td></td></tr><tr><td>auc</td><td>0.856181</td><td>0.862392</td><td></td></tr><tr><td>macro f1</td><td>0.744414</td><td>0.766660</td><td></td></tr></tbody></table><p>数据预处理</p><p>观察训练集上属性值的数量可知，Surname 是 High-catdinality categorial variables. 做 polynomial smoothing</p><p>提高泛化能力，对Balance和Salary 做等频分箱</p><p>调参</p><p>depth, score_function,list of cat features</p>]]></content>
     
