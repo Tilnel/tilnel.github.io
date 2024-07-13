@@ -180,7 +180,62 @@
 
 
 <h2 id="【回文】Crossword"><a href="#【回文】Crossword" class="headerlink" title="【回文】Crossword"></a>【回文】Crossword</h2><p>时间限制 600 ms  内存限制 300000 KiB</p>
-<h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20231017-top/">置顶必读</a><a class="next" href="/20240708-optical/">图形绘制技术-光学相机</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+<h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>在繁忙的铸币局工作与农场管理事务之余，你喜欢玩填字游戏。</p>
+<p>回文填字游戏是指<strong>每个单词都是回文</strong>的填字游戏。</p>
+<p>在下图<em>已完成的</em> $4 \times 6$ 大小的回文填字游戏示例中,<br>(高亮显示的) 单词 $ANA$ 与 $SAAS$（我们不关心单词的含义，单词仅是一个字符串）均是回文。</p>
+<p>注意, <strong>黑色单元格表示分隔符, 且不可以填入字符</strong>。</p>
+<p><img src="crossword-palindrome.png.11c4a163" alt="crossword-palindrome"></p>
+<p>你购买了一个大小为 $N \times M$ 的已完成的回文填字游戏。但不幸的是, 有些字符丢失了。<br>如左下图所示, 丢失的字符表示为空格。</p>
+<p><img src="crossword-fill.png.1a420028" alt="crossword-fill"></p>
+<p>请问, <strong>仅利用回文的特点</strong>, <strong>最多</strong>可以恢复多少个缺失的字符?</p>
+<p>右上图展示了恢复尽可能多字符后的结果, 共填入 $8$ 个字符。</p>
+<h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入 $N + 1$ 行:</p>
+<ul>
+<li>第一行包括两个整数, 以空格隔开:<ul>
+<li>第一个整数表示行数 $N$</li>
+<li>第二个整数表示列数 $M$</li>
+</ul>
+</li>
+<li>接下来 $N$ 行, 每行是一个长度为 $M$ 的字符串, 共三种字符:<ul>
+<li>$A$ 到 $Z$ 大写字母</li>
+<li>$\cdot$: 表示空白单元格</li>
+<li>#: 表示分隔符</li>
+</ul>
+</li>
+</ul>
+<h3 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出 $N + 1$ 行:</p>
+<ul>
+<li>第一行是一个整数, 表示最多可以恢复的字符数</li>
+<li>接下来 $N$ 行是<strong>恢复后</strong>的回文填字游戏 (其中某些 $\cdot$ 被替换成了字母)</li>
+</ul>
+<h3 id="脚注-3"><a href="#脚注-3" class="headerlink" title="脚注"></a>脚注</h3><h4 id="测试数据说明-3"><a href="#测试数据说明-3" class="headerlink" title="测试数据说明"></a>测试数据说明</h4><ul>
+<li><p>共 20 个测试用例。</p>
+</li>
+<li><p>单个测试用例最长时限为 C++:600ms&#x2F;Java:3000ms，内存限制为 300000KiB。</p>
+</li>
+<li><p>一次提交最长测试时间（不计可能的排队等待时间）为 C++:12s&#x2F;Java:60s。</p>
+</li>
+<li><p>测试用例规模:</p>
+<ul>
+<li>对于所有测试用例, $1 \le M, N \le 1000$</li>
+<li>其中有 3 个测试用例输入中不含 $\cdot$</li>
+<li>其中有 4 个测试用例输入中不含 #</li>
+<li>其中有 2 个测试用例输入中既不含 $\cdot$，也不含 #</li>
+<li>其中有 10 个测试用例输入满足 $1 \le M, N \le 50$</li>
+</ul>
+</li>
+</ul>
+<h4 id="解题说明（仅供参考，免责声明）-3"><a href="#解题说明（仅供参考，免责声明）-3" class="headerlink" title="解题说明（仅供参考，免责声明）"></a>解题说明（仅供参考，免责声明）</h4><h5 id="基本解法"><a href="#基本解法" class="headerlink" title="基本解法"></a>基本解法</h5><ul>
+<li>逐行处理。</li>
+<li>逐列处理。</li>
+<li>迭代。</li>
+</ul>
+<h5 id="可能的高效解法要点提示"><a href="#可能的高效解法要点提示" class="headerlink" title="可能的高效解法要点提示"></a>可能的高效解法要点提示</h5><ul>
+<li>使用图论建模，如何建边？下图对应测试样例 2。</li>
+<li>如何安排填充顺序？</li>
+</ul>
+<p><img src="crossword-solution.png.26b0b3bb" alt="image"></p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20231017-top/">置顶必读</a><a class="next" href="/20240708-optical/">图形绘制技术-光学相机</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
