@@ -9,6 +9,39 @@
 <li>第二行包含 $D$ 个整数, 表示 $D$ 种已有面额, 按升序排列, 以空格隔开</li>
 </ul>
 <h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行, 包含一个整数, 表示最少需要引入的新面额的种数。</p>
+<h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><h4 id="测试数据说明"><a href="#测试数据说明" class="headerlink" title="测试数据说明"></a>测试数据说明</h4><ul>
+<li><p>共 100 个测试用例。</p>
+</li>
+<li><p>单个测试用例最长时限为 C++:100ms&#x2F;Java:500ms，内存限制为 500000 KiB。</p>
+</li>
+<li><p>一次提交最长测试时间（不计可能的排队等待时间）为 C++:10s&#x2F;Java:50s。</p>
+</li>
+<li><p>$1 \le C \le 100$</p>
+<ul>
+<li>15 个测试用例满足 $C &#x3D; 1$</li>
+<li>40 个测试用例满足 $C &lt; 10$</li>
+</ul>
+</li>
+<li><p>$1 \le D \le 100$</p>
+<ul>
+<li>50 个测试用例满足 $D &lt; 10$</li>
+</ul>
+</li>
+<li><p>$1 \le V \le 10^9$（注意数据范围，选择合适大小的数据类型）</p>
+<ul>
+<li>15 个测试用例满足 $V \le 100$</li>
+<li>35 个测试用例满足 $V \le 10^8$</li>
+<li>约 60 个测试用例满足 $V \le 5 \times 10^8$</li>
+<li>约 80 个测试用例满足 $V \le 8 \times 10^8$</li>
+<li>3 个测试用例满足 $V &#x3D; 10^9$</li>
+</ul>
+</li>
+</ul>
+<h4 id="解题说明（仅供参考，免责声明）"><a href="#解题说明（仅供参考，免责声明）" class="headerlink" title="解题说明（仅供参考，免责声明）"></a>解题说明（仅供参考，免责声明）</h4><ul>
+<li>维护当前无法合法购买的物品的<strong>最小</strong>价值</li>
+<li>假设已知当前无法合法购买的物品的<strong>最小</strong>价值为 $U$，怎么办呢，局长大人？</li>
+</ul>
+<p><img src="newton.png.04af730e" alt="image"></p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20231017-top/">置顶必读</a><a class="next" href="/20240708-optical/">图形绘制技术-光学相机</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
