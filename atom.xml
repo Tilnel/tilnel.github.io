@@ -49,8 +49,18 @@
     <link href="https://s.tilnel.com/20240713-summercamp/"/>
     <id>https://s.tilnel.com/20240713-summercamp/</id>
     <published>2024-07-13T09:43:49.000Z</published>
-    <updated>2024-07-13T09:44:01.077Z</updated>
+    <updated>2024-07-13T09:45:04.019Z</updated>
     
+    <content type="html"><![CDATA[<h2 id="【货币】Money"><a href="#【货币】Money" class="headerlink" title="【货币】Money"></a>【货币】Money</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>千百年来, “乌有之乡”一直流通着 $D$ 种不同面额的硬币。</p><p>新任”乡长”刚上任, 就颁发法规要求<strong>任何一次购买中不得使用超过 $C$ 个同一面额的硬币</strong>（无其它限制）。</p><p>例如，如果 $C &#x3D; 2$，且现有的面额为 $1$ 和 $5$,<br>则可以使用两个 $5$ 和一个 $1$ 购买价值为 $11$ 的物品，<br>也可以使用两个 $5$ 和两个 $1$ 购买价值为 $12$ 的物品,<br>但无法购买价值为 $9$ 或 $17$ 的物品。</p><p>作为”乌有之乡”的<strong>铸币局局长</strong>, 你不想违抗新任”乡长”的命令, 所以你希望通过发行<strong>新面额</strong>硬币, 使得可以合法购买任何价值不超过 $V$ 的物品。</p><p>请问, 最少需要引入几种新面额?</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入两行:</p><ul><li>第一行包含三个整数, 分别为 $C$、$D$、$V$, 以空格隔开</li><li>第二行包含 $D$ 个整数, 表示 $D$ 种已有面额, 按升序排列, 以空格隔开</li></ul><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行, 包含一个整数, 表示最少需要引入的新面额的种数。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;【货币】Money&quot;&gt;&lt;a href=&quot;#【货币】Money&quot; class=&quot;headerlink&quot; title=&quot;【货币】Money&quot;&gt;&lt;/a&gt;【货币】Money&lt;/h2&gt;&lt;h3 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot;</summary>
+        
+      
     
     
     
