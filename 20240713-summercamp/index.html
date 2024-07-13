@@ -103,6 +103,39 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
 
+
+
+
+
+<h2 id="【赛牛】Race"><a href="#【赛牛】Race" class="headerlink" title="【赛牛】Race"></a>【赛牛】Race</h2><p>时间限制 1000 ms  内存限制 512000 KiB</p>
+<h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>看, 你的农场里的 $N$ 头牛正准备赛跑。</p>
+<p>它们的体型完全一致, 可以看作 1 个单位长度的水平线段。<br>因此, 在 $t &#x3D; 0$ 时刻, 可以仅用左端点坐标表示每头牛所处的起跑位置。<br>例如，$(-3,6)$ 表示处在 $(-3, 6)$ 到 $(-2, 6)$ 位置的某头牛。</p>
+<p>每头牛都向右（$+x$ 方向）以某个速度匀速奔跑。<br>某头牛的速度为 $r$ 则表示它每 $r$ 个单位时间前进 1 个单位距离。</p>
+<p>你站在 $(0, 0)$ 处, 并沿着 $+y$ 方向的射线观察比赛。注意, <strong>你的视野非常受限, 仅仅是一条无宽度的理想射线</strong>。因此, <strong>在任何时刻, 你最多仅能观察到一头牛（此时该牛的 $x$ 坐标范围为 $[-1, 0]$）</strong>, 而其它的牛可能被挡住了，或者尚未进入到达 $[-1,0]$ 区域，或者已离开 $[-1, 0]$ 区域。</p>
+<blockquote>
+<p>注意：为了简化问题，如果某头牛的 $x$ 坐标范围为 $[0, 1]$，即使它没被挡住，我们也看不到（你无法从尾巴末梢推断出这是不是一头牛）。</p>
+</blockquote>
+<p>请计算, 在整个比赛期间, 你可以看到多少头牛?</p>
+<blockquote>
+<p>注意: 为了进一步简化问题, 假设时间与牛群的动作都是离散的。也就是说，对于速度为 $r$ 的牛，它每隔 $r$ 个单位时间瞬移一个单位距离（而不是每一个单位时间里移动 $1&#x2F;r$ 距离）。</p>
+</blockquote>
+<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入 $N + 1$ 行:</p>
+<ul>
+<li>第一行是一个整数, 表示牛的数量 $N$</li>
+<li>接下来 $N$ 行, 第 $i$ 行表示第 $i$ 头牛的信息, 包含三个整数, 以空格隔开:<ul>
+<li>$x_{i}$: $t &#x3D; 0$ 时刻, 第 $i$ 头牛所在左端点的 $x$ 坐标（$x_{i} \le -1$）;</li>
+<li>$y_{i}$: $t &#x3D; 0$ 时刻, 第 $i$ 头牛所在左端点的 $y$ 坐标;<ul>
+<li>保证所有 $y_{i}$ 不同, 所以不会发生”撞牛”事故;</li>
+</ul>
+</li>
+<li>$r_{i}$: 第 $i$ 头牛的速度。</li>
+</ul>
+</li>
+</ul>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行:</p>
+<ul>
+<li>一个整数, 表示可以看到的牛的数目</li>
+</ul>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20231017-top/">置顶必读</a><a class="next" href="/20240708-optical/">图形绘制技术-光学相机</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
