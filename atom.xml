@@ -45,14 +45,26 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>Linux 系统无法正常 suspend</title>
     <link href="https://s.tilnel.com/20240718-suspend/"/>
     <id>https://s.tilnel.com/20240718-suspend/</id>
-    <published>2024-07-18T10:50:30.906Z</published>
-    <updated>2024-07-18T10:50:30.906Z</updated>
+    <published>2024-07-18T10:50:57.000Z</published>
+    <updated>2024-07-18T10:51:21.295Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">suspend</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
     
     
     
+    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
     
     
   </entry>
