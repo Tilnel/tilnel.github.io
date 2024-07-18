@@ -6,7 +6,8 @@
 g 就是 granted，d 就是 denied
 这样设置网卡允许wol是一次性的。尝试用 update-rc.d 自动执行脚本，不知道为什么不行。
 所以按照 ArchWiki 的方式，设置成 systemd 管理的
-</div><p class="readmore"><a href="/20240718-linuxwol/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/20240718-wol/">Windows 快速启动无法被 wol 唤醒</a></h1><div class="post-meta">2024-07-18</div><div class="post-content">Windows 官方文档《 System Power States 》中讲述到，Windows 系统自身（抛开 BIOS 不谈）是不支持“快速启动”和“关机”状态下的网络唤醒，只支持“睡眠”、“休眠”状态下的网络唤醒：
+Wake-on-LAN - ArchWiki (archlinux.org)
+12345...</div><p class="readmore"><a href="/20240718-linuxwol/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/20240718-wol/">Windows 快速启动无法被 wol 唤醒</a></h1><div class="post-meta">2024-07-18</div><div class="post-content">Windows 官方文档《 System Power States 》中讲述到，Windows 系统自身（抛开 BIOS 不谈）是不支持“快速启动”和“关机”状态下的网络唤醒，只支持“睡眠”、“休眠”状态下的网络唤醒：
 
 睡眠（Sleep），属于 S3 电源状态；
 

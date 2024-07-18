@@ -49,9 +49,9 @@
     <link href="https://s.tilnel.com/20240718-linuxwol/"/>
     <id>https://s.tilnel.com/20240718-linuxwol/</id>
     <published>2024-07-18T12:52:47.000Z</published>
-    <updated>2024-07-18T12:54:44.433Z</updated>
+    <updated>2024-07-18T12:55:31.726Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nettool -s enp34s0 wol g</span><br></pre></td></tr></table></figure><p>g 就是 granted，d 就是 denied</p><p>这样设置网卡允许wol是一次性的。尝试用 update-rc.d 自动执行脚本，不知道为什么不行。</p><p>所以按照 ArchWiki 的方式，设置成 systemd 管理的</p>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nettool -s enp34s0 wol g</span><br></pre></td></tr></table></figure><p>g 就是 granted，d 就是 denied</p><p>这样设置网卡允许wol是一次性的。尝试用 update-rc.d 自动执行脚本，不知道为什么不行。</p><p>所以按照 ArchWiki 的方式，设置成 systemd 管理的</p><p><a href="https://wiki.archlinux.org/title/Wake-on-LAN">Wake-on-LAN - ArchWiki (archlinux.org)</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/systemd/network/50-wired.link</span><br><span class="line">---</span><br><span class="line">[Match]</span><br><span class="line">MACAddress=aa:bb:cc:dd:ee:ff</span><br><span class="line"></span><br><span class="line">[Link]</span><br><span class="line">NamePolicy=kernel database onboard slot path</span><br><span class="line">MACAddressPolicy=persistent</span><br><span class="line">WakeOnLan=magic</span><br></pre></td></tr></table></figure>]]></content>
     
     
       
