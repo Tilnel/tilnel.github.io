@@ -45,14 +45,26 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>从源码更新 sshd</title>
     <link href="https://s.tilnel.com/20240718-sshd/"/>
     <id>https://s.tilnel.com/20240718-sshd/</id>
-    <published>2024-07-18T13:47:09.382Z</published>
-    <updated>2024-07-18T13:47:09.382Z</updated>
+    <published>2024-07-18T13:47:44.000Z</published>
+    <updated>2024-07-18T13:48:44.378Z</updated>
+    
+    <content type="html"><![CDATA[<p> 之前爆出 Linux 上的 sshd 可能有一个 race condition 导致的 RCE。建议更新到 openssh 9.8。于是火速clone</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 之前爆出 Linux 上的 sshd 可能有一个 race condition 导致的 RCE。建议更新到 openssh</summary>
+        
+      
     
     
     
+    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
     
     
   </entry>
