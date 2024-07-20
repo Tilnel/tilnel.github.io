@@ -45,14 +45,28 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>在没有DHCP的情况下使用PXE-网络启动服务器设置</title>
     <link href="https://s.tilnel.com/20240720-ipxe/"/>
     <id>https://s.tilnel.com/20240720-ipxe/</id>
-    <published>2024-07-20T09:59:19.303Z</published>
-    <updated>2024-07-20T09:59:19.303Z</updated>
+    <published>2024-07-20T10:00:53.000Z</published>
+    <updated>2024-07-20T12:18:16.867Z</updated>
+    
+    <content type="html"><![CDATA[<p>PXE, Preboot eXecution Environment，发音一般为 pixie，是从网卡启动的环境。我的了解并不深刻，但是总归，这种启动方式是和硬盘启动、USB 启动并列的一种方式。它做的事情无非是：</p><ul><li>从当前网络环境中找到一个 DHCP 服务器</li><li>DHCP 服务器告诉本机，TFTP 服务器的位置</li><li>本机从 TFTP 服务器上下载一个引导程序。可能是 lpxelinux，总之是个程序</li><li>可能还下载一些配置文件，告诉引导程序应该做什么</li><li>然后将控制权移交给引导程序</li></ul><p>这样的启动方式，还可以直接启动 grub。间接地，可以启动任何的操作系统。只要引导程序后续向远程请求 vmlinuz 和 initramfs，就可以启动 linux 内核。这也是无盘机的原理。</p><p>但是，pxe 的不便之处就在于，必须要一个 DHCP 服务器来给出这些配置。这对于广域网上的用户，并不是很友好。比如我在南京大学，想要连接中科大的网络启动服务，这就很困难。如果我想要我自己搭建的网络启动服务在校内都可用，我还需要和 ITSC (信息服务中心) 做可能的协商（并且大概率不会成功！除非以组织的名义来做，比如 LUG 和高性能计算中心一起来）。</p><p>造成这一切的主要原因是，网卡自带的 pxe ROM 并没有很复杂的功能。于是 iPXE 呼之欲出。</p><h2 id="配置-iPXE"><a href="#配置-iPXE" class="headerlink" title="配置 iPXE"></a>配置 iPXE</h2><p><a href="https://ipxe.org/">iPXE</a></p><p>可以选择烧到网卡上（！）或是烧到其他的启动介质上。</p><p>如果烧到网卡上，等于是仅对于我现在能够控制的机器有用。对于未来可能的机器，比如我要装个系统，我还要先烧一个 iPXE。这就麻烦了。烧到其他的启动介质上？我不如直接烧一个 Windows.iso 进去。</p><p>当然因为是做一个小玩具。并且我们并不确定会不会雀实存在有的电脑上采用了 iPXE。（并且我们不想用 U 盘）。因此在这里我们选择<a href="https://ipxe.org/howto/romburning/intel">烧网卡</a>。注意根据自己的网卡型号去看 ipxe 官网上不同的指引。</p><p>然而根据指引，我们还是要烧 U 盘。你妈</p><p>我居然真的没有 U 盘</p><h2 id="放弃-iPXE"><a href="#放弃-iPXE" class="headerlink" title="放弃 iPXE"></a>放弃 iPXE</h2><p>使用 DHCP 服务器吧。</p><p>使用打包好的 <a href="https://netboot.xyz/">netboot.xyz</a> 的 docker image。</p><h2 id="放弃-netboot"><a href="#放弃-netboot" class="headerlink" title="放弃 netboot"></a>放弃 netboot</h2><p>docker 要加 proxy 才能运行。dashboard 完全加载不了。</p><h2 id="跟着-ArchWiki-来做"><a href="#跟着-ArchWiki-来做" class="headerlink" title="跟着 ArchWiki 来做"></a>跟着 ArchWiki 来做</h2>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;PXE, Preboot eXecution Environment，发音一般为 pixie，是从网卡启动的环境。我的了解并不深刻，但是总归，这种启动方式是和硬盘启动、USB 启动并列的一种方式。它做的事情无非是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从当前网络环境中找到一个</summary>
+        
+      
     
     
     
+    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
     
     
   </entry>
