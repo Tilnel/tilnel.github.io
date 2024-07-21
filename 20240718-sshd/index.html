@@ -20,6 +20,8 @@
 
 <p>更新：这样做会使得在 ssh client（ssh-session）中，PATH 没有 &#x2F;usr&#x2F;local&#x2F;bin。导致自己编译安装的 vim 没办法直接启动。</p>
 <p>解决办法：<code>--with-default-path</code> 和 <code>--with-superuser-path</code> 加一加。</p>
+<p>更新：2FA 和登录邮件提醒消失了</p>
+<p>解决：添加 <code>--with-pam</code></p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20240720-ipxe/">在没有DHCP的情况下使用PXE-网络启动服务器设置</a><a class="next" href="/20240718-linuxwol/">Linux wakeonlan 无法正常开启</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
