@@ -46,8 +46,8 @@ IterativeSolver.java
 T0 本田Wing 川崎 雅马哈  质量、保值率、B格 OK 无脑冲
 T1 豪爵、豪爵铃木 国产一哥 外观好看
 T1.5 高金、凯越、升仕、力刻 正经想造好车的品牌，但需要时间
-T2 新大洲本田 五羊本田 无极 赛科龙 春风、ji’nan’ling’mui
-</div><p class="readmore"><a href="/20230830-motor/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/20230726_ptrace/">DMCK-ptrace</a></h1><div class="post-meta">2023-07-26</div><div class="post-content">稍微总结一下技术路线：
+T2 新大洲本田、五羊本田、无极、赛科龙、春风、济南铃木、光阳、SYM三阳 各有优劣，小毛病
+T3 奔达、长...</div><p class="readmore"><a href="/20230830-motor/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/20230726_ptrace/">DMCK-ptrace</a></h1><div class="post-meta">2023-07-26</div><div class="post-content">稍微总结一下技术路线：
 首先，被测方注册信号处理函数，并分配好信号执行的栈空间（sigaltstack）。两个处理函数，分别用于保存和恢复进程。
 保存，具体来说就是把堆、栈、全局变量全都dump到文件。对于例子而言，这个文件大约是500KiB。压缩后是5KiB。
 恢复，从文件中把数据再拷进来。首先不能破坏信号执行的栈区，要保留好 restore 函数的执行环...</div><p class="readmore"><a href="/20230726_ptrace/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/7/">下一页</a></nav><script type="text/x-mathjax-config">MathJax.Hub.Config({
