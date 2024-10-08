@@ -45,59 +45,6 @@
   </entry>
   
   <entry>
-    <title>Piecing</title>
-    <link href="https://s.tilnel.com/20231204-piecing/"/>
-    <id>https://s.tilnel.com/20231204-piecing/</id>
-    <published>2024-12-04T07:00:00.000Z</published>
-    <updated>2024-10-08T08:29:05.059Z</updated>
-    
-    <content type="html"><![CDATA[<p> 小睡了 1.5 小时。起来还是看丁主任的比赛，在追到 7:7 之后，基本上就直接失去还手之力了。火箭看起来就像是在放水一样。（2023英锦赛）</p><p>早上比赛结束后本来打算小睡一会儿，然后下床抽了两支烟。要我说，这第二支实在是有点多余。一根已经足够进入状态。两根除了感觉很冷意外也就没什么了。</p><p>之后就听到升国旗了。心一横就直接起了床，想想也是，没什么好睡的。课肯定是盖上了，顶多睡到9点半，还得赶着起来洗澡。</p><p>等等。我宿舍冰箱门关了吗？。。。要写一个checklist放在宿舍门口了。</p><p>前几天我随手发了一句 “我不是女同”。这本来就是先射箭再画靶，其实根本没人想到这个，是我自己唐突地想到了这样一句话。而实际的意思是：我艹，原来我是女同。。。</p><p>刚才又在想另一个问题。如果在以后可能会有（大概率不会有）的高中同学会上，那我最能拿得出手的是什么东西？我感觉右耳大概最后会有 8-10 个耳洞吧（2024.10.8 录入语：现在刚好 8 个）。</p><p>其实就是这样一个问题：怎么向所有人解释我的钛合金右耳？</p><p>“你的耳朵是怎么回事？”“我去打了几次耳洞”</p><p>“你怎么打这么多？”“我自己挺喜欢这个的”</p><p>就这样，大部分的对话就应该终止于此。并没有人会在意这个，大部分人应该是不太瞧得上这种风格。</p><p>这是一种什么感觉：从同一个班出来，大家各奔东西。一些人去了豪华的大都市，享受上流生活；还有那么几个在底层鬼混。。。我的心理设定就把自己放在了这个低位。如果说这件事有任何值得自豪的，无非是忍受穿孔时的疼痛，以及毫不留情地表达着对于世俗价值观的蔑视。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 小睡了 1.5 小时。起来还是看丁主任的比赛，在追到 7:7</summary>
-        
-      
-    
-    
-    
-    <category term="杂谈" scheme="https://s.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关关难过关关过</title>
-    <link href="https://s.tilnel.com/20231115-hurdle/"/>
-    <id>https://s.tilnel.com/20231115-hurdle/</id>
-    <published>2024-11-15T07:00:00.000Z</published>
-    <updated>2024-10-08T07:47:45.681Z</updated>
-    
-    <content type="html"><![CDATA[<p>尽力做好，不论结果。</p><p>总是要熬完的，硬着头皮也得上。</p><p>研究生有几个人从没失意过呢？那些博士生的心理素质也强多了。也不是。他们面对更加严重的问题也能走下去。</p><p>想想那些每天都和导师交锋的人，不也都活得好好的。黄开乐不也很厉害，所以不要一次的状况比较危急就大惊小怪。</p><p>关关难过关关过；桥到船头自然直。</p><p>讲什么内容呢？进展不多，有了解其他工作。</p><p>1、相关工作：CrystalBall MaceMC MODIST DEMETER。对比，摘出可用的。由此找到这份工作的位置。</p><p>2、被测系统、协议选型</p><p>上次找了一个C实现。我们的优点体现在 ①有状态②非侵入，不修改③尽可能的通用化</p><p>3、系统设计进展（Coding）</p><p>时间的生成 - 根据执行的进程，与 Choose().  Stateless？之后就都是工程问题。</p><p>4、拿出设计的文档</p><p>5、代码暂未释出 - 先拿出来，放一个仓库。之后再来跟进</p><p>另外是，关于 Time 的产生，应该是一个重点。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;尽力做好，不论结果。&lt;/p&gt;
-&lt;p&gt;总是要熬完的，硬着头皮也得上。&lt;/p&gt;
-&lt;p&gt;研究生有几个人从没失意过呢？那些博士生的心理素质也强多了。也不是。他们面对更加严重的问题也能走下去。&lt;/p&gt;
-&lt;p&gt;想想那些每天都和导师交锋的人，不也都活得好好的。黄开乐不也很厉害，所以不要一</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://s.tilnel.com/categories/%E7%A7%91%E7%A0%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>擅作主张的不安</title>
     <link href="https://s.tilnel.com/20240920-upset/"/>
     <id>https://s.tilnel.com/20240920-upset/</id>
@@ -544,6 +491,61 @@
     
     
     <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>夕拾 第三周</title>
+    <link href="https://s.tilnel.com/20240609-week3/"/>
+    <id>https://s.tilnel.com/20240609-week3/</id>
+    <published>2024-06-09T15:33:35.000Z</published>
+    <updated>2024-06-19T07:51:31.944Z</updated>
+    
+    <content type="html"><![CDATA[<p>上周除了电视剧以外基本没看什么。明天补一点吧。</p><p>我找到一本书。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Z:/ZijingBT/kindle电子书资源/kindle人的资源打包/自制21-40/ZZ21-22/数码摄影构图与用光.pdf</span><br></pre></td></tr></table></figure><p>本周来把它看掉。</p><p>看雍正王朝（已过半）</p><p>​</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;上周除了电视剧以外基本没看什么。明天补一点吧。&lt;/p&gt;
+&lt;p&gt;我找到一本书。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="夕拾" scheme="https://s.tilnel.com/categories/%E5%A4%95%E6%8B%BE/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>人民的名义</title>
+    <link href="https://s.tilnel.com/20240603-intheNameofPeople/"/>
+    <id>https://s.tilnel.com/20240603-intheNameofPeople/</id>
+    <published>2024-06-03T10:26:53.000Z</published>
+    <updated>2024-06-03T10:36:12.809Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一部很长的剧，有55集之多。最后是用两周时间去看完的。</p><p>里面值得学习的细节很多，需要解读的内容也很多。当然有很多人去做了“中译中”，而我在看的时候的确就思考不了那么多，语言的艺术这些东西都显得有点虚了。</p><p>我只提几点：</p><p>一是守住底线。做任何事都要把原则性放在第一位。</p><p>二是谨慎交友。不结交卑鄙小人，不得罪道不同不相为谋的人；保持真正的革命友谊，既是最务实的，也是最打动人心的。</p><p>三是学会以退为进。适当的时候放弃眼前的，看到下一步应该怎么做。</p><p>四是学习上不能放松。特别是用严谨的思维分析情势的能力要加强。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是一部很长的剧，有55集之多。最后是用两周时间去看完的。&lt;/p&gt;
+&lt;p&gt;里面值得学习的细节很多，需要解读的内容也很多。当然有很多人去做了“中译中”，而我在看的时候的确就思考不了那么多，语言的艺术这些东西都显得有点虚了。&lt;/p&gt;
+&lt;p&gt;我只提几点：&lt;/p&gt;
+&lt;p&gt;一是守住底</summary>
+        
+      
+    
+    
+    
+    <category term="电视剧" scheme="https://s.tilnel.com/categories/%E7%94%B5%E8%A7%86%E5%89%A7/"/>
     
     
   </entry>
