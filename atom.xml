@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Tilnel&#39;s Blog</title>
-  <icon>https://s.tilnel.com/icon.png</icon>
+  <icon>https://tilnel.github.io/icon.png</icon>
   <subtitle>我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</subtitle>
-  <link href="https://s.tilnel.com/atom.xml" rel="self"/>
+  <link href="https://tilnel.github.io/atom.xml" rel="self"/>
   
-  <link href="https://s.tilnel.com/"/>
+  <link href="https://tilnel.github.io/"/>
   <updated>2024-10-08T12:25:45.596Z</updated>
-  <id>https://s.tilnel.com/</id>
+  <id>https://tilnel.github.io/</id>
   
   <author>
     <name>Tilnel</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>置顶必读</title>
-    <link href="https://s.tilnel.com/20231017-top/"/>
-    <id>https://s.tilnel.com/20231017-top/</id>
+    <link href="https://tilnel.github.io/20231017-top/"/>
+    <id>https://tilnel.github.io/20231017-top/</id>
     <published>2099-12-31T15:59:59.000Z</published>
     <updated>2024-10-08T12:25:45.596Z</updated>
     
@@ -38,15 +38,15 @@
     
     
     
-    <category term="日常" scheme="https://s.tilnel.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="https://s.tilnel.com/20240630-ending/"/>
-    <id>https://s.tilnel.com/20240630-ending/</id>
+    <link href="https://tilnel.github.io/20240630-ending/"/>
+    <id>https://tilnel.github.io/20240630-ending/</id>
     <published>2024-10-09T06:17:48.865Z</published>
     <updated>2024-10-09T06:19:41.439Z</updated>
     
@@ -58,8 +58,8 @@
   
   <entry>
     <title>擅作主张的不安</title>
-    <link href="https://s.tilnel.com/20240920-upset/"/>
-    <id>https://s.tilnel.com/20240920-upset/</id>
+    <link href="https://tilnel.github.io/20240920-upset/"/>
+    <id>https://tilnel.github.io/20240920-upset/</id>
     <published>2024-09-20T15:05:42.000Z</published>
     <updated>2024-09-20T15:16:59.824Z</updated>
     
@@ -78,15 +78,15 @@
     
     
     
-    <category term="感情" scheme="https://s.tilnel.com/categories/%E6%84%9F%E6%83%85/"/>
+    <category term="感情" scheme="https://tilnel.github.io/categories/%E6%84%9F%E6%83%85/"/>
     
     
   </entry>
   
   <entry>
     <title>干沉默了</title>
-    <link href="https://s.tilnel.com/20240729-work/"/>
-    <id>https://s.tilnel.com/20240729-work/</id>
+    <link href="https://tilnel.github.io/20240729-work/"/>
+    <id>https://tilnel.github.io/20240729-work/</id>
     <published>2024-07-28T20:06:18.000Z</published>
     <updated>2024-07-29T12:38:17.849Z</updated>
     
@@ -105,15 +105,15 @@
     
     
     
-    <category term="生活" scheme="https://s.tilnel.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://tilnel.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
   </entry>
   
   <entry>
     <title>制作视频汉化字幕</title>
-    <link href="https://s.tilnel.com/20240722-script/"/>
-    <id>https://s.tilnel.com/20240722-script/</id>
+    <link href="https://tilnel.github.io/20240722-script/"/>
+    <id>https://tilnel.github.io/20240722-script/</id>
     <published>2024-07-22T07:47:15.000Z</published>
     <updated>2024-09-21T22:04:45.744Z</updated>
     
@@ -132,15 +132,15 @@
     
     
     
-    <category term="搬运" scheme="https://s.tilnel.com/categories/%E6%90%AC%E8%BF%90/"/>
+    <category term="搬运" scheme="https://tilnel.github.io/categories/%E6%90%AC%E8%BF%90/"/>
     
     
   </entry>
   
   <entry>
     <title>网关吃了我的 dnsmasq REPLY</title>
-    <link href="https://s.tilnel.com/20240721-dnsmasq/"/>
-    <id>https://s.tilnel.com/20240721-dnsmasq/</id>
+    <link href="https://tilnel.github.io/20240721-dnsmasq/"/>
+    <id>https://tilnel.github.io/20240721-dnsmasq/</id>
     <published>2024-07-21T07:09:42.000Z</published>
     <updated>2024-07-21T14:23:36.584Z</updated>
     
@@ -160,15 +160,15 @@
     
     
     
-    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>在没有DHCP的情况下使用PXE-网络启动服务器设置</title>
-    <link href="https://s.tilnel.com/20240720-ipxe/"/>
-    <id>https://s.tilnel.com/20240720-ipxe/</id>
+    <link href="https://tilnel.github.io/20240720-ipxe/"/>
+    <id>https://tilnel.github.io/20240720-ipxe/</id>
     <published>2024-07-20T10:00:53.000Z</published>
     <updated>2024-07-20T12:18:16.867Z</updated>
     
@@ -187,15 +187,15 @@
     
     
     
-    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>从源码更新 sshd</title>
-    <link href="https://s.tilnel.com/20240718-sshd/"/>
-    <id>https://s.tilnel.com/20240718-sshd/</id>
+    <link href="https://tilnel.github.io/20240718-sshd/"/>
+    <id>https://tilnel.github.io/20240718-sshd/</id>
     <published>2024-07-18T13:47:44.000Z</published>
     <updated>2024-07-21T15:29:43.402Z</updated>
     
@@ -212,15 +212,15 @@
     
     
     
-    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>Linux wakeonlan 无法正常开启</title>
-    <link href="https://s.tilnel.com/20240718-linuxwol/"/>
-    <id>https://s.tilnel.com/20240718-linuxwol/</id>
+    <link href="https://tilnel.github.io/20240718-linuxwol/"/>
+    <id>https://tilnel.github.io/20240718-linuxwol/</id>
     <published>2024-07-18T12:52:47.000Z</published>
     <updated>2024-07-18T12:56:15.528Z</updated>
     
@@ -237,15 +237,15 @@
     
     
     
-    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>Windows 快速启动无法被 wol 唤醒</title>
-    <link href="https://s.tilnel.com/20240718-wol/"/>
-    <id>https://s.tilnel.com/20240718-wol/</id>
+    <link href="https://tilnel.github.io/20240718-wol/"/>
+    <id>https://tilnel.github.io/20240718-wol/</id>
     <published>2024-07-18T12:09:36.000Z</published>
     <updated>2024-07-18T12:11:28.246Z</updated>
     
@@ -262,15 +262,15 @@
     
     
     
-    <category term="Windows" scheme="https://s.tilnel.com/categories/Windows/"/>
+    <category term="Windows" scheme="https://tilnel.github.io/categories/Windows/"/>
     
     
   </entry>
   
   <entry>
     <title>Linux 系统无法正常 suspend （睡眠）</title>
-    <link href="https://s.tilnel.com/20240718-suspend/"/>
-    <id>https://s.tilnel.com/20240718-suspend/</id>
+    <link href="https://tilnel.github.io/20240718-suspend/"/>
+    <id>https://tilnel.github.io/20240718-suspend/</id>
     <published>2024-07-18T10:50:57.000Z</published>
     <updated>2024-07-18T12:09:04.860Z</updated>
     
@@ -287,15 +287,15 @@
     
     
     
-    <category term="Linux" scheme="https://s.tilnel.com/categories/Linux/"/>
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
   
   <entry>
     <title>看看Redis 2.8源码</title>
-    <link href="https://s.tilnel.com/20240715-redis/"/>
-    <id>https://s.tilnel.com/20240715-redis/</id>
+    <link href="https://tilnel.github.io/20240715-redis/"/>
+    <id>https://tilnel.github.io/20240715-redis/</id>
     <published>2024-07-15T06:08:12.000Z</published>
     <updated>2024-07-15T06:09:10.180Z</updated>
     
@@ -313,15 +313,15 @@
     
     
     
-    <category term="Distributed Systems" scheme="https://s.tilnel.com/categories/Distributed-Systems/"/>
+    <category term="Distributed Systems" scheme="https://tilnel.github.io/categories/Distributed-Systems/"/>
     
     
   </entry>
   
   <entry>
     <title>图形绘制技术-光学相机</title>
-    <link href="https://s.tilnel.com/20240708-optical/"/>
-    <id>https://s.tilnel.com/20240708-optical/</id>
+    <link href="https://tilnel.github.io/20240708-optical/"/>
+    <id>https://tilnel.github.io/20240708-optical/</id>
     <published>2024-07-08T06:44:38.000Z</published>
     <updated>2024-07-10T07:55:54.840Z</updated>
     
@@ -340,15 +340,15 @@
     
     
     
-    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    <category term="课程" scheme="https://tilnel.github.io/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
   
   <entry>
     <title>DMCK 设计</title>
-    <link href="https://s.tilnel.com/20240701-dmck/"/>
-    <id>https://s.tilnel.com/20240701-dmck/</id>
+    <link href="https://tilnel.github.io/20240701-dmck/"/>
+    <id>https://tilnel.github.io/20240701-dmck/</id>
     <published>2024-06-30T23:54:13.000Z</published>
     <updated>2024-07-02T13:44:21.048Z</updated>
     
@@ -367,15 +367,15 @@
     
     
     
-    <category term="DisSys" scheme="https://s.tilnel.com/categories/DisSys/"/>
+    <category term="DisSys" scheme="https://tilnel.github.io/categories/DisSys/"/>
     
     
   </entry>
   
   <entry>
     <title>内心快板一则</title>
-    <link href="https://s.tilnel.com/20240630-allegro/"/>
-    <id>https://s.tilnel.com/20240630-allegro/</id>
+    <link href="https://tilnel.github.io/20240630-allegro/"/>
+    <id>https://tilnel.github.io/20240630-allegro/</id>
     <published>2024-06-29T20:41:34.000Z</published>
     <updated>2024-06-29T21:40:16.070Z</updated>
     
@@ -395,15 +395,15 @@
     
     
     
-    <category term="杂谈" scheme="https://s.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
   
   <entry>
     <title>2024春季 蒋炎岩《操作系统》期末回忆</title>
-    <link href="https://s.tilnel.com/20240630-OS/"/>
-    <id>https://s.tilnel.com/20240630-OS/</id>
+    <link href="https://tilnel.github.io/20240630-OS/"/>
+    <id>https://tilnel.github.io/20240630-OS/</id>
     <published>2024-06-29T19:55:33.000Z</published>
     <updated>2024-06-29T19:59:06.954Z</updated>
     
@@ -423,15 +423,15 @@
     
     
     
-    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    <category term="课程" scheme="https://tilnel.github.io/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
   
   <entry>
     <title>镜头光晕 分析</title>
-    <link href="https://s.tilnel.com/20240627-lensflare/"/>
-    <id>https://s.tilnel.com/20240627-lensflare/</id>
+    <link href="https://tilnel.github.io/20240627-lensflare/"/>
+    <id>https://tilnel.github.io/20240627-lensflare/</id>
     <published>2024-06-27T11:17:15.000Z</published>
     <updated>2024-06-29T19:55:06.442Z</updated>
     
@@ -451,15 +451,15 @@
     
     
     
-    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    <category term="课程" scheme="https://tilnel.github.io/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
   
   <entry>
     <title>AML复习</title>
-    <link href="https://s.tilnel.com/20240618-aml/"/>
-    <id>https://s.tilnel.com/20240618-aml/</id>
+    <link href="https://tilnel.github.io/20240618-aml/"/>
+    <id>https://tilnel.github.io/20240618-aml/</id>
     <published>2024-06-17T16:58:05.000Z</published>
     <updated>2024-06-18T05:25:06.178Z</updated>
     
@@ -476,15 +476,15 @@
     
     
     
-    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    <category term="课程" scheme="https://tilnel.github.io/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
   
   <entry>
     <title>计算模型导引复习</title>
-    <link href="https://s.tilnel.com/20240616-computTH/"/>
-    <id>https://s.tilnel.com/20240616-computTH/</id>
+    <link href="https://tilnel.github.io/20240616-computTH/"/>
+    <id>https://tilnel.github.io/20240616-computTH/</id>
     <published>2024-06-16T07:02:14.000Z</published>
     <updated>2024-06-16T13:19:21.751Z</updated>
     
@@ -502,15 +502,15 @@
     
     
     
-    <category term="课程" scheme="https://s.tilnel.com/categories/%E8%AF%BE%E7%A8%8B/"/>
+    <category term="课程" scheme="https://tilnel.github.io/categories/%E8%AF%BE%E7%A8%8B/"/>
     
     
   </entry>
   
   <entry>
     <title>为赋新词</title>
-    <link href="https://s.tilnel.com/20240611-shortcircuit/"/>
-    <id>https://s.tilnel.com/20240611-shortcircuit/</id>
+    <link href="https://tilnel.github.io/20240611-shortcircuit/"/>
+    <id>https://tilnel.github.io/20240611-shortcircuit/</id>
     <published>2024-06-11T08:00:00.000Z</published>
     <updated>2024-10-09T05:36:15.435Z</updated>
     
@@ -527,7 +527,7 @@
     
     
     
-    <category term="情感" scheme="https://s.tilnel.com/categories/%E6%83%85%E6%84%9F/"/>
+    <category term="情感" scheme="https://tilnel.github.io/categories/%E6%83%85%E6%84%9F/"/>
     
     
   </entry>
