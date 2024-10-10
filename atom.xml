@@ -44,6 +44,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://tilnel.github.io/20240923-yarareta/"/>
+    <id>https://tilnel.github.io/20240923-yarareta/</id>
+    <published>2024-10-10T07:45:51.508Z</published>
+    <updated>2024-10-10T07:45:51.508Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>不要承认那个名字</title>
     <link href="https://tilnel.github.io/20241009-cite/"/>
     <id>https://tilnel.github.io/20241009-cite/</id>
@@ -78,9 +91,9 @@
     <link href="https://tilnel.github.io/20240922-yarareta/"/>
     <id>https://tilnel.github.io/20240922-yarareta/</id>
     <published>2024-09-22T07:00:00.000Z</published>
-    <updated>2024-10-10T07:44:05.625Z</updated>
+    <updated>2024-10-10T07:45:59.120Z</updated>
     
-    <content type="html"><![CDATA[<p>我是一个极容易动摇的人，偏偏这点从来就没有学好。</p><p>緒方理奈和赤名リカ其实是一个模子里刻出来的人物，我对她们两位都非常喜欢。不止是因为她们敢于表达爱，更是因为她们“有进退”。</p><p>对，不是“知进退”，谁知道离开是不是最好的决定？谁也不能说得上来，事情到底会怎样发展。但是她们可以坚决地离开，创造自己的新的生活。</p><p>也许回去之后仍然会偷偷抹眼泪，即便如此在转身的时候也毫不动摇。</p><p>所以，「恋爱世纪」虽然是 Happy Ending，却是平庸的，是大多数故事的结局；而「东京爱情故事」是 Normal Ending，但是其中展现出的人物选择却you</p>]]></content>
+    <content type="html"><![CDATA[<p>我是一个极容易动摇的人，偏偏这点从来就没有学好。</p><p>緒方理奈和赤名リカ其实是一个模子里刻出来的人物，我对她们两位都非常喜欢。不止是因为她们敢于表达爱，更是因为她们“有进退”。</p><p>对，不是“知进退”，谁知道离开是不是最好的决定？谁也不能说得上来，事情到底会怎样发展。但是她们可以坚决地离开，创造自己的新的生活。</p><p>也许回去之后仍然会偷偷抹眼泪，即便如此在转身的时候也毫不动摇。</p><p>所以，「恋爱世纪」虽然是 Happy Ending，却是平庸的，是大多数故事的结局；而「东京爱情故事」是 Normal Ending，但是其中展现出的人物选择却有着科幻片一样的觉悟。</p><p>所以，动画的 White Album 1 是科幻片，而 WA2 是写实的。</p><p>即使写到这里，我的态度依旧存疑。</p><p>至于斯嘉丽是怎么想的，已经不怎么重要了。曾经有个人，如果与她聊天，就可以稳定地获得一种安心的感觉。而现在情况为之一变，我自己会动摇起来。</p><p> Thank you. Good-bye!</p>]]></content>
     
     
       
@@ -518,33 +531,6 @@
     
     
     <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>DMCK 设计</title>
-    <link href="https://tilnel.github.io/20240701-dmck/"/>
-    <id>https://tilnel.github.io/20240701-dmck/</id>
-    <published>2024-06-30T23:54:13.000Z</published>
-    <updated>2024-07-02T13:44:21.048Z</updated>
-    
-    <content type="html"><![CDATA[<p>我也不知道怎么回事，在后台有一个随机读写lock的程序忘了kill的情况下，测试程序一直能打出长度一样、顺序一样、甚至内容也一样的log，企图骗我这就是执行路径。CS套路深，我要回农村</p><p>假设我获得了系统调用的顺序和所有系统调用之后的进程状态。</p><p><img src="image-20240702214113221.png" alt="image-20240702214113221"></p><p>显然是B。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ssite_t</span> <span class="title function_">write</span><span class="params">(<span class="type">int</span> fd, <span class="type">const</span> <span class="type">void</span> buf[.count], <span class="type">size_t</span> count)</span>;</span><br></pre></td></tr></table></figure><p>注意 buf 是 <code>const</code> 意思是写之前和写之后是同一个状态。但是 $\mathbb{A}$ 状态下，write 的参数未必准备好了。只有到系统调用的前一刻，其所有的参数才被准备好。想要从 $\mathbb{B} $ 之前获取参数并不是什么问题，关键在于「向前多少」</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我也不知道怎么回事，在后台有一个随机读写lock的程序忘了kill的情况下，测试程序一直能打出长度一样、顺序一样、甚至内容也一样的log，企图骗我这就是执行路径。CS套路深，我要回农村&lt;/p&gt;
-&lt;p&gt;假设我获得了系统调用的顺序和所有系统调用之后的进程状态。&lt;/p&gt;
-&lt;p&gt;&lt;</summary>
-        
-      
-    
-    
-    
-    <category term="DisSys" scheme="https://tilnel.github.io/categories/DisSys/"/>
     
     
   </entry>
