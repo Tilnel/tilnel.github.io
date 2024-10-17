@@ -42,19 +42,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://tilnel.github.io/Untitled/"/>
-    <id>https://tilnel.github.io/Untitled/</id>
-    <published>2024-10-17T20:23:49.019Z</published>
-    <updated>2024-10-17T20:23:49.019Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>不是很方便公开的信息</title>
     <link href="https://tilnel.github.io/20241017-banned/"/>
     <id>https://tilnel.github.io/20241017-banned/</id>
@@ -515,6 +502,31 @@
     
     
     <category term="Windows" scheme="https://tilnel.github.io/categories/Windows/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 系统无法正常 suspend （睡眠）</title>
+    <link href="https://tilnel.github.io/20240718-suspend/"/>
+    <id>https://tilnel.github.io/20240718-suspend/</id>
+    <published>2024-07-18T10:50:57.000Z</published>
+    <updated>2024-07-18T12:09:04.860Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">suspend</span></span><br></pre></td></tr></table></figure><p>仔细翻看 journal：</p><p><img src="image-20240718185134192.png" alt="image-20240718185134192"></p><p> 但其实我们并没有 nvidia 驱动，甚至是 headless 的。查看 service 的依赖</p><p><img src="image-20240718185214952.png" alt="image-20240718185214952"></p><p>全删掉，然后 <code>daemon-reload</code> 就好了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
