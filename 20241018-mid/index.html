@@ -12,6 +12,8 @@
 <p>为了弥补这些方法的不足，我的科研选题是提出一种通过系统调用截停的方式，不侵入性地修改代码而操纵实际实现的分布式系统执行，以达到对分布式系统的实际代码实现进行模型检测的方法。由于直接从系统调用层面进行操作，因而不需要进行代码插桩操作，并且对于被测系统的要求较为宽松，适应面更广。</p>
 <p><strong>（二）</strong> <strong>代表性成果的理论、方法或技术创新亮点</strong>（重点阐述研究生个人取得的代表性成果的创新性、引用和评价情况、国内外获奖情况等）</p>
 <p>对于选题“针对分布式系统实际代码实现的模型检测方法”，个人开发了一套测试框架，并且应用于 Raft 共识 协议的 C 语言实现的验证上，已经证明了其有效性。</p>
+<p>1、设计原理</p>
+<p>单线程程序从一个特定的状态出发，其状态转换分为两类。一是进行系统调用，对操作系统对象进行创建、删除、读写；二是系统调用以外的运算逻辑。对于第二类而言，其代表的状态转换是确定性的，即给定进程状态和代码，执行代码达到的目标状态是唯一确定的；对于第一类而言，则状态转换还要取决于操作系统对象的状态。比如同样执行 read() 系统调用，如果文件的内容正同时被其他进程改变，则产生的结果不确定。</p>
 <p><strong>（三）</strong> <strong>其它研究成果</strong>（除上述学术创新成果外，简要阐述研究生个人在面向国家需求的自主原创系统研发，或产生实际经济社会效益的应用转化方面作出的贡献，如无可不填）</p>
 <h3 id="1-2-ptrace-简介"><a href="#1-2-ptrace-简介" class="headerlink" title="1.2 ptrace 简介"></a>1.2 ptrace 简介</h3><p>ptrace 是 Linux 内核提供的进程跟踪的系统调用，它允许父进程检查和替换子进程的内核镜像（包括寄存器）的值。</p>
 <p>子进程调用 ptrace(PTRACE_TRACEME) 且父进程调用 ptrace(PTRACE_SEIZE) 后，父进程即可对子进程的执行进行控制：在子进程进行系统调用前或系统调用返回后停止；获取子进程系统调用信息；读写子进程内存和寄存器的值；模拟系统调用执行等。通过几种基本操作，能够实现程序的确定性执行。</p>
@@ -44,14 +46,7 @@
 
 
 
-<h3 id="2-2-相关工作"><a href="#2-2-相关工作" class="headerlink" title="2.2 相关工作"></a>2.2 相关工作</h3><p>CMC 是一个 stateful 的模型检测工具，能够对 C 代码直接进行模型检测，被用于检测网络协议和文件系统（FiSC）。但是 CMC 的检测需要侵入式地修改源程序代码，以使得被测程序运行在 CMC 的地址空间内。</p>
-<p>MaceMC 使用深度优先搜索和随机行走来检测网络协议实现中的 liveness 问题，但是被测系统需要是 Mace 生成的 C&#x2F;C++ 实现。Yabandeh 等人基于 MaceMC 提出的 CrystalBall 增加了 Steering Execution，在运行的过程中分析未来的错误状态，并通过控制执行来避免。</p>
-<p>Yang 等人提出的 MoDist 是一个适用于 Windows 上的分布式系统的模型检测框架。它与 MaceMC 一样是 stateless 的。</p>
-<h3 id="2-3-目标场景（与相关工作不一样的）"><a href="#2-3-目标场景（与相关工作不一样的）" class="headerlink" title="2.3 目标场景（与相关工作不一样的）"></a>2.3 目标场景（与相关工作不一样的）</h3><ul>
-<li>支持对 go 语言编写的程序进行检测</li>
-<li>stateful，不用每次都从头开始控制获得最新状态（节省运算性能，可能更占用空间）</li>
-<li>无侵入性（不用修改实现的源码）</li>
-</ul>
+<p>- </p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">序</a><a class="next" href="/20241018-wasureta/">应该忘记什么</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
