@@ -6,7 +6,7 @@
   <link href="https://tilnel.github.io/atom.xml" rel="self"/>
   
   <link href="https://tilnel.github.io/"/>
-  <updated>2024-10-10T15:32:22.477Z</updated>
+  <updated>2024-10-18T09:27:38.303Z</updated>
   <id>https://tilnel.github.io/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>序</title>
-    <link href="https://tilnel.github.io/20991231-top/"/>
-    <id>https://tilnel.github.io/20991231-top/</id>
-    <published>2099-12-31T15:59:59.000Z</published>
-    <updated>2024-10-10T15:32:22.477Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="第二版序"><a href="#第二版序" class="headerlink" title="第二版序"></a>第二版序</h4><p>先挖个坑。</p><p>2024-10-10</p><hr><p>以下是第一版序</p><p>只要是我在电脑里写下的文字，除了少量牵扯到对其他人的看法的，几乎都会在这里出现。</p><p>我是一个看起来很正常的不正常的人。经常喝酒，轻度抽烟。喜欢花但是不太懂，养一些容易养活的盆栽，不过不想花太多精力。</p><p>正在努力学习调酒；并且努力取得练习调酒的经济条件。毕竟一瓶一两百的酒要比两块多的可乐要难获取得多。以低价格经营着一家宿舍内的酒吧；当然也可以做外送。</p><p>我用右耳的人体的穿刺警示着来往的人；尽管所有人都觉得我的性格没什么问题——甚至可以说性格极好。但经过23年的人生短跑，我知道自己可以对朋友很好，但完全没有耐心去搞这个年代里时兴的那种亲密关系。</p><p>我否认所有对爱情的普遍的模式化的定义：“爱谁就该怎么做”；我否认爱情中可以存在两个人：爱情顶多是两个人各自的爱情，其指向也不是别的，而正是与对方的身形刚好错位的幻影；我否认爱情是“崇高”、“神圣”的：不要拘泥于外界的灌输影响下你对爱情的各种幻想，爱情顶多是“独特”的。</p><p>我会认真思考每一个社会契约中的隐含条款，并在不逃避责任的情况下享受权利；或是通过<strong>拒绝行使权利与拒不承担责任</strong>来表达我对该条款的抗议。所以请不要通过<strong>附加隐含条款的“好意”</strong>将压力给到我头上。</p><p>有任何要求，任何疑惑，任何不满：</p><h1 id="讲。"><a href="#讲。" class="headerlink" title="讲。"></a>讲。</h1><p>我从来都不生气。请不要再当谜语人了。</p><p>2023-10-17</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;第二版序&quot;&gt;&lt;a href=&quot;#第二版序&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>中期考核</title>
@@ -531,6 +506,31 @@
     
     
     <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Windows 快速启动无法被 wol 唤醒</title>
+    <link href="https://tilnel.github.io/20240718-wol/"/>
+    <id>https://tilnel.github.io/20240718-wol/</id>
+    <published>2024-07-18T12:09:36.000Z</published>
+    <updated>2024-07-18T12:11:28.246Z</updated>
+    
+    <content type="html"><![CDATA[<p>Windows 官方文档《 <a href="https://go.smzdm.com/3ecd4f1e758f18ee/ca_aa_yc_163_amx025p4_16293_2621_1641_0">System Power States</a> 》中讲述到，<strong>Windows 系统自身（抛开 BIOS 不谈）是不支持“快速启动”和“关机”状态下的网络唤醒，只支持“睡眠”、“休眠”状态下的网络唤醒</strong>：</p><ul><li><p>睡眠（Sleep），属于 S3 电源状态；</p></li><li><p>快速启动（Fast Startup），属于 S4 电源状态；</p></li><li><p>休眠（Hibernate），属于 S4 电源状态；</p></li><li><p>关机（Soft off），属于 S5 电源状态</p></li><li><p>对于<strong>“快速启动（fast startup, S4）”：</strong>从 Windows 8.1 开始到 Windows 11，“快速启动”作为系统默认的“<strong>关机”方式</strong>，是不支持网络唤醒的，<strong>这也是为什么在 WOL 的教程中会让你关闭“快速启动”</strong>：</p></li></ul><blockquote><p>“快速启动”：快速启动是一种关机类型，它使用休眠文件来加快后续的启动速度，在这种关机状态下，Windows 系统不支持网络唤醒。“快速启动”与“休眠”同属于  S4 电源状态。</p></blockquote><p><img src="619f939c2356a9109.png_e1080.jpg" alt="WOL 网络唤醒避坑指南：常见问题的分析与内容补充"></p><p>“快速启动”属于“<strong>hybrid shutdown（混合关机）</strong>”，是关机的一种类型：</p><p><img src="619fb314b625f7326.png_e1080.jpg" alt="《System Power States》"></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Windows 官方文档《 &lt;a href=&quot;https://go.smzdm.com/3ecd4f1e758f18ee/ca_aa_yc_163_amx025p4_16293_2621_1641_0&quot;&gt;System Power States&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Windows" scheme="https://tilnel.github.io/categories/Windows/"/>
     
     
   </entry>
