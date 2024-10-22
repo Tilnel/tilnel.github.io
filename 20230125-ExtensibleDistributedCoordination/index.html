@@ -5,7 +5,7 @@
 <p>简而言之，协调服务提供了一个一致的、高可用的数据存储，拥有足够的同步能力以应对客户端进程对基本任务的执行，如互斥操作和领导选举，并且储存重要的系统配置。这样的客户端通常是在上百上千服务器集群上部署的服务进程。协调服务的两个特性解释了它们成功的原因：1、它们为更大的分布式系统提供了一个坚实可信的锚点（基础？），使用坚固的状态机复制协议实现来避免所有的单点错误，并且 2、它们的少而有限的接口，也叫做协调内核，能够以简单的 RPC 的形式被调用，就算不是分布式计算编程的专家，也能够凭直觉弄懂。</p>
 <p>尽管简化了使用，有限的协调内核也有一个明显的缺点：受限在一组特定的原语之内。更加复杂的协调任务，比如一个分布式队列，必须被实现为一组多个 RPC 调用，在性能上非常吃亏。例如，因为 ZooKeeper 没有提供在数据节点当前值的基础上更新值的原语，这样的一个操作必须用一个读再根据情况写入来实现，导致在资源抢占较频繁的条件下的性能非常糟糕。这种缺陷是有限的协调内核天生就有的。一种办法是增加新的原语，然而这也就导致丢失了上面所说的有限接口的好处。</p>
 <p>在这篇工作中，我们因此而采用了不同的办法：让协调服务变为可扩展的。因此，我们展示了一个模型，它允许客户端动态地、安全地扩展一个协调服务，通过一小段定制的代码在服务端原子地运行。另外，我们设计了一个沙盒来约束这些扩展不要降低或干碎整个系统的性能。</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230224-mdadm-raid0/">使用 mdadm 创建软件 raid</a><a class="next" href="/20230120-summary/">Project 2 客观题杂谈</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230224-mdadm-raid0/">使用 mdadm 创建软件 raid</a><a class="next" href="/20230120-summary/">Project 2 客观题杂谈</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){

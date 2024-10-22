@@ -14,7 +14,7 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T1: Send(T2, REQUEST_VOTE, term = 1)</span><br><span class="line">T2: Recv(T1, REQUEST_VOTE, term = 1)</span><br><span class="line">T2: Send(T1, GRANT_VOTE)</span><br><span class="line">T1: Send(T3, REQUEST_VOTE, term = 1)</span><br><span class="line">T3: Recv(T1, REQUEST_VOTE, term = 1)</span><br><span class="line">T3: Send(T1, GRANT_VOTE)</span><br></pre></td></tr></table></figure>
 
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20240317-hegel/">《小逻辑》again</a><a class="next" href="/20240311-update/">无垠小手</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20240317-hegel/">《小逻辑》again</a><a class="next" href="/20240311-update/">无垠小手</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){

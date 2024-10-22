@@ -26,7 +26,7 @@
 </tbody></table>
 <p>激光 SLAM 比视觉 SLAM 起步早，在理论、技术与产品上都比较成熟。而视觉 SLAM 现在也有基于 RGBD 的深度摄像机，比如 Kinect。以及基于单目、双目和鱼眼摄像头的。其中 RGBD 深度摄像机具有信息量大的优势，我们可以额外借助颜色信息来判断位姿的变化以及选取参考点，可以更好地帮助我们进行场景相关的决策。另一方面，激光雷达的成本较高，而摄像头的成本就要低很多。</p>
 <p>不过视觉 SLAM 也有一些缺点，一是受环境光的影响较大，在光线较暗的场景或无纹理的区域无法工作。并且运算负荷也比较大，另外在地图构建的时候还存在累计误差。为了解决这一问题，我们需要设计有回环检验的 SLAM 算法。于是我们选择 ORB3-SLAM 框架。</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221128-openGauss/">openGauss 内容准备</a><a class="next" href="/20221123-tale/">夜里的故事</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221128-openGauss/">openGauss 内容准备</a><a class="next" href="/20221123-tale/">夜里的故事</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
