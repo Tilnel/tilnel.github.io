@@ -7,7 +7,7 @@
 <p>$p_1.u - p_0.u &#x3D; \Delta t_1.u \dfrac{\partial p.u}{\partial t.u} + \Delta t_1.v \dfrac{\partial p.u}{\partial t.v}$</p>
 <p>$p_2.u - p_0.u &#x3D; \Delta t_2.u \dfrac{\partial p.u}{\partial t.u} + \Delta t_2.v \dfrac{\partial p.u}{\partial t.v}$</p>
 <p>故可以写成：</p>
-<h1 id="begin-bmatrix-p-1-u-p-0-u-p-2-u-p-0-u-end-bmatrix"><a href="#begin-bmatrix-p-1-u-p-0-u-p-2-u-p-0-u-end-bmatrix" class="headerlink" title="$$\begin{bmatrix}p_1.u - p_0.u\\p_2.u - p_0.u\end{bmatrix}"></a>$$<br>\begin{bmatrix}<br>p_1.u - p_0.u\\<br>p_2.u - p_0.u<br>\end{bmatrix}</h1><p>\begin{bmatrix}<br>\Delta t_1.u &amp;\Delta t_1.v\\<br>\Delta t_2.u &amp;\Delta t2.v<br>\end{bmatrix}<br>\begin{bmatrix}<br>\dfrac{\partial p.u}{\partial t.u}\\<br>\dfrac{\partial p.u}{\partial t.v}<br>\end{bmatrix}<br>$$<br>2阶方阵中 $\Delta t_1.u$ 可以通过计算 $t_1, t_0$ 的 $u$ 方向差值得到，其余同理；</p>
+<h1 id="begin-bmatrix-p-1-u-p-0-u-p-2-u-p-0-u-end-bmatrix"><a href="#begin-bmatrix-p-1-u-p-0-u-p-2-u-p-0-u-end-bmatrix" class="headerlink" title="$\begin{bmatrix}p_1.u - p_0.u\\p_2.u - p_0.u\end{bmatrix}"></a>$<br>\begin{bmatrix}<br>p_1.u - p_0.u\\<br>p_2.u - p_0.u<br>\end{bmatrix}</h1><p>\begin{bmatrix}<br>\Delta t_1.u &amp;\Delta t_1.v\\<br>\Delta t_2.u &amp;\Delta t2.v<br>\end{bmatrix}<br>\begin{bmatrix}<br>\dfrac{\partial p.u}{\partial t.u}\\<br>\dfrac{\partial p.u}{\partial t.v}<br>\end{bmatrix}<br>$<br>2阶方阵中 $\Delta t_1.u$ 可以通过计算 $t_1, t_0$ 的 $u$ 方向差值得到，其余同理；</p>
 <p>左边可以计算三角形点坐标差得到。</p>
 <p>进而调用 <code>solveLinearSystem2x2</code> 可求得 $\dfrac{\partial p.u}{\partial t.u}$ 和 $\dfrac{\partial p.u}{\partial t.v}$，即$\dfrac{\partial p}{\partial u}$ 和 $\dfrac{\partial p}{\partial v}$ 在 $u$ 方向上的分量。</p>
 <p>$v, w$ 方向同理。</p>
