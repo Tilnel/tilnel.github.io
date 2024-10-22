@@ -6,7 +6,7 @@
   <link href="https://tilnel.github.io/atom.xml" rel="self"/>
   
   <link href="https://tilnel.github.io/"/>
-  <updated>2024-10-22T22:30:15.602Z</updated>
+  <updated>2024-10-22T23:12:52.427Z</updated>
   <id>https://tilnel.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>序</title>
+    <link href="https://tilnel.github.io/20991231-top/"/>
+    <id>https://tilnel.github.io/20991231-top/</id>
+    <published>2099-12-31T15:59:59.000Z</published>
+    <updated>2024-10-22T23:12:52.427Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近来看的人变多了，正好随手调整一下内容。</p><p>人无法对他写下的文字完全忠实。事实上我最近在录入</p><p>2024-10-23 06:42:15</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近来看的人变多了，正好随手调整一下内容。&lt;/p&gt;
+&lt;p&gt;人无法对他写下的文字完全忠实。事实上我最近在录入&lt;/p&gt;
+&lt;p&gt;2024-10-23</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>和 Blue 的聊天记录</title>
@@ -502,31 +529,6 @@
         
         
     <summary type="html">&lt;p&gt; 之前爆出 Linux 上的 sshd 可能有一个 race condition 导致的 RCE。建议更新到 openssh 9.8。于是火速 clone 源码之后直接 make install</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Linux wakeonlan 无法正常开启</title>
-    <link href="https://tilnel.github.io/20240718-linuxwol/"/>
-    <id>https://tilnel.github.io/20240718-linuxwol/</id>
-    <published>2024-07-18T12:52:47.000Z</published>
-    <updated>2024-07-18T12:56:15.528Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nettool -s enp34s0 wol g</span><br></pre></td></tr></table></figure><p>g 就是 granted，d 就是 denied</p><p>这样设置网卡允许wol是一次性的。重启之后，又自动变成禁止。尝试用 update-rc.d 开机自动执行脚本，不知道为什么不行。</p><p>所以按照 ArchWiki 的方式，设置成 systemd 管理的</p><p><a href="https://wiki.archlinux.org/title/Wake-on-LAN">Wake-on-LAN - ArchWiki (archlinux.org)</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/systemd/network/50-wired.link</span><br><span class="line">---</span><br><span class="line">[Match]</span><br><span class="line">MACAddress=aa:bb:cc:dd:ee:ff</span><br><span class="line"></span><br><span class="line">[Link]</span><br><span class="line">NamePolicy=kernel database onboard slot path</span><br><span class="line">MACAddressPolicy=persistent</span><br><span class="line">WakeOnLan=magic</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
