@@ -6,7 +6,7 @@
   <link href="https://tilnel.github.io/atom.xml" rel="self"/>
   
   <link href="https://tilnel.github.io/"/>
-  <updated>2024-10-18T09:27:38.303Z</updated>
+  <updated>2024-10-22T20:18:52.409Z</updated>
   <id>https://tilnel.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://tilnel.github.io/20211129-veil/"/>
+    <id>https://tilnel.github.io/20211129-veil/</id>
+    <published>2024-10-22T20:18:41.539Z</published>
+    <updated>2024-10-22T20:18:52.409Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="ti"><a href="#ti" class="headerlink" title="ti"></a>ti</h2>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;ti&quot;&gt;&lt;a href=&quot;#ti&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>中期考核</title>
@@ -506,31 +530,6 @@
     
     
     <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Windows 快速启动无法被 wol 唤醒</title>
-    <link href="https://tilnel.github.io/20240718-wol/"/>
-    <id>https://tilnel.github.io/20240718-wol/</id>
-    <published>2024-07-18T12:09:36.000Z</published>
-    <updated>2024-07-18T12:11:28.246Z</updated>
-    
-    <content type="html"><![CDATA[<p>Windows 官方文档《 <a href="https://go.smzdm.com/3ecd4f1e758f18ee/ca_aa_yc_163_amx025p4_16293_2621_1641_0">System Power States</a> 》中讲述到，<strong>Windows 系统自身（抛开 BIOS 不谈）是不支持“快速启动”和“关机”状态下的网络唤醒，只支持“睡眠”、“休眠”状态下的网络唤醒</strong>：</p><ul><li><p>睡眠（Sleep），属于 S3 电源状态；</p></li><li><p>快速启动（Fast Startup），属于 S4 电源状态；</p></li><li><p>休眠（Hibernate），属于 S4 电源状态；</p></li><li><p>关机（Soft off），属于 S5 电源状态</p></li><li><p>对于<strong>“快速启动（fast startup, S4）”：</strong>从 Windows 8.1 开始到 Windows 11，“快速启动”作为系统默认的“<strong>关机”方式</strong>，是不支持网络唤醒的，<strong>这也是为什么在 WOL 的教程中会让你关闭“快速启动”</strong>：</p></li></ul><blockquote><p>“快速启动”：快速启动是一种关机类型，它使用休眠文件来加快后续的启动速度，在这种关机状态下，Windows 系统不支持网络唤醒。“快速启动”与“休眠”同属于  S4 电源状态。</p></blockquote><p><img src="619f939c2356a9109.png_e1080.jpg" alt="WOL 网络唤醒避坑指南：常见问题的分析与内容补充"></p><p>“快速启动”属于“<strong>hybrid shutdown（混合关机）</strong>”，是关机的一种类型：</p><p><img src="619fb314b625f7326.png_e1080.jpg" alt="《System Power States》"></p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Windows 官方文档《 &lt;a href=&quot;https://go.smzdm.com/3ecd4f1e758f18ee/ca_aa_yc_163_amx025p4_16293_2621_1641_0&quot;&gt;System Power States&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="Windows" scheme="https://tilnel.github.io/categories/Windows/"/>
     
     
   </entry>
