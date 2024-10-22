@@ -16,12 +16,12 @@
 
 <p>既不运行，也不报错。无论我如何写 .cfg，也没有用。在经过几小时的反复横跳后，我从 mirror 上随便找了一个 6.03，顺利启动了。。。</p>
 <p>为了让每台机器配置的时候带上自己的机器编号（如 ip 配置所需要的），我把 tftp 服务器下的目录结构又改了一下：</p>
-<p><img src="/.assets/images/image-20221028174547322.png" alt="image-20221028174547322"></p>
+<p><img src="image-20221028174547322.png" alt="image-20221028174547322"></p>
 <p>每个 vm-id 目录都是在 build.sh id 运行时自动生成。共用的文件用硬链接（tftp不识别软链接），需要修改的配置文件，用一个变量名把需要修改的地方标注，然后用 <code>sed</code> 替换为与各自的 id 相关的字符串。</p>
 <p>自动安装的 user-data，主要是配置 hostname, username, password, ssh 等。以及安装后需要执行的命令。这里用 <code>echo</code> 创建了 systemd service，以及开机自动执行的脚本。</p>
 <p>开机配置 ip 和 ssh 的公私钥，通过 <code>systemd</code> 执行一个脚本。</p>
 <p>返回机器 id 的 http 服务器，我安装了 <code>nginx</code> 。配置文件在自动安装时用 <code>wget</code> 获取了。</p>
-<p><img src="/.assets/images/image-20221028180406208.png" alt="image-20221028180406208"></p>
+<p><img src="image-20221028180406208.png" alt="image-20221028180406208"></p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221030-DatabaseStorageII/">Database Storage II (CMU Database Systems 2019 Fall)</a><a class="next" href="/20221027-Distrigute_Algorithm_setandlattice/">Distributed Algorithm - Partially ordered set and lattice - and applications in Distributed System</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
