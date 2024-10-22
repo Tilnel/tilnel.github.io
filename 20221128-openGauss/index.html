@@ -43,7 +43,7 @@
 <p>ACID</p>
 <p>单机到分布式，双层的架构</p>
 <p>GTM - CoordinatorNode - DataNode</p>
-<p><img src="/.assets/images/v2-28fa2431148513d3725fec9d2d62e95a_720w.webp" alt="img"></p>
+<p><img src="v2-28fa2431148513d3725fec9d2d62e95a_720w.webp" alt="img"></p>
 <p>(1)GTM(GlobalTransaction Manager,全局事务管理器),负责全局事务号的分发、事务提交时间戳的分发以及全局事务运行状态的登记。对于采用多版本并发控制(Multi-Version Concurrency Control,MVCC)的事务模型,GTM 本质上可以简化为一个递增序列号(或时间戳)生成器,其为集群的所有事务进行了全局的统一排序,以确定快照(Snapshot)内容并由此决定事务可见性。在本文openGauss并发控制中,将进一步详述 GTM的作用。</p>
 <p>(2)CN(CoordinatorNode,协调者节点),负责管理和推进一个具体事务的执行流程,维护和推进事务执行的事务块状态机。</p>
 <p>(3)DN(DataNode,数据节点),负责一个具体事务在某一个数据分片内的所有读写操作。本文主要介绍显式事务和隐式事务执行流程中,CN 和 DN 上事务块状态机的推演,以及单机事务和分布式事务的异同。</p>
