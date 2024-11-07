@@ -97,13 +97,13 @@
   </entry>
   
   <entry>
-    <title>11月4日纸质稿遗失的②。密码是123456</title>
+    <title>11月4日纸质稿遗失的②。密码是88888888</title>
     <link href="https://tilnel.github.io/20241104-disappeared/"/>
     <id>https://tilnel.github.io/20241104-disappeared/</id>
     <published>2024-11-03T16:30:00.000Z</published>
-    <updated>2024-11-07T23:46:31.470Z</updated>
+    <updated>2024-11-07T23:47:45.315Z</updated>
     
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="5bc2a1c5608c725264a981f4dfc75ec2d18c7321103d3040590081b66dc307b4">4630436162ade97ba2718b7d0c4b3b63f33ce92f1dda2f1a42151728f49c31eb0bf10d1d6b89a4d5950dcb4bf840a8b668ebc4bfd783388f5970a5a7e18772152079c009d0a0a19e80c7be1b227c5a6729caa911e3c588faf512382655d1f26c</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="0d294e764122956503f89c311d2568bd54be370c97d5ffbd262052ac5580c2e4">346518f25371ed5bd356f6b975c718b10b447f069f24e3eb1dff358858fbb02e6132f4398a81a590a39cf23c0e7e477e5a10f54bce3d5ba6675fd96e8932c25c9ab0440beb9bfe3e5b2fe134c00fa1f0</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
