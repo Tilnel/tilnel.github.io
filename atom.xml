@@ -97,13 +97,13 @@
   </entry>
   
   <entry>
-    <title>11月4日纸质稿遗失的②。密码是我的</title>
+    <title>11月4日纸质稿遗失的②。密码</title>
     <link href="https://tilnel.github.io/20241104-disappeared/"/>
     <id>https://tilnel.github.io/20241104-disappeared/</id>
     <published>2024-11-03T16:30:00.000Z</published>
-    <updated>2024-11-07T23:27:56.257Z</updated>
+    <updated>2024-11-07T23:30:56.285Z</updated>
     
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="e4291257fc4219216cc569e9fa9baf03ae84445bef6eb4f989f270b01a4701b6">3b3fe238d3bf26cb536274049785633701fb1cb46b971449234f16950c2c9d3b64dd8ed755535f2c45668088bb28b2aa8f3b86c813dd2d1516ee77aad709daaa65684ecd95a3b0a2b8c73b4f1aaa3816be3acbef95fb7326288b33267d052e1a0117481cacdab4985a7538411fbc0b66a84d5e5b6061b9556c477108f8634ba29d935b6fe0558c37e14d1173c05e23a6c43880a44795c14825cceeed91472680117810bb97a23326849229c874ced06f2c3e2c90979624a1c19c79c74dce6989b551303c4f8d11a3ee23757524aca7f0</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="b096fac4193458c50581eec0834d6ebb26073017d5d5ae193d9ea4f84903e7ad">3b3fe238d3bf26cb536274049785633735e1e46851b25c99edd6575774ab6fe6406e6210226934901b5e6862ca74866706d0f5fe3b1f05a1102cb0219bc9b54675e8cb197993c7f6f42cca7dd3e064054d7bafa6e14dd67e0b51e39ae8668e9361a351624ab7bf6da4f2eaa1de985aaebc5f8a81623ef4257234dbcb6792236b32722b6b7cf2ecb2570ed667204c6c5d</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
