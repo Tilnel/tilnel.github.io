@@ -2348,6 +2348,25 @@
     
     
     <entry>
+      <title>在 Nginx 下用 proxy—pass 配置多个 location</title>
+      <link href="/20230225-nginx/"/>
+      <url>/20230225-nginx/</url>
+      
+        <content type="html"><![CDATA[<p> 给出以下 server 配置：</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> s.tilnel.com;</span><br><span class="line">    <span class="section">location</span> /proxy &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>请求 <code>http://s.tilnel.com/proxy/xxx</code> 时，会转发为 <code>http://127.0.0.1:8080/proxy/xxx</code>。这显然不是本意。</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> s.tilnel.com;</span><br><span class="line">    <span class="section">location</span> /proxy/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080/; <span class="comment"># backslash is important here</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> = /proxy &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">302</span> /proxy/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>大功告成。</p><p>但有一点：比如 rslsync 这种毒瘤 Web 控制台自己就会重写 URL。那就别费劲整了。。。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用 mdadm 创建软件 raid</title>
       <link href="/20230224-mdadm-raid0/"/>
       <url>/20230224-mdadm-raid0/</url>

@@ -30,7 +30,7 @@
 <p>针对瓶颈发现问题，然后原理，然后优化</p>
 <p>以国产开源openGauss分布式数据库为研究对象。在前期的了解过程中，观察到其副本一致性协议中，将Log异步复制到各个备机，再由备机重放到 DB 并持久化的过程，若在状态不一致时发生主机切换则违反线性一致性；若保证按序全部应用，则协议效率降低。本研究借鉴 TiKV 对一致性协议的优化，在保持副本一致性的同时，优化 openGauss 数据库的主备同步效率。</p>
 <p>以国产开源openGauss分布式数据库为研究对象。在前期的了解过程中，观察到其副本一致性协议中，将Log异步复制到各个备机，再由备机重放到 DB 并持久化的过程，若在状态不一致时发生主机切换则违反线性一致性；若保证按序全部应用，则协议效率降低。本研究的主题是通过优化 openGauss 数据库的副本一致性协议，在保证一致性的同时，加速主备同步，进而提升事务执行的效率。</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230301-coj/">COJ 后端设计方案（初步）</a><a class="next" href="/20230224-mdadm-raid0/">使用 mdadm 创建软件 raid</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230301-coj/">COJ 后端设计方案（初步）</a><a class="next" href="/20230225-nginx/">在 Nginx 下用 proxy—pass 配置多个 location</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
