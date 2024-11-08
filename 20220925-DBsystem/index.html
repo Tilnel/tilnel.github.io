@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="正经人谁写日记啊"><title>Course Introduction Relational Model (CMU Databases Systems Fall 2019) | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Course Introduction Relational Model (CMU Databases Systems Fall 2019)</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Course Introduction Relational Model (CMU Databases Systems Fall 2019)</h1><div class="post-meta">2022-09-25<span> | </span><span class="category"><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 580</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 3</span><span class="post-meta-item-text"> 分钟</span></span></span></div><a class="disqus-comment-count" href="/20220925-DBsystem/#vcomment"><span class="valine-comment-count" data-xid="/20220925-DBsystem/"></span><span> 条评论</span></a><div class="post-content"><p>TEXTBOOK: Database System Comcepts 7th Edition</p>
+<p>Silberschatz, Korth, &amp; Sudarshan</p>
+<p>Database:</p>
+<ul>
+<li>Organized collextion of inter-related data that models some aspect of the real-world</li>
+</ul>
+<p>E.g. Create a database that models a digital music store to keep track of artists and albums</p>
+<p>Store our database as comma-separated value (CSV) files that we manage in out own code.</p>
+<ul>
+<li>Use a separate file per entity.</li>
+<li>The application has to parse the files each time they want to read &#x2F; update records</li>
+</ul>
+<p>Artist(name, year, country) Album(name, artist ,year)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file</span><br><span class="line">  record = parse(line)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;Ice Cube&quot;</span> == record[<span class="number">0</span>]</span><br><span class="line">      <span class="built_in">print</span> <span class="built_in">int</span>(record(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>Flat files: data integrity</p>
+<ul>
+<li>How do we ensure that the artist is the same for each album entry?</li>
+<li>What if somebody overwrites the album year with an invalid string?</li>
+<li>How do we store that there are multiple artists on an album?<ul>
+<li>array or string?</li>
+</ul>
+</li>
+<li>How do you find a particular record?<ul>
+<li>three lines pretty fast</li>
+<li>a Billion?</li>
+</ul>
+</li>
+<li>What if we now want to create a new application that uses the same database?</li>
+<li>What if two threads try to write to the same file at the same time?<ul>
+<li>first writes something, and second overwrites</li>
+</ul>
+</li>
+<li>What if the machine crashes while our program is updating a record?</li>
+<li>What if we want to replicate the database on multiple machines for high availabiility?</li>
+</ul>
+<p>DBMS is software that allows applications to store and analyze information in a database.</p>
+<p>A general-purpose DBMS is designed to allow the definition, creation, querying, update, and administration of databases.</p>
+<ul>
+<li>reuse</li>
+<li>no reinventing wheels</li>
+</ul>
+<p>There’s no courses bout browsers, but there is course about DB.</p>
+<p>So it’s a kind of special software.</p>
+<p>Early DBMSs</p>
+<ul>
+<li>Database application were difficult to build and maintain.</li>
+<li>Tight coupling between logical and physical layers.</li>
+<li>You have to (roughly) know what queries your app would execute before you deployed the database.</li>
+</ul>
+<p>Ted Cotton: people are wasting time write DBMS again and again.</p>
+<p>Database abstraction to avoid this maintenance:</p>
+<ul>
+<li>Store database in simple data structures</li>
+<li>Access data through high-level language.</li>
+<li>Physical storage left up to implementation.</li>
+</ul>
+<p>Noway software can never produce query.</p>
+<p>Physical storage of data is transparent to applications.</p>
+<p>Data Models</p>
+<ul>
+<li>A data model is collecition of concepts for describing the data in a databasde.</li>
+<li>A schema is a description of a particular  colection of data, using a given data model.</li>
+</ul>
+<p>Data Model</p>
+<ul>
+<li>Relational  &lt;- SQL</li>
+<li>Key&#x2F;Value  &lt;- NoSQL</li>
+<li>Graph</li>
+<li>Document</li>
+<li>Column-family</li>
+<li>Array&#x2F;Matrix  &lt;- Machine Learning</li>
+<li>Hierarchical &lt;- Obsolete &#x2F; Rare</li>
+<li>Network</li>
+</ul>
+<p>Relational Mods</p>
+<ul>
+<li>Structure: The definition of relations and their contents.</li>
+<li>Integrity: Ensure the database’s contents satisfy constraints.</li>
+<li>Manipulation: how to access and modify a database’s contents.</li>
+</ul>
+<p>A relation is unordered set that contain the relation ship of attributes that represent entities</p>
+<p>A tuple is a set of atribute values (also known as its domain) in the relation.</p>
+<ul>
+<li>Values are (normally) atomic &#x2F; scalar.</li>
+<li>The special value NULL is a member of every domain.</li>
+</ul>
+<p>A relation’s primary key uniquely identifies a single typle.</p>
+<p>Some DBMSs automatically create an internal primarykley if you don’t define one.</p>
+<p>A foreign key specifils that an attrebute from one relation has to map to a tyuple in another relation.</p>
+<ul>
+<li>Album -&gt; Multiple Artists</li>
+<li>a separate cross reference table ArtistAlbum(artist_id, album_id), both are foreign keys.</li>
+</ul>
+<p>The relational model is independent of any query language implementation.</p>
+<p>SQL is the <em>de facto</em> standard.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">year</span> <span class="keyword">FROM</span> artists</span><br><span class="line">  <span class="keyword">WHERE</span> name <span class="operator">=</span> &quot;Ice Cuve&quot;;</span><br></pre></td></tr></table></figure>
+
+
+
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20220925-AdvancedSQL/">Advanced SQL (CMU Databases Systems Fall 2019)</a><a class="next" href="/20220922-Distributed_Algorithm_syllabus/">Distributed Algorithm - syllabus</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://czxingchen.github.io/" title="XiaoZhi" target="_blank">XiaoZhi</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://mzy0624.github.io/" title="毛子钰" target="_blank">毛子钰</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisSys/">DisSys</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%81%E9%97%BB/">见闻</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
