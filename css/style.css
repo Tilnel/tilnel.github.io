@@ -491,9 +491,9 @@ div {
   text-align: center;
 }
 #footer span {
-  font-size: 14px;
+  font-size: 1.9em;
 }
-#footer #busuanzi_value_site_pv:before {
+#footer #busuanzi_value_cite_pv:before {
   font-family: "FontAwesome";
   content: "\f024";
   padding-right: 0.3em;
