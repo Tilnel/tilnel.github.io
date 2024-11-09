@@ -16,7 +16,40 @@
 <p>这是一种什么感觉：从同一个班出来，大家各奔东西。一些人去了豪华的大都市，享受上流生活；还有那么几个在底层鬼混。。。我的心理设定就把自己放在了这个低位。如果说这件事有任何值得自豪的，无非是忍受穿孔时的疼痛，以及毫不留情地表达着对于世俗价值观的蔑视。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20231206-dionysus/">酒神精神</a><a class="next" href="/20231130-automata/">一种自动发生学</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
-var lang = 'en';
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
@@ -29,6 +62,7 @@ window.valine = new Valine({
   appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
   appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
   lang: lang,
+  langMode: langMode,
   serverURLs:'',
   placeholder:'Say something',
   avatar:'mm',

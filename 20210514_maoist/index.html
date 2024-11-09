@@ -14,7 +14,40 @@
 <p>阶级斗争在无产阶级专政下继续进行的理论既解释了斯大林时期的失败，也解释了赫鲁晓夫时期的修正主义。斯大林不明白作为社会主义革命天然组成部分的资本主义复辟的可能性，也就是说，社会主义仍然是阶级社会，反革命的政治路线来自于仍保留在上层建筑中的资产阶级（甚至半封建）意识形态。因此，围绕斯大林聚集起来的力量，&#x3D;&#x3D;并不把那些在党内和苏联社会中可能或可能没有采取资产阶级政治路线的人看作是社会主义条件下必然发生的事情&#x3D;&#x3D;，而是简单地把这些个人、团体和思想看作是外国渗透或蓄意叛国的结果。此外，他们没有认识到&#x3D;&#x3D;党本身将是一个有机的路线斗争的战场&#x3D;&#x3D;。这反映了在社会主义条件下的阶级斗争的主导地位，&#x3D;&#x3D;党的领导层往往会存留资产阶级意识形态&#x3D;&#x3D;。这个理论最能解释为什么斯大林选择的继任者赫鲁晓夫也可以是修正主义者，尽管赫鲁晓夫最初很乐意在斯大林时期执行肃反和政治监察政策。这不是因为他是外国特务（如“斯大林主义”会假设的那样），也不是因为他是官僚（如托洛茨基主义会假设的那样），而是因为&#x3D;&#x3D;资产阶级意识形态和由此而来的修正主义总是具有强烈吸引力&#x3D;&#x3D;——特别是对处于党的领导职位上的人。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20210516_weiziquanxue/">未子劝学：为什么要好好学专业课</a><a class="next" href="/20210509_to_read/">想读书</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
-var lang = 'en';
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
@@ -27,6 +60,7 @@ window.valine = new Valine({
   appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
   appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
   lang: lang,
+  langMode: langMode,
   serverURLs:'',
   placeholder:'Say something',
   avatar:'mm',

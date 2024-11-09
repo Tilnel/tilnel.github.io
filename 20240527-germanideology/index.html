@@ -264,7 +264,40 @@
 <p>在恩格斯的“共产主义原理”（１８４７）中指出，无产阶级革命只有在一切先进的资本主义国家同时发动时才可能胜利，因而不可能在一个国家内胜利，这个结论对于垄断前的资本主义时代来说是正确的。在新的历史条件下，在垄断资本主义时期，列宁根据他所发现的帝国主义时代资本主义的经济政治发展不平衡的规律，做出了新的结论：社会主义革命可能首先在几个或者甚至在单独一个国家内获得胜利，不可能同时在一切国家或大多数国家内获得胜利。这个新的结论是在列宁“论欧洲联邦口号”（１９１５） 这篇论文中第一次提出来的。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20240528-psycoInOpposSexComm/">异性交往中的心理学 - 陈昌凯</a><a class="next" href="/20240527-month/">夕拾 第一周</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
-var lang = 'en';
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
@@ -277,6 +310,7 @@ window.valine = new Valine({
   appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
   appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
   lang: lang,
+  langMode: langMode,
   serverURLs:'',
   placeholder:'Say something',
   avatar:'mm',
