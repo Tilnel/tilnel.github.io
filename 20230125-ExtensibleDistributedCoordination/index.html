@@ -12,6 +12,7 @@
 <p>在这篇工作中，我们因此而采用了不同的办法：让协调服务变为可扩展的。因此，我们展示了一个模型，它允许客户端动态地、安全地扩展一个协调服务，通过一小段定制的代码在服务端原子地运行。另外，我们设计了一个沙盒来约束这些扩展不要降低或干碎整个系统的性能。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230224-mdadm-raid0/">使用 mdadm 创建软件 raid</a><a class="next" href="/20230120-summary/">Project 2 客观题杂谈</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
+var lang = 'en';
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
@@ -23,6 +24,7 @@ window.valine = new Valine({
   verify:verify,
   appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
   appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
   serverURLs:'',
   placeholder:'Say something',
   avatar:'mm',

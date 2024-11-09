@@ -108,6 +108,7 @@
 <p>5-2 结合按序到达性质，就保证了 $P_i$ 知道了自己的请求之前的所有请求。（我自己弄了一个两线程的实示例。实际上意思就是，假如双向消息的交付不按物理时间序，是交错的，后发消息的线程在另一个线程取得资源之前，是不会收到全部的回复的。也就保证了互斥。）</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221121-Tetris/">CPL-Tetris</a><a class="next" href="/20221118-RAFT/">RAFT I - MIT 6.824</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
+var lang = 'en';
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
@@ -119,6 +120,7 @@ window.valine = new Valine({
   verify:verify,
   appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
   appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
   serverURLs:'',
   placeholder:'Say something',
   avatar:'mm',
