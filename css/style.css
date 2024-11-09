@@ -493,6 +493,11 @@ div {
 #footer span {
   font-size: 0.9em;
 }
+#footer #busuanzi_value_cite_pv:before {
+  font-family: "FontAwesome";
+  content: "\f024";
+  padding-right: 0.3em;
+}
 
 /* for archive page starts*/
 .post-archive {
