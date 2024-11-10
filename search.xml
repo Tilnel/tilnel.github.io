@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>博客、Hexo、Valine评论头像 备忘</title>
       <link href="/20241110-blog/"/>
       <url>/20241110-blog/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
       
       
     </entry>

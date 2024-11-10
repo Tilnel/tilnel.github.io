@@ -43,14 +43,27 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>博客、Hexo、Valine评论头像 备忘</title>
     <link href="https://tilnel.github.io/20241110-blog/"/>
     <id>https://tilnel.github.io/20241110-blog/</id>
-    <published>2024-11-10T09:07:52.095Z</published>
-    <updated>2024-11-10T09:07:52.095Z</updated>
+    <published>2024-11-10T09:08:35.000Z</published>
+    <updated>2024-11-10T09:09:47.157Z</updated>
+    
+    <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。&lt;/p&gt;
+&lt;p&gt;Valine</summary>
+        
+      
     
     
     
+    <category term="技术" scheme="https://tilnel.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
   </entry>
