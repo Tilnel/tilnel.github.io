@@ -47,9 +47,9 @@
     <link href="https://tilnel.github.io/20241110-blog/"/>
     <id>https://tilnel.github.io/20241110-blog/</id>
     <published>2024-11-10T09:08:35.000Z</published>
-    <updated>2024-11-10T09:15:11.278Z</updated>
+    <updated>2024-11-10T09:56:55.846Z</updated>
     
-    <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下一个邮箱，并且这个邮箱注册了 <a href="https://gravatar.com/">Gravatar</a> 然后设置了头像。一次注册到处使用。</p><p><img src="image-20241110171001041.png" alt="头像"></p><p>砍掉了博客的文章摘要。从 archive 直接进。</p><p>砍掉了文章列表分页，力求原始简单。</p><p>砍掉了回到顶部按钮，总共也不会多长。</p><p>终于知道打开了 jQuery 站内搜索，现在可以搜索关键字了。</p><p>更新了 About 的内容。省略了很多网络社交不需要的东西。</p><p>更新了几个友链，虽然我们并没有交换，就当是博主推荐了。</p><p>更新了访问统计。</p>]]></content>
+    <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下一个邮箱，并且这个邮箱注册了 <a href="https://gravatar.com/">Gravatar</a> 然后设置了头像。一次注册到处使用。</p><img src="image-20241110171001041.png" alt="头像" style="zoom: 67%;"><p>砍掉了博客的文章摘要。从 archive 直接进。</p><p>砍掉了文章列表分页，力求原始简单。</p><p>砍掉了回到顶部按钮，总共也不会多长。</p><p>终于知道打开了 jQuery 站内搜索，现在可以搜索关键字了。</p><p>更新了 About 的内容。省略了很多网络社交不需要的东西。</p><p>更新了几个友链，虽然我们并没有交换，就当是博主推荐了。</p><p>更新了访问统计。</p>]]></content>
     
     
       
