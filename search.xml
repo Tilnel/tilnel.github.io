@@ -27,7 +27,7 @@
       <link href="/20241110-blog/"/>
       <url>/20241110-blog/</url>
       
-        <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下</p>]]></content>
+        <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下一个邮箱，并且这个邮箱注册了 <a href>Gravatar</a></p><p><img src="image-20241110171001041.png" alt="头像"></p>]]></content>
       
       
       <categories>

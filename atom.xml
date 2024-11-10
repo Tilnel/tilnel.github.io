@@ -47,9 +47,9 @@
     <link href="https://tilnel.github.io/20241110-blog/"/>
     <id>https://tilnel.github.io/20241110-blog/</id>
     <published>2024-11-10T09:08:35.000Z</published>
-    <updated>2024-11-10T09:09:47.157Z</updated>
+    <updated>2024-11-10T09:10:24.052Z</updated>
     
-    <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下</p>]]></content>
+    <content type="html"><![CDATA[<p>Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。</p><p>Valine 评论是可以设置头像的，前提是留下一个邮箱，并且这个邮箱注册了 <a href>Gravatar</a></p><p><img src="image-20241110171001041.png" alt="头像"></p>]]></content>
     
     
       
@@ -57,7 +57,8 @@
         
         
     <summary type="html">&lt;p&gt;Valine 评论区在移动设备上可能刷不出来。应该是浏览器的问题。&lt;/p&gt;
-&lt;p&gt;Valine</summary>
+&lt;p&gt;Valine 评论是可以设置头像的，前提是留下一个邮箱，并且这个邮箱注册了 &lt;a href&gt;Gravatar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
         
       
     
