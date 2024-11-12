@@ -1,6 +1,5 @@
-const url = 'https://s.tilnel.com/activity'; // 将这个 URL 替换为你实际的 URL
+const url = 'https://s.tilnel.com/activity'; 
 
-// 使用 fetch API 获取文字并显示在网页中
 fetch(url, { mode: 'cors' })
     .then(response => {
       if (!response.ok) {
@@ -10,7 +9,7 @@ fetch(url, { mode: 'cors' })
     })
     .then(html => {
       document.getElementById('html-container').innerHTML =
-          html; // 将 HTML 内容插入到 html-container 中
+          html;
     })
     .catch(error => {
       console.error('Failed to fetch HTML:', error);
