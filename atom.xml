@@ -47,16 +47,17 @@
     <link href="https://tilnel.github.io/20241112-working/"/>
     <id>https://tilnel.github.io/20241112-working/</id>
     <published>2024-11-12T01:30:58.000Z</published>
-    <updated>2024-11-12T01:41:20.043Z</updated>
+    <updated>2024-11-12T01:42:57.402Z</updated>
     
-    <content type="html"><![CDATA[<p>今日目标是把之前的代码改完，并且至少支持 C&#x2F;S 类型的程序。</p>]]></content>
+    <content type="html"><![CDATA[<p>今日目标是把之前的代码改完，并且至少支持 C&#x2F;S 类型的程序。</p><p> 第一步是重新梳理一下，auto 模式和 manual 模式分别到底发生了什么，进而能够在代码中对两种写法进行分开、</p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;今日目标是把之前的代码改完，并且至少支持 C&amp;#x2F;S</summary>
+    <summary type="html">&lt;p&gt;今日目标是把之前的代码改完，并且至少支持 C&amp;#x2F;S 类型的程序。&lt;/p&gt;
+&lt;p&gt; 第一步是重新梳理一下，auto 模式和 manual</summary>
         
       
     
