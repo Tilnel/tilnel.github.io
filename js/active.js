@@ -1,26 +1,19 @@
-const url = 'https://tilnel.com:8088/active'; 
+const url = 'http://tilnel.com:8088/text'; // 将这个 URL 替换为你实际的 URL
 
-// 从 URL 获取文字信息
-async function fetchText() {
-    try {
-        const response = await fetch(url);
-        
-        // 检查响应是否成功
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
-        // 获取文字内容
-        const text = await response.text();
-        
-        // 输出文字信息
-        console.log('Fetched text:', text);
-        
-    } catch (error) {
-        console.error('Failed to fetch text:', error);
-    }
-}
-
-// 调用函数
-fetchText();
-
+// 使用 fetch API 获取文字并显示在网页中
+fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => {
+      document.getElementById('text-container').innerText =
+          text; // 将文字内容插入到 text-container 中
+    })
+    .catch(error => {
+      console.error('Failed to fetch text:', error);
+      document.getElementById('text-container').innerText =
+          'Failed to load text.';
+    });
