@@ -8,12 +8,12 @@ fetch(url)
       }
       return response.text();
     })
-    .then(text => {
-      document.getElementById('text-container').innerText =
-          text; // 将文字内容插入到 text-container 中
+    .then(html => {
+      document.getElementById('html-container').innerHTML =
+          html; // 将 HTML 内容插入到 html-container 中
     })
     .catch(error => {
-      console.error('Failed to fetch text:', error);
-      document.getElementById('text-container').innerText =
-          'Failed to load text.';
+      console.error('Failed to fetch HTML:', error);
+      document.getElementById('html-container').innerText =
+          'Failed to load content.';
     });
