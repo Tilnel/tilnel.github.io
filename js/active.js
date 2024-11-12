@@ -1,4 +1,4 @@
-const url = 'http://tilnel.com:8088/text'; // 将这个 URL 替换为你实际的 URL
+const url = 'https://s.tilnel.com/activity'; // 将这个 URL 替换为你实际的 URL
 
 // 使用 fetch API 获取文字并显示在网页中
 fetch(url)
