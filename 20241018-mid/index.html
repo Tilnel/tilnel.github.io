@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>中期考核 | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">中期考核</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我们坐在一起，一整晚，一动不动</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">中期考核</h1><div class="post-meta">2024-10-18<span> | </span><span class="updated">2024-10-18</span><span> | </span><span class="category"><a href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 3.4k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 11</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20241018-mid/#vcomment"><span class="valine-comment-count" data-xid="/20241018-mid/"></span><span> Comment</span></a><div class="post-content"><p>  在拖延了半个月之后，我终于开工了。也没什么别的原因，主要是因为时间只剩下8个小时了。</p>
+<p><strong>个人陈述（学术创新类）</strong></p>
+<p><strong>（一）</strong> <strong>科研选题的前沿性和独创性</strong>（结合科技前沿和学科领域发展动态，论述选题的研究意义、拟解决的关键科学问题；附相应参考文献）</p>
+<p>科研选题：针对分布式系统实际代码实现的模型检测方法。</p>
+<p>分布式系统运行的过程中往往会出现大量不确定性的因素。在多个节点上运行的进程协同工作，会产生通信、调度上的偶然变化，构造分布式系统的时候往往无法穷举这些情况，程序的异常处理不完善导致系统潜在的崩溃可能。并且在错误发生之后，引发问题的执行路径通常难以还原，导致最终定位不到问题所在。</p>
+<p>面对分布式系统的验证问题，通常的做法是模型检测。模型检测是一种形式化的自动化验证技术，用于验证系统模型是否满足要求。通过将系统的行为建模为一系列状态转换，检查系统的所有可能状态，以确保系统在任何可能状态下都满足特定的属性或规范。如果某个状态违反了规范，模型检测将报错，并提供有关不符合规范的状态的信息，帮助系统设计人员识别和解决问题。</p>
+<p>传统的模型检测是使用 TLA+ 等形式化验证工具对分布式算法进行建模。然而，面对真实而复杂的系统实现，强行使用形式化的方法进行建模则面临着困难的约简：约简过多，则与实际系统偏差越远；约简越少，则状态转换的分支越多，容易出现“状态爆炸”的问题。</p>
+<p>然而，为真实代码构建模型是非常困难的。传统的模型检测通常假设系统设计是在较高层次完成的，并抽象掉了实际实现的许多细节。要验证实际代码需要从代码中重建这些抽象描述，这一过程涉及大量的手工操作，阻碍了模型检测在实际系统中的应用。此外，人为在手动抽象过程中犯的错误可能会导致误报或漏报。这些错误可能发生在模型构建阶段，也可能在系统演变过程中发生。</p>
+<p>为了规避传统模型检测中的模型“漂移”问题，前人也提出了各类方法。CMC 是一个 stateful 的模型检测工具，能够对 C 代码直接进行模型检测，被用于检测网络协议和文件系统（FiSC）。但是 CMC 的检测需要侵入式地修改源程序代码，以使得被测程序运行在 CMC 的地址空间内。同时，它要求被测系统具有明显的事件驱动的特征，并不能适应更广泛的实际系统实现的需求。</p>
+<p>MaceMC 使用深度优先搜索和随机行走来检测网络协议实现中的 liveness 问题，但是被测系统限定于使用 Mace 语言生成的 C&#x2F;C++ 实现。Yabandeh 等人基于 MaceMC 提出的 CrystalBall 中增加了 Steering Execution，在运行的过程中分析未来的错误状态，并通过控制执行来避免走入错误状态。</p>
+<p>Junfeng Yang 等人提出了 eXplode 对文件系统进行穷举式的测试。后提出了一个在 Windows 上对实现级的分布式系统进行透明的模型检验的 MoDist 框架。但是由于商业原因，并未开源其实现。</p>
+<p>为了弥补这些方法的不足，我的科研选题是提出一种通过系统调用截停的方式，不侵入性地修改代码而操纵实际实现的分布式系统执行，以达到对分布式系统的实际代码实现进行模型检测的方法。由于直接从系统调用层面进行操作，因而不需要进行代码插桩操作，并且对于被测系统的要求较为宽松，适应面更广。</p>
+<p><strong>（二）</strong> <strong>代表性成果的理论、方法或技术创新亮点</strong>（重点阐述研究生个人取得的代表性成果的创新性、引用和评价情况、国内外获奖情况等）</p>
+<p>对于选题“针对分布式系统实际代码实现的模型检测方法”，个人已经开发了一套测试框架，代码量约 4000 行。目前应用于 Raft 共识协议的 C 语言实现的验证上，已经证明了其有效性。</p>
+<p>1、工作简介</p>
+<p>计算机中的一个进程所作的事情无非是两件事情，一部分是图灵机一样的确定性的计算，另一部分是通过系统调用与外部世界进行交互。系统调用是单一进程的全部不确定性的来源。对于分布式系统而言，我们将其由于进程间执行的先后顺序造成的执行结果差异称为调度不确定性；将进程受系统调用结果变化造成的差异称为环境不确定性。由此，我们只需要控制好分布式系统运行中的每一个不确定性，并且对于状态做相应的管理，就可以任意地探索分布式系统执行的状态空间。</p>
+<p>因而，为了实现这样的框架，我们必须解决的问题有：</p>
+<ul>
+<li>如何完整地保存进程状态，并且在需要的时候将保存下来的状态恢复成运行中的进程？进而实现整个分布式系统的状态快照保存恢复。</li>
+<li>如何自由地控制分布式系统中的各个不确定性，以实现对执行路径的完全操控？</li>
+<li>如何从分布式系统的实际实现中提取其需要的不确定性，如由随机数&#x2F;时钟超时决定的不同操作？</li>
+<li>如何对分布式系统的状态合法性进行检查？</li>
+</ul>
+<p>2、技术路线</p>
+<p>Linux 中的 ptrace 系统调用提供了对于进程的观察以及控制执行的能力。</p>
+<p>对于测试框架，我的最终实现形式类似于 gdb。一个控制进程（下称 tracer）和多个被控进程（下称 tracee）组成。tracee 为设定好的被测程序，由 tracer 创建新进程并启动被测程序，根据分布式系统的需要，传递节点信息等各自不同的参数。通过 ptrace 系统调用对多个 tracee 进程施加控制，统一运行到有意义的用户代码之前， 作为分布式系统的初始状态。</p>
+<p>此时，每一个进程都停止在一个系统调用之前。由 tracer 将所有进程的状态储存下来，包括每个进程的：1、内存地址映射；2、可读写的内存地址空间（堆、栈、数据段等） 3、文件描述符表。并保存所有的环境状态，包括每个进程占用的文件和网络中滞留的数据包等。</p>
+<p>以此作为初始状态，分别对每一个 tracee，通过 ptrace 控制其执行一个系统调用后保存新的状态，并恢复旧的状态，最后将初始状态标记为“已遍历”并存盘。对新产生的状态继续执行上述操作。如此即可搜索分布式系统运行中产生的所有可能状态。</p>
+<p>新的状态产生后，通过 dwarf 调试信息，提取其进程地址空间中与分布式系统状态相关的变量的值，验证分布式系统的状态断言是否满足，并报告给测试人员。</p>
+<p>3、验证分析</p>
+<p>框架最初成型时，我将测试框架应用于 Bakery 锁算法的经典错误写法，能检测出其中错误，验证了技术路线的可行性。经过完善后，将其用于某开源的 C 语言 Raft 共识协议实现，复现了已有工作检测到的多项 bug，证明这项技术对于实际生产应用中的系统是具有检测能力的。</p>
+<p><strong>（三）</strong> <strong>其它研究成果</strong>（除上述学术创新成果外，简要阐述研究生个人在面向国家需求的自主原创系统研发，或产生实际经济社会效益的应用转化方面作出的贡献，如无可不填）</p>
+<p>研究生期间，本人持续对 C 语言程序设计课程的在线评测系统进行开发与维护，支撑了 2023 与 2024 级技术科学实验班与软件学院新生的教学工作（每级约800人）。同时保障了 2024 年软件学院保研夏令营、2024年南京大学计算机学科体验专题营的机试系统正常运行。</p>
+<h3 id="1-2-ptrace-简介"><a href="#1-2-ptrace-简介" class="headerlink" title="1.2 ptrace 简介"></a>1.2 ptrace 简介</h3><p>ptrace 是 Linux 内核提供的进程跟踪的系统调用，它允许父进程检查和替换子进程的内核镜像（包括寄存器）的值。</p>
+<p>子进程调用 ptrace(PTRACE_TRACEME) 且父进程调用 ptrace(PTRACE_SEIZE) 后，父进程即可对子进程的执行进行控制：在子进程进行系统调用前或系统调用返回后停止；获取子进程系统调用信息；读写子进程内存和寄存器的值；模拟系统调用执行等。通过几种基本操作，能够实现程序的确定性执行。</p>
+<h2 id="2-系统设计"><a href="#2-系统设计" class="headerlink" title="2 系统设计"></a>2 系统设计</h2><p>单线程程序从一个特定的状态出发，其状态转换分为两类。一是进行系统调用，对操作系统对象进行创建、删除、读写；二是系统调用以外的运算逻辑。对于第二类而言，其代表的状态转换是确定性的，即给定进程状态和代码，执行代码达到的目标状态是唯一确定的；对于第一类而言，则状态转换还要取决于操作系统对象的状态。比如同样执行 read() 系统调用，如果文件的内容正同时被其他进程改变，则产生的结果不确定。</p>
+<p>在多线程程序以及分布式系统中，由于其由多个独立执行的程序组成，因而其执行路径还受到各执行流之间的调度的影响。 </p>
+<p>因此，为了对分布式系统进行模型检验，首先需要穷尽系统调用的可能结果；同时穷尽系统所有节点的各操作执行的先后顺序。</p>
+<h3 id="2-1-整体框架"><a href="#2-1-整体框架" class="headerlink" title="2.1 整体框架"></a>2.1 整体框架</h3><p>对于 n 个节点的分布式系统，我们用 n + 1 个进程进行整个系统的操控执行：</p>
+<ul>
+<li>一个 tracer 进程，用以控制所有的进程</li>
+<li>n 个 tracee 节点进程，即受控运行的分布式系统</li>
+</ul>
+<p>以 3 个节点为例，对于一个运行中的分布式系统，其状态为 $S&#x3D; &lt;Env, Node1, Node2, Node3&gt;$，其中：</p>
+<p>$Node$N$ 代表节点的状态，包括节点的堆、栈、寄存器。</p>
+<p>$Env$ 代表节点之外的环境，包括被节点使用的操作系统对象的状态，如网络消息，系统时间，打开的文件等。</p>
+<p>在分布式系统执行的过程中，能够引发状态不确定性的分歧操作包括：消息的先后顺序，消息是否到达，以及消息等待是否超时。</p>
+<p>tracer 进程每次从一个状态 $S$ 开始控制其中一个节点，运行到下一个分歧操作前，即：消息发送前，消息接受前，以及请求系统时间之前。之后对于每一个节点，都由 Choose() 函数根据运行时的上下文决定下一个分歧操作可能的状态转换集合$Transfer$，且对于每一种可能性 $t \in Transfer$，生成如下的“转换边”：  $(Node$N.t(), &lt;Env, Node1, Node2, Node3)&gt;)$ </p>
+<p>它表示，状态的下一次转换从状态四元组出发，通过 $Node$N$ 执行 $p()$ 所代表的转换可达到下一个状态：</p>
+<p>$(Node$1.p(), &lt;Env, Node1, Node2, Node3)&gt;)\rightarrow &lt;Env’, Node1’, Node2, Node3)&gt;$ </p>
+<p>$(Node$2.p(), &lt;Env, Node1, Node2, Node3)&gt;)\rightarrow &lt;Env’’, Node1, Node2’, Node3)&gt;$ </p>
+<p>$(Node$3.p(), &lt;Env, Node1, Node2, Node3)&gt;)\rightarrow &lt;Env’’’, Node1, Node2, Node3’)&gt;$ </p>
+<p>总的工作流程是：设置一个状态转换边的队列；每一次从中取出一条边并执行达到新的状态，在新的状态的基础上，生成新的转换边并入队。</p>
+<p>对于 DMCK 的实现有两种，一种是 stateful，即通过保存和恢复节点的内存、寄存器等信息来重现状态；一种是 stateless，通过重放记录的执行路径来重现状态。我们的工作主要是 stateful 的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">S = &lt;Env, Node1, Node2, Node3&gt;</span><br><span class="line"></span><br><span class="line">q.add(Edge(skip, S))</span><br><span class="line">while (!q.empty()) &#123;</span><br><span class="line">    edge = q.deque()</span><br><span class="line">    S&#x27; = edge.transfer()</span><br><span class="line">    forall (node in Nodes) &#123;</span><br><span class="line">        // 只根据 node 的状态就可以算出当前执行上下文了</span><br><span class="line">    	Transfers = Choose(node)    </span><br><span class="line">    	forall (t in Transfers) &#123;</span><br><span class="line">    		q.add(Edge(t, S&#x27;))</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def transfer(edge) &#123;</span><br><span class="line">	S = edge.getState()</span><br><span class="line">	t = edge.getTransfer()</span><br><span class="line">	node = t.getNode()</span><br><span class="line">	nodeState = S.getNodeState(node)</span><br><span class="line">	nodeState.t()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>- </p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20241023-chat/">和 Blue 的聊天记录</a><a class="next" href="/20241018-wasureta/">应该忘记什么</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://czxingchen.github.io/" title="XiaoZhi" target="_blank">XiaoZhi</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://mzy0624.github.io/" title="毛子钰" target="_blank">毛子钰</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisSys/">DisSys</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%91%B8%E9%B1%BC/">摸鱼</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%81%E9%97%BB/">见闻</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E6%96%87%E7%8C%AE/">读文献</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script></div></body></html>

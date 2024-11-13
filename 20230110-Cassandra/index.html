@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>Cassandra - A Decentralized Structured Storage System | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Cassandra - A Decentralized Structured Storage System</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我们坐在一起，一整晚，一动不动</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Cassandra - A Decentralized Structured Storage System</h1><div class="post-meta">2023-01-10<span> | </span><span class="updated">2023-01-10</span><span> | </span><span class="category"><a href="/categories/DisAlg/">DisAlg</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2.6k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 9</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20230110-Cassandra/#vcomment"><span class="valine-comment-count" data-xid="/20230110-Cassandra/"></span><span> Comment</span></a><div class="post-content"><p>Abstract</p>
+<p>Cassandra 是一个分布式存储系统，用来管理一大堆结构化的数据，在许多服务器上。</p>
+<p>高科用，没有单点错。</p>
+<p>用于在上百个节点的基础设施上运行。可能分数据中心。</p>
+<p>这个规模下，大小错误频发。Cassandra 在许多方面重组了数据库并且借鉴了许多实现和策略，但是并没有支持完整的关系数据模型。但是它提供了一个简单的数据模型来支持动态控制数据布局和格式。Cassandra 被设计用于廉价的家用（商用）硬件，在保持高写吞吐量时并未牺牲读取的效率。</p>
+<p>Intro</p>
+<p>Facebook 作为世界上最大的社交网络平台，用户和内容的增长速度非常快。急需高性能、可靠、高效、可扩展的平台。并且软件系统需要将服务器的 failure 作为一种常态而不是意外来处理（容错）。因此开发了 Cassandra。</p>
+<p>Cass 融合了很多有名的技术来提高可扩展性和可用性。最初是为了满足  Inbox Search 服务的存储需求而开发的。在 Facebook 中，这项特性允许用户搜索他们的 Facebook Inbox。这意味着需要处理非常高的写吞吐，大约十亿每天的写操作，并且随着用户数量的增加还会增长。用户从地理上分布的数据中心请求数据，因此降低搜索延迟的核心是跨数据中心的数据复制。从2008年的1亿用户到2010年的2.5亿，Cassandra展现出了它的潜力，现在成为了Facebook许多产品服务的存储服务后端。</p>
+<p>2 相关工作，影响了设计的</p>
+<p>3 数据模型</p>
+<p>4 客户端 api</p>
+<p>5 系统设计和分布式算法</p>
+<p>6 开发中的经验，优化</p>
+<p>7 future work</p>
+<p>DATA MODEL</p>
+<p>表：分布式的多维 map，由 key 来 索引。</p>
+<p>value 是一个高度结构化的数据对象</p>
+<p>表的行key是一个没有大小限制的字符串，一般16-36bytes。</p>
+<p>在每个副本中，对一行的操作是原子化的，无论修改了多少列。</p>
+<p>列可以分组到一起放到集合中，叫做“列族”。</p>
+<p>Cass 内置了两种 column families，Simple 和 Super column families。应用程序可以在其中指定列的排序依据为时间或名称，用来适应服务的需要。</p>
+<p>API </p>
+<p>insert(table, key, rowMutation)</p>
+<p>get(table, key, columnName)</p>
+<p>delete(table, key, columnName)</p>
+<p>columnName 可以是列族中的列，可以是列族，可以是 Super cf，或 SCF 中的列。</p>
+<p>SYSTEM ARCHITECTURE</p>
+<p>分片 Partitioning</p>
+<p>因为需要很高的扩展性，为了动态地将数据分布到节点上，使用一致性hash。一致性hash是基于一个数环来实现的。所有的hash值都对同一个上限去取模，系统中的每一个节点也将被分配一个随机值，并放到数环当中。每一个数据对象通过其key 的hash找到其在环中的位置，顺着环向下走的第一个数据节点即是该对象存放的节点。因此，每一个数据节点都只需要负责其前一个数据节点到它自身之间的hash值即可。</p>
+<p>一致性hash 的好处就是节点的增减只会影响它的直接邻居，其他节点都不受影响。不过这样的设计也有一些问题。第一是为节点分配随机值，可能导致数据和负载分配的不均匀。另外这样的算法考虑不到节点之间的性能差距。一般来说有两个方法能够解决这一问题：一是让一个节点在环上存在多个位置，二是分析环中的负载信息，让轻负载节点在环中移动，以缓解负载重的节点压力。Cassandra 采取了第二种。</p>
+<p>复制 Replication</p>
+<p>Cassandra 使用了复制技术以实现高可用和持久化。每个数据对象都有 N 个副本。</p>
+<p>每一个对象的key k都会在hash环中被分配给一个协调者节点。它管理着数据的复制。除了在本地存储一份外，协调者节点还会将它复制到环中的 N-1 个节点。Cassandra 为客户端提供了数据复制方法的多种选择。“Rack Unaware”, “Rack Aware”(within datacenter) and “Datacenter Aware”. 备份的选择是基于应用选择的策略。如果选择 RU，那么复制到协调者的 N-1 个后继节点上；对于RA和DA策略会稍微复杂一点。Cass 会在节点之间选举一个 leader（Zookeeper）。所有的节点在加入集群的时候，都会与 leader 通讯来获取它们的备份范围。并且 leader 会保证不会有节点负责超过 N-1 个范围。所有的节点所负责的范围的 metadata 会在每一个节点中以 Zookeeper 的容错机制进行本地缓存，以便从错误中恢复的节点也能找回自己负责的部分。此外，对于每一个被负责的范围，都有一个负责节点的“优先列表”。</p>
+<p>每一个节点都有关于其他所有节点的知识。Cassandra 通过放松多竖排的要求，为可能出现的节点故障和网络分区问题提供了持久的保证。有时可能一整个数据中心会因为不可抗力失效。Cassandra 保证每一个数据行都会有跨数据中心的副本。在上文中的“优先列表”即是为了保证其中的节点是分布在多个数据中心的。这些数据中心之间有高速网络连接。跨中心的复制允许我们既能处理数据中心的错误，又能够避免服务中断。</p>
+<p>Membership。这是什么？成员资格</p>
+<p>通过 Gossip 来维护整个集群的成员状态。Gossip 大概是每一个成员每个 T 秒进行一次 heartbeat，选择其他的 member 发送它的优先列表，然后将自己的列表和收到的列表合并起来。</p>
+<p>错误检测。Cassandra 采用了一个 $\Phi$ Accrual Failure Detector (SRDS 2004) 的修改版本。错误检测常见的模式就是采用心跳，如果心跳超时则认为对端失败。在实际使用中，由于网络延迟的抖动会导致误判。系统使用如下方法提高基于心跳探测方式的准确率：</p>
+<p>1、假设心跳消息符合某一概率模型。例如定期发送的心跳消息在有网络延迟的情况下，接受到消息的 interval 符合正态分布。</p>
+<p>2、利用接受到的历史数据（滑动窗口），对概率模型参数进行极大似然估计。</p>
+<p>3、利用估计得出的参数代入模型，计算在当前时刻接收到心跳消息的概率。</p>
+<p>得到概率后，并不直接得出对端是否存活的判断，而向上层应用返回这一概率，由应用自行解释。</p>
+<p>在 Cassandra 中，认为指数分布是较好的近似。</p>
+<p>Bootstrapping 初次启动</p>
+<p>当一个节点初次启动的时候，它会随机选择一个 token来产生节点在环上的位置。为了容错，映射会被持久化到磁盘本地以及 Zookeeper 中。然后 token 的信息会通过 Gossip 在集群当中传播。这就使得每一个节点都能够将请求路由到正确的节点上。在 bootstrap 程序中，如果节点想要加入一个集群，会先读取一个包含了几个通讯点的配置文件，我们把最初的这几个通讯点叫做集群的“种子”。种子也可以通过 Zookeeper 这样的服务来确定。</p>
+<p>Scaling the Cluster 集群扩容</p>
+<p>当一个新节点加入到系统当中时，它会按照优先缓和负载较重的节点的目的来分配 token，这会导致新的节点将原来节点的负责范围划走一半。Cassandra 的 bootstrap 算法是通过操作员通过系统中其他的节点的命令行或者是 Cassandra 的 web 管理面板来启动的。原节点通过 kernel-kernel 的复制技术将数据流转移到新的节点上。</p>
+<p>Local Persistence 本地持久性 （落盘？）</p>
+<p>Cassandra 是依赖于本地文件系统来完成数据持久化的。数据在磁盘上是以可自我恢复的形式存储的。一般的数据写入操作都包含了对 commit log 的写入来保证持久性和可恢复性，以及对内存中数据结构的更新。对内存数据结构的写入仅在 commit log 写入成功后进行。每台机器上都有一块专门的硬盘用于 commit log 的存储，以最大化磁盘的吞吐量。当磁盘中数据结构的规模达到一定的上限，它就会将自己写入到磁盘当中。所有的磁盘写入都是顺序的，并且写入时会产生一个索引以实现基于行 key 的高效查询。这些索引也会随着数据文件一同被持久化。长期运行中，可能会产生许多的索引文件，因此在后台运行了一个合并进程来合并文件。这一过程与 Bigtable 系统中的压缩非常类似。</p>
+<p>一个正常的读操作首先查询内存中的数据结构，然后才会查询磁盘中的文件。文件查询的顺序是从新到旧。当一个磁盘查询发生的时候，我们可能会在磁盘中的很多个文件中查找同一个 key。为了减少不必要的查询，每一个文件都又一个 bloom filter。它聚合了文件中存在的所有 key 值，存放在数据文件当中，且在内存中也有一份。这个过滤器会在查询到来时首先判断被查询的 key 在给定的文件中是否存在。</p>
+<p>实际体验</p>
+<p>深刻的一课：如果没有理解一个新特性产生的影响，就不要添加它。</p>
+<p>许多麻烦的场景其实不是因节点失效或网络分区问题而产生的。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230112-mpp-mul/">并行矩阵乘法</a><a class="next" href="/20230109-onthenatureofprogress/">On the Nature of Progress (OPODIS'11)</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://czxingchen.github.io/" title="XiaoZhi" target="_blank">XiaoZhi</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://mzy0624.github.io/" title="毛子钰" target="_blank">毛子钰</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisSys/">DisSys</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%91%B8%E9%B1%BC/">摸鱼</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%81%E9%97%BB/">见闻</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E6%96%87%E7%8C%AE/">读文献</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script></div></body></html>

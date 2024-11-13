@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>openGauss 内容准备 | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">openGauss 内容准备</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我们坐在一起，一整晚，一动不动</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">openGauss 内容准备</h1><div class="post-meta">2022-11-28<span> | </span><span class="updated">2024-10-23</span><span> | </span><span class="category"><a href="/categories/Distributed-System/">Distributed System</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 6.1k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 22</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20221128-openGauss/#vcomment"><span class="valine-comment-count" data-xid="/20221128-openGauss/"></span><span> Comment</span></a><div class="post-content"><p>45分钟，分块</p>
+<p>1、DB 概述 1-2 min</p>
+<p>2、初次上手 2-3 min 加吐槽</p>
+<p>3、项目基本结构介绍 3-4 min</p>
+<p>4、分布式事务有的没的各种技术 20min</p>
+<p>5、事务以外的各种技术 10min</p>
+<p>6、社区，前景。2min</p>
+<h2 id="DB-概述"><a href="#DB-概述" class="headerlink" title="DB 概述"></a>DB 概述</h2><p>openGauss是关系型数据库，采用客户端&#x2F;服务器，单进程多线程架构；支持单机和一主多备部署方式，同时支持备机可读、双机高可用等特性。</p>
+<p>支持标准SQL，到2003，有2011的大部分核心特性和一些可选。</p>
+<p>开发接口 ODBC， JDBC</p>
+<p>混合存储引擎支持</p>
+<p>openGauss数据库支持行存储引擎、列存储引擎和内存存储引擎等。行存分为“inplace update” 和 “append update”两种模式，前者通过单独的回滚段（undo log）来保留元组的前像以解决读写冲突，可以更自然的支持数据更新；后者将更新记录混杂在数据记录中，通过新旧版本的形式来支持数据更新，对于旧版本需要定期做vacuum操作来支持磁盘空间的回收。列存支持数据快速分析，更适合OLAP（Online Analytical Processing，联机分析处理）业务。内存引擎支持实时数据处理，对有极致性能要求的业务提供支撑。</p>
+<p>事务支持 ACID。显式 - 隐式。主要关注事务。</p>
+<p>显式有：</p>
+<p>Start transaction</p>
+<p>Commit</p>
+<p>Rollback</p>
+<p>Set transaction 设置隔离级别，读写模式，可推迟模式</p>
+<p>对基于 ARM 架构的 鲲鹏 有一些特殊优化</p>
+<p>从华为的 Gauss db T (oltp) 开源而来，支持单节点，一主多备，不支持集群。</p>
+<p>基于postgresql v8</p>
+<h2 id="初次上手："><a href="#初次上手：" class="headerlink" title="初次上手："></a>初次上手：</h2><p>东西很多。基础设施比较充分。编译可以有3种，release | debug | memcheck</p>
+<p>随 src 附带一些测试。还有一些脚本工具，包括 ctags 的自动生成。</p>
+<p>代码的移植性比较垃圾，在 CentOS 7.9 上用 gcc 7.3.0 编译。</p>
+<p>必须用官方发布的第三方依赖库和相同发行版。否则问题超级多。</p>
+<p>不知道 -enable-thread-safety 是什么实际作用。总之检查一直不过，只好 disable。</p>
+<p>总之，更加现代的 bear、clangd 还没能成功整好…也许只能靠 IDE。</p>
+<p>规模是140万行 c。</p>
+<p>第一次dive in这种规模的项目…</p>
+<h2 id="基本结构："><a href="#基本结构：" class="headerlink" title="基本结构："></a>基本结构：</h2><p>公共组件</p>
+<ul>
+<li>系统表，数据库初始化，多线程架构，线程池，内存管理，监控，模拟信号。</li>
+</ul>
+<p>系统表 - 元数据。有数据库列表，拥有者，字符集 之类</p>
+<p>初始化 - initdb + openGauss 进程</p>
+<p>多线程 - 由 PostgreSQL 多进程改造而来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Postmaster 监听，监控子线程。</span><br><span class="line">Startup 数据库启动。REDO日志。如果不是备机就退出。如果是备机就运行，REDO收到的新日志。</span><br><span class="line">Bgwriter 周期性写回 bufferpool</span><br><span class="line">Checkpointer 完成数据库周期性检查和执行检查点命令</span><br><span class="line">Walwriter 周期性持久化（数据库）日志缓冲区</span><br><span class="line">Stat 运行信息。统计。供优化分析和垃圾清理。</span><br><span class="line">Sysloger 写运行日志</span><br><span class="line">VacuumLaunch 通知Postmaster启动垃圾清理线程；平衡多个清理的负载</span><br><span class="line">Vacuumworker 垃圾清理线程</span><br><span class="line">Arch 日志归档。把在线日志拷到归档目录</span><br><span class="line">Postgres 服务线程。每个客户端连接对应一个服务线程。接收客户端操作请求，完成操作</span><br></pre></td></tr></table></figure>
+
+<p>​		</p>
+<p>当然我们的重点是事务</p>
+<p><img src="v2-458771758040c3e831461f1f20ae3b5e_720w.webp" alt="img"></p>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>存储的子模块。</p>
+<p>ACID</p>
+<p>单机到分布式，双层的架构</p>
+<p>GTM - CoordinatorNode - DataNode</p>
+<p><img src="v2-28fa2431148513d3725fec9d2d62e95a_720w.webp" alt="img"></p>
+<p>(1)GTM(GlobalTransaction Manager,全局事务管理器),负责全局事务号的分发、事务提交时间戳的分发以及全局事务运行状态的登记。对于采用多版本并发控制(Multi-Version Concurrency Control,MVCC)的事务模型,GTM 本质上可以简化为一个递增序列号(或时间戳)生成器,其为集群的所有事务进行了全局的统一排序,以确定快照(Snapshot)内容并由此决定事务可见性。在本文openGauss并发控制中,将进一步详述 GTM的作用。</p>
+<p>(2)CN(CoordinatorNode,协调者节点),负责管理和推进一个具体事务的执行流程,维护和推进事务执行的事务块状态机。</p>
+<p>(3)DN(DataNode,数据节点),负责一个具体事务在某一个数据分片内的所有读写操作。本文主要介绍显式事务和隐式事务执行流程中,CN 和 DN 上事务块状态机的推演,以及单机事务和分布式事务的异同。</p>
+<p>主要代码在 src&#x2F;gausskernel&#x2F;storage&#x2F;access&#x2F;transam</p>
+<p>事务管理器 xact.cpp 8000行。xact &#x3D; transaction</p>
+<p>​        two-phase.cpp 3800 Lines. 二阶段提交</p>
+<p>日志 xlog.cpp 19000 行 transaction log</p>
+<p>clog.cpp  transaction-commit log</p>
+<p>csnlog.cpp: tracking commit sequence numbers and in-progress subtransactions</p>
+<p>线程管理 procarray.cpp </p>
+<p>MVCC 多版本并发控制</p>
+<p>锁管理 写并发控制。isolation</p>
+<p>首先是 transaction，执行的全貌。显式隐式，子事务，执行时的并发控制</p>
+<h3 id="（一）事务状态机"><a href="#（一）事务状态机" class="headerlink" title="（一）事务状态机"></a>（一）事务状态机</h3><p>openGauss将事务系统分为上层（事务块TBlockState）以及底层（TransState）两个层次。</p>
+<p>通过分层的设计，在处理上层业务时可以屏蔽具体细节，实现灵活支持客户端各类事务执行语句（BEGIN&#x2F;START TRANSACTION&#x2F;COMMIT&#x2F;ROLLBACK&#x2F;END）。</p>
+<p>（1） 事务块TBlockState：客户端query的状态，用于提高用户操作数据的灵活性，用事务块的形式支持在一个事务中执行多条query语句。</p>
+<p>（2） 底层事务TransState：内核端视角，记录了整个事务当前处于的具体状态。</p>
+<p>首先是显式事务块，也就是由 BEGIN &#x2F; START TRANSACTION 开启的事务。</p>
+<p><img src="v2-42c47056ee587dad7f667d586a0213fc_720w.webp" alt="img"></p>
+<p>在无异常情形下，一个事务块的状态机如图2所示按照默认（TBLOCK_DEFAULT）-&gt;已开始（TBLOCK_STARTED）-&gt;事务块开启（TBLOCK_BEGIN）-&gt;事务块运行中（TBLOCK_INPROGRESS）-&gt;事务块结束（TBLOCK_END）-&gt;默认（TBLOCK_DEFAULT）循环。剩余的状态机是在上述正常场景下的各个状态点的异常处理分支。</p>
+<p>（1） 在进入事务块运行中（TBLOCK_INPROGRESS）之前出错，因为事务还没有开启，直接报错并回滚，清理资源回到默认（TBLOCK_DEFAULT）状态。</p>
+<p>（2） 在事务块运行中（TBLOCK_INPROGRESS）出错分为2种情形。事务执行失败：事务块运行中（TBLOCK_INPROGRESS）-&gt;回滚（TBLOCK_ABORT）-&gt;回滚结束（TBLOCK_ABORT_END）-&gt;默认（TBLOCK_DEFAULT）；用户手动回滚执行成功的事务：事务块运行中（TBLOCK_INPROGRESS）-&gt;回滚等待（TBLOCK_ABORT_PENDING）-&gt;默认（TBLOCK_DEFAULT）。</p>
+<p>（3） 在用户执行COMMIT语句时出错：事务块结束（TBLOCK_END）-&gt;默认（TBLOCK_DEFAULT）。由图2可以看出，事务开始后离开默认（TBLOCK_DEFAULT）状态，事务完全结束后回到默认（TBLOCK_DEFAULT）状态。</p>
+<p>（4） openGauss同时还支持隐式事务块，当客户端执行单条SQL语句时可以自动提交，其状态机相对比较简单：按照默认（TBLOCK_DEFAULT）-&gt;已开始（TBLOCK_STARTED）-&gt;默认（TBLOCK_DEFAULT）循环。</p>
+<p>子事务块 TBLOCK SUBxxx。基本就和事务块类似。。</p>
+<p>TransState 也是类似的，只是是从事务真正执行的视角去看的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> TABLE1;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>BEGIN, 开启事务块。</p>
+<p>SELECT，开启一个底层事务执行该语句。</p>
+<p>END 提交退出底层事务，结束事务块</p>
+<p>几个函数，in tcop&#x2F;postgres.cpp 这个文件是 traffic cop 的主模块。</p>
+<p>BEGIN;</p>
+<p><code>exec_simple_query</code> 处理 begin 命令。</p>
+<p>然后，它调用 <code>start_xact_command</code> 开始命令</p>
+<ul>
+<li>调用 <code>StartTransactionCommand</code> ，从 TBLOCK_DEFAULT 开始，</li>
+<li>先调用（底层）<code>StartTransaction</code> ，于是 TRANS_START。</li>
+<li>完成内存，缓冲区，锁初始化。</li>
+<li>TRANS_INPROGRESS</li>
+<li>返回，设为 TBLOCK_STARTED</li>
+</ul>
+<p><code>PortalRun</code> 处理 BEGIN 语句，最后在 BeginTransactionBlock 里 TBLOCK_BEGIN.</p>
+<p><code>finish_xact_command</code> 结束命令。调用 CommitTransactinCommand 设置 TBLOCK_INPROGESS。等待读取下一条命令。</p>
+<p>SELECT;</p>
+<p>exec_simple_query</p>
+<p>start_xact_command，此时是 INPROGRESS，已经在事务块内部，直接返回不改变任何状态。</p>
+<p>PortalRun 执行。ExecutorRun，根据执行计划，最优路径查询。</p>
+<p>finish_xact_command 结束 query 命令。调用 CommitTransactionCommand，而事务块仍为 TBLOCK_INPROGRESS。不改变任何状态</p>
+<p>END;</p>
+<p>exec_simple_query</p>
+<p>start_xact_command 不改变</p>
+<p>PortalRun -&gt; processUtility -&gt; EndTransactionBlock，set TBLOCK_END</p>
+<p>finish_xact_command -&gt; CommitTransactionCommand，当前为 TBLOCK_END，继续调用CommitTransaction提交事务，设置底层状态为 TRANS_COMMIT，并且清理事务资源。最后 TRANS_DEFAULT。返回，上层事务块状态为 TBLOCK_DEFAULT。事务块结束。</p>
+<h3 id="（二）事务ID分配-and-CLOG-x2F-CSNLOG"><a href="#（二）事务ID分配-and-CLOG-x2F-CSNLOG" class="headerlink" title="（二）事务ID分配 and CLOG&#x2F;CSNLOG"></a>（二）事务ID分配 and CLOG&#x2F;CSNLOG</h3><p>1 xid</p>
+<p>transaction id ,  xid uint64 单调增。写在 HeapTupleHeader 的两个位置 xmin 代表插入的 xid, xmax 代表删除或修改的xid。</p>
+<p>为节省空间，在 Page 上写 xid_base， 在 tuple 写 32 位 offset。</p>
+<p>(溢出有调节)</p>
+<p>只有写事务有 xid。“懒分配”。否则用太快。</p>
+<p>子事务用到xid时，如果父务还没分配，则先分配父。确保子 &gt; 父。（越晚越大）。</p>
+<p>2 log，维护映射关系</p>
+<p>CLOG: xid -&gt; commit log</p>
+<p>CSNLOG: xid -&gt; CommitSeqNo log</p>
+<p>内存资源有限，长事务可能存在，所以内存会放不下。因此要写盘。写了盘就要记下哪条是哪个事务…</p>
+<blockquote>
+<p>CLOG以及CSNLOG分别维护事务ID-&gt;CommitLog以及事务ID-&gt;CommitSeqNoLog的映射关系。由于内存的资源有限，并且系统中可能会有长事务存在，内存中可能无法存放所有的映射关系，此时需要将这些映射写盘成物理文件，所以产生了CLOG（XID-&gt;CommitLog Map）、CSNLOG（XID-&gt;CommitSeqNoLog Map）文件。CSNLOG以及CLOG均采用了SLRU（simple least recently used，简单最近最少使用）机制来实现文件的读取及刷盘操作。</p>
+</blockquote>
+<p>CLOG，xid 到提交状态</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> CLOG_XID_STATUS_IN_PROGRESS 0x00  表示事务未开始或还在运行中（故障场景可能是crash）</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOG_XID_STATUS_COMMITTED 0x01 表示该事务已经提交</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOG_XID_STATUS_ABORTED 0x02 表示该事务已经回滚</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOG_XID_STATUS_SUB_COMMITTED 0x03 表示子事务已经提交而父事务状态未知</span></span><br></pre></td></tr></table></figure>
+
+<p> CSNLOG用于记录事务提交的序列号。openGauss为每个事务id分配8个字节uint64的CSN号，所以一个8k<strong>B</strong>页面能保存1k个事务的CSN号。CSNLOG达到一定大小后会分块，每个CSNLOG文件块的大小为256kB。同xid号类似，CSN号预留了几个特殊的号。CSNLOG定义代码如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> COMMITSEQNO_INPROGRESS UINT64CONST(0x0) 表示该事务还未提交或回滚</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> COMMITSEQNO_ABORTED UINT64CONST(0x1) 表示该事务已经回滚</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> COMMITSEQNO_FROZEN UINT64CONST(0x2) 表示该事务已提交，且对任何快照可见</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> COMMITSEQNO_FIRST_NORMAL UINT64CONST(0x3) 事务正常的CSN号起始值</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> COMMITSEQNO_COMMIT_INPROGRESS (UINT64CONST(1) &lt;&lt; 62) 事务正在提交中</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="（三）MVCC-可见性判断机制"><a href="#（三）MVCC-可见性判断机制" class="headerlink" title="（三）MVCC 可见性判断机制"></a>（三）MVCC 可见性判断机制</h3><p>MVCC：</p>
+<p>openGauss行存储表支持多版本元组机制，即为同一条记录保留多个历史版本的物理元组以解决对同一条记录的读、写并发冲突（读事务和写事务工作在不同版本的物理元组上）。</p>
+<p>astore存储格式为追加写优化设计，其多版本元组产生和存储方式如图5所示。当一个更新操作将v0版本元组更新为v1版本元组之后，如果v0版本元组所在页面仍然有空闲空间，则直接在该页面内插入更新后的v1版本元组，并将v0版本的元组指针指向v1版本的元组指针。在这个过程中，新版本元组以追加写的方式和被更新的老版本元组混合存放，这样可以减少更新操作的I&#x2F;O开销。然而，需要指出的是，由于新、老版本元组是混合存放的，因此在清理老版本元组时需要的清理开销会比较大。因此，astore存储格式比较适合频繁插入、少量更新的业务场景。</p>
+<p><img src="v2-847adb1622283c44e87b474f942bab7e_720w.webp" alt="img"></p>
+<p>多版本并发控制来维护一致性。扫描数据的时候，每个事务看到的只是拿到快照当时的数据，而不是最新的数据。这样就避免看到并发事务的更新导致不一致了。读写就互相不阻塞，两个锁不冲突。</p>
+<p>CSN 机制</p>
+<p><img src="v2-85f56ddab9dfecbe315fcae1e291df6a_720w.webp" alt="img"></p>
+<p>每个非只读事务在运行过程中会取得一个xid号，在事务提交时会推进CSN，同时会将当前CSN与事务的xid映射关系保存起来（CSNLOG）。图5-12中，实心竖线标识取snapshot（快照）时刻，会获取最新提交CSN（3）的下一个值4。TX1、TX3、TX5已经提交，对应的CSN号分别是1、2、3。TX2、TX4、TX6正在运行，TX7、TX8是未来还未开启的事务。对于当前snapshot而言，严格小于CSN号4的事务提交结果均可见；其余事务提交结果在获取快照时刻还未提交，不可见。</p>
+<p><img src="v2-069ad49a3f3c496a19ea55d64283ceab_720w.webp" alt="img"></p>
+<p>（1） xid大于等于snapshot.xmax时，该事务id不可见。</p>
+<p>（2） xid比snapshot.xmin小时，说明该事务id在本次事务启动以前已经结束，需要去CLOG查询事务的提交状态，并在元组头上设置相应的标记位。</p>
+<p>（3） xid处于snapshot.xmin和snapshot.xmax之间时，需要从CSN-XID映射中读取事务结束的CSN；如果CSN有值且比snapshot.csn小，表示该事务可见，否则不可见。</p>
+<p>提交流程</p>
+<p><img src="https://pic1.zhimg.com/80/v2-2d4109a47c4b4d75be8e9bc9bc9f639c_720w.webp" alt="img"></p>
+<p>（1） 设置CSN-XID映射commit-in-progress标记。</p>
+<p>（2） 原子更新NextCommitSeqNo值。</p>
+<p>（3） 生成redo日志，写CLOG，写CSNLOG。</p>
+<p>（4） 更新PGPROC将对应的事务信息从PGPROC中移除，xid设置为InvalidTransactionId、xmin设置为InvalidTransactionId等。</p>
+<p>多版本快照</p>
+<p>事务结束，快照记录到 环形缓冲区队列内存。别的线程获取快照就不用持有共享锁了，二是原子操作获取最新快照并加引用计数。拷贝完再减。引用计数为0时就可以释放。</p>
+<p>比如我事务结束了。我放进去。只要没有新的版本，就可以留着。这个时候引用了，计数 + 1。然后我又更新，因为引用计数在，所以刷不掉这一项。</p>
+<h3 id="锁机制"><a href="#锁机制" class="headerlink" title="锁机制"></a>锁机制</h3><p>自旋锁（spinlock）、轻量级锁（LWLock，light weight lock）和常规锁（或基于这3种锁的进一步封装）。</p>
+<p>spin用于加锁时间短的场合。编码保证无死锁。尽量用 CAS。</p>
+<p>LWLock轻量锁： 原子操作 + 等待队列 + 信号量。</p>
+<ul>
+<li>两种，共享锁与排他锁</li>
+</ul>
+<p>共享锁可供多个进程；排他锁是独占。</p>
+<p>轻量级锁使线程睡眠阻塞。用于内部临界区操作比较长的场合。</p>
+<p>加锁和解锁可能跨越函数。编码保证不产生死锁。openGauss 提供了检测机制。</p>
+<p>LWLockReleaseAll 事务中出错，会把持有的所有锁全部回滚释放。</p>
+<p>常规锁：哈希表实现。用于业务访问的数据库对象加锁。</p>
+<p>有等待队列，并提供死锁检测。检测到死锁是，选择一个事务回滚。</p>
+<p>提供了8个锁级别分别用于不同的语句并发：1级锁一般用于SELECT查询操作；3级锁一般用于基本的INSERT、UPDATE、DELETE操作；4级锁用于VACUUM、analyze等操作；8级锁一般用于各类DDL语句，具体宏定义及命名代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> AccessShareLock 1  <span class="comment">/* SELECT语句 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RowShareLock 2     <span class="comment">/* SELECT FOR UPDATE/FOR SHARE语句 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> RowExclusiveLock 3 <span class="comment">/* INSERT, UPDATE, DELETE语句 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ShareUpdateExclusiveLock  \</span></span><br><span class="line"><span class="meta">    4 <span class="comment">/* VACUUM (non-FULL),ANALYZE, CREATE INDEX CONCURRENTLY语句 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ShareLock 5 <span class="comment">/* CREATE INDEX (WITHOUT CONCURRENTLY)语句 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ShareRowExclusiveLock                \</span></span><br><span class="line"><span class="meta">    6 <span class="comment">/* 类似于独占模式, 但是允许ROW SHARE模式并发 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ExclusiveLock                  \</span></span><br><span class="line"><span class="meta">    7 <span class="comment">/* 阻塞ROW SHARE，如SELECT...FOR UPDATE语句 */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> AccessExclusiveLock              \</span></span><br><span class="line"><span class="meta">    8 <span class="comment">/* ALTER TABLE, DROP TABLE, VACUUM FULL, LOCK TABLE语句 */</span></span></span><br></pre></td></tr></table></figure>
+
+<p><img src="v2-5570aadf455dc9f6168b77ae0137041e_720w.webp" alt="img"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LOCKTAG</span> &#123;</span></span><br><span class="line">    uint32 locktag_field1;      <span class="comment">/* 32比特位*/</span></span><br><span class="line">    uint32 locktag_field2;      <span class="comment">/* 32比特位*/</span></span><br><span class="line">    uint32 locktag_field3;      <span class="comment">/* 32比特位*/</span></span><br><span class="line">    uint32 locktag_field4;      <span class="comment">/* 32比特位*/</span></span><br><span class="line">    uint16 locktag_field5;      <span class="comment">/* 32比特位*/</span></span><br><span class="line">    uint8 locktag_type;          <span class="comment">/* 详情见枚举类LockTagType*/</span></span><br><span class="line">    uint8 locktag_lockmethodid; <span class="comment">/* 锁方法类型*/</span></span><br><span class="line">&#125; LOCKTAG;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> <span class="title">LockTagType</span> &#123;</span></span><br><span class="line">    LOCKTAG_RELATION, <span class="comment">/* 表关系*/</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_RELATION的ID信息为所属库的OID+表OID；如果库的OID为0表示此表是共享表，其中OID为openGauss内核通用对象标识符 */</span></span><br><span class="line">    LOCKTAG_RELATION_EXTEND, <span class="comment">/* 扩展表的优先权*/</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_RELATION_EXTEND的ID信息 */</span></span><br><span class="line">    LOCKTAG_PARTITION,          <span class="comment">/* 分区*/</span></span><br><span class="line">    LOCKTAG_PARTITION_SEQUENCE, <span class="comment">/* 分区序列*/</span></span><br><span class="line">    LOCKTAG_PAGE,               <span class="comment">/* 表中的页*/</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_PAGE的ID信息为RELATION信息+BlockNumber（页面号）*/</span></span><br><span class="line">    LOCKTAG_TUPLE, <span class="comment">/* 物理元组*/</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_TUPLE的ID信息为PAGE信息+OffsetNumber（页面上的偏移量） */</span></span><br><span class="line">    LOCKTAG_TRANSACTION, <span class="comment">/* 事务ID (为了等待相应的事务结束) */</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_TRANSACTION的ID信息为事务ID号 */</span></span><br><span class="line">    LOCKTAG_VIRTUALTRANSACTION, <span class="comment">/* 虚拟事务ID */</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_VIRTUALTRANSACTION的ID信息为它的虚拟事务ID号 */</span></span><br><span class="line">    LOCKTAG_OBJECT, <span class="comment">/* 非表关系的数据库对象 */</span></span><br><span class="line">    <span class="comment">/* LOCKTAG_OBJECT的ID信息为数据OID+类OID+对象OID+子ID */</span></span><br><span class="line">    LOCKTAG_CSTORE_FREESPACE, <span class="comment">/* 列存储空闲空间 */</span></span><br><span class="line">    LOCKTAG_USERLOCK, <span class="comment">/* 预留给用户锁的锁对象 */</span></span><br><span class="line">    LOCKTAG_ADVISORY, <span class="comment">/* 用户顾问锁 */</span></span><br><span class="line">    LOCK_EVENT_NUM</span><br><span class="line">&#125; LockTagType;</span><br></pre></td></tr></table></figure>
+
+<p>5个field 逐级标识被上锁的对象。type 为类型，比如 table, tuple, transaction.  很多很多。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LOCK</span> &#123;</span></span><br><span class="line">    <span class="comment">/* 哈希键 */</span></span><br><span class="line">    LOCKTAG tag; <span class="comment">/* 锁对象的唯一标识 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 数据 */</span></span><br><span class="line">    LOCKMASK grantMask;           <span class="comment">/* 已经获取锁对象的位掩码 */</span></span><br><span class="line">    LOCKMASK waitMask;            <span class="comment">/* 等待锁对象的位掩码 */</span></span><br><span class="line">    SHM_QUEUE procLocks;          <span class="comment">/* 与锁关联的PROCLOCK对象链表 */</span></span><br><span class="line">    PROC_QUEUE waitProcs;         <span class="comment">/* 等待锁的PGPROC对象链表 */</span></span><br><span class="line">    <span class="type">int</span> requested[MAX_LOCKMODES]; <span class="comment">/* 请求锁的计数 */</span></span><br><span class="line">    <span class="type">int</span> nRequested;               <span class="comment">/* requested数组总数 */</span></span><br><span class="line">    <span class="type">int</span> granted[MAX_LOCKMODES];   <span class="comment">/* 已获取锁的计数 */</span></span><br><span class="line">    <span class="type">int</span> nGranted;                 <span class="comment">/* granted数组总数 */</span></span><br><span class="line">&#125; LOCK;</span><br></pre></td></tr></table></figure>
+
+<p>常规锁LOCK结构，tag是常规锁对象的唯一标识，procLocks是将该锁所有的持有、等待线程串联起来的结构体指针。</p>
+<p>死锁检测</p>
+<p>LWLock 有独立监控线程。watchdog + 时间戳。请求进入时记录时间，wait 的默认 timeout 为 5s。如果超过了，就触发真正的死锁检测。避免性能浪费。实际的检测就是根据锁的依赖关系进行线程之间的有向无环图判定。治愈死锁就是从环里调一个线程退出。</p>
+<p>常规锁 冲突时设置定时器，再唤起进行死锁检测。</p>
+<p>事务隔离级别</p>
+<p>在openGauss中,隔离级别的实现基于 MVCC和快照机制,因此这种隔离方式被称为 快 照 隔 离 (Snapshot Isolation,SI)。目 前,openGauss 支 持 读 已 提 交 (Read Committed)和可重复读(Repeatable Read)这两种隔离级别。两者实现上的差别在于在一个事务中获取快照的次数。</p>
+<p>如果采用读已提交的隔离级别,那么在一个事务块中每条语句的执行开始阶段,都会去获取一次最新的快照,从而可以看到那些在本事务块开始以后、在前面语句执行过程中提交的并发事务的效果。如果采用可重复读的隔离级别,那么在一个事务块中,只会在第一条语句的执行开始阶段,获取一次快照,后面执行的所有语句都会采用这个快照,整个事务块中的所有语句均不会看到该快照之后提交的并发事务的效果。</p>
+<p>这三个事务的并发执行顺序可能交错。SELECT - INSERT - SELECT - INSERT - SELECT</p>
+<p>考虑 T3事务三条查询的返回结果。如果采用“读已提交”的隔离级别,那么在第一条查询开始时,首次获取快照,T1和T2均没有提交,因此它们都在快照中,查询结果不会包含它们插入的新记录;在第二条查询开始时,第二次获取快照,T1已经提交,在第二条查询语句的快照中,只有T2,因此可以查询到 T1插入的记录 v1;同理,在第三条查询开始时,第三次获取快照,T1和 T2均已经提交,它们都不在第三条语句的快照中,因此可以查询到它们插入的记录v1和v2。</p>
+<p>另一方面,如果采用可重复读的隔离级别,对于 T3中的三条查询语句,均会采用第一条语句执行开始时的快照,而 T1和 T2均不在该快照中,因此在该隔离级别下,T3的三条查询语句均不会返回v1和v2。</p>
+<h2 id="然后是持久化和故障恢复"><a href="#然后是持久化和故障恢复" class="headerlink" title="然后是持久化和故障恢复"></a>然后是持久化和故障恢复</h2><p>WAL 日志 (write ahead log，预写日志)</p>
+<p>行存储持久化和检查点。</p>
+<p>如果数据库系统在事务提交之后、异步写入磁盘的脏页写入磁盘之前发生宕机，那么需要在数据库再次启动之后，首先把那些宕机之前还没有来得及写入磁盘的脏页上的修改所对应的日志进行回放，使得这些脏页可以恢复到宕机之前的内容。</p>
+<p>基于如上原理，可以得出数据库持久化的一个关键是：在宕机重启的时候，通过某种机制确定从WAL的哪个LSN开始进行恢复；可以保证在该LSN之前的那些日志，它们涉及的数据页面修改已经在宕机之前完成写入磁盘。这个恢复起始的LSN，即是数据库的检查点。</p>
+<p>脏页通过 bgwriter 和 pagewriter（作为唯一消费者） 写入磁盘。采用无锁的全局脏页队列数组记录。</p>
+<p>pagewriter 实际写入磁盘（其实是缓存！）。Checkpointer 线程来 fsync （确保持久化）并推进 LSN。</p>
+<p>故障恢复，从 checkpoint 开始回放 log。日志有多种类型，回放逻辑由各自的资源管理器实现。</p>
+<p>当数据库发生宕机重启之后需要从检查点位置开始回放之后所有的日志。不同类型的日志的回放逻辑由对应的资源管理器来实现。</p>
+<p>当用户业务压力较大时会同时有很多业务线程并发执行事务和日志记录的插入，单位时间内产生的日志量是非常大的。对此openGauss采用多种回放线程组来进行日志的并行回放，各个回放线程组之间采用高效的流水线工作方式，各个回放线程组内采用多线程并行的工作方式，以便保证日志的回放速率不会明显低于日志产生的速率。</p>
+<h2 id="最后是主备同步"><a href="#最后是主备同步" class="headerlink" title="最后是主备同步"></a>最后是主备同步</h2><p>日志复制。备机就回放。</p>
+<p>walsender（主）walreceiver（备）</p>
+<p>主机修改产生日志后，事务commit前需要同步日志到备机。采用Quorum一致性复制协议。多数备机完成日志同步即提交。这个过程中作为事务提交参考的是同步备，其他备机是异步备，作为冗余备份。</p>
+<p>故障切换 failover：只有备机发生，主机异常了。</p>
+<p>计划内切换 switchover： 主机降备，备机 failover。</p>
+<p>leader 负责将自己的日志复制到其他节点，并维持心跳 </p>
+<p>follower 复制接受来自leader的日志，心跳超时时转换为candidate，给其 他candidate投票 </p>
+<p>Pre-Candidate Candidate 发起新任期投票，收集来自其他节点的投票 </p>
+<p>passive 复制接受来自leader的日志 </p>
+<p>logger 复制接受来自leader的日志，给其他candidate投票</p>
+<p>preVote优化：  为防止网络断连导致节点频繁发起选主请求，term持续增加  在Follower变为Candidate前加入pre-candidate状态，发起term不变的 预选举流程，成功后才将term++发起正式选主流程 Lease优化：  Leader与多数派断连主动降备，防止事实双主  在lease时间内不响应term更高的选主消息</p>
+<p>复制流程</p>
+<p>Client：日志复制线程</p>
+<p>调接口，写 Buffer。每次写分配 idx。完事一致之后会有一个异步线程通知它已经多数派承认了，日志已提交。</p>
+<p>进复制队列，工作线程会组包 + 压缩之类，传输到备机</p>
+<p>备机收到后，会通过回放接口通知到数据库内核日志模块，去把日志replay一下。</p>
+<p>日志采用全异步进行发送，不采用一问一答同步方式，提高系统整体吞吐量 Leader发送完一批log之后，直接更新next index，下次发送从这个点持续发送，不等follower响应回来； Follower等落盘线程写完一批log之后，将最新的落盘match_index发送给leader，持续反馈最新的落盘index； Leader通过这个来更新各节点的最新match_index，推进commit_index；</p>
+<p>（多数派把一个Log落盘之后，一个事务就可以commit了）</p>
+<p>总结：</p>
+<p>一个备份级联，备到备是未来的方向。这是社区自己说的</p>
+<p>一个是整体性能很强。AI 优化和多线程优化很猛。到处都是异步。</p>
+<p>社区很活跃。</p>
+<p>这次讲解也只是一点。以单机事务为主。分布事务讲得比较笼统。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221204-parallel/">分布式与并行算法 - 实验</a><a class="next" href="/20221124-AI/">AI 课程报告草稿</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://czxingchen.github.io/" title="XiaoZhi" target="_blank">XiaoZhi</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://mzy0624.github.io/" title="毛子钰" target="_blank">毛子钰</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisSys/">DisSys</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%91%B8%E9%B1%BC/">摸鱼</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%81%E9%97%BB/">见闻</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E6%96%87%E7%8C%AE/">读文献</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script></div></body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>毕业设计开题 | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">毕业设计开题</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我们坐在一起，一整晚，一动不动</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">毕业设计开题</h1><div class="post-meta">2023-02-25<span> | </span><span class="updated">2023-10-23</span><span> | </span><span class="category"><a href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2.1k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 7</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20230225-bishe/#vcomment"><span class="valine-comment-count" data-xid="/20230225-bishe/"></span><span> Comment</span></a><div class="post-content"><p>研究背景 + 意义，附参考文献 &gt; 600</p>
+<p>中国计算机学会数据库专委会在《“十四五”数据库发展趋势与挑战报告》中指出分布式数据库是未来数据库系统发展的重要方向。据 IDC 调研，超过 90% 的企业认可分布式数据库的部署效果。分布式数据库以其高性能、高可用、高扩展、高弹性为其主要优势。</p>
+<p>openGauss 是国内热门的开源分布式数据库项目，脱胎于华为的 GaussDB 数据库，相比其他开源数据库而言，提供了面向多核架构的并发控制技术，针对了当前多核 NUMA 架构的趋势，可结合硬件优化提升系统整体性能。同时作为一个高可用分布式数据库，支持主备同步、异步、级联的部署模式，提供基于 Paxos 分布式一致性协议的日志复制和选主框架[1]。在开发过程中，引入许多成熟的技术，做到了极致性能、高可靠性、高安全性。在中国数据库排行中，长期位于前3。</p>
+<p>在单机性能方面，openGauss 已经做了诸多优化，如 CBO 查询优化、LLVM 查询动态编译执行，以及各种基于 NUMA 硬件架构的优化。但作为分布式高可用数据库，往往为了副本一致性，增加了通讯开销与等待时间，使得跨节点的性能较为低下。本研究基于 openGauss 现有架构，围绕其高可用分布式一致性协议，对其实现方法、执行流程中的各环节进行考察，在保持副本一致性的同时，通过协议、架构的优化降低其开销。</p>
+<p>国产数据库作为基础软件，产业化道路时间短，基础薄弱，尚未实现市场收益与自身投入的良性循环；同时受制于国际厂商垄断：Oracle 形成的事实上的垄断。且作为数据库产品，用户对其产品成熟度、品牌影响力与信心更加敏感，因为数据的可靠性是用户最看重的。阿里的 OceanBase 在内部被采用，到 TPCC 测试登顶也是一个漫长的过程。因此，对分布式数据库的研究，切合了当下国产基础软件研发的需要。</p>
+<p>国内外研究现状 &gt; 800</p>
+<p>国产原生分布式数据库中，由阿里自主从0开始研发的 OceanBase 是领导者，在 TPCC 和 TPCH 测试上都刷新了世界纪录，并且已经在商用领域得到广泛使用。其基于 Paxos 协议实现高可用三地三中心五副本容灾，同时支持高扩展与 HTAP 混合负载。PingCAP 自主设计研发的开源分布式关系型数据库 TiDB 则坚持开源作为创新引擎，通过全球社区协作开发，为企业级用户提供不断迭代和演进的产品服务。腾讯云 TDSQL 历史较久，对内服务微信支付、腾讯会议、音乐等业务。其提供事务型、云原生、分析型多种产品架构，在国家级别政务民生、金融核心系统上支撑关键业务，支持了第七次全国人口普查全面电子化。其技术创新领先，在11个权威期刊发布论文；同时持续回馈开源社区，多位腾讯工程师凭借对 MySQL 8.0 版本的贡献荣获 MySQL 社区开源贡献大奖。</p>
+<p>在分布式一致性协议方面，openGauss 自身提出了 DCF 分布式一致性框架，基于 Paxos 算法，实现数据同步强一致。其算法结合了 Raft 的主机选举方法，同时灵活地增加了 Logger 角色，只进行日志复制；另外实现了单级级联备，主备间也可以以异步方式进行同步，降低了对主机的压力。但级联备机只能从备机同步，意味着如果备机需要全量 build，级联备也必须重新全量 build，无论其副本是否与主机一致。同时不支持多级级联。</p>
+<p>国内其他的分布式数据库中，以 TiKV 为例，基于 Raft 算法实现了线性一致性的分布式系统。客户端将请求发送给 Leader，Leader 再通过 Raft 将请求复制到主备机的 Log，最终 Commit。各 TiKV 自行应用 Log 到 DB，其状态不能同时一致，若此时发生主机切换，有可能违反线性一致性；若依次全部应用，则无法并发操作状态机，性能较差。于是 TiKV 社区提出了两种优化 ReadIndex 与 LeaseRead， 在保证线性一致性的同时，大幅提升了系统性能。</p>
+<p>国际主流的开源分布式数据库中，以 MariaDB Galera Cluster 为例，它采用多主同步复制，既保持了整个集群的数据一致性，也允许在集群的所有节点上并行执行事务，提高读写性能。但传统同步复制通常采用两阶段提交（2PC）或分布式锁实现，随着节点数量增加，事务冲突和死锁概率增加。为解决这一问题，Galera 的同步复制采用了组通信、写集、数据库状态机、事务重排序等技术，称之为“虚拟同步复制”，使其性能目标得以实现。</p>
+<p>主要研究或解决的问题和拟采用的方法</p>
+<p>主要研究：openGauss 分布式一致性协议的事务、备份性能分析及调优。</p>
+<p>拟采用的方法：</p>
+<p>性能度量方面，通过 perf 对函数执行时间进行分析；监视主备机的各项性能负载；编写测试，对固定 workload 计算时间开销。</p>
+<p>协议优化方面，尝试对日志同步实现 ReadIndex 优化，甚至 LeaseRead 优化；同时实现多级联备机特性。保证仍满足线性一致性。</p>
+<p>工作进度计划 （每2周）</p>
+<p>1、实验环境搭建，阅读项目文档及代码</p>
+<p>2、考察分布式一致性框架，梳理完整协议工作流程</p>
+<p>3、确定测试的数据库工作负载，形成测试代码</p>
+<p>4、对数据库进行初步调整，并测试，形成初步优化方向</p>
+<p>5、根据优化方向，调整协议机制，形成新的工作流程</p>
+<p>6、将调整后的机制实现为代码</p>
+<p>7、测试、再调整，形成最终结果</p>
+<p>8、整理资料与总结分析，撰写毕业论文</p>
+<p>这歌一股霉味？</p>
+<p>问题是改进的需求。不优化是哪里？</p>
+<p>面向openGauss数据库的副本一致性协议优化技术研究</p>
+<p>评测 性能 有问题</p>
+<p>设计度量，数据集，方法，通过xx技术发现瓶颈</p>
+<p>针对瓶颈发现问题，然后原理，然后优化</p>
+<p>以国产开源openGauss分布式数据库为研究对象。在前期的了解过程中，观察到其副本一致性协议中，将Log异步复制到各个备机，再由备机重放到 DB 并持久化的过程，若在状态不一致时发生主机切换则违反线性一致性；若保证按序全部应用，则协议效率降低。本研究借鉴 TiKV 对一致性协议的优化，在保持副本一致性的同时，优化 openGauss 数据库的主备同步效率。</p>
+<p>以国产开源openGauss分布式数据库为研究对象。在前期的了解过程中，观察到其副本一致性协议中，将Log异步复制到各个备机，再由备机重放到 DB 并持久化的过程，若在状态不一致时发生主机切换则违反线性一致性；若保证按序全部应用，则协议效率降低。本研究的主题是通过优化 openGauss 数据库的副本一致性协议，在保证一致性的同时，加速主备同步，进而提升事务执行的效率。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230301-coj/">COJ 后端设计方案（初步）</a><a class="next" href="/20230225-nginx/">在 Nginx 下用 proxy—pass 配置多个 location</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://czxingchen.github.io/" title="XiaoZhi" target="_blank">XiaoZhi</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://mzy0624.github.io/" title="毛子钰" target="_blank">毛子钰</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COJ/">COJ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisSys/">DisSys</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-Systems/">Distributed Systems</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%91%B8%E9%B1%BC/">摸鱼</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E8%A7%86%E5%89%A7/">电视剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%81%E9%97%BB/">见闻</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E5%BD%B1/">观影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%82%E7%82%B9/">观点</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B2%E7%A8%BF/">讲稿</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E6%96%87%E7%8C%AE/">读文献</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2024 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script></div></body></html>
