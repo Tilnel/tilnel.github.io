@@ -23,6 +23,25 @@
     
     
     <entry>
+      <title>工作随记</title>
+      <link href="/20241113-working/"/>
+      <url>/20241113-working/</url>
+      
+        <content type="html"><![CDATA[<p>先来做一个数独吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新功能：显示我是否在工位干活</title>
       <link href="/20241112-activity/"/>
       <url>/20241112-activity/</url>
