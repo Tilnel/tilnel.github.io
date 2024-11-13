@@ -47,9 +47,9 @@
     <link href="https://tilnel.github.io/20241113-working/"/>
     <id>https://tilnel.github.io/20241113-working/</id>
     <published>2024-11-13T06:37:30.000Z</published>
-    <updated>2024-11-13T07:25:07.376Z</updated>
+    <updated>2024-11-13T06:37:30.000Z</updated>
     
-    <content type="html"><![CDATA[<p>先来做一个数独吧。然后就做了一小时。</p>]]></content>
+    <content type="html"><![CDATA[<p>先来做一个数独吧。然后就做了一小时。</p><p>主要就来写一些关于 ptrace 的发现吧。</p>]]></content>
     
     
       
@@ -57,7 +57,7 @@
         
         
     <summary type="html">&lt;p&gt;先来做一个数独吧。然后就做了一小时。&lt;/p&gt;
-</summary>
+&lt;p&gt;主要就来写一些关于 ptrace</summary>
         
       
     
