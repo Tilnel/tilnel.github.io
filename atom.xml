@@ -44,6 +44,32 @@
   
   <entry>
     <title>工作随记</title>
+    <link href="https://tilnel.github.io/20241116-working/"/>
+    <id>https://tilnel.github.io/20241116-working/</id>
+    <published>2024-11-16T04:54:24.000Z</published>
+    <updated>2024-11-16T04:54:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先来看一段代码。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">asm</span>(<span class="string">&quot;movq $-1, %rax\n&quot;</span><span class="string">&quot;syscall\n&quot;</span>); <span class="comment">/* won&#x27;t set errno */</span></span><br><span class="line">  <span class="comment">/* syscall(-1); */</span></span><br><span class="line">  <span class="type">void</span> *handle = dlopen(<span class="literal">NULL</span>, RTLD_LAZY);</span><br><span class="line">  <span class="type">long</span> *errno_position = dlsym(handle, <span class="string">&quot;errno&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (!errno_position)</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;Not found&quot;</span>);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, strerror(*errno_position));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>syscall</code> </p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;先来看一段代码。&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="科研" scheme="https://tilnel.github.io/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>工作随记</title>
     <link href="https://tilnel.github.io/20241113-working/"/>
     <id>https://tilnel.github.io/20241113-working/</id>
     <published>2024-11-13T06:37:30.000Z</published>
@@ -506,33 +532,6 @@
         
     <summary type="html">&lt;p&gt;好不容易迈出这一步，决定放弃。至于为什么？我只想说，我简短的人生经验告诉我，如果保持这份偏执不放，一定会被标记为究极傻逼。哪有人相信这么荒唐的东西，愚蠢也得有个度。&lt;/p&gt;
 &lt;p&gt;总之必须忘记，不得不忘记。要彻底地转变态度，不要心存幻想。如果以后有机会再说话的话，一定要好好</summary>
-        
-      
-    
-    
-    
-    <category term="情感" scheme="https://tilnel.github.io/categories/%E6%83%85%E6%84%9F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>秋分日</title>
-    <link href="https://tilnel.github.io/20240922-yarareta/"/>
-    <id>https://tilnel.github.io/20240922-yarareta/</id>
-    <published>2024-09-22T07:00:00.000Z</published>
-    <updated>2024-09-22T07:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我是一个极容易动摇的人，偏偏这点从来就没有学好。</p><p>緒方理奈和赤名リカ其实是一个模子里刻出来的人物，我对她们两位都非常喜欢。不止是因为她们敢于表达爱，更是因为她们“有进退”。</p><p>对，不是“知进退”，谁知道离开是不是最好的决定？谁也不能说得上来，事情到底会怎样发展。但是她们可以坚决地离开，创造自己的新的生活。</p><p>也许回去之后仍然会偷偷抹眼泪，即便如此在转身的时候也毫不动摇。</p><p>所以，「恋爱世纪」虽然是 Happy Ending，却是平庸的，是大多数故事的结局；而「东京爱情故事」是 Normal Ending，但是其中展现出的人物选择却有着科幻片一样的觉悟。</p><p>所以，动画的 White Album 1 是科幻片，而 WA2 是写实的。</p><p>即使写到这里，我的态度依旧存疑。</p><p>至于斯嘉丽是怎么想的，已经不怎么重要了。曾经有个人，如果与她聊天，就可以稳定地获得一种安心的感觉。而现在情况为之一变，我自己会动摇起来。</p><p> Thank you. Good-bye!</p><p>当然我还是不明白，为什么偏执与动摇会出现在同一个人身上共存得如此不和谐。</p><p>我偏执的可能是，希望就算离开，也尽可能留下一个帅气的背影。</p><p> 当你想说任何话做任何事的时候，发现这些对于对方来说其实根本就无从谈起。这简直像在静止的时间里有人向你丢来数十把飞刀一样恐怖。</p><p>来即招之，去即挥之，此乃树的本分。</p><p>我不一定在乎别人的感受，但是一定在乎别人是不是喜欢我。所以也许很自私。</p><p>总之，不脆弱，但是动摇；不会倒下，但是很容易受到影响。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我是一个极容易动摇的人，偏偏这点从来就没有学好。&lt;/p&gt;
-&lt;p&gt;緒方理奈和赤名リカ其实是一个模子里刻出来的人物，我对她们两位都非常喜欢。不止是因为她们敢于表达爱，更是因为她们“有进退”。&lt;/p&gt;
-&lt;p&gt;对，不是“知进退”，谁知道离开是不是最好的决定？谁也不能说得上来，事情到</summary>
         
       
     
