@@ -18,7 +18,7 @@
 <p>C library&#x2F;kernel differences: At the system call level, the PTRACE_PEEKTEXT, PTRACE_PEEKDATA, and PTRACE_PEEKUSER operations have a different API: they store the result at the address specified by the <u>data</u> parameter, and the return value is the error flag. The glibc wrapper function provides the API given in DESCRIPTION above, with the result being returned via the function return value.</p>
 </blockquote>
 <p>其实我觉得这样 wrap 一下真的很干。平白无故给我的理解上了一点强度。譬如在 strace 中</p>
-<p><img src="image-20241116132923596.png" alt="image-20241116132923596"></p>
+<p><img src="image-20241116132923596.png" alt="	"></p>
 <p>我分明就是用内联汇编调用的。然后你告诉我这里无中生有返回了一个 -1。我觉得不行。</p>
 <img src="image-20241116133145608.png" alt="image-20241116133145608" style="zoom:50%;">
 
