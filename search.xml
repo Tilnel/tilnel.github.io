@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>随便写点</title>
       <link href="/20241120-misc/"/>
       <url>/20241120-misc/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p><img src="image-20241120152541003.png" alt="image-20241120152541003"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 杂谈 </category>
+          
+      </categories>
       
       
     </entry>
