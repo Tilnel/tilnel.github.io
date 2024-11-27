@@ -43,11 +43,11 @@
   </entry>
   
   <entry>
-    <title>【自用】</title>
+    <title>【自用】杂项</title>
     <link href="https://tilnel.github.io/20241127-misc/"/>
     <id>https://tilnel.github.io/20241127-misc/</id>
-    <published>2024-11-27T13:59:38.584Z</published>
-    <updated>2024-11-27T13:59:38.584Z</updated>
+    <published>2024-11-27T14:02:14.000Z</published>
+    <updated>2024-11-27T14:02:14.000Z</updated>
     
     <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="f98f9fce6e27dc71faddbd8a22ca400ba97935122ab89e2f02501ffdec0add3c">680953028ddd47d9bc33f1e3c96e3f1ff8a2712919be6f6d189520fb3888b260</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
@@ -55,6 +55,8 @@
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
     
     
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>

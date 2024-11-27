@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title>【自用】</title>
+      <title>【自用】杂项</title>
       <link href="/20241127-misc/"/>
       <url>/20241127-misc/</url>
       
         <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="f98f9fce6e27dc71faddbd8a22ca400ba97935122ab89e2f02501ffdec0add3c">680953028ddd47d9bc33f1e3c96e3f1ff8a2712919be6f6d189520fb3888b260</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       
+      
+      <categories>
+          
+          <category> 杂谈 </category>
+          
+      </categories>
       
       
     </entry>
