@@ -43,6 +43,21 @@
   </entry>
   
   <entry>
+    <title>康德的问题（一）</title>
+    <link href="https://tilnel.github.io/20250302-kant/"/>
+    <id>https://tilnel.github.io/20250302-kant/</id>
+    <published>2025-03-02T08:32:44.000Z</published>
+    <updated>2025-03-02T08:32:44.000Z</updated>
+    
+    
+    
+    
+    <category term="哲学" scheme="https://tilnel.github.io/categories/%E5%93%B2%E5%AD%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>我听见斧头</title>
     <link href="https://tilnel.github.io/20250302-celan/"/>
     <id>https://tilnel.github.io/20250302-celan/</id>
@@ -509,33 +524,6 @@
     
     
     <category term="摸鱼" scheme="https://tilnel.github.io/categories/%E6%91%B8%E9%B1%BC/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>工作随记</title>
-    <link href="https://tilnel.github.io/20241112-working/"/>
-    <id>https://tilnel.github.io/20241112-working/</id>
-    <published>2024-11-12T01:30:58.000Z</published>
-    <updated>2024-11-12T01:30:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>今日目标是把之前的代码改完，并且至少支持 C&#x2F;S 类型的程序。</p><p> 第一步是重新梳理一下，auto 模式和 manual 模式分别到底发生了什么，进而能够在代码中对两种写法进行分开&#x2F;耦合。</p><p>事实上，auto 模式可以视为一种机器提供操作的 manual 模式。因而可以优先分析 Manual。</p><p>手动模式下，大致是这样的流程：</p><ul><li>启动 tracee，推进到初始状态后停下</li><li>等待用户输入，首先是切换“焦点”。进而是“执行一步”。</li></ul><p>此时，running 为全局第一个 state。</p><p>“执行一步”都做了什么？</p><ul><li>首先，作为手动模式，一般来说是顺着往下走，一般来说无须进行自动的状态恢复。</li><li>在某一位置触发了 Choose。此种情况并不需要进行 ckpt，因而只需要停下来，并询问 Choose 应当产生的结果。</li><li>一步执行结束。需要进行 ckpt。如果用户并未指定切换焦点，则下一步仍然在当前的焦点上进行。</li><li>当然，delete last_running; last_running &#x3D; running;</li></ul><p>ckpt 到底做了什么？</p><ul><li>将当前的状态放到 running 中。并且序列化然后写盘</li><li>也许写盘的操作可以在内存压力不大的情况下省去。用正经一点的话来说，就是“改变存储引擎为磁盘&#x2F;内存”<ul><li>但是这个好像并不是瓶颈，不首先考虑。</li></ul></li></ul><p>一个小问题。</p><p>在</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__attribute__((constructor)) <span class="built_in">dwarf_init</span>();</span><br></pre></td></tr></table></figure><p>中，写 <code>std::unordered_map::operator[]</code> 会产生一个 floating point exception。推测 .init 早于了 STL 的实例化。</p><p>一天结束了。记一下我做到哪里了。</p><p>首先我在 Monitor 模块。其次我正在写 configure 的读取。接下来我要改写初始化状态的部分。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今日目标是把之前的代码改完，并且至少支持 C&amp;#x2F;S 类型的程序。&lt;/p&gt;
-&lt;p&gt; 第一步是重新梳理一下，auto 模式和 manual 模式分别到底发生了什么，进而能够在代码中对两种写法进行分开&amp;#x2F;耦合。&lt;/p&gt;
-&lt;p&gt;事实上，auto</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://tilnel.github.io/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
