@@ -43,7 +43,20 @@
   </entry>
   
   <entry>
-    <title>标题并没有呼之欲出</title>
+    <title></title>
+    <link href="https://tilnel.github.io/Untitled/"/>
+    <id>https://tilnel.github.io/Untitled/</id>
+    <published>2025-03-05T17:23:40.743Z</published>
+    <updated>2025-03-05T17:23:40.743Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>忠实于自己的文字</title>
     <link href="https://tilnel.github.io/20250306-writing/"/>
     <id>https://tilnel.github.io/20250306-writing/</id>
     <published>2025-03-05T16:52:19.000Z</published>
@@ -505,33 +518,6 @@
     
     
     <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>随便写点</title>
-    <link href="https://tilnel.github.io/20241120-misc/"/>
-    <id>https://tilnel.github.io/20241120-misc/</id>
-    <published>2024-11-20T07:25:03.000Z</published>
-    <updated>2024-11-20T07:25:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>感觉一直在做数独。不能再这样了。</p><hr>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;感觉一直在做数独。不能再这样了。&lt;/p&gt;
-&lt;hr&gt;
-</summary>
-        
-      
-    
-    
-    
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
