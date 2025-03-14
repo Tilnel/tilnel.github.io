@@ -1,41 +1,14 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>Primary Backup Replication | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>演戏 | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "ovuz7vaihk");
-</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Primary Backup Replication</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Primary Backup Replication</h1><div class="post-meta">2022-11-06<span> | </span><span class="category"><a href="/categories/Distributed-System/">Distributed System</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 99</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20221116-PrimaryBackupReplication/#vcomment"><span class="valine-comment-count" data-xid="/20221116-PrimaryBackupReplication/"></span><span> Comment</span></a><div class="post-content"><p>Failures</p>
-<p>​	fail-stop failure</p>
-<p>not covered: (software &#x2F; hardware) bugs, design defects.</p>
-<p>Whether its worthwhile. –expensive. it’s an economic question</p>
-<p>Ways of replica</p>
-<p>State transfer</p>
-<ul>
-<li>Primary sends.</li>
-</ul>
-<p>Replicated state machine</p>
-<ul>
-<li><p>send external events. arriving Input. Operation from clients. (otherwise, the executions are deterministic function)</p>
-</li>
-<li><p>usually small</p>
-</li>
-<li><p>complicated. rely on sort of assumptions</p>
-</li>
-</ul>
-<p>How to close sync if primary fails? </p>
-<p>cut-over, anomalies</p>
-<p>new replicas are hard to create.</p>
-<p>What state to replicate?</p>
-<p>application level replication if more efficient</p>
-<p>level of machine? memory &amp; registers.</p>
-<ul>
-<li>downside: slow</li>
-</ul>
-<p>VMware FT</p>
-<p> Non-deterministic-events</p>
-<p>​	Inputs-packet-date + interrupt</p>
-<p>​    Weird instructions</p>
-<p>​    Multicore</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221117-arrangement/">近期安排和想法</a><a class="next" href="/20221103-daily/">演戏</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">演戏</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">演戏</h1><div class="post-meta">2022-11-03<span> | </span><span class="category"><a href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 537</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20221103-daily/#vcomment"><span class="valine-comment-count" data-xid="/20221103-daily/"></span><span> Comment</span></a><div class="post-content"><p>生活一如既往地平淡如水。虽说享乐不是我们的主题，但是过于呆板也不好。</p>
+<p>推完千晶线之后，虽然在上帝视角对于她本人一开始的态度并不能接受，但拥有精彩的演技其实是一件好事。偶尔有一些ooc的举动，或者从演技的角度来说，跳脱出自己原有的性格；或者是增强自己原有的性格。这些都是具有戏剧性的，从中我大概能获得平均以上的快感吧？</p>
+<p>我觉得头脑里大概就要有这样的规划。既然大学这个阶段，人与人之间的连结是很少的， 不如在不同的人面前试图维持分裂的形象好了。其实以前也一直在做这样的事，但总是能保持微妙的平衡。矛盾的多面放到一起就非常合理。我不知道打破这样的平衡究竟是对是错，但是至少能给我的生活带来一些波澜，我觉得差不多就可以了。毕竟真正做到千晶那样是不可能的；毕竟我没有观众；毕竟我没有演对手戏的演员。</p>
+<p>而总的来说，将要演的形象必须是正面的；为了保护自己的身心健康，也需要适当地分隔开人物的情感和自己的情感。这些都是理所当然的。</p>
+<p>四季跟我说，他觉得千晶那种时刻在演的状态反而是最本真的。这里面的辩证关系我并不能理清楚。这学期的现代艺术表演课程中也提到过这样的问题，即我们日常生活当中的行为可不可以都将他们看作是一种表演。如果拿到一般的语境中，那么一般会被认为是过度解读。如果稍微接触到一点辩证法，则会采取一种模糊不清的解释方式。。我可能是意会了，但并不是很会。总之理论太难，我选择实践一下？</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221116-PrimaryBackupReplication/">Primary Backup Replication</a><a class="next" href="/20221103-GFS/">GFS (MIT 6.824)</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
   langMode = {
