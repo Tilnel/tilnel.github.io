@@ -27,7 +27,7 @@
       <link href="/20250320-rdp/"/>
       <url>/20250320-rdp/</url>
       
-        <content type="html"><![CDATA[<p><a href="https://answers.microsoft.com/en-us/windows/forum/all/how-to-connect-via-rdp-to-main-microsoft-account/d2f2b165-f582-425a-bfc9-7e8ce0da8766">How to connect via rdp to main Microsoft account - Microsoft Community</a></p><p>zhep</p>]]></content>
+        <content type="html"><![CDATA[<p><a href="https://answers.microsoft.com/en-us/windows/forum/all/how-to-connect-via-rdp-to-main-microsoft-account/d2f2b165-f582-425a-bfc9-7e8ce0da8766">How to connect via rdp to main Microsoft account - Microsoft Community</a></p><p>这篇完全没用。</p><p><a href="https://superuser.com/questions/1715525/how-to-login-windows-remote-desktop-rdp-in-windows-11-when-microsoft-account-a">How to login windows remote desktop (RDP) in windows 11 when Microsoft account and Hello Pin enabled? - Super User</a></p><p>这个是对的。答案是需要在被连接的机器上使用 Microsoft 账户密码登录一次。</p>]]></content>
       
       
       <categories>
