@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title>尽头是 2-Fa</title>
+      <title>尽头是 2-Factor Authentication</title>
       <link href="/20250326-2fassh/"/>
       <url>/20250326-2fassh/</url>
       
         <content type="html"><![CDATA[]]></content>
       
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
       
       
     </entry>

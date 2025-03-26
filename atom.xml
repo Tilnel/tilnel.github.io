@@ -44,14 +44,16 @@
   </entry>
   
   <entry>
-    <title>尽头是 2-Fa</title>
+    <title>尽头是 2-Factor Authentication</title>
     <link href="https://tilnel.github.io/20250326-2fassh/"/>
     <id>https://tilnel.github.io/20250326-2fassh/</id>
-    <published>2025-03-26T05:55:22.036Z</published>
-    <updated>2025-03-26T05:55:22.036Z</updated>
+    <published>2025-03-26T05:56:25.000Z</published>
+    <updated>2025-03-26T05:56:25.000Z</updated>
     
     
     
+    
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
     
     
   </entry>
