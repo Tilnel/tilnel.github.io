@@ -50,7 +50,7 @@
     <published>2025-03-26T05:56:25.000Z</published>
     <updated>2025-03-26T05:56:25.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>很早就配置了这个。最近想起来写一下</p></blockquote><p>教程使用 Google Authenticator。也可以使用 Microsoft 的。需要下载一个手机上的 APP． ．　</p><img src="image-20250326140346228.png" alt="image-20250326140346228" style="zoom:50%;"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>很早就配置了这个。最近想起来写一下</p></blockquote><p>教程使用 Google Authenticator。也可以使用 Microsoft 的。</p><p>需要手机上的 APP。</p><img src="image-20250326140346228.png" alt="image-20250326140346228" style="zoom:50%;"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
     
     
       
@@ -60,7 +60,8 @@
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;很早就配置了这个。最近想起来写一下&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;教程使用 Google Authenticator。也可以使用 Microsoft 的。需要下载一个手机上的 APP． ．　&lt;/p&gt;
+&lt;p&gt;教程使用 Google Authenticator。也可以使用 Microsoft 的。&lt;/p&gt;
+&lt;p&gt;需要手机上的 APP。&lt;/p&gt;
 &lt;img</summary>
         
       
