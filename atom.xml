@@ -50,14 +50,14 @@
     <published>2025-03-27T05:43:12.000Z</published>
     <updated>2025-03-27T05:43:12.000Z</updated>
     
-    <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网</p>]]></content>
+    <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(PGP) 是其一套实现。配置了密钥对，并</p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;OpenPGP</summary>
+    <summary type="html">&lt;p&gt;OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(PGP)</summary>
         
       
     
