@@ -27,7 +27,7 @@
       <link href="/20250327-gpg/"/>
       <url>/20250327-gpg/</url>
       
-        <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(PGP) 是其一套实现。配置了密钥对，并</p>]]></content>
+        <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(PGP) 是其一套实现。</p><p>生成你的密钥对并妥善管理，就可以：</p><ul><li>加密通话</li><li><del>放一个 fingerprint 在个人页面里装B</del></li><li></li></ul>]]></content>
       
       
       <categories>
