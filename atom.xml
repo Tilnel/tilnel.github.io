@@ -50,14 +50,14 @@
     <published>2025-03-27T05:43:12.000Z</published>
     <updated>2025-03-27T05:43:12.000Z</updated>
     
-    <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(PGP) 是其一套实现。</p><p>生成你的密钥对并妥善管理，就可以：</p><ul><li>加密通话</li><li><del>放一个 fingerprint 在个人页面里装B</del></li><li></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(GPG) 是其一套实现。</p><p>生成你的密钥对并妥善管理，就可以：</p><ul><li>加密通话</li><li><del>放一个 fingerprint 在个人页面里装B</del></li></ul><p>这里有一套比较详细的教学，我只是随手记录一下自己的配置。</p><p>[2021年，用更现代的方法使用PGP（上） - C的博客 |UlyC](<a href="https://ulyc.github.io/2021/01/13/2021%E5%B9%B4-%E7%94%A8%E6%9B%B4%E7%8E%B0%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8PGP-%E4%B8%8A/#PGP%E3%80%81OpenPGP%E3%80%81GnuPG">https://ulyc.github.io/2021/01/13/2021年-用更现代的方法使用PGP-上/#PGP、OpenPGP、GnuPG</a> 和 gpg)</p><p><a href="https://ulyc.github.io/2021/01/18/2021%E5%B9%B4-%E7%94%A8%E6%9B%B4%E7%8E%B0%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8PGP-%E4%B8%AD/">2021年，用更现代的方法使用PGP（中） - C的博客 |UlyC</a></p><p><a href="https://ulyc.github.io/2021/01/26/2021%E5%B9%B4-%E7%94%A8%E6%9B%B4%E7%8E%B0%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8PGP-%E4%B8%8B/">2021年，用更现代的方法使用PGP（下） - C的博客 |UlyC</a></p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(PGP) 是其一套实现。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(GPG) 是其一套实现。&lt;/p&gt;
 &lt;p&gt;生成你的密钥对并妥善管理，就可以：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;加密通话&lt;/li&gt;
