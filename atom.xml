@@ -44,14 +44,27 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>工作随记</title>
     <link href="https://tilnel.github.io/20250417-working/"/>
     <id>https://tilnel.github.io/20250417-working/</id>
-    <published>2025-04-17T02:24:56.208Z</published>
-    <updated>2025-04-17T02:24:56.208Z</updated>
+    <published>2025-04-16T16:00:00.000Z</published>
+    <updated>2025-04-16T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>把 ckpt 部分的文档写了</li><li>coding：在不引入新功能的情况下，</li></ul>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;把 ckpt</summary>
+        
+      
     
     
     
+    <category term="科研" scheme="https://tilnel.github.io/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>

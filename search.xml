@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>工作随记</title>
       <link href="/20250417-working/"/>
       <url>/20250417-working/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<ul><li>把 ckpt 部分的文档写了</li><li>coding：在不引入新功能的情况下，</li></ul>]]></content>
       
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+      </categories>
       
       
     </entry>
