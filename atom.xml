@@ -50,7 +50,7 @@
     <published>2025-04-16T16:00:00.000Z</published>
     <updated>2025-04-16T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>把 ckpt 部分的文档写了</li><li>coding：完善已有功能和写法。<ul><li>主要是，增加安全检查</li></ul></li><li>读 DPOR</li></ul>]]></content>
+    <content type="html"><![CDATA[<ul><li>把 ckpt 部分的文档写了</li><li>coding：完善已有功能和写法。<ul><li>主要是，增加安全检查</li><li>改写序列化、反序列化写法。顺手干掉看着不顺眼的类型。</li></ul></li><li>读 DPOR</li></ul>]]></content>
     
     
       
@@ -61,6 +61,7 @@
 &lt;li&gt;把 ckpt 部分的文档写了&lt;/li&gt;
 &lt;li&gt;coding：完善已有功能和写法。&lt;ul&gt;
 &lt;li&gt;主要是，增加安全检查&lt;/li&gt;
+&lt;li&gt;改写序列化、反序列化写法。顺手干掉看着不顺眼的类型。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;读</summary>
