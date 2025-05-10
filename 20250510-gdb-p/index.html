@@ -42,6 +42,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptrace(PTRACE_CONT, 3926087, 0x1, 0)    = 0</span><br></pre></td></tr></table></figure>
 
 <p>合理推测，它的前面一定是将 tracee 的状态设置到适合进行函数调用的状态的过程；而后面则是收集函数调用结果，以及将状态恢复到调用前的过程。由于它会保留调用所有的副作用，因而这个状态的恢复，仅仅是恢复寄存器上下文。</p>
+<p>去除掉一些无关的调用之后，来看核心部分：</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
