@@ -27,7 +27,7 @@
       <link href="/20250510-gdb-p/"/>
       <url>/20250510-gdb-p/</url>
       
-        <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的表达式求值功能。gdb 的表达式求值是一个相对复杂</p>]]></content>
+        <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的表达式求值功能。一开始我沿用了以前写的一个简单的表达式求值功能，用来对各种整型表达式求值，并且为其添加了从字符串到地址的变量解析功能。只不</p>]]></content>
       
       
       <categories>
