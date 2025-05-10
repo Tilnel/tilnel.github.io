@@ -44,14 +44,26 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>GDB 的 p 命令实现原理分析</title>
     <link href="https://tilnel.github.io/20250510-gdb-p/"/>
     <id>https://tilnel.github.io/20250510-gdb-p/</id>
-    <published>2025-05-10T05:59:14.897Z</published>
-    <updated>2025-05-10T05:59:14.897Z</updated>
+    <published>2025-05-09T16:00:00.000Z</published>
+    <updated>2025-05-09T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的biao’d</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近用 ptrace 控制进程，想要实现类似 gdb</summary>
+        
+      
     
     
     
+    <category term="科研" scheme="https://tilnel.github.io/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
