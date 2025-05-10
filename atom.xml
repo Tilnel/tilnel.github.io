@@ -50,14 +50,14 @@
     <published>2025-05-09T16:00:00.000Z</published>
     <updated>2025-05-09T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的biao’d</p>]]></content>
+    <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的表达式求值功能。gdb 的表达式求值是一个相对复杂</p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;最近用 ptrace 控制进程，想要实现类似 gdb</summary>
+    <summary type="html">&lt;p&gt;最近用 ptrace 控制进程，想要实现类似 gdb 的表达式求值功能。gdb</summary>
         
       
     

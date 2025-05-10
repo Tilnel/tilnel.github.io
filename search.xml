@@ -27,7 +27,7 @@
       <link href="/20250510-gdb-p/"/>
       <url>/20250510-gdb-p/</url>
       
-        <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的biao’d</p>]]></content>
+        <content type="html"><![CDATA[<p>最近用 ptrace 控制进程，想要实现类似 gdb 的表达式求值功能。gdb 的表达式求值是一个相对复杂</p>]]></content>
       
       
       <categories>
