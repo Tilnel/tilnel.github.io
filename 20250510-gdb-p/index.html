@@ -39,6 +39,9 @@
 
 <p><code>sudo</code> 似乎是必要的。然后我们在 gdb 那里点回车。这让我们能够观察到 <code>gdb</code> 运行这一条命令的时候进行的全部系统调用，一共有 200+ 条。</p>
 <p>当一个进程卡在 gdb 给的 TRAP 之后，如果想要对函数求值，那就只能通过执行 tracee 自身的那个函数了。因而 gdb 一定需要某种办法让进程恢复执行，那么最明显的就是 <code>ptrace(PTRACE_CONT)</code>。在输出的系统调用中，果不其然找到了它的影子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptrace(PTRACE_CONT, 3926087, 0x1, 0)    = 0</span><br></pre></td></tr></table></figure>
+
+<p>tign</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
