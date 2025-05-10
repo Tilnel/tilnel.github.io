@@ -60,7 +60,7 @@
 
 <p>这等于说，如果栈区可执行，那么迎接进程的是 0xcc (SIGTRAP)；如果不可执行，就会直接产生一个 SIGSEGV。</p>
 <p>不过这样的话，进程不会直接崩溃吗？在 ptrace 下，是 gdb 先收到 SIGCHLD，标志着子进程状态变化。gdb wait 获得了子进程的 STOPSIG 后，才决定是否发送给进程。进程本身没有收到这个信号，因而不会执行 SIGSEGV 的 SIG_DFL 默认信号处理函数。</p>
-<p>实际上，也许我们也能强行通过注册信号处理函数，给触发了 SIGSEGV 的进程续命。不过这就需要使用 <code>rt_sigprocmask</code> 这类办法了。</p>
+<p>实际上，也许我们也能强行通过注册信号处理函数，给触发了 SIGSEGV 的进程续命。不过这就需要使用 <code>rt_sigprocmask</code> 或是 <code>sig_longjmp</code> 这类办法了。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
