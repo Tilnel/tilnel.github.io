@@ -50,7 +50,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pwrite64(14, &quot;\314&quot;, 1, 140737488348431) = 1</span><br><span class="line">pwrite64(14, &quot;\17\345\377\377\377\177\0\0&quot;, 8, 140737488348408) = 8</span><br></pre></td></tr></table></figure>
 
 <p><code>\314</code> 其实就是我们熟悉的 <code>int 0x3 (0xcc)</code>。<code>140737488348431 = 0x7fffffffe50f​</code>，可以看出这是写在了栈上。</p>
-<p>第二个则是向</p>
+<p>第二个则是向 <code>0x7fffffffe4f8</code> 位置写入了一个地址 &#96;0x7fffffff</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
