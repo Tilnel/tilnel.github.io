@@ -37,7 +37,7 @@
 <p>接着：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo strace -p $(pidof gdb)</span><br></pre></td></tr></table></figure>
 
-<p><code>sudo</code> 似乎是必要的。然后我们在 gdb 那里点回车。这让我们能够观察到 <code>gdb</code> 在执行这一条命令的时候执行的全部系统调用。</p>
+<p><code>sudo</code> 似乎是必要的。然后我们在 gdb 那里点回车。这让我们能够观察到 <code>gdb</code> 运行这一条命令的时候进行的全部系统调用，一共有 200+ 条。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
