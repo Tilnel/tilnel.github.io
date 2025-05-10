@@ -55,7 +55,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">rbp=0x7fffffffe4f8,   </span><br><span class="line">...</span><br><span class="line">rax=0, </span><br><span class="line">...</span><br><span class="line">rip=0x4017f4,</span><br><span class="line">...</span><br><span class="line">rsp=0x7fffffffe4f8,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>此时，<code>RIP</code> 刚好落在 <code>main</code> 的入口，而 <code>RSP</code> 和 <code>RBP</code> 都落在了刚才写入地址的位置上。可以想见，如果接下来开始执行的话，等到函数退出时，<code>RAX</code> 将会代表函数返回值，并且函数返回地址正好在 <code>RBP</code> 的位置写着，跳转之后，等待程序的会是一个 0xcc。</p>
-<p>只不过，这个 code 真的被执行了吗？并没有。众所都周知，栈区的</p>
+<p>只不过，这个 code 真的被执行了吗？并没有。众所都周知，栈区一般都是 <code>prot = PROT_READ | PROT_WRITE</code>，而通常不会是可执行的。事实上，我是在看了 <code>PTRACE_CONT</code> 之后的调用才明白了这一点的。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
