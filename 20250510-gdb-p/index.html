@@ -63,7 +63,7 @@
 <p>实际上，也许我们也能强行通过注册信号处理函数，给触发了 SIGSEGV 的进程续命。不过这就需要使用 <code>rt_sigprocmask</code> 或是 <code>siglongjmp</code> 这类办法了。</p>
 <p>往后就是恢复进程上下文了。</p>
 <p>当然，对于纯表达式的求值，gdb 的确采用了第一种办法，即当场解析表达式并且通过读进程内存来进行计算。</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/Untitled/"></a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250512-gdb-bt/">调试器中的 backtrace：libunwind 的局限与成因，以及</a><a class="next" href="/20250509-repression/">性压抑 allegro</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
   langMode = {

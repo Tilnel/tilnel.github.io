@@ -44,11 +44,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://tilnel.github.io/Untitled/"/>
-    <id>https://tilnel.github.io/Untitled/</id>
-    <published>2025-05-12T07:23:00.988Z</published>
-    <updated>2025-05-12T07:23:00.988Z</updated>
+    <title>调试器中的 backtrace：libunwind 的局限与成因，以及</title>
+    <link href="https://tilnel.github.io/20250512-gdb-bt/"/>
+    <id>https://tilnel.github.io/20250512-gdb-bt/</id>
+    <published>2025-05-12T07:23:24.306Z</published>
+    <updated>2025-05-12T07:23:24.306Z</updated>
     
     
     
