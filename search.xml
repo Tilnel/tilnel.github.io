@@ -27,7 +27,7 @@
       <link href="/20250514-working/"/>
       <url>/20250514-working/</url>
       
-        <content type="html"><![CDATA[<p>记录了一些拍脑袋的想法。</p><p>1、stateful &#x2F; stateless。</p><p>现在看来，就算 stateful 也不能搞这么重的 state。有点太多余了。</p><p>想到一个事实上的等价性标准，那就是，如果在同一 interleaving 下两个 localstate 对 sharedstate 会产生相同的影响，那么称状态等价。</p><p>这意味着，只需要：</p><ul><li><p>rip &#x3D; rip</p></li><li><p>抽象状态相等</p></li><li><p>inbuffer 相等</p></li></ul><p>2、正确性</p><p>对于 raft 而言，也许只需要证明其在有限几个任期内的正确性，就足以说明问题。</p><p>3、</p>]]></content>
+        <content type="html"><![CDATA[<p>记录了一些拍脑袋的想法。</p><p>1、stateful &#x2F; stateless。</p><p>现在看来，就算 stateful 也不能搞这么重的 state。有点太多余了。</p><p>想到一个事实上的等价性标准，那就是，如果在同一 interleaving 下两个 localstate 对 sharedstate 会产生相同的影响，那么称状态等价。</p><p>这意味着，只需要：</p><ul><li><p>rip &#x3D; rip</p></li><li><p>抽象状态相等</p></li><li><p>inbuffer 相等</p></li></ul><p>2、正确性</p><p>对于 raft 而言，也许只需要证明其在有限几个任期内的正确性，就足以说明问题。</p><p>3、解开 guest.h。单文件其实包含了三个方面的内容：elf，thread(process)，snapshot。但是，目前全都混在一起写了。</p><p>4、用户的 choose 有没有更加简洁的表示方式？</p>]]></content>
       
       
       <categories>
