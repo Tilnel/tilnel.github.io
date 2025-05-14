@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>工作随记</title>
       <link href="/20250514-working/"/>
       <url>/20250514-working/</url>
       
         <content type="html"><![CDATA[]]></content>
       
+      
+      <categories>
+          
+          <category> 科研 </category>
+          
+      </categories>
       
       
     </entry>

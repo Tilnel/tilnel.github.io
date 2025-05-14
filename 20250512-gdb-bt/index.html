@@ -116,7 +116,7 @@
 
 
 <h3><a href="#jie-yu" class="header-anchor">#</a><span id="jie-yu">结语</span></h3><p><code>libunwind</code> 的“缺帧”症状来源于 <strong>运行时只能依赖</strong> <code>PT_GNU_EH_FRAME</code> <strong>的设计取舍</strong>；当 segment 信息不足或函数 frameless 且无 CFI 时，只能退回极简 <code>%rbp</code> 链，导致中间帧被跳过。GDB 由于离线 ELF + 多级策略，自然更完善。对开发者而言，<strong>在链接阶段加</strong> <code>--eh-frame-hdr</code>、保留 CFI 或帧指针，是让任何基于 <code>libunwind</code> 的调试&#x2F;分析工具完整回溯的关键。</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250514-working/"></a><a class="next" href="/20250510-gdb-p/">GDB 的 p 命令实现原理简析 via STRACE</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250514-working/">工作随记</a><a class="next" href="/20250510-gdb-p/">GDB 的 p 命令实现原理简析 via STRACE</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
   langMode = {
