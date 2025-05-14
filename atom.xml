@@ -50,6 +50,19 @@
     <published>2025-05-13T16:00:00.000Z</published>
     <updated>2025-05-13T16:00:00.000Z</updated>
     
+    <content type="html"><![CDATA[<p>记录了一些拍脑袋的想法。</p><p>1、stateful &#x2F; stateless。</p><p>现在看来，就算 stateful 也不能搞这么重的 state。有点太多余了。</p><p>想到一个事实上的等价性标准，那就是，如果在同一 interleaving 下两个 localstate 对 sharedstate 会产生相同的影响，那么称状态等价。</p><p>这意味着，zhi’y</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;记录了一些拍脑袋的想法。&lt;/p&gt;
+&lt;p&gt;1、stateful &amp;#x2F; stateless。&lt;/p&gt;
+&lt;p&gt;现在看来，就算 stateful 也不能搞这么重的 state。有点太多余了。&lt;/p&gt;
+&lt;p&gt;想到一个事实上的等价性标准，那就是，如果在同一</summary>
+        
+      
     
     
     
