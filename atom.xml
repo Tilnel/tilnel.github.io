@@ -44,6 +44,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://tilnel.github.io/Untitled/"/>
+    <id>https://tilnel.github.io/Untitled/</id>
+    <published>2025-06-05T06:34:29.667Z</published>
+    <updated>2025-06-05T06:34:29.667Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Linux ext4 文件系统的最简完整教学（译）</title>
     <link href="https://tilnel.github.io/20250605-ext4/"/>
     <id>https://tilnel.github.io/20250605-ext4/</id>
@@ -522,32 +535,6 @@
     
     
     <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Microsoft 账户登录远程桌面</title>
-    <link href="https://tilnel.github.io/20250320-rdp/"/>
-    <id>https://tilnel.github.io/20250320-rdp/</id>
-    <published>2025-03-20T06:41:53.000Z</published>
-    <updated>2025-03-20T06:41:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>背景：原来在 Windows 上使用本地账户登录，切换到使用 Microsoft 账户登录。本地 PIN 码登录正常，远程桌面连接不上。</p><p><a href="https://answers.microsoft.com/en-us/windows/forum/all/how-to-connect-via-rdp-to-main-microsoft-account/d2f2b165-f582-425a-bfc9-7e8ce0da8766">How to connect via rdp to main Microsoft account - Microsoft Community</a></p><p>这篇完全没用。Microsoft Community <strong>SUCKS</strong></p><p><a href="https://superuser.com/questions/1715525/how-to-login-windows-remote-desktop-rdp-in-windows-11-when-microsoft-account-a">How to login windows remote desktop (RDP) in windows 11 when Microsoft account and Hello Pin enabled? - Super User</a></p><p>这个是对的。答案是需要在被连接的机器上使用 Microsoft 账户密码登录一次，但是首先要关闭这个：</p><img src="GRnKq.png" alt="Enable Passwords" style="zoom:50%;"><p>登录之后再打开也是可以的。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;背景：原来在 Windows 上使用本地账户登录，切换到使用 Microsoft 账户登录。本地 PIN 码登录正常，远程桌面连接不上。&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Windows" scheme="https://tilnel.github.io/categories/Windows/"/>
     
     
   </entry>
