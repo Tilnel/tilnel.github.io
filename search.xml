@@ -23,6 +23,25 @@
     
     
     <entry>
+      <title>Linux ext4 文件系统的最简完整教学（译）</title>
+      <link href="/20250605-ext4/"/>
+      <url>/20250605-ext4/</url>
+      
+        <content type="html"><![CDATA[<p>根据原站要求，本文以 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a> 协议进行许可。</p><p>原文作者：<a href="https://metebalci.com/">Mete Balci</a></p><p>原文：<a href="https://metebalci.com/blog/a-minimum-complete-tutorial-of-linux-ext4-file-system/">A Minimum Complete Tutorial of Linux ext4 File System</a></p><blockquote><p>挖坑。6 月填</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 翻译 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>工作随记</title>
       <link href="/20250514-working/"/>
       <url>/20250514-working/</url>

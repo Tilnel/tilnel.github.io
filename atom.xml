@@ -44,6 +44,31 @@
   </entry>
   
   <entry>
+    <title>Linux ext4 文件系统的最简完整教学（译）</title>
+    <link href="https://tilnel.github.io/20250605-ext4/"/>
+    <id>https://tilnel.github.io/20250605-ext4/</id>
+    <published>2025-06-04T16:00:00.000Z</published>
+    <updated>2025-06-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>根据原站要求，本文以 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a> 协议进行许可。</p><p>原文作者：<a href="https://metebalci.com/">Mete Balci</a></p><p>原文：<a href="https://metebalci.com/blog/a-minimum-complete-tutorial-of-linux-ext4-file-system/">A Minimum Complete Tutorial of Linux ext4 File System</a></p><blockquote><p>挖坑。6 月填</p></blockquote>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;根据原站要求，本文以 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-sa/4.0/&quot;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0</summary>
+        
+      
+    
+    
+    
+    <category term="翻译" scheme="https://tilnel.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>工作随记</title>
     <link href="https://tilnel.github.io/20250514-working/"/>
     <id>https://tilnel.github.io/20250514-working/</id>
@@ -519,32 +544,6 @@
         
     <summary type="html">&lt;p&gt;从牢杨手里收了一台三丧的 Galaxy Book S。的确迫切地需要一台轻薄的笔记本，即使是一台 ARM 的，即使它的内存只有 8GB。但基本也就是用来连连远程。&lt;/p&gt;
 &lt;p&gt;机器本身只有两磅多点重，握持手感很好，但应该没有人会没事握持笔记本。有</summary>
-        
-      
-    
-    
-    
-    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>梦</title>
-    <link href="https://tilnel.github.io/20250314-yume/"/>
-    <id>https://tilnel.github.io/20250314-yume/</id>
-    <published>2025-03-14T14:22:03.000Z</published>
-    <updated>2025-03-14T14:22:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我记得自己先在和两个我不认识的朋友在一家台球厅打球。但是进去之后拿起球杆发现怎么都是螺丝刀头的球杆？挑了半天之后终于找到合适的，却看到一起的两个人已经把球桌当成牌桌，准备开始玩桌游了。我想也行吧。</p><p>桌游的规则是这样的。总得来说，还是扑克牌，但是有两张特殊点数的。我记得我抽到了一张特殊点数，是37点。每个人手里拿一些牌，要求组成一部分牌，然后它们的总和要正好等于90，这样也许是互相交换。到最后谁手中集齐了两张特殊点数的就赢了。听起来是不是很无厘头？一个很无聊的游戏。但是梦里的我在玩的时候，根本就跟不上节奏。我还在掰着指头算和的时候，别人都已经打出来了。然后游戏就结束了，我接到邦邦的一个电话，叫我赶紧过去玩。</p><p>我就真的坐着公交车去了。乘车的路上看到了非常不寻常的景色：高楼大厦和自然景观非常紧凑地组合在一起，我不禁怀疑，南京这里真的有这么些湖和公园吗？南京真的有这栋楼和这条路吗？终点是一个小公园，我在那里见到了邦邦，还有他的四位同学。我去到那里似乎只是为了听取那四位同学的和解报告：他们互相之间似乎有很复杂的男女关系，但现在准备完全和解。我表示了赞成。过程中我收到一些消息，是斯嘉丽发给我的，大致是想同我和解之类的内容，但我在听朋友讲话就没有仔细查看。</p><p>等到后来闲下来再翻手机，聊天框里就变成了清一水的对我的指责和贬低。但我应该也没做错什么。于是我悲伤了，邦邦在边上安慰我。</p><p>醒来觉得甚是可笑。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我记得自己先在和两个我不认识的朋友在一家台球厅打球。但是进去之后拿起球杆发现怎么都是螺丝刀头的球杆？挑了半天之后终于找到合适的，却看到一起的两个人已经把球桌当成牌桌，准备开始玩桌游了。我想也行吧。&lt;/p&gt;
-&lt;p&gt;桌游的规则是这样的。总得来说，还是扑克牌，但是有两张特殊点数的</summary>
         
       
     
