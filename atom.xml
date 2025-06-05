@@ -44,19 +44,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://tilnel.github.io/20250605-avemujicafe/"/>
-    <id>https://tilnel.github.io/20250605-avemujicafe/</id>
-    <published>2025-06-05T06:23:37.023Z</published>
-    <updated>2025-06-05T06:23:37.023Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Linux ext4 文件系统的最简完整教学（译）</title>
     <link href="https://tilnel.github.io/20250605-ext4/"/>
     <id>https://tilnel.github.io/20250605-ext4/</id>
@@ -103,6 +90,21 @@
     
     
     <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Ave Muji咖</title>
+    <link href="https://tilnel.github.io/20250605-avemujicafe/"/>
+    <id>https://tilnel.github.io/20250605-avemujicafe/</id>
+    <published>2025-06-04T16:00:00.000Z</published>
+    <updated>2025-06-04T16:00:00.000Z</updated>
+    
+    
+    
+    
+    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
   </entry>

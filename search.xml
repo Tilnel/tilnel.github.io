@@ -23,19 +23,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/20250605-avemujicafe/"/>
-      <url>/20250605-avemujicafe/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux ext4 文件系统的最简完整教学（译）</title>
       <link href="/20250605-ext4/"/>
       <url>/20250605-ext4/</url>
@@ -65,6 +52,25 @@
       <categories>
           
           <category> 杂谈 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ave Muji咖</title>
+      <link href="/20250605-avemujicafe/"/>
+      <url>/20250605-avemujicafe/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常 </category>
           
       </categories>
       
