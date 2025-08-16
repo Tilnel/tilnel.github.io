@@ -42,25 +42,6 @@
     
     
     <entry>
-      <title>优化 coding 基础设施，以及若干有用/没用的新闻</title>
-      <link href="/20250816-ccls/"/>
-      <url>/20250816-ccls/</url>
-      
-        <content type="html"><![CDATA[<p>今天在编译新的 gcc，试了试 gccrs 编译器，以及 gcc 对 -std&#x3D;c23 的支持（主要是 auto 关键字）。</p><p>gccrs 完全没法用：写了个 hello world，告诉我 println! 没定义，因为 std 库不能编译。好吧……</p><p>auto 关键字支持得挺好。</p><p>顺带一提 gcc 整个编译流程好慢好慢。</p><p>给自己编了一套即插即用环境配置脚本：</p><p><a href="https://github.com/Tilnel/dotfiles">Tilnel&#x2F;dotfiles: coding environment configure</a></p><p>基本上就是 C&#x2F;C++ 的 vim + coc.nvim + ccls 这一套。这次把 clangd 换成了 ccls，用一段时间看看。</p><p>发现了 <a href="https://mirrors.cernet.edu.cn/">教育网联合镜像站</a> 所有地方的配置都可以统一使用这个，会自动选择最快的 source 跳转。</p><p>发现 <a href="https://github.com/Tencent/rapidjson">GitHub - Tencent&#x2F;rapidjson: A fast JSON parser&#x2F;generator for C++ with both SAX&#x2F;DOM style API</a> 的 Release 版本无法通过编译。git 的版本是对的。而 Ubuntu 镜像站未经验证地使用了 Release 版，坑了我一把。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>镇江·Bangdream Only</title>
       <link href="/20250605-zhenjiang-bangdream-only/"/>
       <url>/20250605-zhenjiang-bangdream-only/</url>
