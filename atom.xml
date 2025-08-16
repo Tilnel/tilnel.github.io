@@ -63,6 +63,32 @@
   </entry>
   
   <entry>
+    <title>优化 coding 基础设施，以及若干有用/没用的新闻</title>
+    <link href="https://tilnel.github.io/20250816-ccls/"/>
+    <id>https://tilnel.github.io/20250816-ccls/</id>
+    <published>2025-08-15T16:00:00.000Z</published>
+    <updated>2025-08-15T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在编译新的 gcc，试了试 gccrs 编译器，以及 gcc 对 -std&#x3D;c23 的支持（主要是 auto 关键字）。</p><p>gccrs 完全没法用：写了个 hello world，告诉我 println! 没定义，因为 std 库不能编译。好吧……</p><p>auto 关键字支持得挺好。</p><p>顺带一提 gcc 整个编译流程好慢好慢。</p><p>给自己编了一套即插即用环境配置脚本：</p><p><a href="https://github.com/Tilnel/dotfiles">Tilnel&#x2F;dotfiles: coding environment configure</a></p><p>基本上就是 C&#x2F;C++ 的 vim + coc.nvim + ccls 这一套。这次把 clangd 换成了 ccls，用一段时间看看。</p><p>发现了 <a href="https://mirrors.cernet.edu.cn/">教育网联合镜像站</a> 所有地方的配置都可以统一使用这个，会自动选择最快的 source 跳转。</p><p>发现 <a href="https://github.com/Tencent/rapidjson">GitHub - Tencent&#x2F;rapidjson: A fast JSON parser&#x2F;generator for C++ with both SAX&#x2F;DOM style API</a> 的 Release 版本无法通过编译。git 的版本是对的。而 Ubuntu 镜像站未经验证地使用了 Release 版，坑了我一把。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天在编译新的 gcc，试了试 gccrs 编译器，以及 gcc 对 -std&amp;#x3D;c23 的支持（主要是 auto 关键字）。&lt;/p&gt;
+&lt;p&gt;gccrs 完全没法用：写了个 hello world，告诉我 println! 没定义，因为 std</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>镇江·Bangdream Only</title>
     <link href="https://tilnel.github.io/20250605-zhenjiang-bangdream-only/"/>
     <id>https://tilnel.github.io/20250605-zhenjiang-bangdream-only/</id>
@@ -501,32 +527,6 @@
     
     
     <category term="Linux" scheme="https://tilnel.github.io/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>轻松自如</title>
-    <link href="https://tilnel.github.io/20250322-spring/"/>
-    <id>https://tilnel.github.io/20250322-spring/</id>
-    <published>2025-03-22T08:53:06.000Z</published>
-    <updated>2025-03-22T08:53:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>自由是一种畅快。最近发现自己几乎可以两条腿行走了，虽然距离不算很长。春天也到来了，户外充满了人的气息。即使暂时感到局促不安，但回归生活这件事正在热火朝天地发生着。</p><p>坐在研究生工作室里闲里偷忙式地赶活。转暖的天气让背后稍微沁出一点汗来，又让衣服吸了去，再被穿入门窗的微风带走，一会儿暖和一会儿凉快的，使人静不下心来。转头看向外面，五点钟的阳光依然明亮，照得整个校园那么鲜艳。而我即将在其中自由地行走。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;自由是一种畅快。最近发现自己几乎可以两条腿行走了，虽然距离不算很长。春天也到来了，户外充满了人的气息。即使暂时感到局促不安，但回归生活这件事正在热火朝天地发生着。&lt;/p&gt;
-&lt;p&gt;坐在研究生工作室里闲里偷忙式地赶活。转暖的天气让背后稍微沁出一点汗来，又让衣服吸了去，再被穿入门</summary>
-        
-      
-    
-    
-    
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
