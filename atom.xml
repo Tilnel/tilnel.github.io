@@ -50,14 +50,15 @@
     <published>2025-08-16T16:00:00.000Z</published>
     <updated>2025-08-16T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>记录一下这个想法。回头问问 Gemini 这个好不好做</p>]]></content>
+    <content type="html"><![CDATA[<p>记录一下这个想法。回头问问 Gemini 这个好不好做</p><p>感觉很好做啊，break send&#x2F;recv 之类的就好了（？）</p><p>要表达式就太好算了</p><p>只不过是不知道效率方面怎么样</p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;记录一下这个想法。回头问问 Gemini</summary>
+    <summary type="html">&lt;p&gt;记录一下这个想法。回头问问 Gemini 这个好不好做&lt;/p&gt;
+&lt;p&gt;感觉很好做啊，break send&amp;#x2F;recv</summary>
         
       
     
