@@ -50,10 +50,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3908091 / 32768 = 119, 因为它不是 32K 的整数倍,</span><br><span class="line">所以还会有一个比 32K Block 小的 Group。</span><br></pre></td></tr></table></figure>
 
 <p>所以我们有 119 个 32K Blocks 的 Groups 和一个小的 Group。每个 Block 是 4KB。由于每个逻辑块（扇区）是 512B，这意味着每个块有 8 个扇区。这就是 ext4 的基本存储安排，如下图所示。</p>
-<p><a target="_blank" rel="noopener" href="https://web.archive.org/web/20250321071911im_/https://metebalci.com/img/blog/ext4-block-group-blocks-logical-blocks.png">1 Block Group &#x3D; 32768 File System Blocks &#x3D; 32768 * 8 Logical (Storage) Blocks</a></p>
-<blockquote>
-<p>+++ 记得加感叹号 +++</p>
-</blockquote>
+<p><img src="ext4-block-group-blocks-logical-blocks.png" alt="1 Block Group = 32768 File System Blocks = 32768 * 8 Logical (Storage) Blocks"></p>
 <p>每一个块组都包含：</p>
 <ul>
 <li>Superblock，包含文件系统的信息。位于每组的第一个块。</li>
