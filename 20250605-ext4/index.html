@@ -57,7 +57,7 @@
 <p>每一个块组都包含：</p>
 <ul>
 <li>Superblock，包含文件系统的信息。位于每组的第一个块。</li>
-<li>（块）组描述符（表）【(Block) Group Descriptors (Table)】包含了数据块 Bitmap，inode Bitmap 和 inode Table 在块组中的位置。每个块组都有一个组描述符表。根据组大小的不同，它有可能占据一块或多个块，并且总是跟在 Superblock 后面。</li>
+<li>（块）组描述符（表）【(Block) Group Descriptors (Table)】包含了数据块 Bitmap，inode Bitmap 和 inode Table 在块组中的位置。每个块组都有一个组描述符。根据组大小的不同，它有可能占据一块或多个块，并且总是跟在 Superblock 后面。</li>
 <li>预留的<strong><em>组描述符表</em> 块</strong>。这些是为了未来扩展文件系统的时候预留的。ext4 文件系统的大小可以调整，如果是扩展的话，就意味着有更多的块，更多的块组。更多的组描述符就需要空间。通常是紧跟在 GDT 后的 0 或更多个 block。<code>rezise_inode</code>（在 Superblock 的 Filesystem features 中）标志了预留存在与否。</li>
 <li>数据块 Bitmap。标识了哪些数据块已经被使用了。它占据一个 block，位置不固定，在组描述符中指定。</li>
 <li>inode Bitmap。标识了 inode Table 中的哪些项（entries）已经被使用了。它占据一到多个 blocks（经常是多个）并且位置不固定，由组描述符指定。</li>
