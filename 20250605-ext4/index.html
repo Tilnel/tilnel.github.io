@@ -91,8 +91,9 @@
 <li>Type 1a（在 Block Size &#x3D; 1024B 情况下的 0 号块组，Block 0）：Block 0 被标记为使用但实际没有使用（因而前 1024B 都没有被使用）。Block 1 包含了 primary Superblock（主 Superblock，对应备-backup）。接下来是连续的组描述符块和预留的组描述符块。后面和 Type 3 相同。</li>
 <li>Type 1b（在 Block Size &gt; 1024B 情况下的 Block 0）：Block 0 的首部 1024B 作为 padding，没有被使用。从 1024B 的偏移量开始，是 primary Superblock。接下来与 1a 相同。</li>
 <li>Type 2：包含了 Superblock 和组描述符备份的块组。Block 0 是 Superblock，接下来与 Type 1a 相同。</li>
-<li>Type 3：不包含 Superblock 和组描述符备份的块组。可能包含数据块 Bitmap，inode Bitmap，inode Table，以及数据块。</li>
+<li>Type 3：不包含 Superblock 和组描述符备份的块组。可能包含数据块 Bitmap，inode Bitmap，inode Table，以及数据块。Bitmap 和 inode Table 的位置在组描述符中记录，所以顺序可能有变。</li>
 </ul>
+<p>Block 0 首部的 1024B 可能被用作启动码，因而 ext4 不会使用它。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
