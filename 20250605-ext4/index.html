@@ -69,6 +69,7 @@
 <li>预留的 GDT 块有 954 个。用作未来文件系统的扩展。</li>
 <li>每组的 inode block 有 509 个。这个数字与 inode size 以及每组的 inode 数量紧密相关。注意到 $256 B * 8144 &#x2F; 4096 B &#x3D; 509$。</li>
 </ul>
+<p>目前为止我们还没有看到 ext4 文件系统布局的全貌。还有两个至关重要的因素在影响着布局：sparse_super 和 flex_bg。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
