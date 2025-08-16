@@ -27,7 +27,7 @@
       <link href="/20250816-ccls/"/>
       <url>/20250816-ccls/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>今天在编译新的 gcc，试了试 gccrs 编译器，以及 gcc 对 -std&#x3D;c23 的支持（主要是 auto 关键字）。</p><p>gccrs 完全没法用：写了个 hello world，告诉我 println! 没定义，因为 std bu</p>]]></content>
       
       
       <categories>

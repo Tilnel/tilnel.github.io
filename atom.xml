@@ -50,6 +50,17 @@
     <published>2025-08-15T16:00:00.000Z</published>
     <updated>2025-08-15T16:00:00.000Z</updated>
     
+    <content type="html"><![CDATA[<p>今天在编译新的 gcc，试了试 gccrs 编译器，以及 gcc 对 -std&#x3D;c23 的支持（主要是 auto 关键字）。</p><p>gccrs 完全没法用：写了个 hello world，告诉我 println! 没定义，因为 std bu</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天在编译新的 gcc，试了试 gccrs 编译器，以及 gcc 对 -std&amp;#x3D;c23 的支持（主要是 auto 关键字）。&lt;/p&gt;
+&lt;p&gt;gccrs 完全没法用：写了个 hello world，告诉我 println! 没定义，因为 std</summary>
+        
+      
     
     
     
