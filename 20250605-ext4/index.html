@@ -58,7 +58,7 @@
 <ul>
 <li>Superblock，包含文件系统的信息。位于每组的第一个块。</li>
 <li>（块）组描述符（表）【(Block) Group Descriptors (Table)】包含了数据块 Bitmap，inode Bitmap 和 inode Table 在块组中的位置。每个块组都有一个组描述符表。根据组大小的不同，它有可能占据一块或多个块，并且总是跟在 Superblock 后面。</li>
-<li>预留的<strong><em>组描述符表</em> 块</strong>。这些是为了未来扩展文件系统的时候预留的。ext4 文件系统的大小可以调整，如果是扩展的话，就意味着有更多的块，更多的块组。更多的组描述符就需要空间。通常是紧跟在 GDT 后的 0 或更多个 block。<code>rezise_inode</code>（在 Superblock 的 Filesystem Feature 中）标志了预留存在与否。</li>
+<li>预留的<strong><em>组描述符表</em> 块</strong>。这些是为了未来扩展文件系统的时候预留的。ext4 文件系统的大小可以调整，如果是扩展的话，就意味着有更多的块，更多的块组。更多的组描述符就需要空间。通常是紧跟在 GDT 后的 0 或更多个 block。<code>rezise_inode</code>（在 Superblock 的 Filesystem features 中）标志了预留存在与否。</li>
 <li>数据块 Bitmap。标识了哪些数据块已经被使用了。它占据一个 block，位置不固定，在组描述符中指定。</li>
 <li>inode Bitmap。标识了 inode Table 中的哪些项（entries）已经被使用了。它占据一到多个 blocks（经常是多个）并且位置不固定，由组描述符指定。</li>
 <li>数据 Blocks。包含了实际的文件内容。占据一到多个 blocks。块组里除去上文所述，剩下的 block 都属于这部分。</li>
@@ -69,7 +69,8 @@
 <li>预留的 GDT 块有 954 个。用作未来文件系统的扩展。</li>
 <li>每组的 inode block 有 509 个。这个数字与 inode size 以及每组的 inode 数量紧密相关。注意到 $256 B * 8144 &#x2F; 4096 B &#x3D; 509$。</li>
 </ul>
-<p>目前为止我们还没有看到 ext4 文件系统布局的全貌。Superblock 的 Filesystem Feature 中还有两个至关重要的因素在影响着布局：sparse_super 和 flex_bg。</p>
+<p>目前为止我们还没有看到 ext4 文件系统布局的全貌。Superblock 的 Filesystem features 中还有两个至关重要的标志在影响着布局：<code>sparse_super</code> 和 <code>flex_bg</code>。</p>
+<h3><a href="#superblock-backups" class="header-anchor">#</a><span id="superblock-backups">Superblock Backups</span></h3><p>Superblock 包含了文件系统的重要信息，丢失就等于文件系统完全损坏了。因而在设计的时候，这些 Superblock 在块组当中都有备份，或者说是冗余。然而这可能</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
