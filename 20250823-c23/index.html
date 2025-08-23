@@ -75,7 +75,7 @@
 <p>我尝试了很久，发现不能使用。思路是首先修改某个栈上的 rbp 让它不指向调用者的 rbp 而是指向调用者的返回地址，即 *rbp +&#x3D; 8。然后通过这个栈上的指针 access 返回地址的位置，修改为任意函数指针；最后将 rbp 改回。</p>
 <p>失败的原因是，一次 printf 调用会首先把参数取好，而不是多次调用 printf_positional。这意味着我第二步读到的是指针旧值。因而没有任何变化。</p>
 <p>图中展示了我最后仍然是写入了 0x7fffffffe680 (rbp旧值) 的一字节为 0x36，与 succeed 0x401136 一致。</p>
-<p>肯定需要多次调用才能完成此类攻击。当然知道了这点就明白了，肯定要</p>
+<p>肯定需要多次调用才能完成此类攻击。</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
