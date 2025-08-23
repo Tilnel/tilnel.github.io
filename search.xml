@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>C23 标准手册拾遗</title>
       <link href="/20250823-c23/"/>
       <url>/20250823-c23/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote>]]></content>
       
+      
+      <categories>
+          
+          <category> C </category>
+          
+      </categories>
       
       
     </entry>

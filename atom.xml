@@ -44,14 +44,29 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>C23 标准手册拾遗</title>
     <link href="https://tilnel.github.io/20250823-c23/"/>
     <id>https://tilnel.github.io/20250823-c23/</id>
-    <published>2025-08-23T03:57:07.892Z</published>
-    <updated>2025-08-23T03:57:07.892Z</updated>
+    <published>2025-08-22T16:00:00.000Z</published>
+    <updated>2025-08-22T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;进行一个通读&lt;/p&gt;
+&lt;/blockquote&gt;
+</summary>
+        
+      
     
     
     
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
     
     
   </entry>
