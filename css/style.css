@@ -992,25 +992,25 @@ pre {
 /* add my firacode */
 @font-face {
   font-family: "FiraCode";
-  src: url("~@/fonts/FiraCode-Regular.ttf") format("truetype");
+  src: url("fonts/FiraCode-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "FiraCode";
-  src: url("~@/fonts/FiraCode-Bold.ttf") format("truetype");
+  src: url("fonts/FiraCode-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: "FiraCode";
-  src: url("~@/fonts/FiraCode-Medium.ttf") format("truetype");
+  src: url("fonts/FiraCode-Medium.ttf") format("truetype");
   font-weight: medium;
   font-style: normal;
 }
 @font-face {
   font-family: "FiraCode";
-  src: url("~@/fonts/FiraCode-Light.ttf") format("truetype");
+  src: url("fonts/FiraCode-Light.ttf") format("truetype");
   font-weight: lighter;
   font-style: normal;
 }
