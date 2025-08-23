@@ -79,7 +79,7 @@
 <p>这对于程序也有条件。对于我而言，我能够改动的 rbp 旧值位置已经很靠栈顶了。实际上的返回地址已经在 _start 里。返回到这个函数，能不能运行什么代码都不好说。。更别提注入代码，因为可写的地方都不可执行。最大的可能性是，同时用好这个 vulnerability 和某些库函数之类的。并且条件是有某种神秘服务不经检查地把输入传给 fmt 字符串。</p>
 <p>思路草图（真的很草） “读” 的箭头应指向最上面的 pc</p>
 <p><img src="image-20250823213343937.png" alt="image-20250823213343937"></p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250823-c23/">C23 标准手册拾遗</a><a class="next" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250823-c23/">C23 标准手册拾遗（一）</a><a class="next" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
   langMode = {
