@@ -44,6 +44,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://tilnel.github.io/20250823-c23/"/>
+    <id>https://tilnel.github.io/20250823-c23/</id>
+    <published>2025-08-23T03:57:07.892Z</published>
+    <updated>2025-08-23T03:57:07.892Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>多个 gdb 实例控制分布式系统</title>
     <link href="https://tilnel.github.io/20250817-idea/"/>
     <id>https://tilnel.github.io/20250817-idea/</id>
@@ -497,35 +510,6 @@
     
     
     <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PGP key 配置记录</title>
-    <link href="https://tilnel.github.io/20250327-gpg/"/>
-    <id>https://tilnel.github.io/20250327-gpg/</id>
-    <published>2025-03-27T05:43:12.000Z</published>
-    <updated>2025-03-27T05:43:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(GPG) 是其一套实现。</p><p>生成你的密钥对并妥善管理，就可以：</p><ul><li>加密通话</li><li><del>放一个 fingerprint 在个人页面里装B</del></li></ul><p>这里有一套比较详细的教学，我只是随手记录一下自己的配置。</p><p><a href="https://ulyc.github.io/2021/01/13/2021%E5%B9%B4-%E7%94%A8%E6%9B%B4%E7%8E%B0%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8PGP-%E4%B8%8A/">2021年，用更现代的方法使用PGP（上） - C的博客 |UlyC</a></p><p><a href="https://ulyc.github.io/2021/01/18/2021%E5%B9%B4-%E7%94%A8%E6%9B%B4%E7%8E%B0%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8PGP-%E4%B8%AD/">2021年，用更现代的方法使用PGP（中） - C的博客 |UlyC</a></p><p><a href="https://ulyc.github.io/2021/01/26/2021%E5%B9%B4-%E7%94%A8%E6%9B%B4%E7%8E%B0%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8PGP-%E4%B8%8B/">2021年，用更现代的方法使用PGP（下） - C的博客 |UlyC</a></p><hr><p>根据 CC BY-NC-ND 4.0 协议，我不能发布基于原文演绎的内容。我无法分辨记录配置过程是否是一种演绎。因而决定不对自己的配置过程进行发布了。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;OpenPGP 是一套开放的互联网讯息加密、验证的标准，而 GnuPG(GPG) 是其一套实现。&lt;/p&gt;
-&lt;p&gt;生成你的密钥对并妥善管理，就可以：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;加密通话&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;放一个 fingerprint</summary>
-        
-      
-    
-    
-    
-    <category term="技术" scheme="https://tilnel.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
   </entry>
