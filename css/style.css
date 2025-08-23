@@ -1010,7 +1010,7 @@ pre {
 }
 @font-face {
   font-family: "FiraCode";
-  src: url("../fonts/FiraCode-Light.ttf") format("truetype");
+  src: url("../fonts/FiraCode-Retina.ttf") format("truetype");
   font-weight: lighter;
   font-style: normal;
 }
