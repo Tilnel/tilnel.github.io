@@ -27,7 +27,7 @@
       <link href="/20250824-c23/"/>
       <url>/20250824-c23/</url>
       
-        <content type="html"><![CDATA[<p><strong>注意到</strong> 预处理器需要总是识别当前可识别的最长的预处理单元。</p><img src="image-20250824043459739.png" alt="image-20250824043459739" style="zoom:50%;">]]></content>
+        <content type="html"><![CDATA[<p><strong>注意到</strong> 预处理器需要总是识别当前可识别的最长的词法单元。</p><img src="image-20250824043459739.png" alt="image-20250824043459739" style="zoom:50%;">]]></content>
       
       
       <categories>
