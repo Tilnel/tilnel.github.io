@@ -27,7 +27,7 @@
       <link href="/20250823-c23/"/>
       <url>/20250823-c23/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote><p>空指针 deref 是 undefined behavior</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote><p>空指针 deref 是 undefined behavior。曾经在 gcc 中遇到过因为分析出空指针导致整个函数体被优化的情况。我现在 -O0 用多了已经忘了这些东西了。</p>]]></content>
       
       
       <categories>
