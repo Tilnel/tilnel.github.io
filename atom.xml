@@ -50,7 +50,7 @@
     <published>2025-08-22T16:00:00.000Z</published>
     <updated>2025-08-22T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote><p>空指针 deref 是 undefined behavior</p>]]></content>
     
     
       
@@ -60,7 +60,7 @@
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;进行一个通读&lt;/p&gt;
 &lt;/blockquote&gt;
-</summary>
+&lt;p&gt;空指针 deref 是 undefined</summary>
         
       
     
