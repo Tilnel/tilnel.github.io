@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>gitm final ver | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">gitm final ver</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">gitm final ver</h1><div class="post-meta">2023-01-14<span> | </span><span class="category"><a href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 3k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 11</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20230114-gitm-final/#vcomment"><span class="valine-comment-count" data-xid="/20230114-gitm-final/"></span><span> Comment</span></a><div class="post-content"><h1 id="Gitm-实验手册与指南"><a href="#Gitm-实验手册与指南" class="headerlink" title="Gitm - 实验手册与指南"></a><center>Gitm - 实验手册与指南</center></h1><center>南京大学 孙博文<br>tilnel@smail.nju.edu.cn</center>
+
+<p>随意的项目要求 + 很简单的指导，主要是设计思路 + 可利用的工具。</p>
+<p>[toc]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>git 是当今世界上最流行的版本控制系统。本实验要求你通过提交 git repo 的方式来提交一个迷你版的命令行工具 gitm(inus)。</p>
+<p><strong>注意：本实验将只能在 Linux 操作系统中完成</strong>，因为你不得不使用系统调用，而 OJ 是 Linux 的。提交 Windows 上可以编译运行的代码，在评测机上注定不可兼容。</p>
+<p>首先，你需要学习 git ，否则你将完全不明白 gitm 的功能，并且也无法用 git 来管理本次作业的代码。</p>
+<blockquote>
+<p>是的！我们将会发布一个由 git 管理的框架代码，并且要求你一直使用 git 来管理，最终提交一个 git repo。</p>
+</blockquote>
+<p>获取框架代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://git.nju.edu.cn/Tilnel/gitm.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="提交要求"><a href="#提交要求" class="headerlink" title="提交要求"></a>提交要求</h2><p>所有代码，包括 .c 和 .h 文件需要放在 git repo 的根目录下。对自己使用的头文件的引用请以双引号的形式，以便编译脚本能够正常工作。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gitm</span><br><span class="line">├── gitm.c</span><br><span class="line">├── gitm.h</span><br><span class="line">├── whateveryouwant.c</span><br><span class="line">├── whateveryouwant.h</span><br><span class="line">├── ...</span><br><span class="line">└── Makefile</span><br><span class="line"></span><br><span class="line">/* gitm.c */</span><br><span class="line">#include &quot;gitm.h&quot;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+
+
+<p>你可以修改 Makefile，但请不要删除其中的 git 目标依赖。我们在 Makefile 中确保了你的每一次编译运行都能够自动进行 git commit。这些自动的 commit 可以帮助你回滚到自己想要的任意版本，并且在未来查重工作中产生疑问时，良好的 commit 记录将成为重要的证明。</p>
+<p>在你的 git repo 里请包含所有编译所需的源文件，但不要出现编译不需要的多余的源文件。</p>
+<p>尝试编译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>你将看到根目录下产生了一个名为 gitm 的可执行文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gitm version</span><br></pre></td></tr></table></figure>
+
+<p>你将看到一个小彩蛋（你之后可以自由地删掉它或修改掉，不影响成绩）。</p>
+<p>注意：本次实验你编写的是一个 “命令行工具”。也就是说，我们将以和使用 git 相同的方式来使用它：在命令行里输入命令和参数。这意味着，这次你需要真正 “解析参数” （被 parse.c 支配的恐惧）。</p>
+<p>而且，这次我们将会在运行中多次调用你的程序。也就是说，你的程序并不是在一直运行着，每一次调用都会做不同的事。你存储在内存里的数据都将随着功能完成，进程结束而消失。所以，关于 gitm repository 的有用的信息，你需要将它们持久化到磁盘上，以便进行后续的操作。因此学习 C 语言的文件操作是必不可少的。</p>
+<p>为了实现一个 git，首先你要了解 git 的功能</p>
+<h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><p>假设我们当前在一个文件夹 dir 下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitm init</span><br></pre></td></tr></table></figure>
+
+<p>初始化当前的 dir 为一个 gitm repository。如果当前 dir 已经是一个 gitm repo，则不做任何操作。</p>
+<p>此时的 gitm 中应当不存在任何 commit，gitm 的仓库中应不存在任何文件。</p>
+<p>具体来说，你可以在当前目录下创建一个 <code>.gitm</code> 目录，用于存放一些记录仓库状态的文件。</p>
+<blockquote>
+<p>对，就像 git 的 .git 那样！</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitm commit</span><br></pre></td></tr></table></figure>
+
+<p>将当前仓库中文件改动后状态作为一个提交，并记录下来。然后不重复地给出一个长度为 8 的小写十六进制数（例如 3bdc8902），用于唯一地指示这一次 commit。</p>
+<p>git 中的提交是一个树形的结构。我们希望你在 gitm 中，同样实现这样的树形结构。</p>
+<img src="git-brance.svg" alt="img" style="zoom: 100%;">
+
+<p>gitm 中不要求实现对分支的命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitm checkout commit</span><br></pre></td></tr></table></figure>
+
+<p>checkout 用于将当前目录的状态切换到 commit 所指示的提交上。</p>
+<p>若当前目录的状态较 gitm <strong>当前所处的 commit</strong> 有改动，则拒绝本次 checkout，并且<strong>你的 main() 函数以返回值 1 退出</strong>。</p>
+<p>checkout 正常完成后，你目录中文件的状态（除了 .gitm 目录以外）必须与指定的 commit 相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitm checkout .</span><br></pre></td></tr></table></figure>
+
+<p>特殊地，这一条命令用于将目录文件恢复到当前所处的 commit 时的状态。也就是说，放弃此时对文件的所有改动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitm merge commit</span><br></pre></td></tr></table></figure>
+
+<p>找到当前所处 commit 与命令指定的 commit 的公共祖先，并将两个 commit 合并起来。</p>
+<p>具体来说，是将命令指定的 commit 相对于公共祖先的修改，应用于当前所处的 commit。</p>
+<p>如果合并的两个 commit 相对于公共祖先，均对同一个文件产生了修改（创建、删除、编辑），那么命令直接拒绝执行，输出 “conflict\n” <strong>并使 main 函数返回 1</strong>。</p>
+<p>在其他情况下，你需要合并，并产生一个新的 commit。逻辑上，这个 commit 将成为被合并的两个 commit 的共同后继。</p>
+<blockquote>
+<p>我们如何检测这一点？</p>
+<p>假设有 commit a-g，b, c 由 a 分支而来，d 由 b, c 合并而来，e 是 b 的后继，f 是 c 的后继，g 是 d 的后继。</p>
+<p>你的程序应当有能力找到 e, g 的公共祖先是 b，f, g 公共祖先是 c，在此基础上合并是无冲突的。如果你只能找到 a，则合并有可能产生冲突，因为 e 相对 a 改变了 a.c，而 g 相对 a 也改变了 a.c。</p>
+</blockquote>
+<img src="image-20230103113625830.png" alt="image-20230103113625830" style="zoom: 67%;">
+
+<h2 id="测试脚本"><a href="#测试脚本" class="headerlink" title="测试脚本"></a>测试脚本</h2><p>我们会将你的 repo 里所有的 C 源文件和头文件收集起来进行编译，并生成一个名为 <code>gitm</code> 的可执行文件。然后原地创建一个文件夹，作为你的 gitm 需要管理的 repository。例如（其中 &gt; 开头的行表示命令行输出）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">dir</span></span><br><span class="line">../gitm init</span><br><span class="line">../gitm commit</span><br><span class="line">&gt; 3bce5ff0                       <span class="comment"># 空 commit，我们的 OJ 一定会创建一个空 commit 作为第一个</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello world&quot;</span> &gt; hello.txt   <span class="comment"># 创建文件并写入</span></span><br><span class="line">../gitm commit</span><br><span class="line">&gt; b926d817</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;this is my git&quot;</span> &gt; readme.txt</span><br><span class="line">../gitm checkout 3bce5ff0</span><br><span class="line">&gt; You<span class="string">&#x27;ve made change. Please commit or garbage your change.</span></span><br><span class="line"><span class="string">echo $?                          # 给出上一条命令的返回值。正常退出的程序应当为 0</span></span><br><span class="line"><span class="string">&gt; 1</span></span><br><span class="line"><span class="string">../gitm commit</span></span><br><span class="line"><span class="string">&gt; ef938aa6</span></span><br><span class="line"><span class="string">ls -a</span></span><br><span class="line"><span class="string">&gt; hello.txt readme.txt .gitm</span></span><br><span class="line"><span class="string">../gitm checkout b926d817</span></span><br><span class="line"><span class="string">ls -a</span></span><br><span class="line"><span class="string">&gt; hello.txt .gitm</span></span><br></pre></td></tr></table></figure>
+
+<p>随着时间的流逝，我将会发布进一步的实验指南。</p>
+<h2 id="实现要求"><a href="#实现要求" class="headerlink" title="实现要求"></a>实现要求</h2><ul>
+<li>你创建的所有文件都要放到运行目录的 .gitm 目录下。<ul>
+<li>+++ 对目录的体积要求：不要每一次都追踪没有发生变化的文件即可。不需要对每个文件进行增量存储。 +++</li>
+</ul>
+</li>
+<li>commit 数量不会超过 10000 个。</li>
+<li>你的 gitm 只需要管理文本类型的文件。其他类型的文件不会出现。</li>
+<li>不要求追踪空目录</li>
+</ul>
+<p>本实验的测试点预计如下：</p>
+<p>1、hello world（保留 gitm version 的打印信息即得分）</p>
+<p>2、和上面的脚本相似的一段小测试，基础功能</p>
+<p>3、文件数量增加，提交数量增加；但并不会出现子目录</p>
+<p>4、在 3 的基础上，有一定的目录结构</p>
+<p>5、在 4 的基础上，测试 merge 功能（不会很刁钻，只要该拒绝的拒绝，该成功的 merge 对就行了）</p>
+<p>6、测试 .gitm 的空间管理，<strong>要求未发生改动的文件不重复存储，不要求单文件的增量存储</strong></p>
+<p>能够恢复对文件就可以了，不会太刁钻。</p>
+<h2 id="实现指南"><a href="#实现指南" class="headerlink" title="实现指南"></a>实现指南</h2><p>一个更加 naïve 的思路。从一个 commit 刚刚被提交说起…</p>
+<p>此时，所有的目录结构和文件改动都被提交了，我们可以在当下的目录中进行新的改动。为了能够恢复到刚刚提交的“干净”状态，我们需要为当下的状态做一个暂存，以便之后进行对比。</p>
+<p>现在我们做了一些改动，想要 commit。这里，需要记录下改动的部分，没有改动的部分则默认是保持的。我们可以用文件系统的 api 遍历当前目录和暂存下来的目录，检测文件的增删等。对于依然存在的文件，则需要逐字符对比其中的改动。当所有的改动全部检测完毕后，在 .git 下保存好本次改动中：</p>
+<ul>
+<li>删除了哪些文件</li>
+<li>增加了哪些文件和这些文件的内容</li>
+<li>编辑了哪些文件和这些文件的新版本</li>
+</ul>
+<p>并将本次 commit 及其父节点 commit 号记录下来。</p>
+<p>可以使用的一些函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dirent.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line">       DIR *<span class="title function_">opendir</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *name)</span>;     <span class="comment">// 打开目录</span></span><br><span class="line">       <span class="keyword">struct</span> dirent *<span class="title function_">readdir</span><span class="params">(DIR *dirp)</span>;  <span class="comment">// 读取目录中的项目</span></span><br><span class="line">       <span class="type">int</span> <span class="title function_">closedir</span><span class="params">(DIR *dirp)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line">       <span class="type">int</span> <span class="title function_">mkdir</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *path, <span class="type">mode_t</span> mode)</span>;  <span class="comment">// 创建新目录</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line">       <span class="type">int</span> <span class="title function_">rmdir</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *pathname)</span>;   <span class="comment">// 删除目录</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>如何更简单地判断新文件是否发生改动，特别是较大文件？</p>
+</blockquote>
+<p>可以对所有存储下来的文件做 <code>md5sum</code>，为文件生成一个摘要。之后再有文件变动时，先去找是否存在相同的 md5，如果新旧文件的 md5 相同，就不用重复保存了。</p>
+<p>如何调用命令：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">       FILE *<span class="title function_">popen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *command, <span class="type">const</span> <span class="type">char</span> *type)</span>;  <span class="comment">// 执行命令，读取它的输出</span></span><br><span class="line">       <span class="type">int</span> <span class="title function_">pclose</span><span class="params">(FILE *stream)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="废弃的旧思路（依然可以尝试）"><a href="#废弃的旧思路（依然可以尝试）" class="headerlink" title="废弃的旧思路（依然可以尝试）"></a>废弃的旧思路（依然可以尝试）</h3><p>一个 naïve 的思路。</p>
+<p>首先介绍两个工具，一个叫做 diff，一个叫做 patch。这两个工具是大部分发行版自带的。<strong>看到这里请打开你的命令行</strong>一起尝试一下。</p>
+<p>准备任意一个代码文件 a.c，复制到 b.c，在 b.c 中加入一些行，删去一些行，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff a.c b.c</span><br></pre></td></tr></table></figure>
+
+<p>能看到：</p>
+<img src="Screenshot_20230115_000047.png" alt="img" style="zoom:75%;">
+
+<p>可知，diff 可以计算出两个文本文件之间的差距。</p>
+<p>用重定向将这一结果定向到 <code>diff.out</code> 中，我们再用 patch:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">patch a.c diff.out</span><br><span class="line">diff a.c b.c</span><br></pre></td></tr></table></figure>
+
+<p>这次什么也没有输出。a.c 和 b.c 变成一样的了。</p>
+<p>diff 不仅可以给 a.c 打补丁，还可以把补丁从文件中拆下来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">patch -r b.c diff.out</span><br></pre></td></tr></table></figure>
+
+<p>再打开 b.c，就能发现文件变回了之前  a.c 的样子。</p>
+<p>great。所以只要你能够在 commit 的时候遍历目录中的所有文件，挨个 diff 一下，就可以算出当前版本和上个版本的差距了。然后你把这些差距全都写 .gitm 中的某一个文件，大功告成。</p>
+<p>diff 和 patch 可以对两个目录直接计算差值和补丁&#x2F;回退。如果你学会怎么用，省去很多麻烦事。</p>
+<p>如何调用命令：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">       FILE *<span class="title function_">popen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *command, <span class="type">const</span> <span class="type">char</span> *type)</span>;  <span class="comment">// 执行命令，读取它的输出</span></span><br><span class="line">       <span class="type">int</span> <span class="title function_">pclose</span><span class="params">(FILE *stream)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总结：在 .gitm 中我们需要存储的元素</p>
+<ul>
+<li>一个文件，能指示当前所处的提交</li>
+<li>一个文件，包含了所有的提交号，并需要能够指明每个提交在树结构上的祖先节点。对于新 commit 是一个，对于 merge 是两个（这与 git 并不完全相同）</li>
+<li>若干个目录，每个代表一个 commit；每个目录若干个文件，记录它相对祖先节点的变化：增减文件目录，编辑文件</li>
+<li>一个目录，包含了当前 commit 的暂存状态，以便之后用于与编辑后的状态进行比较</li>
+</ul>
+<p>在 gitm 执行的过程中，有这样一些子功能需要实现：</p>
+<ul>
+<li>解析参数，执行对应功能</li>
+<li>遍历当前文件树，与已提交的文件树对比</li>
+<li>将对比的文件树中公共部分进行比较</li>
+<li>分析 commit 记录，确定提交之间的关系</li>
+<li>通过提交之间关系，决定前进或后退</li>
+</ul>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20230120-summary/">Project 2 客观题杂谈</a><a class="next" href="/20230113-artperformance/">Art Performance Lecture Notes</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://yuruiii.github.io/" title="Meursault" target="_blank">Meursault</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://carawaykong.github.io/" title="Caraway" target="_blank">Caraway</a><ul></ul><a href="https://riverclouds.net/" title="江云" target="_blank">江云</a><ul></ul><a href="https://usernamenul1.github.io/" title="nul1" target="_blank">nul1</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://blog.sakiyary.cn/" title="Sakiyary" target="_blank">Sakiyary</a><ul></ul><a href="https://huoxj.github.io/" title="Runz" target="_blank">Runz</a><ul></ul><a href="https://www.erinwithbmq.xin/" title="ErinwithBMQ" target="_blank">ErinwithBMQ</a><ul></ul><a href="https://mzy0624.github.io/" title="HaibaraAI" target="_blank">HaibaraAI</a><ul></ul><a href="https://blog.azifan.club/" title="水龙之魂" target="_blank">水龙之魂</a><ul></ul><a href="https://aliasrevir.github.io/" title="XiEn" target="_blank">XiEn</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deprecated/">Deprecated</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Uncategorized/">Uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB/">动漫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BD%B1%E8%A7%86/">影视</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%94%BF%E6%B2%BB/">政治</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BF%BB%E8%AF%91/">翻译</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B0%A2%E6%9E%97/">谢林</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2025 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://api.busuanzi.cc/static/3.6.9/busuanzi.min.js" async></script></div></body></html>

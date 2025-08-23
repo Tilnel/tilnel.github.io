@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>白给周报 1-types-io | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">白给周报 1-types-io</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">白给周报 1-types-io</h1><div class="post-meta">2021-10-25<span> | </span><span class="updated">2021-10-25</span><span> | </span><span class="category"><a href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></span><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 1.9k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 8</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20211025-baigei_week1/#vcomment"><span class="valine-comment-count" data-xid="/20211025-baigei_week1/"></span><span> Comment</span></a><div class="post-content"><p>视角：Tilnel</p>
+<p>小心<strong>匿名处刑</strong></p>
+<p>同步发布于 <a target="_blank" rel="noopener" href="http://blog.tilnel.com/">blog</a></p>
+<p>[toc]</p>
+<h2 id="Ascii"><a href="#Ascii" class="headerlink" title="Ascii"></a>Ascii</h2><p>非常和平的签到题，一点问题都没有。</p>
+<h2 id="Change"><a href="#Change" class="headerlink" title="Change"></a>Change</h2><p>贪心思想，先用最大的，直到用不了再换小一点的…</p>
+<p>看到 std 的做法，突发脑溢血：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n%d\n%d\n%d\n&quot;</span>, n / <span class="number">20</span>, (n % <span class="number">20</span>) / <span class="number">10</span>, ((n % <span class="number">20</span>) % <span class="number">10</span>) / <span class="number">5</span>, (((n % <span class="number">20</span>) % <span class="number">10</span>) % <span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接 n % 5 不好吗，为什么要 (((n % 20) % 10) % 5) …</p>
+</blockquote>
+<p><strong>更脑溢血的写法</strong>：从 0 张 20 元开始，用 <code>for</code> 循环一张一张累加，直到超了，换成 10 元继续累加…</p>
+<blockquote>
+<p>这份代码的作者处理 10 元的时候还弄错了，导致 1 元必须累加到超过 <code>INT_MAX</code> 变成某个负数才能停止循环，于是时间超限了。</p>
+</blockquote>
+<h2 id="Equation"><a href="#Equation" class="headerlink" title="Equation"></a>Equation</h2><p>&#x3D;&#x3D;重灾区&#x3D;&#x3D;</p>
+<p>主要问题：爆完 <code>int</code> 爆 <code>long long</code>。因为 <code>a</code>, <code>c</code> 在 <code>int</code> 范围，故有可能出现 $4 \times a \times c$ 也超过了 <code>int64_t</code> 范围的情况。解决办法是全都用 <code>double</code>。</p>
+<p>double 的精度是十进制的15位左右，本题求一个小数点后 3 位只能说是绰绰有余。</p>
+<p>白给示例：</p>
+<p><img src="QQ%E5%9B%BE%E7%89%8720211025011332.jpg" alt="1"></p>
+<h2 id="Gray"><a href="#Gray" class="headerlink" title="Gray"></a>Gray</h2><p>提交通过率达到惊人的 56.3%</p>
+<h2 id="Inverse"><a href="#Inverse" class="headerlink" title="Inverse"></a>Inverse</h2><p>这题数据出锅了，后来题面补了前导零的描述。</p>
+<h2 id="Pi"><a href="#Pi" class="headerlink" title="Pi"></a>Pi</h2><p>最大的问题是有人不使用百度，直接在代码里写：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> pi_1 = <span class="number">16</span> * arctan(<span class="number">0.2</span>) - <span class="number">4</span> * arctan(<span class="number">1.0</span> / <span class="number">239</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后非常自然地得到了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pi.c: In function ‘main’:</span><br><span class="line">pi.c:5:22: warning: implicit declaration of function ‘arctan’; did you mean ‘atan’? [-Wimplicit-function-declaration]</span><br><span class="line">    5 |   double pi_1 = 16 * arctan(0.2) - 4 * atan(1.0 / 239);</span><br><span class="line">      |                      ^~~~~~</span><br><span class="line">      |                      atan</span><br><span class="line">/usr/bin/ld: /tmp/ccC2GESl.o: in function `main&#x27;:</span><br><span class="line">pi.c:(.text+0x1a): undefined reference to `arctan&#x27;</span><br><span class="line">collect2: error: ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+
+<p>但是又不会看 warning，其实编译器已经问你是不是 <code>atan</code> 了。</p>
+<p>第二个问题还是 <strong>数据类型溢出</strong>。</p>
+<ul>
+<li><p>当你在 C 里写下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">640320</span> * <span class="number">640320</span> * <span class="number">640320</span>;</span><br></pre></td></tr></table></figure>
+
+<p>时，640320 被自动认为是 <code>int</code> 类型。而这整个乘法算式的 3 个数字都是 <code>int</code> 类型，所以表达式的结果也将会是 <code>int</code> 类型。显然是装不下的。</p>
+</li>
+<li><p>但凡写出一个 <code>640320.0</code>，这个计算的性质就变了：</p>
+<p>根据 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%B1%BB%E5%9E%8B%E6%8F%90%E5%8D%87/2635753">类型提升规则</a>，因为 640320.0 的类型是 <code>double</code>，所以它参与的运算的结果也被提升成了 <code>double</code> 类型。</p>
+</li>
+</ul>
+<p>什么时候不提升：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">2147483648</span>;</span><br><span class="line"><span class="type">double</span> b = <span class="number">1.0</span> + a * a;</span><br></pre></td></tr></table></figure>
+
+<p>由于运算优先级的关系，这里首先执行 <code>a * a</code>，两者都是 <code>int</code> 类型，于是得出了一个溢出的 <code>int</code> 类型结果，再与 1.0 相加（而不是先被提升成 <code>double</code> 类型再相乘。</p>
+<h3 id="白给示范"><a href="#白给示范" class="headerlink" title="白给示范"></a>白给示范</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">double</span> pi_1 = <span class="number">16</span> * atanf(<span class="number">0.2</span>) - <span class="number">4</span> * atanf(<span class="number">1.0</span> / <span class="number">239</span>);</span><br><span class="line">  <span class="type">double</span> pi_2 = <span class="built_in">log</span>(<span class="number">1.0</span> * <span class="number">640320</span> * <span class="number">640320</span> * <span class="number">640320</span> + <span class="number">744</span>) / <span class="built_in">sqrt</span>(<span class="number">163</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%.15lf\n%.15lf\n&quot;</span>, pi_1, pi_2);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3.141592741012573</span><br><span class="line">3.141592653589793</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么差这么多？</p>
+</blockquote>
+<p><img src="image-20211025012134558.png" alt="2"></p>
+<p><code>double</code> 的精度比起 <code>float</code> 不知道高到哪里去了。。。</p>
+<h2 id="Planck"><a href="#Planck" class="headerlink" title="Planck"></a>Planck</h2><p>错误点比较集中，许多同学误用 <code>%.3g</code> ，但这个输出格式：</p>
+<ul>
+<li>并不都输出科学计数法</li>
+<li>还会砍末尾 0 造成有效数字位数不对</li>
+</ul>
+<p>手册描述为证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man 3 <span class="built_in">printf</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20211025013753854.png" alt="image-20211025013753854"></p>
+<blockquote>
+<p>double 类型的参数会以 f 或 e 格式输出。数字指定有效数字位数，默认 6 位；如果指定 0 为，则输出 1 位。如果指数 &lt; -4 或 &gt;&#x3D; 精度则以 e 格式输出。<strong>分数部分的结尾 0 会被移除</strong>。小数点只会在其后至少跟随 1 位数字时出现。</p>
+</blockquote>
+<p>正确的做法：使用 <code>%.2e</code></p>
+<h2 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h2><p>常见错：没有把题目指定的所有输出格式都实现，可能是因为年份前补 0 会显得非常奇怪。</p>
+<p>奇怪错误1：strncpy 并不自动添加字符串末尾 0，字符串又开小了，导致字符串全连在一起。示例代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> weekday[<span class="number">10</span>];</span><br><span class="line">    <span class="type">char</span> w[<span class="number">3</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, weekday);</span><br><span class="line">    <span class="built_in">strncpy</span>(w, weekday, <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, w);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="image-20211025014855566.png" alt="image-20211025014855566"></p>
+<p>以下讲解看不懂也没关系：</p>
+<p>函数执行的时候，局部变量占用的是栈区内存。而栈区内存的使用是从高地址向低地址。所以先创建的变量就排在后创建变量的后面。</p>
+<p>比如我们假定栈的空间是从（十六进制） 0x100 开始，那么定义了 <code>char weekday[10]</code> 后，它占用 10 字节，于是我们往前推 10，<code>weekday</code> 字符串的起始位置就是 0x100 - 10 &#x3D; 0xf6。</p>
+<p>定义 <code>char w[3]</code> 则 <code>w</code> 的起始位置是 0xf3。</p>
+<p>此时内存的状态是这样的，空格代表内容未知：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|   |   |   |   |   |   |   |   |   |   |   |   |   |   |</span><br><span class="line"> f3  f4  f5  f6  f7  f8  f9  fa  fb  fc  fd  fe  ff  100</span><br><span class="line">|     w     |                weekday                |</span><br></pre></td></tr></table></figure>
+
+<p>读入了 <code>weekday</code> 之后，则是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">|   |   |   | S | u | n | d | a | y |\0 |   |   |   |   |</span><br><span class="line"> f3  f4  f5  f6  f7  f8  f9  fa  fb  fc  fd  fe  ff  100</span><br><span class="line">|     w     |                weekday                |</span><br></pre></td></tr></table></figure>
+
+<p>在进行了 <code>strncpy</code> 之后，由于 <code>strncpy</code> 没有添加末尾 \0 的行为，则变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| S | u | n | S | u | n | d | a | y |\0 |   |   |   |   |</span><br><span class="line"> f3  f4  f5  f6  f7  f8  f9  fa  fb  fc  fd  fe  ff  100</span><br><span class="line">|     w     |                weekday                |</span><br></pre></td></tr></table></figure>
+
+<p>而对于 <code>printf</code> 来说，判断一个字符串结束的方式是遇 \0 则停止。于是输出了 ‘SunSunday’ 这样的结果。</p>
+<p>为了避免，我们只要：</p>
+<ul>
+<li>定义 w[4]，留出末尾 0 的空间</li>
+<li>手动设置 w[3] &#x3D; 0</li>
+</ul>
+<p>关于字符串的末尾 0，在第二周的作业中出现的错误则更是重量级。</p>
+<h2 id="Weekday"><a href="#Weekday" class="headerlink" title="Weekday"></a>Weekday</h2><p>提交通过率最低的一题，仅 18.3%。</p>
+<blockquote>
+<p>这题有我们的失误，一是一开始数据出错了，二是我们假定了年份是 4 位数的。对于 3 位数年份，前两位则不是 Y &#x2F; 100 了。</p>
+</blockquote>
+<p>主要的问题是看漏题目的一个条件导致运算错误。</p>
+<p>常出现的错误：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> w = ...; <span class="comment">// a long formula</span></span><br><span class="line"><span class="keyword">if</span> (w &lt; <span class="number">0</span>) w += <span class="number">7</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, w % <span class="number">7</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这里注意到了条件，试图解决，但解得不是很决。<code>w += 7</code> 后，<code>w</code> 依然可能是负数。那么 <code>w % 7</code> 就依然是负数。</p>
+<h3 id="重量级代码"><a href="#重量级代码" class="headerlink" title="重量级代码"></a>重量级代码</h3><p>足足写了 4 KB</p>
+<img src="image-20211025021128332.png" alt="image-20211025021128332" style="zoom:33%;">
+
+<p>学计算机的目标就是让计算机替我们做事。这里完全可以写得更加简洁。比如 214、245 这种数字是根本不需要自己去计算的。</p>
+<h2 id="Quine"><a href="#Quine" class="headerlink" title="Quine"></a>Quine</h2><p>在排除了各种偷鸡写法之后，现在只能在已知的正确代码上修改才能得到一份 <strong>事实上错误 但 判题机答案正确</strong> 的代码。</p>
+<p>具体的评测思路是：将你的 output 放到 .c 文件中，再编译运行一遍得到新的输出。这个新的输出应该与你的输出也保持一致。（你的代码正确的必要不充分条件）</p>
+<p>这里贴出 Special Judge 的源码。欢迎<strong>有闲工夫的人</strong>想点别的花样来绕过这个评测，如果对这份代码理解上有问题请戳作者。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Author: Tilnel</span></span><br><span class="line"><span class="comment">   Date: 2021-10-14 */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> code[<span class="number">4096</span>];</span><br><span class="line"><span class="type">char</span> output[<span class="number">4096</span>];</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    <span class="comment">// inf out ans</span></span><br><span class="line">    FILE *ouf = fopen(argv[<span class="number">2</span>], <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span> ((ch = fgetc(ouf)) != <span class="number">-1</span>)</span><br><span class="line">        code[i++] = ch;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">10</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    code[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> dir[<span class="number">16</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(dir, <span class="string">&quot;test-XXXXXX&quot;</span>);</span><br><span class="line">    mkdtemp(dir);</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> file[<span class="number">24</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(file, <span class="string">&quot;%s/main.c&quot;</span>, dir);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> fd = open(file, O_CREAT | O_WRONLY, <span class="number">0664</span>);</span><br><span class="line">    write(fd, code, i);</span><br><span class="line">    close(fd);</span><br><span class="line">    <span class="type">char</span> cmd[<span class="number">128</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(cmd, <span class="string">&quot;gcc -D__FILE__=NULL %s -o %s.out&quot;</span>, file, dir); <span class="comment">// 卡掉了使用 __FILE__ 的做法</span></span><br><span class="line">    <span class="type">char</span> out[<span class="number">32</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(out, <span class="string">&quot;./%s.out&quot;</span>, dir);</span><br><span class="line">    </span><br><span class="line">    system(cmd);</span><br><span class="line">    FILE *fp = popen(out, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    fread(output, i, <span class="number">1</span>, fp);</span><br><span class="line">    fclose(fp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strncmp</span>(code, output, i)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20211027_back_on_track/">生活回到正轨</a><a class="next" href="/20210611-buy_flower_for_me/">为自己献上鲜花</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://yuruiii.github.io/" title="Meursault" target="_blank">Meursault</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://carawaykong.github.io/" title="Caraway" target="_blank">Caraway</a><ul></ul><a href="https://riverclouds.net/" title="江云" target="_blank">江云</a><ul></ul><a href="https://usernamenul1.github.io/" title="nul1" target="_blank">nul1</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://blog.sakiyary.cn/" title="Sakiyary" target="_blank">Sakiyary</a><ul></ul><a href="https://huoxj.github.io/" title="Runz" target="_blank">Runz</a><ul></ul><a href="https://www.erinwithbmq.xin/" title="ErinwithBMQ" target="_blank">ErinwithBMQ</a><ul></ul><a href="https://mzy0624.github.io/" title="HaibaraAI" target="_blank">HaibaraAI</a><ul></ul><a href="https://blog.azifan.club/" title="水龙之魂" target="_blank">水龙之魂</a><ul></ul><a href="https://aliasrevir.github.io/" title="XiEn" target="_blank">XiEn</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deprecated/">Deprecated</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Uncategorized/">Uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB/">动漫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BD%B1%E8%A7%86/">影视</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%94%BF%E6%B2%BB/">政治</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BF%BB%E8%AF%91/">翻译</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B0%A2%E6%9E%97/">谢林</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2025 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://api.busuanzi.cc/static/3.6.9/busuanzi.min.js" async></script></div></body></html>

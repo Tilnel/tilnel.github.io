@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Null"><title>Time, Clocks, and the Ordering of Events in a Distributed System | Tilnel's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "ovuz7vaihk");
+</script><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Time, Clocks, and the Ordering of Events in a Distributed System</h1><a id="logo" href="/.">Tilnel's Blog</a><p class="description">我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/about/"><i class="fa fa-user"> About</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Time, Clocks, and the Ordering of Events in a Distributed System</h1><div class="post-meta">2022-11-20<span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 2.4k</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 9</span><span class="post-meta-item-text"> Minutes</span></span></span></div><a class="disqus-comment-count" href="/20221120-Lamport1978/#vcomment"><span class="valine-comment-count" data-xid="/20221120-Lamport1978/"></span><span> Comment</span></a><div class="post-content"><p>Lamport 原来是马萨诸塞的。</p>
+<p>读文章的目标：搞清楚</p>
+<ul>
+<li>基本模型，基本假设：分布式系统的基本模型往往比较复杂。实际论文中的模型与课本中的模型<br>比，要精细地多。大家需要按照课上讲的框架，把论文中模型的各个纬度都讨论清楚。</li>
+<li>基本问题：是否是经典问题。即使对于经典问题（e.g. consensus），也有很多的变体。把问题全<br>面认识清楚，与解决问题一样重要。对于一些不经典的问题，可以参照课上的学习，将问题全面<br>地认识清楚，解释清楚。</li>
+<li>主要贡献：对于论文贡献的深入解释，往往是一个具体的模型、算法、分析技术。技术的细节不<br>是最重要的，简单copy原文更是大忌。课程看重的是，从课程中所学习的视角进行分析解读，进<br>行原理性的提炼、阐述等。另外，虽然我们是偏理论的课程，但是对于实现、实验、系统的解读<br>也是欢迎的，例如，系统设计、实现的背后，理论建模与分析是如何发挥指导性作用的，等等。</li>
+</ul>
+<p>分布式系统中的时间，时钟，和事件的序关系</p>
+<p>前言</p>
+<p>构造一个“事件发生在另一事件前”的偏序关系。</p>
+<p>提出分布式算法，用以同步一个逻辑时钟系统，实现事件的全序。</p>
+<p>使用一个解决同步问题的方法来刻画全序的作用。</p>
+<p>然后提出一个同步物理时钟的算法特例，给出了时钟偏离同步的上界。</p>
+<p>分布式系统中，时间不同步导致事件之间的序关系不确定。</p>
+<p>我们讨论偏序，然后给一个算法来把偏序扩展成所有事件的满足consistency 的全序。这个算法就对我们实现分布式系统很有帮助。</p>
+<p>之后呢我们会解决一个简单的同步问题，来展示它的用法。</p>
+<p>意外的是，当算法给出的序和用户观察到的不一致的时候，不正常的行为就会发生。我们可以通过引入真实的物理时钟来避免这个问题。我们描述了一个简单的方法来同步这些时钟，并且求出了偏差的上界。</p>
+<p>不用物理时间定义偏序，因为可能不准。</p>
+<p>系统定义：</p>
+<p>假设系统由一堆进程组成。每一个都是事件的序列。一个子程序可以是事件，一条机器指令也可以是时间。假设他们形成一个序关系，</p>
+<blockquote>
+<p>a occurs before b in this sequence if a happens before b</p>
+</blockquote>
+<p>单线程，就是一组事件的全序。</p>
+<p>假设收发消息是一个事件，那么我们可以定义“发生在前”关系（happens before），denoted by <code>-&gt;</code></p>
+<p>Def. The relation “-&gt;”, on the set of events of a system is the smallest relation satisfying the following three conditions:</p>
+<p>(1) If a and b are events in the same process, and a comes before b, then a-&gt;b.</p>
+<p>(2) If a is the sending of a message by one precess and b is the receipt of the same message by another process, then a-&gt;b.</p>
+<p>(3) If a-&gt;b and b-&gt;c then a-&gt;c.</p>
+<p>简单来说：线程内有序；同一消息的收发有序；传递性。</p>
+<p>Concurrent iff not a-&gt;b and not b-&gt;a.</p>
+<p>For all a, not a-&gt;a. Irreflexive</p>
+<p>我们可以画时空图来表明这种序关系。</p>
+<p>我们只考虑已经发送的消息，而不考虑可能将会发送的消息。这是更实际的。</p>
+<p>现在我们引入逻辑时钟。其实就是给每个事件赋一个时间戳。</p>
+<p>对每个进程Pi定义时钟Ci，它可以给进程中的每个事件都发一个时间戳。整个时钟系统就表示为一个函数 C，为事件产生时间数 C<b>.</b></p>
+<p>C<b> &#x3D; Cj<b> 如果 b 是 Pj 的一个事件。现在我们并不对这个时间与物理时间进行关系的假设。所以我们只认为这是逻辑时钟。有可能只是个计数器。</b></b></p>
+<p>现在我们考虑，这个系统的“正确性”到底是什么意思。</p>
+<p>Clock Condition. For any events a, b:</p>
+<p>​	if a-&gt;b, then C<a>  &lt;  C<b></b></a></p>
+<p>BUT Reverse not holds:</p>
+<p>Suppose $C\langle a \rangle &lt; C\langle b\rangle \implies a\rightarrow b$</p>
+<p>Then $\neg a\to b \implies \neg C\langle a\rangle &lt; C\langle b \rangle$</p>
+<p>$Concurrence \iff \neg a\to b \and  \neg b\to a$</p>
+<p>$\iff \neg C\langle a\rangle &lt; C\langle b\rangle\and \neg C\langle b\rangle &lt; C\langle a\rangle$</p>
+<p>$\iff C\langle a\rangle &#x3D; C\langle b\rangle$</p>
+<p>但是并发事件并不一定是同时进行。</p>
+<p>时钟序成立，如果：</p>
+<ul>
+<li>C1. If $a$ and $b$ are events in process $P_i$, and $a$ comes before $b$, then $C_i\langle a\rangle &lt; C_i \langle b\rangle$.</li>
+<li>C1. If $a$ is the sending of a message by process $P_i$ and $b$ is the receipt of that message by process $P_j$, then $C_i\langle a\rangle &lt; C_j\langle b\rangle$</li>
+</ul>
+<p>我们从时空图来考虑时钟。想象进程的时钟遍历每一个数字，每两个连续的事件之间都有（可能多次）“拨动”的操作。</p>
+<p>然后对不同的线程，我们把它们相同的tick用虚线连起来。C1 就是说同线程中的两个事件之间必然有一条tick线。C2 则是说每一条消息线必须穿过一条 tick 线。</p>
+<p>tick 线就是 笛卡尔 坐标系上的等时线（space-time）。我们把这玩意捋直了，这就表示了时间顺序了，还不用物理时钟。</p>
+<p>这玩意你把它想象成三维的时空图也行。</p>
+<p>假设线程是算法，事件代表其中的特定行为。</p>
+<p>Pi 的时钟由一个寄存器 Ci 来代表，所以 Ci<a> 就是事件 a 时寄存器的值。寄存器会在事件之间改变，所以这个改变并不构成事件。</a></p>
+<p>为了保证系统满足 Clock Condition，我们要确保 C1, C2。C1 很简单。线程只要遵守这个实现规则：（Implementation Rule）</p>
+<p>IR1. Each process $P_i$ increments $C_i$ between any two successive events.</p>
+<p>C2，我们需要每个消息 m 包含一个时间戳 Tm，为消息发出的时间。然后在收到以 Tm 标识的消息时，进程时钟必须跳到 Tm 以后。更准确的说：</p>
+<p>IR2. (a) If event $a$ is the sending of a message $m$ by process $P_i$, then the message $m$ contains a timestamp $T_m &#x3D; C_i\langle a\rangle$.</p>
+<p>(b) Upon receiving a message $m$, process $P_j$ sets $C_j$ greater than or equal to its present value and greater than $T_m$.</p>
+<p>然后我们就可以排全序啦。</p>
+<p>但是为了避免 ties，我们用一个任意的全序。我们定义关系 $\Rightarrow$:</p>
+<p>if $a$ is an event in process $P_i$ and $b$ is an event in process $P_j$, then $a\Rightarrow b \iff (i) C_i\langle a\rangle &lt; C_j\langle b\rangle \or (ii)C_i\langle a\rangle &#x3D; C_j\langle b\rangle \and P_i \prec P_j$</p>
+<p>什么意思呢？就是我们给线程随便指定一个优先级。然后遇到时间戳相同的事件，就按照他们的线程优先级来排事件的序。</p>
+<p>我们用这玩意来构建一个满足</p>
+<ul>
+<li>互斥</li>
+<li>先到先服务</li>
+<li>Liveness</li>
+</ul>
+<p>的互斥资源请求算法。假设资源一开始已经分配给了一个进程。</p>
+<p>这个并不简单。比如 P1 向 P0 请求后，向 P2 发一个消息。然后 P2 也向 P0 请求。第二个请求可能到的比一个早，这就 violation。</p>
+<p>所以我们需要 IR1 + IR2 构造的一个时钟，来定义事件的全序。那么为了解决上述的问题，我们让每一个进程都了解到全局所有进程的操作。</p>
+<p>简化问题，避免实现细节上的混乱，我们假设：</p>
+<ul>
+<li>固定两个进程之间单向的消息是按序到达的。</li>
+<li>消息一定会送到。</li>
+</ul>
+<p>（我：现在TCP就很方便了。）</p>
+<p>每个进程维护自己的<em>请求队列</em>，对其他进程不可见。一开始队列里存在一个 T0：P0 <em>requests resourse</em> ，即初始时的资源状态。T0比所有时钟都要小。</p>
+<p>现提出5规则的算法，每条规则都包含于一个事件。</p>
+<ol>
+<li><p>请求资源， $P_i$ 发送 $T_m : P_i$ <em>requests resource</em> 给所有的其他进程，并且把这个消息放到自己的请求队列里。</p>
+</li>
+<li><p>$P_j$ 收到请求消息的时候，放到请求队列里，并返回一个带时间戳的 ACK （如果已经发了一个 &gt; Tm 的消息，则不用再返回）</p>
+</li>
+<li><p>释放资源，则从请求队列里弹出，并向其他所有人发送。</p>
+</li>
+<li><p>收到释放，则也弹出。</p>
+</li>
+<li><p>$P_i$ 在下列情况满足时获得资源</p>
+<ul>
+<li>在它自己的队列里，存在 $\Rightarrow$ 关系上的最小消息 $T_m : P_i$ <em>requests resource</em>. （消息的序就取决于其所在的事件的序）</li>
+<li>$P_i$ 收到了所有人的比 $T_m$ 更晚的消息。</li>
+</ul>
+<p>上述两条都是 Thread Local 的条件</p>
+</li>
+</ol>
+<p>这些东西加起来，肯定就满足了互斥、FCFS 和 Liveness。</p>
+<p>5-2 结合按序到达性质，就保证了 $P_i$ 知道了自己的请求之前的所有请求。（我自己弄了一个两线程的实示例。实际上意思就是，假如双向消息的交付不按物理时间序，是交错的，后发消息的线程在另一个线程取得资源之前，是不会收到全部的回复的。也就保证了互斥。）</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20221121-Tetris/">CPL-Tetris</a><a class="next" href="/20221118-RAFT/">RAFT I - MIT 6.824</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var lang = 'en',
+  langMode = {
+      "nick": "NickName",
+      "mail": "E-Mail",
+      "link": "Website(http://)",
+      "nickFail":"NickName cannot be less than 3 bytes.",
+      "mailFail":"Please confirm your email address.",
+      "sofa": "No comment yet.",
+      "submit": "Submit",
+      "reply": "Reply",
+      "cancelReply": "Cancel reply",
+      "comments": "Comments",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "more": "Load More...",
+      "preview": "Preview",
+      "emoji": "Emoji",
+      "expand": "See more....",
+      "seconds": "seconds ago",
+      "minutes": "minutes ago",
+      "hours": "hours ago",
+      "days": "days ago",
+      "now": "just now",
+      "uploading":"Uploading ...",
+      "uploadDone":"Upload completed!",
+      "busy":"Submit is busy, please wait...",
+      "code-98":"Valine initialization failed, please check your version of av-min.js.",
+      "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+      "code-100": "Valine initialization failed, Please check your appId and appKey.",
+      "code-140":"The total number of API calls today has exceeded the development version limit.",
+      "code-401": "Unauthorized operation, Please check your appId and appKey.",
+      "code-403": "Access denied by API domain white list, Please check your security domain."
+  };
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'2Sm5GfIvJtcJUva0FtUU3gUX-gzGzoHsz',
+  appKey:'tMoFHUMjKt3Br9ql4XQuMdu7',
+  lang: lang,
+  langMode: langMode,
+  serverURLs:'',
+  placeholder:'Say something',
+  avatar:' ',
+  avatar_cdn: 'http://cravatar.cn/avatar/',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/avatar.png"/></a><p>Great</p><a class="info-icon" href="mailto:502023330051@smail.nju.edu.cn" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/Tilnel" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="/atom.xml" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://coink.wang/" title="Coink" target="_blank">Coink</a><ul></ul><a href="https://yuruiii.github.io/" title="Meursault" target="_blank">Meursault</a><ul></ul><a href="https://chariri.moe/" title="茶栗" target="_blank">茶栗</a><ul></ul><a href="https://carawaykong.github.io/" title="Caraway" target="_blank">Caraway</a><ul></ul><a href="https://riverclouds.net/" title="江云" target="_blank">江云</a><ul></ul><a href="https://usernamenul1.github.io/" title="nul1" target="_blank">nul1</a><ul></ul><a href="https://huamurui.github.io/" title="花木瑞" target="_blank">花木瑞</a><ul></ul><a href="https://eaglebear2002.github.io/" title="熊丘桓" target="_blank">熊丘桓</a><ul></ul><a href="https://blog.sakiyary.cn/" title="Sakiyary" target="_blank">Sakiyary</a><ul></ul><a href="https://huoxj.github.io/" title="Runz" target="_blank">Runz</a><ul></ul><a href="https://www.erinwithbmq.xin/" title="ErinwithBMQ" target="_blank">ErinwithBMQ</a><ul></ul><a href="https://mzy0624.github.io/" title="HaibaraAI" target="_blank">HaibaraAI</a><ul></ul><a href="https://blog.azifan.club/" title="水龙之魂" target="_blank">水龙之魂</a><ul></ul><a href="https://aliasrevir.github.io/" title="XiEn" target="_blank">XiEn</a><ul></ul><a href="https://www.doowzs.com/" title="张天昀" target="_blank">张天昀</a><ul></ul><a href="https://jyywiki.cn/" title="蒋炎岩" target="_blank">蒋炎岩</a></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Deprecated/">Deprecated</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/DisAlg/">DisAlg</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Distributed-System/">Distributed System</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Uncategorized/">Uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB/">动漫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A9%E6%95%99%E5%B7%A5%E4%BD%9C/">助教工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%93%B2%E5%AD%A6/">哲学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%96%9C%E5%89%A7/">喜剧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%95%E6%8B%BE/">夕拾</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91/">并发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BD%B1%E8%A7%86/">影视</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%83%85%E6%84%9F/">情感</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%90%AC%E8%BF%90/">搬运</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%94%BF%E6%B2%BB/">政治</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0%E8%A1%A5%E5%AE%8C%E8%AE%A1%E5%88%92/">日记补完计划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E5%B0%9A/">时尚</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BF%BB%E8%AF%91/">翻译</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B0%A2%E6%9E%97/">谢林</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%85%92/">酒</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div>Total<span id="busuanzi_container_site_pv"><span> </span><span id="busuanzi_value_site_pv"></span></span><span rel="nofollow"> </span>hits</div>Copyright © 2025 <a href="/." rel="nofollow">Tilnel's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script><script src="https://api.busuanzi.cc/static/3.6.9/busuanzi.min.js" async></script></div></body></html>
