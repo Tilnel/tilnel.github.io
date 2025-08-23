@@ -50,7 +50,7 @@
     <published>2025-08-22T16:00:00.000Z</published>
     <updated>2025-08-22T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote><p>空指针 deref 是 undefined behavior。曾经在 gcc 中遇到过因为分析出空指针导致整个函数体被优化的情况。我现在 -O0 用多了已经忘了这些东西了。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>进行一个通读</p></blockquote><p><strong>Terms, definitions, and symbols</strong></p><p>空指针 deref 是 undefined behavior。曾经在 gcc 中遇到过因为分析出空指针导致整个函数体被优化的情况。我现在 -O0 用多了已经忘了这些东西了。</p>]]></content>
     
     
       
@@ -60,7 +60,8 @@
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;进行一个通读&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;空指针 deref 是 undefined behavior。曾经在 gcc 中遇到过因为分析出空指针导致整个函数体被优化的情况。我现在 -O0</summary>
+&lt;p&gt;&lt;strong&gt;Terms, definitions, and symbols&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;空指针 deref 是 undefined behavior。曾经在 gcc</summary>
         
       
     
