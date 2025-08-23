@@ -44,14 +44,27 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>C23 标准手册拾遗（二）</title>
     <link href="https://tilnel.github.io/20250824-c23/"/>
     <id>https://tilnel.github.io/20250824-c23/</id>
-    <published>2025-08-23T20:34:31.010Z</published>
-    <updated>2025-08-23T20:34:31.010Z</updated>
+    <published>2025-08-23T16:00:00.000Z</published>
+    <updated>2025-08-23T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>注意到</strong> 预处理器需要总是识别当前可识别的最长的预处理单元。</p><img src="image-20250824043459739.png" alt="image-20250824043459739" style="zoom:50%;">]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;注意到&lt;/strong&gt; 预处理器需要总是识别当前可识别的最长的预处理单元。&lt;/p&gt;
+&lt;img src=&quot;image-20250824043459739.png&quot; alt=&quot;image-20250824043459739&quot;</summary>
+        
+      
     
     
     
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
     
     
   </entry>
