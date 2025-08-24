@@ -131,6 +131,10 @@
 <p>组描述符是从第二个 block 开始的，所以我们用 <code>dd bs=4096 skip=1</code>。前三个 32 位的数是数据块 Bitmap、inode Bitmap 和 inode Table 的位置。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo <span class="built_in">dd</span> <span class="keyword">if</span>=/dev/sda1 bs=4096 skip=1 count=1 status=none | hexdump -n 12 -s 0 -e <span class="string">&#x27;&quot;%d %d %d\n&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line">956 972 988</span><br></pre></td></tr></table></figure>
 
+<p>块组 0 在本文的分类学下是 Type 1b (head)。</p>
+<p>第二个块组（Block Group 1）：</p>
+<pre><code class="s">
+</code></pre>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
