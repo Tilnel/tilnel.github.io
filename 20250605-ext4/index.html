@@ -97,8 +97,12 @@
 <p>Superblock 中标识了 “First block value”。它只有在 Block Size &#x3D; 1024 B 的时候才等于 1。其他时候都等于 0。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkfs -t ext4 -b 1024 /dev/sda</span><br><span class="line">$ sudo dumpe2fs -h /dev/sda1 | grep <span class="string">&quot;First block&quot;</span></span><br><span class="line"></span><br><span class="line">First block:              1</span><br></pre></td></tr></table></figure>
 
-
-
+<p>在我们的例子中：</p>
+<ul>
+<li>Type 1b 的 Block Group 有 1 个（0）</li>
+<li>Type 2 的有 9 个（包含了 Superblock 冗余的块）</li>
+<li>Type 3</li>
+</ul>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
