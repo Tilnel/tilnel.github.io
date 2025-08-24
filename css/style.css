@@ -1081,7 +1081,7 @@ figure.highlight .code,
 }
 figure.highlight .code pre,
 .codeblock .code pre {
-  max-width: 700px;
+  max-width: 950px;
   overflow-x: auto;
   overflow-y: hidden;
 }
