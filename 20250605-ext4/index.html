@@ -103,7 +103,7 @@
 <li>Type 2 的有 9 个（包含了 Superblock 冗余的块）</li>
 <li>剩下全部 110 个都是 Type 3</li>
 </ul>
-<p>当设置了弹性块组的时候，这些每类块组又分为两类，因为在弹性块组中只有第一个</p>
+<p>当设置了弹性块组的时候，这些每类块组又分为两类，因为在弹性块组中只有第一个<strong>块组</strong>中才有 Bitmaps 和 inode Table。这里我会将它们命名为 Type 2-head &#x2F; Type 2-rest。Type 1 总是 head，因为它总是 Flex BG 的第一块</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
