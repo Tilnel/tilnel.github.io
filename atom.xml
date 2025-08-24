@@ -44,14 +44,26 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>C　赋值运算符条件探讨一则</title>
     <link href="https://tilnel.github.io/20250825-compatible/"/>
     <id>https://tilnel.github.io/20250825-compatible/</id>
-    <published>2025-08-24T17:46:24.791Z</published>
-    <updated>2025-08-24T17:46:24.791Z</updated>
+    <published>2025-08-24T16:00:00.000Z</published>
+    <updated>2025-08-24T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>读 C23 手册读到了赋值运算符下面的一个例子：</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;读 C23</summary>
+        
+      
     
     
     
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
     
     
   </entry>
