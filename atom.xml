@@ -44,6 +44,19 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://tilnel.github.io/20250825-compatible/"/>
+    <id>https://tilnel.github.io/20250825-compatible/</id>
+    <published>2025-08-24T17:46:24.791Z</published>
+    <updated>2025-08-24T17:46:24.791Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Linux ext4 文件系统的最简完整教学（译）持续更新中</title>
     <link href="https://tilnel.github.io/20250605-ext4/"/>
     <id>https://tilnel.github.io/20250605-ext4/</id>
@@ -495,36 +508,6 @@
     
     
     <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>工作随记</title>
-    <link href="https://tilnel.github.io/20250417-working/"/>
-    <id>https://tilnel.github.io/20250417-working/</id>
-    <published>2025-04-16T16:00:00.000Z</published>
-    <updated>2025-04-16T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>把 ckpt 部分的文档写了</li><li>coding：完善已有功能和写法。<ul><li>主要是，增加安全检查</li><li>改写序列化、反序列化写法。顺手干掉看着不顺眼的类型。<ul><li>尝试使用 cereal。</li></ul></li></ul></li><li>读 DPOR</li></ul>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;把 ckpt 部分的文档写了&lt;/li&gt;
-&lt;li&gt;coding：完善已有功能和写法。&lt;ul&gt;
-&lt;li&gt;主要是，增加安全检查&lt;/li&gt;
-&lt;li&gt;改写序列化、反序列化写法。顺手干掉看着不顺眼的类型。&lt;ul&gt;
-&lt;li&gt;尝试使用</summary>
-        
-      
-    
-    
-    
-    <category term="科研" scheme="https://tilnel.github.io/categories/%E7%A7%91%E7%A0%94/"/>
     
     
   </entry>
