@@ -144,7 +144,7 @@
 <p>这里我有点困惑，也许你也有点感觉。在 Block Group 0 中，为什么 inode Table 在 9132 结束，但是可用空间从 9138 开始呢？其实 9132-9137 是已经在使用的数据块。所以这里并没有什么特别的怪事发生。如果重复实验的话，可能会得到不一样的结果。</p>
 </blockquote>
 <blockquote>
-<p>所以</p>
+<p>所以在概念上我们其实不能说数据块在遵守这些元数据规定的结构，而是所有的块都是数据块，只不过有一些用来存储元数据了。存储元数据的块在数据块 Bitmap 中也是要被标记yi</p>
 </blockquote>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
