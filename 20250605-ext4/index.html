@@ -138,8 +138,11 @@
 <ul>
 <li>它有 Superblock backup。因为 $ 1 &#x3D; 3 ^ 0$</li>
 <li>因为有 Superblock backup，所以也有组描述符和预留的块</li>
-<li>它在事实上没有数据块 Bitmap，inode Bitmap 和 inode Table。这些都引用了 Block Group 0 中的（e.g. Block Group 1 的数据块 Bitmap 在 bg #0 + 957）因为 Block Group 1 和 0 在同一个 Flex BG 中。inode Bitmap 和 inode Table 同理。这也就是为什么在 Block Group 0 中，数据块 Bitmap 和 Inode Bitmap 并不是连续的区域了。一个从 956 开始，一个从 972 开始，中间就是 16 Blocks，它们包含了所有块组的数据块 Bitmap 信息（从 0 到 15，$[956, 972)$）。以此类推，inode Bitmap 就是 $[972, 988)$，inode Tables 就是 $[988, 9132)$</li>
+<li>它在事实上没有数据块 Bitmap，inode Bitmap 和 inode Table。这些都引用了 Block Group 0 中的（e.g. Block Group 1 的数据块 Bitmap 在 bg #0 + 957）因为 Block Group 1 和 0 在同一个 Flex BG 中。inode Bitmap 和 inode Table 同理。这也就是为什么在 Block Group 0 中，数据块 Bitmap 和 Inode Bitmap 并不是连续的区域了。一个从 956 开始，一个从 972 开始，中间就是 16 Blocks，它们包含了所有块组的数据块 Bitmap 信息（从 0 到 15，$[956, 972)$）。以此类推，inode Bitmap 就是 $[972, 988)$，inode Tables 就是 $[988, 9132)$ ($988 + 509 \times 16 &#x3D; 9132$)</li>
 </ul>
+<blockquote>
+<p>这里我有点困惑，也许你也有点感觉。在 Block Group 0 中，为什么</p>
+</blockquote>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250817-idea/">多个 gdb 实例控制分布式系统</a><a class="next" href="/20250816-tcp/">TCP</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
