@@ -73,7 +73,6 @@ div {
 #header {
   padding: 58px 0 0;
   text-align: left;
-  border-bottom: 1px solid #ddd;
   position: relative;
 }
 #header .site-name {
