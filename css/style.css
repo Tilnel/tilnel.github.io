@@ -114,8 +114,7 @@ div {
   border-bottom-color: #444;
 }
 #header #nav-menu a.current {
-  border: 1px solid #ddd;
-  border-bottom-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
 
 #sidebar {
