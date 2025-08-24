@@ -23,19 +23,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/20250825-cause/"/>
-      <url>/20250825-cause/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>C 赋值运算符条件探讨一则</title>
       <link href="/20250825-compatible/"/>
       <url>/20250825-compatible/</url>
@@ -46,6 +33,25 @@
       <categories>
           
           <category> C </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>对四因说的一点解释</title>
+      <link href="/20250825-cause/"/>
+      <url>/20250825-cause/</url>
+      
+        <content type="html"><![CDATA[<p>亚里士多德提出了四因说，我在这里给出一解。</p><p>质料因，就是矛盾的两个方面。矛盾发展当中有什么样的势力，以及这些势力到</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂谈 </category>
           
       </categories>
       
