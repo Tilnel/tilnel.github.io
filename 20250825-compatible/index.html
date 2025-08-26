@@ -53,12 +53,16 @@
 <p>注意到 line 5 的写法是 Initialization（6.7.10）。它由 initdeclarator 构成：</p>
 <img src="image-20250826232839654.png" alt="image-20250826232839654" style="zoom:50%;">
 
+<img src="image-20250826233012845.png" alt="image-20250826233012845" style="zoom:50%;">
 
-
-<p>它包含了 Assignment-expression（6.5.16）。但是这个 Assignment 表达式并不一定是带等号的式子，它经过语法单元的分解，最终下降到了 primary-expression。</p>
+<p>initializer 进一步包含了 Assignment-expression（6.5.16）。但是这个 Assignment 表达式并不一定是带等号的式子，它经过语法单元的分解，最终下降到了 primary-expression。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">assignment-expression:</span><br><span class="line">  conditional-expression:</span><br><span class="line">    logical-OR-expression:</span><br><span class="line">      logical-AND-expression:</span><br><span class="line">        inclusive-OR-expression:</span><br><span class="line">          exclusive-OR-expression:</span><br><span class="line">            AND-expression:</span><br><span class="line">              equality-expression:</span><br><span class="line">                relational-expression:</span><br><span class="line">                  shift-expression:</span><br><span class="line">                    additive-expression:</span><br><span class="line">                      multiplicative-expression:</span><br><span class="line">                        case-expression:</span><br><span class="line">                          unary-expression:</span><br><span class="line">                            postfix-expression:</span><br><span class="line">                              primary-expression:</span><br><span class="line">                                identifier</span><br><span class="line">                                constant</span><br><span class="line">                                string-literal</span><br><span class="line">                                ( expression )</span><br><span class="line">                                generic-selection</span><br></pre></td></tr></table></figure>
 
 <p>所以，line 5 中的 assignment-expression 其实是 <code>b</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> c       <span class="comment">// declarator</span></span><br><span class="line">    =              <span class="comment">// =</span></span><br><span class="line">  b;               <span class="comment">// initializer -&gt; assignment-expression -&gt; -&gt; .... -&gt; identifier</span></span><br></pre></td></tr></table></figure>
+
+
+
 <p>在初始化当中，</p>
 <img src="image-20250826225221876.png" alt="image-20250826225221876" style="zoom:50%;">
 
