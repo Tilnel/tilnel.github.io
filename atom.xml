@@ -44,14 +44,27 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>C23 标准手册拾遗（三）</title>
     <link href="https://tilnel.github.io/20250827-c23/"/>
     <id>https://tilnel.github.io/20250827-c23/</id>
-    <published>2025-08-26T17:10:41.228Z</published>
-    <updated>2025-08-26T17:10:41.228Z</updated>
+    <published>2025-08-26T16:00:00.000Z</published>
+    <updated>2025-08-26T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>注意到</strong> enum 可以有 underlying type</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enumno_underlying&#123;</span><br><span class="line">a0</span><br><span class="line">&#125;;</span><br><span class="line">intmain(<span class="type">void</span>)&#123;</span><br><span class="line">inta= <span class="keyword">_Generic</span>(a0,</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;注意到&lt;/strong&gt; enum 可以有 underlying type&lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
     
     
     
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
     
     
   </entry>
