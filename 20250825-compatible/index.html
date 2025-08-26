@@ -56,7 +56,10 @@
 <p> 虽然包含但并不是单纯的 Assignment-expression（6.5.16）。在初始化当中，这种修改是可以做到的。</p>
 <img src="image-20250826225221876.png" alt="image-20250826225221876" style="zoom:50%;">
 
-<p>取标量类型的未限定版本作为其声明类型。</p>
+<p>取标量类型的 unqualified 版本作为其声明类型。</p>
+<blockquote>
+<p>手册没说聚合类型怎么办，虽然实际上都是推广了的。</p>
+</blockquote>
 <p>我们可以把 <code>char *</code> 赋值给 <code>const char *</code>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *a;</span><br><span class="line"><span class="type">char</span> *b;</span><br><span class="line">a = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
 
