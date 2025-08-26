@@ -16,7 +16,7 @@
 <p>第一个例子看起来无比自然、甚至非常常见，以至于我就算在群友的提示下还是花了很久才弄明白第二个为什么不能通过。</p>
 <p>这是为什么呢？我今天下了班再来写…最后那天晚上一回来就一觉睡到早上了。</p>
 <p>首先我们来介绍一个概念：Compatible Type（兼容类型）</p>
-<p>C 语言标准手册 6.2.7 中说：两种语言是 <em>compatible types</em> 如果它们相同。这一小节里介绍了结构、联合体和枚举类型的 compatible 规则。总结下来就是<strong>一一对应</strong>。可以认为，它们的每个成员必须保持类型 compatible、qualifier 一致、attribute 一致且成员名一致。另外，对于数组类型，有一套独特的规则：</p>
+<p>C 语言标准手册 6.2.7 中说：两种类型是 <em>compatible types</em> 如果它们相同。这一小节里介绍了结构、联合体和枚举类型的 compatible 规则。总结下来就是<strong>一一对应</strong>。可以认为，它们的每个成员必须保持类型 compatible、qualifier 一致、attribute 一致且成员名一致。另外，对于数组类型，有一套独特的规则：</p>
 <img src="image-20250826214926309.png" alt="就不翻译了吧" style="zoom:50%;">
 
 <p>总之可以理解为全等。</p>
@@ -34,7 +34,7 @@
 <img src="image-20250826215843215.png" alt="有 qualifier 就是要用" style="zoom:50%;">
 
 <blockquote>
-<p>这里可以看出，<code>const</code> 不一定是常量，而是不能被程序修改的量。</p>
+<p>这里可以看出，<code>const</code> 不一定是常量，而是不应被程序修改的量。</p>
 </blockquote>
 <p>接下来回到今天的例子。</p>
 <p><code>char</code> 和 <code>const char</code> 并不 compatible。因为它们是 compatible type <code>char</code> 的 differently-qualified version。</p>
