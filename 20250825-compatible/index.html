@@ -30,11 +30,13 @@
 <p>原文里给了一个极端的例子：</p>
 <img src="image-20250826215843215.png" alt="有 qualifier 就是要用" style="zoom:50%;">
 
+<blockquote>
 <p>这里可以看出，<code>const</code> 不一定是常量，而是不能被程序修改的量。</p>
+</blockquote>
 <p>接下来回到今天的例子。</p>
 <p><code>char</code> 和 <code>const char</code> 并不 compatible。因为它们是 compatible type <code>char</code> 的 differently-qualified version。</p>
 <p>因而 <code>char *</code> 和 <code>const char *</code> 并不 compatible。因为它们分别指向 incompatible type <code>char</code> 和 <code>const char</code>。</p>
-<p>因而 <code>char **</code> 和 <code>const char **</code> 并不 conpatible。因为它们分别指向 incompatible type <code>char *</code> 和 <code>const char *</code>。</p>
+<p>因而 <code>char **</code> 和 <code>const char **</code> 并不 compatible。因为它们分别指向 incompatible type <code>char *</code> 和 <code>const char *</code>。</p>
 <p>……</p>
 <p>根据我们的观察，我们不可以可以把 <code>char</code> 赋值给 <code>const char</code>:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> a;</span><br><span class="line"><span class="type">char</span> b;</span><br><span class="line">a = b;  <span class="comment">// FAIL</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> c = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
