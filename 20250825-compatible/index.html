@@ -61,15 +61,7 @@
 <p>所以，line 5 中的 assignment-expression 其实是 <code>b</code>。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> c       <span class="comment">// declarator</span></span><br><span class="line">    =              <span class="comment">// =</span></span><br><span class="line">  b;               <span class="comment">// initializer -&gt; assignment-expression -&gt; -&gt; .... -&gt; identifier</span></span><br></pre></td></tr></table></figure>
 
-
-
-<p>在初始化当中，</p>
-<img src="image-20250826225221876.png" alt="image-20250826225221876" style="zoom:50%;">
-
-<p>取标量类型的 unqualified 版本作为其声明类型。</p>
-<blockquote>
-<p>手册没说聚合类型怎么办，虽然实际上都是推广了的。</p>
-</blockquote>
+<p>init-declarator 直接无视 qualifier。</p>
 <p>我们可以把 <code>char *</code> 赋值给 <code>const char *</code>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *a;</span><br><span class="line"><span class="type">char</span> *b;</span><br><span class="line">a = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
 
