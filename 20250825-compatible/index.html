@@ -44,6 +44,8 @@
 <p>根据我们的观察，我们不可以可以把 <code>char</code> 赋值给 <code>const char</code>:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> a;</span><br><span class="line"><span class="type">char</span> b;</span><br><span class="line">a = b;  <span class="comment">// FAIL</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> c = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
 
+<p>因为 Assignment 表达式的通用约束是：</p>
+<p><img src="image-20250826224645200.png" alt="image-20250826224645200"></p>
 <p>注意到 line 5 的写法是 Initialization（6.7.10） 而不是 Assignment（6.5.16）。</p>
 <p>我们可以把 <code>char *</code> 赋值给 <code>const char *</code>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *a;</span><br><span class="line"><span class="type">char</span> *b;</span><br><span class="line">a = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
