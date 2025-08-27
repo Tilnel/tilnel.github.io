@@ -124,6 +124,9 @@
 
 <p><code>cacos</code> 剪掉了实轴上 [-1, +1] 以外所有的定义域，只保留主值。 （表达可能不精准，我没咋学过复变）</p>
 <p>其他三角函数也类似。</p>
+<p><strong>注意到</strong> <code>&lt;math.h&gt;</code> 中的函数保证不会抛出 <code>SIGFPE</code></p>
+<img src="image-20250828001650146.png" alt="image-20250828001650146" style="zoom:50%;">
+
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20991231-top/">Preface-三月十日</a><a class="next" href="/20250825-compatible/">C 赋值运算符条件探讨一则</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
