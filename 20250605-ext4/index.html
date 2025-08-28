@@ -172,7 +172,7 @@
 <p>这其实就是懒惰初始化。</p>
 <p>这些特性是被 filesystem feature <code>uninit_bg</code> 决定的。参见 Superblock。</p>
 </blockquote>
-<p>[^1]:  这里原文写成了 Logical Block，实际上是 Sector 也就是扇区。注意与 Block 相区别。<br>[^2]: Error：原文此处是 “since only the first block of Flex Group…” 应为 “first block group of”<br>[^]: Warning：文章证明了 1 总是 head，接下来又要证明 2 不可能是 head。说实话应该首先论证这两个不可能，然后提出 Type 3 可以划分，而不是先划出 3 个新的再取消其中两种。看的头昏。<br>[^3]: 原文下面这段描述是错的。这里改过来了。原文如下：<br>[^]: INODE_UNINIT: inode Bitmap is not zeroed, because it can be calculated on-the-fly (e.g. no inodes are used so all of them are free).<br>[^]: ITABLE_ZEROED: inode Bitmap is zeroed.<br>[^]: BLOCK_UNINIT: Data Block Bitmap is not zeroed. (e.g. no data stored so all of them are free).</p>
+<p>[^1]:  这里原文写成了 Logical Block，实际上是 Sector 也就是扇区。注意与 Block 相区别。<br>[^2]: Error：原文此处是 “since only the first block of Flex Group…” 应为 “first block group of”<br>  Warning：文章证明了 1 总是 head，接下来又要证明 2 不可能是 head。说实话应该首先论证这两个不可能，然后提出 Type 3 可以划分，而不是先划出 3 个新的再取消其中两种。看的头昏。<br>[^3]: 原文下面这段描述是错的。这里改过来了。原文如下：<br>  INODE_UNINIT: inode Bitmap is not zeroed, because it can be calculated on-the-fly (e.g. no inodes are used so all of them are free).<br>  ITABLE_ZEROED: inode Bitmap is zeroed.<br>  BLOCK_UNINIT: Data Block Bitmap is not zeroed. (e.g. no data stored so all of them are free).</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250825-cause/">对四因说的一点解释</a><a class="next" href="/20250824-c23/">C23 标准手册拾遗（二）</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
