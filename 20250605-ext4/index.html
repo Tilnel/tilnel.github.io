@@ -25,10 +25,7 @@
 <p>这是分区表：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ sudo fdisk /dev/sda</span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.27.1).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line">Command (m for help): p</span><br><span class="line">Disk /dev/sda: 14.9 GiB, 16008609792 bytes, 31266816 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: gpt</span><br><span class="line">Disk identifier: 68B7F722-7E83-47F7-BCCC-2C7591B95E0C</span><br><span class="line"></span><br><span class="line">Device     Start      End  Sectors  Size Type</span><br><span class="line">/dev/sda1   2048 31266782 31264735 14.9G Linux filesystem</span><br></pre></td></tr></table></figure>
 
-<p>逻辑块大小是 512 字节。分区从第 2048 个逻辑块开始，到第 31266782 个逻辑块结束。</p>
-<blockquote>
-<p>译者：这里原文写成了 Logical Block，实际上是 Sector 也就是扇区。注意与 Block 相区别。</p>
-</blockquote>
+<p>逻辑块 [^1]大小是 512 字节。分区从第 2048 个逻辑块开始，到第 31266782 个逻辑块结束。</p>
 <p>我们就在这个分区上创建文件系统。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mkfs -t ext4 /dev/sda1</span><br><span class="line"></span><br><span class="line">mke2fs 1.42.13 (17-May-2015)</span><br><span class="line"></span><br><span class="line">Creating filesystem with 3908091 4k blocks and 977280 inodes</span><br><span class="line">Filesystem UUID: 5ae73877-4510-419e-b15a-44ac2a2df7c6</span><br><span class="line">Superblock backups stored on blocks: </span><br><span class="line"> 32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208</span><br><span class="line"></span><br><span class="line">Allocating group tables: done                            </span><br><span class="line">Writing inode tables: done                            </span><br><span class="line">Creating journal (32768 blocks): done</span><br><span class="line">Writing superblocks and filesystem accounting information: done</span><br></pre></td></tr></table></figure>
 
@@ -174,13 +171,13 @@
 </blockquote>
 <blockquote>
 <p>上面每个组的第一行最后都有几个 flag，它们通过节省初始化的时间来加速 mkfs 。</p>
-<p>[^1] <code>INODE_UNINIT</code>：inode Table 不清零。在被使用的时候，它们会自然地被覆盖。</p>
+<p> <code>INODE_UNINIT</code><a href="%E5%8E%9F%E6%96%87%E4%B8%8B%E9%9D%A2%E8%BF%99%E6%AE%B5%E6%8F%8F%E8%BF%B0%E6%98%AF%E9%94%99%E7%9A%84%E3%80%82%E8%BF%99%E9%87%8C%E6%94%B9%E8%BF%87%E6%9D%A5%E4%BA%86%E3%80%82%E5%8E%9F%E6%96%87%E5%A6%82%E4%B8%8B%EF%BC%9A">^3</a>：inode Table 不清零。在被使用的时候，它们会自然地被覆盖。</p>
 <p><code>ITABLE_ZEROED</code>：inode Bitmap 会被清零。它们标识了 inode Table 中的使用情况，所以是必须初始化的。</p>
 <p><code>BLOCK_UNINIT</code>：数据块未初始化。等到有数据来的时候直接覆盖就好。</p>
 <p>这其实就是懒惰初始化。</p>
 <p>这些特性是被 filesystem feature <code>uninit_bg</code> 决定的。参见 Superblock。</p>
 </blockquote>
-<p>[^1] 原文下面这段描述是错的。这里改过来了。原文如下：</p>
+<p>[^1]:  这里原文写成了 Logical Block，实际上是 Sector 也就是扇区。注意与 Block 相区别。</p>
 <blockquote>
 <p>INODE_UNINIT: inode Bitmap is not zeroed, because it can be calculated on-the-fly (e.g. no inodes are used so all of them are free).</p>
 <p>ITABLE_ZEROED: inode Bitmap is zeroed.</p>
