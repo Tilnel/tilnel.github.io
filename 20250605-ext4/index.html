@@ -178,6 +178,7 @@
 <p><code>ITABLE_ZEROED</code>：inode Bitmap 会被清零。它们标识了 inode Table 中的使用情况，所以是必须初始化的。</p>
 <p><code>BLOCK_UNINIT</code>：数据块未初始化。等到有数据来的时候直接覆盖就好。</p>
 <p>这其实就是懒惰初始化。</p>
+<p>这些特性是通过 filesystem feature <code>uninit_bg</code> 决定的。参见 Superblock。</p>
 </blockquote>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250825-cause/">对四因说的一点解释</a><a class="next" href="/20250824-c23/">C23 标准手册拾遗（二）</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
