@@ -101,8 +101,6 @@
 <li>剩下全部 110 个都是 Type 3</li>
 </ul>
 <p>当设置了弹性块组的时候，这些每类块组又分为两类，因为在弹性块组中只有第一个<strong>块组</strong>[^2]中才有 Bitmaps 和 inode Table。这里我会将它们命名为 Type 2-head &#x2F; Type 2-rest，以此类推。Type 1 总是 head，因为它总是 Flex BG 中的 0 号。</p>
-<blockquote>
-</blockquote>
 <p>同时，Type 2-head 块组是不可能的。因为备份块的序号总是 <code>3, 5, 7</code> 这些奇数。而 Flex BG 的 size 总是 2 的乘方，也就是偶数，意味着其头部块组的序号也总是偶数。所以 Type 2 作为备份快，不可能位于 Flex BG 的头部。</p>
 <p>现在我们已经完全搞清楚我们的 ext4 文件系统的块组和块的排布了。事实上我们可以用 <code>dumpe2fs</code> 输出所有 Block Groups 的信息。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo dumpe2fs /dev/sda1 &gt; dump</span><br></pre></td></tr></table></figure>
@@ -168,14 +166,13 @@
 </blockquote>
 <blockquote>
 <p>上面每个组的第一行最后都有几个 flag，它们通过节省初始化的时间来加速 mkfs 。</p>
-<p> <code>INODE_UNINIT</code><a href="%E5%8E%9F%E6%96%87%E4%B8%8B%E9%9D%A2%E8%BF%99%E6%AE%B5%E6%8F%8F%E8%BF%B0%E6%98%AF%E9%94%99%E7%9A%84%E3%80%82%E8%BF%99%E9%87%8C%E6%94%B9%E8%BF%87%E6%9D%A5%E4%BA%86%E3%80%82%E5%8E%9F%E6%96%87%E5%A6%82%E4%B8%8B%EF%BC%9A">^3</a>：inode Table 不清零。在被使用的时候，它们会自然地被覆盖。</p>
+<p> <code>INODE_UNINIT</code>[^3]：inode Table 不清零。在被使用的时候，它们会自然地被覆盖。</p>
 <p><code>ITABLE_ZEROED</code>：inode Bitmap 会被清零。它们标识了 inode Table 中的使用情况，所以是必须初始化的。</p>
 <p><code>BLOCK_UNINIT</code>：数据块未初始化。等到有数据来的时候直接覆盖就好。</p>
 <p>这其实就是懒惰初始化。</p>
 <p>这些特性是被 filesystem feature <code>uninit_bg</code> 决定的。参见 Superblock。</p>
 </blockquote>
-<p>[^1]:  这里原文写成了 Logical Block，实际上是 Sector 也就是扇区。注意与 Block 相区别。<br>[^2]: Error：原文此处是 “since only the first block of Flex Group…” 应为 “first block group of”<br>[^]: Warning：文章证明了 1 总是 head，接下来又要证明 2 不可能是 head。说实话应该首先论证这两个不可能，然后提出 Type 3 可以划分，而不是先划出 3 个新的再取消其中两种。看的头昏。</p>
-<p>[^]: INODE_UNINIT: inode Bitmap is not zeroed, because it can be calculated on-the-fly (e.g. no inodes are used so all of them are free).<br>[^]: ITABLE_ZEROED: inode Bitmap is zeroed.<br>[^]: BLOCK_UNINIT: Data Block Bitmap is not zeroed. (e.g. no data stored so all of them are free).</p>
+<p>[^1]:  这里原文写成了 Logical Block，实际上是 Sector 也就是扇区。注意与 Block 相区别。<br>[^2]: Error：原文此处是 “since only the first block of Flex Group…” 应为 “first block group of”<br>[^]: Warning：文章证明了 1 总是 head，接下来又要证明 2 不可能是 head。说实话应该首先论证这两个不可能，然后提出 Type 3 可以划分，而不是先划出 3 个新的再取消其中两种。看的头昏。<br>[^3]: 原文下面这段描述是错的。这里改过来了。原文如下：<br>[^]: INODE_UNINIT: inode Bitmap is not zeroed, because it can be calculated on-the-fly (e.g. no inodes are used so all of them are free).<br>[^]: ITABLE_ZEROED: inode Bitmap is zeroed.<br>[^]: BLOCK_UNINIT: Data Block Bitmap is not zeroed. (e.g. no data stored so all of them are free).</p>
 </div><div class="tags"></div><div class="post-nav"><a class="pre" href="/20250825-cause/">对四因说的一点解释</a><a class="next" href="/20250824-c23/">C23 标准手册拾遗（二）</a></div><div class="nofancybox" id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'true' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;
 var lang = 'en',
