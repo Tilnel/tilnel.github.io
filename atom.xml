@@ -44,6 +44,32 @@
   </entry>
   
   <entry>
+    <title>FreeBSD TCP 实现中发现的两个 BUG</title>
+    <link href="https://tilnel.github.io/20250925-freebsd_tcp/"/>
+    <id>https://tilnel.github.io/20250925-freebsd_tcp/</id>
+    <published>2025-09-24T16:00:00.000Z</published>
+    <updated>2025-09-24T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote><p>我宣布现在没人比我更懂 TCP。</p></blockquote><p>见邮件列表 <a href="https://lists.freebsd.org/archives/freebsd-net/2025-September/007578.html">Two different places between TCP socket behavior and RFC documents</a></p><p>虽然没有肉眼可见的 vulunerability &#x2F; exposure 但多少还是被承认为 BUG 了…对方锐意修复中。</p><p>问题1. 关闭时有待处理数据，但未能发送 RST</p><p>根据 RFC 2525 第 2.17 节，当 <code>close()</code> 一个套接字时，如果其接收缓冲区中仍有待读取的数据，应该发送 RST（复位）。</p><p>根据 RFC 1122：主机可以实现一种“半双工”TCP 关闭序列，…不能继续读取数据…如果接收缓冲区中仍有待处理数据时进行 CLOSE 调用，或者在调用 CLOSE 后接收到新数据，TCP 应该发送一个 RST 以表明数据已丢失。</p><p>然而，FreeBSD 的 TCP 套接字并非如此。以下是 TCPDUMP 的输出，显示在套接字有待处理数据时调用 <code>close()</code> 发出的是 FIN（结束）而非 RST：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 2636678338, win 65535, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 1969223298, ack 2636678339, win 65535, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 1277, length 0</span><br><span class="line">A &gt; B: Flags [P.], seq 1:6, ack 1, win 1277, length 5</span><br><span class="line">B &gt; A: Flags [.], ack 6, win 1277, length 0</span><br><span class="line">B &gt; A: Flags [F.], seq 1, ack 6, win 1277, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 2, win 1277, length 0</span><br></pre></td></tr></table></figure><p>无论是 <code>close()</code>、<code>shutdown(SHUT_RDWR)</code>、<code>shutdown(SHUT_RD)</code>，还是 <code>SO_LINGER</code> 设置为开启或关闭，都得到相同的结果。而在 Linux 上，同样的操作会得到以下结果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 2879877684, win 65495, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 1538598692, ack 2879877685, win 65483, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 512, length 0</span><br><span class="line">A &gt; B: Flags [P.], seq 1:6, ack 1, win 512, length 5</span><br><span class="line">B &gt; A: Flags [.], ack 6, win 512, length 0</span><br><span class="line">B &gt; A: Flags [R.], seq 1, ack 6, win 512, length 0</span><br></pre></td></tr></table></figure><p>当然，虽然没有发送 RST，但是这里不会像预期的那样导致连接一直保持。因为它的 FIN segment 实际上重新打开了窗口。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [.], ack 1, win 510, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 66137, win 0, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 510, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 66137, win 0, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 510, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 66137, win 0, length 0</span><br><span class="line">B &gt; A: Flags [F.], seq 1, ack 66137, win 1027, length 0</span><br></pre></td></tr></table></figure><p>我们通过发送大量数据，使得对面最终通告了 0 窗口。但在对面进行<code>close()</code> 后，它又打开了窗口。此时发送端就又可以发送数据，包括发送 FIN 了。</p><p>如果发送数据，而对面已经做了接受方向的关闭，则会得到一个 RST；如果发送 FIN，也就能完成四次挥手。看起来都能够使连接关闭。但这里的问题在于，打开接收窗口与关闭接受方向显然是矛盾的。尤其是，打开窗口邀请对面发送数据，而这数据是必定会被自己所拒绝的，这造成了一些不必要的网络流量以及处理资源的浪费。</p><p>另一方面，FIN 标志着优雅地关闭了连接。但这里显然并不优雅。我们需要用清晰的报文来标志异常。</p><p>数据发送&#x2F;强制重置比起主动重置除了少量资源消耗以外，使得关闭这件事整体变得复杂了….</p><p>问题2. 在 SYN-RECEIVED 状态下对旧序列 segment 回复 RST 而非确认</p><p>根据 RFC 793 第 69 页：如果一个传入的 segment 不可接受，应该回复一个确认（这里“应该”没有大写）。</p><p>这应该适用于包括 SYN-RECEIVED 在内的所有状态，但 FreeBSD 的 TCP 套接字并非如此。我用手动构造的 TCP 分段发现了这个问题：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 4054810353, ack 2, win 65535, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [R], seq 4054810354, win 0, length 0</span><br></pre></td></tr></table></figure><p>预期的行为是发送一个空的确认：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 3620804602, ack 2, win 65495, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 1, win 65495, length 0</span><br></pre></td></tr></table></figure><p>这与 Linux 的行为是一致的。</p><p>上文发送后，维护者似乎不是很明白，于是我作了如下解释：</p><p>考虑以下 TCP 握手序列：</p><ol><li>套接字 A 向处于 TCP_LISTEN 状态的套接字 B 发送一个 SYN（同步）分段 <code>&lt;CTL=SYN&gt;&lt;SEQ=x&gt;</code>。</li><li>套接字 B 转换为 TCP_SYN_RECV 状态，并以 <code>&lt;CTL=SYN,ACK&gt;&lt;SEQ=y&gt;&lt;ACK=x+1&gt;</code> 进行响应。</li><li>套接字 A 没有发送预期的 <code>&lt;CTL=ACK&gt;&lt;SEQ=x+1&gt;&lt;ACK=y+1&gt;</code> 来完成三次握手，而是错误地发送了 <code>&lt;CTL=ACK&gt;&lt;SEQ=x&gt;&lt;ACK=y+1&gt;</code>。</li></ol><p>根据 RFC 文档，对这种窗口外 ACK 的恰当响应应是一个空的 ACK 分段 <code>&lt;CTL=ACK&gt;&lt;SEQ=y+1&gt;&lt;ACK=x+1&gt;</code>。之后，套接字 B 应等待一个有效的 ACK，或者在必要时重新传输 SYN-ACK。</p><p>然而，在 FreeBSD 当前的实现中，它发送了一个 RST（复位）分段，格式为 <code>&lt;CTL=RST&gt;&lt;SEQ=y+1&gt;</code>，这会 prematurely 终止连接。</p><p>这种行为似乎偏离了 RFC 的指导，并可能导致不必要的连接重置。</p><p>对于窗口不同程度的偏离都观察到了这一现象</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1. expect seq=2, actual seq=0x80000001</span><br><span class="line">2. expect seq=2, actual seq=0x80000002</span><br><span class="line">3. expect seq=2, actual seq=0x80000003</span><br><span class="line">4. expect seq=2, actual seq=0x90000000</span><br><span class="line">5. expect seq=2000001 (0x1e8481), actual seq=1</span><br><span class="line">6. expect seq=1, actual seq=2000001 (0x1e8481)</span><br><span class="line">All of them, under FreeBSD, give a RST reply. Here is the tcpdump of the first</span><br><span class="line">case.</span><br><span class="line"></span><br><span class="line">A &gt; B: Flags [S], seq 1, win 8192, length 0</span><br><span class="line">    0x0000:  4500 0028 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b9 22b8 0000 0001 0000 0000</span><br><span class="line">    0x0020:  5002 2000 4c6e 0000</span><br><span class="line">B &gt; A: Flags [S.], seq 1643153760, ack 2, win 65535, options [mss</span><br><span class="line">16344], length 0</span><br><span class="line">    0x0000:  4500 002c 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b8 22b9 61f0 8960 0000 0002</span><br><span class="line">    0x0020:  6012 ffff fe20 0000 0204 3fd8</span><br><span class="line">A &gt; B: Flags [.], seq 2147483648, ack 1, win 8192, length 0</span><br><span class="line">    0x0000:  4500 0028 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b9 22b8 8000 0001 61f0 8961</span><br><span class="line">    0x0020:  5010 2000 e10d 0000</span><br><span class="line">B &gt; A: Flags [R], seq 1643153761, win 0, length 0</span><br><span class="line">    0x0000:  4500 0028 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b8 22b9 61f0 8961 0000 0000</span><br><span class="line">    0x0020:  5004 0000 fe1c 0000</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;blockquote&gt;
+&lt;p&gt;我宣布现在没人比我更懂</summary>
+        
+      
+    
+    
+    
+    <category term="网络" scheme="https://tilnel.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>C23 标准手册拾遗（四）</title>
     <link href="https://tilnel.github.io/20250828-c23/"/>
     <id>https://tilnel.github.io/20250828-c23/</id>
@@ -493,34 +519,6 @@
     
     
     <category term="科研" scheme="https://tilnel.github.io/categories/%E7%A7%91%E7%A0%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>性压抑 allegro</title>
-    <link href="https://tilnel.github.io/20250509-repression/"/>
-    <id>https://tilnel.github.io/20250509-repression/</id>
-    <published>2025-05-08T16:00:00.000Z</published>
-    <updated>2025-05-08T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文包含医疗建议，请仔细甄别。</p></blockquote><p>白天在饭桌上聊天聊到“性压抑”这件事。我不禁想到，我对这种状态似乎有一种“雷达”，对于各种性压抑的表现比较敏感。包括性压抑的人都会说什么话、做什么事，等等。但是一时又没说上来具体都有哪些标志。</p><p>以下讨论不带情感色彩。</p><p>对“性”这件事如果一个人了解颇深，能够掰着指头给你细数性的歧变的类型以及成因，总而言之，对于有关性的科学非常感兴趣，然而又没有性伴侣的人，很有可能是性压抑的。这其实是不能单单用求知来解释，或者并不能说是单纯的“学术”理解。即使是一个学者要作某方面的知识性的研究，归根结底也是某种欲望。其他的领域里，如精神分析临床，与分析者的交互同样也有赖于一种分析家的欲望。如果一个人对性的好奇在实践方面不受挫的话，事实上是很难转而投向性的理论的。</p><blockquote><p>翻开霭氏性心理学的第一页，你就已经性压抑了。</p></blockquote><p>每当人在大谈特谈什么的时候，实际上更多的是掩盖了什么。我询问 ChatGPT 4o，什么是性压抑，它给出的答案是：</p><blockquote><p>性欲的否认或压制，性行为的回避，性话题的禁忌。</p></blockquote><p>这只是某种教科书式的说法。事实上，如果性的话题成为了一种禁忌，那么我们似乎还有一种合法地绕开这种禁忌的方式，那就是把“性”的东西，变成与它恰恰相反的；从“性”这件事中，刨去所有具有性意味的东西。从而剩下一种关于性的学说。</p><p>当然这有点小众了。那么有没有更普遍一点的表现呢？有的，兄弟有的。如果一个人开黄色笑话的频率比较高，或是平时漫不经心地就能说出具有挑逗意味的话来，那么这人是性压抑没跑了。</p><p>其实原理和第一种是相仿的。如果说学说是对于性本身的异化，那么幽默就是对于性的消解。幽默属性使得所有的意味都变为可以回撤的，就像唱歌的时候躲高音一样。</p><p>并且不妨回忆一下，很多作品中的“欢喜冤家”类型的伴侣，似乎你很难想象他们做爱会是什么样的场景。如果是谐星情侣，也许在床上讲个笑话就直接笑软了。</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文包含医疗建议，请仔细甄别。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;白天在饭桌上聊天聊到“性压抑”这件事。我不禁想到，我对这种状态似乎有一种“雷达”，对于各种性压抑的表现比较敏感。包括性压抑的人都会说什么话、做什么事，等等。但是一时又没说上来</summary>
-        
-      
-    
-    
-    
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
