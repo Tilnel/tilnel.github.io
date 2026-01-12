@@ -44,11 +44,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://tilnel.github.io/Untitled%201/"/>
-    <id>https://tilnel.github.io/Untitled%201/</id>
-    <published>2026-01-12T22:13:59.267Z</published>
-    <updated>2026-01-12T22:13:59.267Z</updated>
+    <title>新年贺词</title>
+    <link href="https://tilnel.github.io/20260113-misc/"/>
+    <id>https://tilnel.github.io/20260113-misc/</id>
+    <published>2026-01-12T16:00:00.000Z</published>
+    <updated>2026-01-12T16:00:00.000Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
     
@@ -62,6 +62,8 @@
       
     
     
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
