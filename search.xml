@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>如何买衣服</title>
       <link href="/20260128-buy/"/>
       <url>/20260128-buy/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>购物车里积攒了大量想买的衣服，但并非每件都是合理的选择。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
       
       
     </entry>
