@@ -23,12 +23,18 @@
     
     
     <entry>
-      <title></title>
+      <title>雪中漫步</title>
       <link href="/20260207-snow/"/>
       <url>/20260207-snow/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
       
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
       
       
     </entry>

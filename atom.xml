@@ -42,11 +42,11 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>雪中漫步</title>
     <link href="https://tilnel.github.io/20260207-snow/"/>
     <id>https://tilnel.github.io/20260207-snow/</id>
-    <published>2026-02-06T20:03:29.998Z</published>
-    <updated>2026-02-06T20:03:29.998Z</updated>
+    <published>2026-02-06T16:00:00.000Z</published>
+    <updated>2026-02-06T16:00:00.000Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
     
@@ -60,6 +60,8 @@
       
     
     
+    
+    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
   </entry>
