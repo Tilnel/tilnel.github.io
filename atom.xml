@@ -99,14 +99,15 @@
     <published>2026-02-06T16:00:00.000Z</published>
     <updated>2026-02-06T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote><p>死不可怕，死是凉爽的夏夜，可供人无忧地安眠。    ——曹操（陈建斌饰） of 新三国</p></blockquote>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;blockquote&gt;
+&lt;p&gt;死不可怕，死是凉爽的夏夜，可供人无忧地安眠。  </summary>
         
       
     
