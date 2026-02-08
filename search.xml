@@ -23,19 +23,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/20260209-thesis3/"/>
-      <url>/20260209-thesis3/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>对 kernel 中的 TCP 实现进行基于模型的测试(Model Based Testing)</title>
       <link href="/20250816-tcp/"/>
       <url>/20250816-tcp/</url>
