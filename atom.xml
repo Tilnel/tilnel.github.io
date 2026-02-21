@@ -48,20 +48,20 @@
     <published>2026-02-20T16:00:00.000Z</published>
     <updated>2026-02-20T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>L 君是我在高中一位要好的同学。开篇提到他没有什么特别的理由，只是因为我写作前酝酿与思索了好久，并在一瞬间感到，自己在保持冷静这件事情上、也许是保持冷酷这件事情上，才刚刚达到他的十分之一。但这也算是灵光乍现了。</p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;L</summary>
         
       
     
     
     
-    <category term="杂" scheme="https://tilnel.github.io/categories/%E6%9D%82/"/>
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
