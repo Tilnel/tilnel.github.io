@@ -42,20 +42,20 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>play with Kimi-Code</title>
     <link href="https://tilnel.github.io/20260305-kimi/"/>
     <id>https://tilnel.github.io/20260305-kimi/</id>
-    <published>2026-03-05T13:52:02.720Z</published>
-    <updated>2026-03-05T13:52:02.720Z</updated>
+    <published>2026-03-04T16:00:00.000Z</published>
+    <updated>2026-03-04T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>为了方便和 Agent 交互，我计划给 Kimi-Code 接入 TTS&#x2F;STT。于是有了一个</p><p><img src="image-20260305215250649.png" alt="image-20260305215250649"></p>]]></content>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;为了方便和 Agent 交互，我计划给 Kimi-Code 接入</summary>
         
       
     

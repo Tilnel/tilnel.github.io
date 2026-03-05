@@ -23,11 +23,11 @@
     
     
     <entry>
-      <title></title>
+      <title>play with Kimi-Code</title>
       <link href="/20260305-kimi/"/>
       <url>/20260305-kimi/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>为了方便和 Agent 交互，我计划给 Kimi-Code 接入 TTS&#x2F;STT。于是有了一个</p><p><img src="image-20260305215250649.png" alt="image-20260305215250649"></p>]]></content>
       
       
       
