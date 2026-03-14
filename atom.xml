@@ -42,6 +42,29 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="https://tilnel.github.io/Untitled/"/>
+    <id>https://tilnel.github.io/Untitled/</id>
+    <published>2026-03-14T21:45:59.676Z</published>
+    <updated>2026-03-14T21:45:59.676Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>play with Kimi-Code</title>
     <link href="https://tilnel.github.io/20260305-kimi/"/>
     <id>https://tilnel.github.io/20260305-kimi/</id>
@@ -493,31 +516,6 @@
 &lt;p&gt;进行一个通读&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;注意到&lt;/strong&gt; 空指针 deref 是 undefined behavior。曾经在 gcc 中遇到过因为分析出空指针导致整个函数体被优化的情况。我现在 -O0</summary>
-        
-      
-    
-    
-    
-    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>printf 格式化字符串注入浅尝</title>
-    <link href="https://tilnel.github.io/20250823-vul/"/>
-    <id>https://tilnel.github.io/20250823-vul/</id>
-    <published>2025-08-22T16:00:00.000Z</published>
-    <updated>2025-08-22T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>注意到</strong> <code>printf</code> 的 <code>%n</code> 格式化说明符：将当前 printf 的已输出字节数写入指针位置。</p><blockquote><p><strong>格式化字符串漏洞</strong>：如果一个程序允许用户输入格式化字符串，并且没有进行过滤，恶意用户可以利用 <code>%n</code> 来进行<strong>任意地址写入</strong>。攻击者可以传递一个格式化字符串，例如 <code>&quot;%100$n&quot;</code>，这会尝试将一个值写入堆栈上第 100 个参数的位置。如果这个位置正好是攻击者想要覆盖的内存地址，就可以用来修改程序行为或执行恶意代码。</p></blockquote><p><img src="image-20250823212029298.png" alt="image-20250823212029298"></p><p>我尝试了很久，发现不能使用。思路是首先修改某个栈上的 rbp 让它不指向调用者的 rbp 而是指向调用者的返回地址，即 *rbp +&#x3D; 8。然后通过这个栈上的指针 access 返回地址的位置，修改为任意函数指针；最后将 rbp 改回。</p><p>失败的原因是，一次 printf 调用会首先把参数取好，而不是多次调用 printf_positional。这意味着我第二步读到的是指针旧值。因而没有任何变化。</p><p>图中展示了我最后仍然是写入了 0x7fffffffe680 (rbp旧值) 的一字节为 0x36，与 succeed 0x401136 一致。</p><p>肯定需要多次调用才能完成此类攻击。思路大概是，逮着 rbp 的值一直薅，把返回地址、返回地址前面（栈上参数）都改个遍，最后等待 return。</p><p>这对于程序也有条件。对于我而言，我能够改动的 rbp 旧值位置已经很靠栈顶了。实际上的返回地址已经在 _start 里。返回到这个函数，能不能运行什么代码都不好说。。更别提注入代码，因为可写的地方都不可执行。最大的可能性是，同时用好这个 vulnerability 和某些库函数之类的。并且条件是有某种神秘服务不经检查地把输入传给 fmt 字符串。</p><p>思路草图（真的很草） “读” 的箭头应指向最上面的 pc</p><p><img src="image-20250823213343937.png" alt="image-20250823213343937"></p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;注意到&lt;/strong&gt; &lt;code&gt;printf&lt;/code&gt; 的 &lt;code&gt;%n&lt;/code&gt; 格式化说明符：将当前 printf</summary>
         
       
     
