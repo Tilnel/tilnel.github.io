@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="noindex,nofollow">
+
+<title>JulienChaumond/FinalProject - cs348b-07</title>
+<script type="text/javascript" src="/moinmoin_static/common/js/common.js"></script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moinmoin_static/monobook/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moinmoin_static/monobook/css/monobook.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/moinmoin_static/monobook/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/moinmoin_static/monobook/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/moinmoin_static/monobook/css/projection.css">
+
+<!-- css only for MSIE browsers -->
+<!--[if IE]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moinmoin_static/monobook/css/msie.css">
+<![endif]-->
+
+
+
+
+<link rel="Start" href="/wikis/cs348b-07/FrontPage">
+<link rel="Alternate" title="维基标记" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=raw">
+<link rel="Alternate" media="print" title="打印视图" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=print">
+<link rel="Up" href="/wikis/cs348b-07/JulienChaumond">
+<link rel="Appendix" title="600px-Lens_aperture_top.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=600px-Lens_aperture_top.jpg">
+<link rel="Appendix" title="89119862_7ef51c9d05.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=89119862_7ef51c9d05.jpg">
+<link rel="Appendix" title="Fresnel.png" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=Fresnel.png">
+<link rel="Appendix" title="Fresnel2.png" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=Fresnel2.png">
+<link rel="Appendix" title="Mt_Buller_1600.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=Mt_Buller_1600.jpg">
+<link rel="Appendix" title="Mt_Buller_800.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=Mt_Buller_800.jpg">
+<link rel="Appendix" title="Rp.png" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=Rp.png">
+<link rel="Appendix" title="Rs.png" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=Rs.png">
+<link rel="Appendix" title="cloudtexture.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=cloudtexture.PNG">
+<link rel="Appendix" title="cobalt_crash.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=cobalt_crash.jpg">
+<link rel="Appendix" title="code.rar" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=code.rar">
+<link rel="Appendix" title="flare.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=flare.jpg">
+<link rel="Appendix" title="flare1.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=flare1.PNG">
+<link rel="Appendix" title="flare3.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=flare3.PNG">
+<link rel="Appendix" title="flare4.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=flare4.PNG">
+<link rel="Appendix" title="flare800.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=flare800.jpg">
+<link rel="Appendix" title="hoover-hi-res.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=hoover-hi-res.PNG">
+<link rel="Appendix" title="hoover-hi-res.tif" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=hoover-hi-res.tif">
+<link rel="Appendix" title="hoover_art.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=hoover_art.PNG">
+<link rel="Appendix" title="lens1.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=lens1.PNG">
+<link rel="Appendix" title="lens2.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=lens2.PNG">
+<link rel="Appendix" title="lens3.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=lens3.PNG">
+<link rel="Appendix" title="lens_flare.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=lens_flare.jpg">
+<link rel="Appendix" title="lenses.gif" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=lenses.gif">
+<link rel="Appendix" title="lightraytracing.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=lightraytracing.PNG">
+<link rel="Appendix" title="maya.png" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=maya.png">
+<link rel="Appendix" title="miescattering.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=miescattering.PNG">
+<link rel="Appendix" title="miescattformula.png" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=miescattformula.png">
+<link rel="Appendix" title="mob106_1158392772.jpg" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=mob106_1158392772.jpg">
+<link rel="Appendix" title="pathtracing.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=pathtracing.PNG">
+<link rel="Appendix" title="ray_correct.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=ray_correct.PNG">
+<link rel="Appendix" title="raymulti.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=raymulti.PNG">
+<link rel="Appendix" title="rayreflect.PNG" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=view&amp;target=rayreflect.PNG">
+<link rel="Search" href="/wikis/cs348b-07/FindPage">
+<link rel="Index" href="/wikis/cs348b-07/TitleIndex">
+<link rel="Glossary" href="/wikis/cs348b-07/WordIndex">
+<link rel="Help" href="/wikis/cs348b-07/HelpOnFormatting">
+</head>
+
+<body  lang="zh" dir="ltr">
+<div id="globalWrapper">
+<div id="column-content">
+<div id="page" lang="en" dir="ltr">
+
+<div id="message">
+<p>您不可以对此页进行AttachFile操作. 请登录后再试.</p>
+<div class="buttons"><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=show">清除此提示信息</a></div>
+
+</div>
+
+
+<ul id="pagelocation">
+<h1>JulienChaumond/FinalProject</h1>
+</ul>
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h1 id="head-2daa88d434ed3ec105f758541ee2e69b612be5c8">Realistic Camera - Lens Flares</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line862">The original project proposal can be found at <a href="/wikis/cs348b-07/JulienChaumond/FinalProjectProposal">JulienChaumond/FinalProjectProposal</a>. <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line874">My idea was to extend the realistic camera model in order to simulate some of the interesting <span class="anchor" id="line-6"></span>lens-internals related phenomenas in real cameras: lens flares and <span class="anchor" id="line-7"></span>scattering around the sun. <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><p class="line867">
+<h3 id="head-02f50beeb34c0ad0d8bfc0d15016de185a8cd156">Final Image</h3>
+<span class="anchor" id="line-10"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=hoover-hi-res.PNG" title="attachment:hoover-hi-res.PNG" /> <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><p class="line867"><a class="attachment" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=hoover-hi-res.tif" title="attachment:hoover-hi-res.tif">tif version here</a> <span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><p class="line867">
+<h3 id="head-66f3319ac16ba7638b301c9d48158607b0f2d959">Motivations</h3>
+<span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><p class="line874">Sources of inspiration for this project included: <span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=mob106_1158392772.jpg" title="attachment:mob106_1158392772.jpg" /> <span class="anchor" id="line-19"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=Mt_Buller_800.jpg" title="attachment:Mt_Buller_800.jpg" /> <span class="anchor" id="line-20"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=flare800.jpg" title="attachment:flare800.jpg" /> <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span><p class="line867">
+<h2 id="head-84dcdf9da8438c8d494f74603024899220a5c1a5">Fresnel Equations</h2>
+<span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><p class="line874">The first step of the project was to think about which physical phenomenas are at stake.  <span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><p class="line874">Intuitively: <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><ol type="1"><li>Circles and spots of light on the picture are due to the light "going back and forth" (reflections) between the lenses and at the aperture. <span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span></li><li class="gap">Spikes of light in priviledged directions are most likely due to diffraction on the camera sensor (grid-shaped on a digital camera) and/or at the aperture diaphragm. <span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span></li><li class="gap">The glow around the light sources (I'm not speaking of any atmopheric effect here) is due to the scattering of intense light in the glass material of the lenses. <span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span></li></ol><p class="line874">To implement 1. and 3. I needed to extend the realistic camera model. We have to consider rays that are reflected on some lenses in addition to rays that are only refracted through them. <span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=lenses.gif" title="attachment:lenses.gif" /> <span class="anchor" id="line-37"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=ray_correct.PNG" title="attachment:ray_correct.PNG" /> <span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><p class="line874">The physical equations that govern the repartition of light at an interface between two different materials are the Fresnel equations. They can be derived from the Maxwell equations that more generally govern the propagation of electromagnetic waves in a material. <span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=Fresnel.png" title="attachment:Fresnel.png" /> <span class="anchor" id="line-42"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=Rs.png" title="attachment:Rs.png" /> <span class="anchor" id="line-43"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=Rp.png" title="attachment:Rp.png" /> <span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><p class="line874">The Fresnel equations give the percentage R of light that is reflected at an interface, depending on Snell's angles θi and θt and the two materials' indices of refraction n1 and n2. <span class="anchor" id="line-46"></span>There are two equations, depending on whether the incident light is polarised in the plane of incidence of perpendicular to this plane. For unpolarised light - we'll assume the photographer doesn't use any polarizing filter here - R is simply the average of the two terms Rs and Rp. <span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=Fresnel2.png" title="attachment:Fresnel2.png" /> <span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><p class="line874">Let's have a look at the values of R depending on the parameters. As we can see, the reflection coefficient R increases faster - and is equal to 1 for a long range of angles (total internal reflection) when the light goes from a material with larger index of refraction to a material with smaller index of refraction. <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><p class="line874">In our case, this means that the reflections are more frequent outside the lenses than inside them - which is somewhat counterintuitive. <span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><p class="line874">An example of a ray that's reflected 4 times in its way through the camera can be seen below: <span class="anchor" id="line-55"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=rayreflect.PNG" title="attachment:rayreflect.PNG" /> <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line874">The way I implemented this is probalistically: at each interface, I compute the reflection coefficient R. I then randomly decide whether the ray's reflected or refracted according to this value. It's equivalent to actually splitting each ray at each interface and weighing them by R or (1-R), but it is easier to implement this way. <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><p class="line874">Below is an example of a ray that is split at randomly chosen interfaces. <span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=raymulti.PNG" title="attachment:raymulti.PNG" /> <span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><p class="line867">
+<h2 id="head-8f0a1e2d9642acf80469505dfbf5d82d4a0e4905">Light Ray Tracing</h2>
+<span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span><p class="line874">This first approach gives us some lens flares, but it introduces a lot of noise. The image below has been rendered using 2048 samples per pixel and is still very noisy. The reasons for that is that: <span class="anchor" id="line-66"></span><ol type="1"><li>The probability that a ray is refracted at a given interface is typically small (around 5%) and not all interfaces contribute equally to the lens flare (as we'll see later on). <span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span></li><li class="gap">Most importantly, the light source is small so the probability that a random ray going from the front lens into the scene hits it is small. The rest of the scene is very dark compared to the sun so doesn't contribute to the image much. <span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span></li></ol><p class="line874">The solution to that problem is to shoot ray from the light source to the camera instead of shooting them from the camera out into the scene. <span class="anchor" id="line-71"></span>A light ray tracing integrator is not included in <tt>pbrt</tt> so we have to tweak the existing code a bit. <span class="anchor" id="line-72"></span>The result is that the obtained image is way less noisy. The image on the right below has been rendered using "only" 1024 samples per pixel, however it's way less noisy than the image on the left. <span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=pathtracing.PNG" title="attachment:pathtracing.PNG" /> <span class="anchor" id="line-75"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=lightraytracing.PNG" title="attachment:lightraytracing.PNG" /> <span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><p class="line874">In the rest of the project, I used both path tracing and light ray tracing. Roughly half of the rays were shot from the camera and half were shot from the light source. <span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><p class="line867">
+<h2 id="head-30bfbab054a288fa9fab7b9bb44bb41dc6f02a1b">Mie Scattering</h2>
+<span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><p class="line874">An important part of the feeling of realism when rendering a bright light source such as the sun is the glow around it. I implemented a simple model (based on Mie scattering) for the scattering of light inside  <span class="anchor" id="line-82"></span>the glass. <span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=miescattformula.png" title="attachment:miescattformula.png" /> <span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><p class="line874">The probability that a ray is deviated from its direction by an angle θ is proportional to 5/8 (1+cos²θ) + cosθ. My model simplifies this by assuming that the rays' changes of directions only occur at the interfaces, which is of course false, but which gives a pleasing result: <span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=miescattering.PNG" title="attachment:miescattering.PNG" /> <span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><p class="line867">
+<h2 id="head-904f25cbf0d21cde877b9eadc36abbfd258b3ef5">Building the scene</h2>
+<span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><p class="line874">I got the Hoover Tower model from Patricia (Sha Sha) Chu and Darren Lewis who used it in their entry to the 2003 rendering competition: Rendering Realistic Night Skies, <span class="anchor" id="line-93"></span>and slightly improved it. <span class="anchor" id="line-94"></span>It was then converted to the <tt>pbrt</tt> scene file format using the <tt>maya-pbrt</tt> plugin. <span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=maya.png" title="attachment:maya.png" /> <span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><p class="line862">To light the scene, in addition to the sun, I used an environment light with the <tt>skylight-blue.exr</tt> light probe. <span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><p class="line874">Finally, I used the realistic camera autofocus algorithm to find the desired distance between the lenses and the film plane. <span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><p class="line867">
+<h2 id="head-becae0a410d29242e7fa59c31c38c6d672c0a660">Experiments</h2>
+<span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span><p class="line867">
+<h3 id="head-1d1eb8d07db755852a9f0438a14b48e905ce3f56">Influence of the position of the sun</h3>
+<span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span><p class="line874">The position of the sun in the scene is important because it affects the shape of the flares, as we can see in the following images: <span class="anchor" id="line-107"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=flare1.PNG" title="attachment:flare1.PNG" /> <span class="anchor" id="line-108"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=flare3.PNG" title="attachment:flare3.PNG" /> <span class="anchor" id="line-109"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=flare4.PNG" title="attachment:flare4.PNG" /> <span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><p class="line867">
+<h3 id="head-48fe0d7eaeb8e5e56838a5228ed2433cd8ce7f1a">Shape of the aperture diaphragm</h3>
+<span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span><p class="line874">A minor extension I implemented was to model the shape of the diaphragm (aperture blades) which is said to cause artifacts of the same shape on the picture. <span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span><p class="line874">Most diaphragms are polygon-shaped. For example, the lens on the picture has a heptagon-shaped diaphragm. For simplicity of implementation I modeled an octagon-shaped diaphragm. <span class="anchor" id="line-116"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=600px-Lens_aperture_top.jpg" title="attachment:600px-Lens_aperture_top.jpg" /> <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span><p class="line874">However it didn't turn out to make any difference in the obtained images. I should probably have tried with smaller aperture diamterers. <span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><p class="line867">
+<h3 id="head-e807095d34c86eb34771372777f8750a1792763e">Background cloud texture</h3>
+<span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><p class="line874">I initially wanted to use a cloudy sky as a texture for the background, however it looked kind of funny so I ended up not using it. <span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=cloudtexture.PNG" title="attachment:cloudtexture.PNG" /> <span class="anchor" id="line-125"></span><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=hoover_art.PNG" title="attachment:hoover_art.PNG" /> <span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><p class="line867">
+<h2 id="head-8d39e7c29e1c161a5e1a6b5733840881f8b96b00">Conclusion</h2>
+<span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><p class="line874">I would have liked to try and find a simple model for diffraction on the sensor and at the diaphragm, in order to obtain spikes of light around the sun. <span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span><p class="line862">Another thing I would have liked to implement was the wavelength dependency of both Snell's law and the scattering. It would be very straightforward to implement this dependency if only we could sample the wavelengths of the light that's conveyed on a given ray and then modify several points on the image from a single sample ray, but this would imply modifying lots of code throughout <tt>pbrt</tt>. <span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span><p class="line874">However it is nice to obtain lens flares that, if not as dramatic as the "empirical" ones used in Photoshop or videogames, are more physically realistic. <span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=cobalt_crash.jpg" title="attachment:cobalt_crash.jpg" /> <span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span><p class="line874">An example of an "empirical" lens flare effect as seen in videogames. <span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span><p class="line867"><img class="attachment" src="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile&amp;do=get&amp;target=lens_flare.jpg" title="attachment:lens_flare.jpg" /> <span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span><p class="line862">A very cheap-looking lens flare off my cs248 videogame. <img alt=":)" height="15" src="/moinmoin_static/monobook/img/smile.png" title=":)" width="15" /> <span class="anchor" id="line-142"></span><span class="anchor" id="line-143"></span><p class="line867">
+<h4 id="head-3d6464d17449a94fcc82fa785e6f10a58f7eea6d">References</h4>
+<span class="anchor" id="line-144"></span><ol type="1"><li><p class="line862">A Realistic Camera Model for Computer Graphics - <a class="http" href="http://www.graphics.stanford.edu/papers/camera/">http://www.graphics.stanford.edu/papers/camera/</a> <span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span></li><li class="gap"><p class="line862">Understanding Lens Flare in Photography - <a class="http" href="http://www.cambridgeincolour.com/tutorials/lens-flare.htm">http://www.cambridgeincolour.com/tutorials/lens-flare.htm</a> <span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span></li><li class="gap"><p class="line891"><a class="http" href="http://en.wikipedia.org/wiki/Lens_flare">http://en.wikipedia.org/wiki/Lens_flare</a> <span class="anchor" id="line-149"></span><span class="anchor" id="line-150"></span></li><li class="gap"><p class="line891"><a class="http" href="http://en.wikipedia.org/wiki/Fresnel_equations">http://en.wikipedia.org/wiki/Fresnel_equations</a> <span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span></li><li class="gap"><p class="line862">Mie Scattering: <a class="http" href="http://fr.wikipedia.org/wiki/Th%C3%A9orie_de_Mie#Formalisme">http://fr.wikipedia.org/wiki/Th%C3%A9orie_de_Mie#Formalisme</a> (in French) <span class="anchor" id="line-153"></span></li></ol><span class="anchor" id="bottom"></span></div><div class="visualClear"></div>
+<div id="pagebottom"></div>
+</div>
+
+</div>
+<div id="column-one">
+<div id="p-cactions" class="portlet"><ul class="editbar"><li class="none"><a name="articleLink" href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=show">article</a></li><li class="none"><span class="disabled">只读网页</span></li><li class="none"><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=info">信息</a></li><li class="none"></li><li class="none"></li><li class="selected"><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=AttachFile">附件</a></li></ul>
+</div>
+<div class="portlet" id="p-personal"><ul id="username"><li class="pt-userpage"><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=login">登录</a></li></ul></ul></div>
+<div class="portlet" id="p-logo">
+<div id="logo"><a href="/wikis/cs348b-07/FrontPage">Image Synthesis</a></div>
+</div>
+<div class="portlet" id="p-nav"><div class="pBody"><ul id="navibar"><li><a href="/wikis/cs348b-07/RecentChanges">RecentChanges</a></li>
+<li><a href="/wikis/cs348b-07/FindPage">FindPage</a></li>
+<li><a href="/wikis/cs348b-07/HelpContents">HelpContents</a></li></ul></ul></div></div>
+
+<div class="portlet" id="p-search">
+<h5><label for="searchInput">搜索:</label></h5>
+<div class="pBody">
+<form id="searchform" method="get" action="">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<input id="searchInput" name="value" type="text" accesskey="f"
+    value="">
+<input id="titlesearch" name="titlesearch" type="submit" class="searchButton"
+    value="标题" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit" class="searchButton"
+    value="正文" alt="Search Full Text">
+</div>
+</form>
+</div>
+</div>
+
+<div class="portlet" id="p-nav">
+<h5>Recent</h5>
+<div class="pBody">
+
+</div>
+</div>
+<div class="portlet" id="p-tb"><h5>Toolbox</h5><div class="pBody"><ul><li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=raw">源码</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=print">打印视图</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=RenderAsDocbook">输出Docbook格式</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=refresh">删除缓存</a></li>
+<hr>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=SpellCheck">拼写检查</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=LikePages">相似网页</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=LocalSiteMap">本站地图</a></li>
+<hr>
+<li>改名</li>
+<li>删除</li>
+<hr>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=MyPages">我的网页</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=SubscribeUser">订阅</a></li>
+<hr>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=Despam">删除垃圾广告</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=PackagePages">网页打包</a></li>
+------------
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=HTML">HTML</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=Navigation">Navigation</a></li>
+<li><a href="/wikis/cs348b-07/JulienChaumond/FinalProject?action=PageComment2">Page Comment2</a></li></ul></ul></div></div>
+<div class="visualClear"></div>
+<div id="footer">
+
+<ul id="credits">
+<li><a href="http://moinmoin.wikiwikiweb.de/">MoinMoin Powered</a></li><li><a href="http://www.python.org/">Python Powered</a></li><li><a href="http://validator.w3.org/check?uri=referer">Valid HTML 4.01</a></li>
+</ul>
+
+</div>
+</div>
+</div></body>
+</html>
+

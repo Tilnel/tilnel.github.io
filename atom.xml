@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tilnel&#39;s Blog</title>
+  <icon>https://tilnel.github.io/icon.png</icon>
+  <subtitle>我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</subtitle>
+  <link href="https://tilnel.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://tilnel.github.io/"/>
+  <updated>2099-12-31T15:59:59.000Z</updated>
+  <id>https://tilnel.github.io/</id>
+  
+  <author>
+    <name>Tilnel</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Preface-一月十三日</title>
+    <link href="https://tilnel.github.io/20991231-top/"/>
+    <id>https://tilnel.github.io/20991231-top/</id>
+    <published>2099-12-31T15:59:59.000Z</published>
+    <updated>2099-12-31T15:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>新年写博客发现读者使我变得拘束。之后会加大力度锐评。</p><p>祝读博客的朋友都永远健康永远快乐永远不死永远爽。</p><p>Tilnel 2026-01-13</p><p><a href="/20250310-top/">第三版置顶</a></p><p><a href="/20241023-top/">第二版置顶</a></p><p><a href="/20231017-top/">第一版置顶</a></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Flag 终末地</title>
+    <link href="https://tilnel.github.io/20260725-zmd/"/>
+    <id>https://tilnel.github.io/20260725-zmd/</id>
+    <published>2026-07-25T16:00:00.000Z</published>
+    <updated>2026-07-25T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="image-20260726014441376.png" alt="image-20260726014441376"></p><p> 最后还是去了我说</p><p><img src="image-20260726032337342.png" alt="image-20260726032337342"></p><p>这是人类啊</p><p><img src="image-20260726032559241.png" alt="image-20260726032559241"></p><p>还有Higgins</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DetSim for Go runtime</title>
+    <link href="https://tilnel.github.io/20260402go/"/>
+    <id>https://tilnel.github.io/20260402go/</id>
+    <published>2026-04-01T16:00:00.000Z</published>
+    <updated>2026-04-01T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>在 go 程序启动时，state_initialize 的过程中，试图从程序的真实入口点（对于 libc 来说，是 _start）推进到 main 之前的部分，调用 extract_one_syscall 的时候。在 waitpid 的时候，并没有停在 sigtrap | 0x80。</p><p>我使用 strace 来观察 loop 的输出，得到它实际上在 clone 了一个线程之后，收到了 SIGURG，并且 si_code&#x3D;SI_TKILL。这可能与 go 的 runtime 有关。这似乎是某种抢占式调度设计。我尝试了在 extract syscall 的过程中禁止新线程创建，不过 go runtime 并没有允许我这样做，而是抛出了一个 exception。感觉已经万策尽了。</p><p>现在我们的解决办法，似乎只有这样：在所有 ptrace_syscall 调用后的 wait，额外处理 sigurg。</p><p>理论上，我们拥有实现“伪多线程”的可能性。也就是允许 runtime 执行这次 clone，但是我们做这样一件事：在 clone 调用时，为它的 flags 加上一个 CLONE_PTRACE。这样在 clone 之后，新线程理论上直接被我们自动 attach 并处于静止状态。然后我们再也不调度这个新线程执行，只调度主线程即可。</p><p>另外目前的 detsim 似乎还没能够识别到 go 程序从初始化到进入用户代码的那一步。已知在 go 的 runtime init 就会调用一次clone，那么 sigurg 实际上在init 时就已经在不断发送了。我们可能需要在 state_initialization 的时候，考虑到这一部分。状态初始化应该把程序推进到用户代码的前一个系统调用，但目前似乎没有这种明确的标志。我看到，在 loop程序中，go在实际执行 write hello 之前，先做了： mmap(null, 256KB, RW, private + anon), fcntl(1, f_getfl), fcntl(2, f_getfl)。</p><p>我们大概可以打包这三条作为进入用户代码前的关键系统调用识别。就像静态 C 的 mprotect 和动态 C 的 munmap 一样。（这个逻辑在 init_tracee_state 中被处理，它通过分析 elf 来设置一个初始化过程的 stop_nr. 这个判断机制大概应当被扩展）。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;在 go 程序启动时，state_initialize</summary>
+        
+      
+    
+    
+    
+    <category term="DetSim" scheme="https://tilnel.github.io/categories/DetSim/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>TCP 面试题（困难版）</title>
+    <link href="https://tilnel.github.io/20260331-tcp/"/>
+    <id>https://tilnel.github.io/20260331-tcp/</id>
+    <published>2026-03-30T16:00:00.000Z</published>
+    <updated>2026-03-30T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>准备了一些关于 TCP 协议的题，如果都做对了就没有人比你更懂 TCP。</p><p>参考资料：RFC793  RFC1122  RFC2525  RFC5961  RFC9293</p><p>1、TCP 连接建立后，如果 peer 直接死掉了会怎么样</p><p>如果双方的 sequence 同步了，并且没有开 TCP_KEEPALIVE，并且没有后续操作，那就不会怎么样。</p><p>如果对方不能重启，后续的 send 就不断 TIMEOUT，最后达到最大重传次数，reset。</p><p>如果对方重启，后续的 send 在对端没有匹配的 socket，直接返回 RST。</p><p>2、TCP KEEPALIVE 是什么？</p><p>是 sequence - 1，长度<strong>应当</strong>为 1 的试探报文。发送一个旧的字节试探 peer 活性，不占用序列号，不影响已有消息传输。</p><p>3、哪些报文占用序列号？</p><p>SYN 和 FIN 标志都要占用 1 个序列号。text 占用与长度相当的序列号。</p><p>4、握手的目的是什么？</p><p>传统回答：确认己方和对方的传输能力。</p><p>我的回答：还能够<strong>同步双方的序列号</strong>。第一次握手告诉对方我的序列号是什么。第二次握手告诉对方序列号已获知，并同步己方序列号。第三次握手对方确认获知我的序列号。</p><p>5、如果一方在并非全部消息被接收的情况下，想要主动断开连接，应当怎么做？</p><p>分情况：1、kernel 底层未收到对方消息的 segment。此时上层应用已读取完内核缓冲区的数据。此时首先发送 FIN，不会再发送字节。但允许对方继续发送。此时如果对方发送，就进入下一个情况。</p><p>​2、kernel 已收到对方消息的 segment 并放入缓冲区，但上层应用决定直接退出。此时发送 RST，不会再接收任何消息。对方收到之后，也不会再继续发送。</p><p>6、close(sockfd) 和 shutdown(sockfd, how) 有什么区别？</p><p>与上一题相关。close 在任何情况下都会断开连接，因为底层文件描述符也被关闭。如果恰好收取完所有缓冲数据，则进入 5.1。如果未收取完，则进入 5.2</p><p>shutdown 则有 SHUT_WR SHUT_RD SHUT_RDWR 选项。但是它<strong>不会关闭文件描述符</strong>。也就是说缓冲区将被保留。如果缓冲区里有东西，那么还有继续被上层读的可能。如果以 RDWR 方式关闭，则仅保留文件描述符，但与 close 无异。如果以 RD 方式关闭，则保留写端。如果以 WR 方式关闭，则发送 FIN（因为保留了读方式），这个方式与 TCP 的协议 close 是最接近的。</p><p>7、常用的 tcpdump 为什么总是看到校验码不对？</p><p>因为校验码计算可以被 offload 给网络设备。发送出去的消息在到达 kernel 后即被 TCP dump 捕获。此时校验并未计算。待发出时由网卡计算。</p><p>8、TCP SYN SENT 状态下，如果收到一个ACK号对不上己方 SYN 的 SYNACK，应当如何？</p><p>发送 RST。我们认为这是一次失败的连接。</p><p>9、TCP_ESTABLISHED 状态下，如果收到一个 SYN，且序列号不正确，应当如何？</p><p>保活，并发送 challenge ACK。首先善意假设是对端重启，那么 challenge 的 seq 与对端的新状态不匹配迫使对方发送 RST 彻底清除这个旧连接。如果对端没出问题，这是攻击者发送的虚假报文。如果 challenge 还是路由到对端，那么对端只会认为这是冗余 ACK，连接得以保活，<strong>不会因为恶意的 SYN 模拟攻击而断连</strong>。如果 challenge 路由到攻击者，<strong>那么这种攻击不是传输层能处理的</strong>。</p><p><strong>如果序列号正确，其实也是这样干</strong>。</p><p>challenge ACK 其实就是普通的 ACK。只不过这个场景下触发对端裁决，所以叫做 challenge。</p><p>10、如果某一方以相同的序列号，发送了不同数据的 segment，应该怎么办？</p><p>未定义。由实现定义是否拒绝这种不安全的发送。实践上，在看到相同序列号之后就扔掉了，根本不会比较。</p><p>11、TCP 的关闭流程有很多很多状态。阐述它们的不同：</p><p>FIN-WAIT1    FIN-WAIT2    CLOSE-WAIT   CLOSING    LAST_ACK    TIME-WAIT    CLOSED</p><p>简而言之，是处在握手阶段的不同，以及双方消息序的交错导致的。假设有一对处于 ESTABLISHED 状态的连接两端。</p><ul><li>A 发送第一个 FIN-ACK 进入 FIN-WAIT1、<ul><li>如果 B 收到，则发送 ACK 进入 CLOSE-WAIT<ul><li>如果 A 再收到 ACK，进入 FIN-WAIT2<ul><li>如果这时 B 关闭，发送出 FIN-ACK，则进入 LAST-ACK<ul><li>如果 A 收到 FIN-ACK 则发送 ACK 进入 TIME-WAIT<ul><li>如果 B 再收到 ACK 则直接关闭进入 CLOSED</li></ul></li></ul></li></ul></li></ul></li><li>如果 B 没收到时刚好也 close 了，则发送 FIN-ACK 进入 FIN-WAIT1<ul><li>如果此时 A 收到 B 的 FIN-ACK 则发送 ACK 进入 CLOSING<ul><li>如果此时再收到 B 的 ACK 则进入 TIME-WAIT</li></ul></li><li>如果此时 B 收到 A 的 FIN-ACK 则发送 ACK 进入 CLOSING<ul><li>如果此时再收到 A 的 ACK 则进入 TIME-WAIT</li></ul></li></ul></li></ul></li></ul><p>TIME-WAIT 统一 timeout 后进入 CLOSED。</p><p>本质上是 FIN-ACK-FIN-ACK 和 FIN-FIN-ACK-ACK 的区别。</p><p>12、TCP 一端调用 accept() 之前，连接建立了吗？</p><p>建立了。如果一端 listen 另一端 connect，不管这边是否 accept，连接都已经建立了，三次握手都会完成。accept 只决定了应用程序是否处理这个已经建立好的连接。</p><p>accept，本质上只是 BSD api 对协议的适配层而不是协议的一部分。</p><p>13、TCP 双方同时向对方发起连接，会发生什么？</p><p>如果时间上赶得巧的话，两边同时发送 SYN。再互相发送 SYN-ACK。虽然是奇怪的四次握手并且没有纯 ACK。但是连接正常建立。这是协议的一部分。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;准备了一些关于 TCP 协议的题，如果都做对了就没有人比你更懂</summary>
+        
+      
+    
+    
+    
+    <category term="网络" scheme="https://tilnel.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>提问</title>
+    <link href="https://tilnel.github.io/20260315-kimi/"/>
+    <id>https://tilnel.github.io/20260315-kimi/</id>
+    <published>2026-03-14T16:00:00.000Z</published>
+    <updated>2026-03-14T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="1a919ab03ea6de43b73f0475bb572abb.png" alt="img"></p><p>本来调程序快调睡着了，冷不丁 agent 抛了个问题给我吓醒了。</p><p><img src="image-20260317184526932.png" alt="image-20260317184526932"></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>play with Kimi-Code</title>
+    <link href="https://tilnel.github.io/20260305-kimi/"/>
+    <id>https://tilnel.github.io/20260305-kimi/</id>
+    <published>2026-03-04T16:00:00.000Z</published>
+    <updated>2026-03-04T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>为了方便和 Agent 交互，我计划给 Kimi-Code 接入 TTS&#x2F;STT。当然不是自己来做，而是把一个宏观的需求丢给 Agent，然后让它自己逐级展开，自己实现：</p><p><img src="image-20260305215250649.png" alt="image-20260305215250649"></p><p>项目是复杂的，而我只能罗里吧嗦地向 Kimi-Cli 键入一堆模糊的想法。将一团模糊的东西表达清楚实在是太困难了，而 AI 似乎恰好有这个能力从我的语言中提取有用的内容，并且能归纳成一些凝练的表达。如果有更高效的输入手段，我就可以敞开来讲，事无巨细地把自己的碎片知识喂给 AI，让它理解。希望这玩意能做出来一个可用的版本。</p><p>22：47：06</p><p>现在页面上的功能几乎都无法使用，我甚至都无从说起了。除了能打开文件以外，其他的一言<br>难尽。首先打开项目之后根目录应该切换到项目，这是最基础的吧。然后聊天框不能发送消息，点麦克风却永远不允许使用，网页也不弹申请使用。我在浏览器里只能选择允许网站询问，但是下次点也还是不询问。浅色模式编辑器却不是浅色；终端也不靠谱。显示 terminal connected 却连接不上。最后，这个网站根本就还没有登录页面。。。</p><p>也许从零开始写一个比较大的项目还是比较困难。</p><p>23：10：25</p><p>已经有点人样了。可以语音可以会话，不过现在项目打不开，代码也不显示了。</p><p>23：49：08</p><p>被 AI 阴阳了。</p><p><img src="image-20260305234903072.png" alt="image-20260305234903072"></p><p>00：02：54</p><p>还没开始测试如果对文件进行变更会怎么样。但是至少目前浏览项目是非常好用了。</p><p>02：13：09</p><p><img src="image-20260306021311335.png" alt="image-20260306021311335"></p><p>测试了一下，写东西好像没啥问题。有一个小毛病就是，如果 agent 因为网络原因中止了，这阶段的流式输出都会消失。</p><hr><p>在搞了一些奇怪的 TTS 之后，和豆包聊了10分钟天，决定直接接豆包。</p><hr><p>在接入了豆包的 ASR 和 TTS 之后，在中间其实是 agent 的情况下，整体回复延迟变得比较高。由于是 vibe 的产物，目前 bug 比较多，并且并不灵敏的 VAD 会导致火山引擎余额-8000。谨慎配置：</p><p><a href="https://github.com/tilnel/Viber">repo: VIBER</a></p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;为了方便和 Agent 交互，我计划给 Kimi-Code 接入</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>坏孩子</title>
+    <link href="https://tilnel.github.io/20260221-badkid/"/>
+    <id>https://tilnel.github.io/20260221-badkid/</id>
+    <published>2026-02-20T16:00:00.000Z</published>
+    <updated>2026-02-20T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>L 君是我在高中一位要好的同学。开篇提到他没有什么特别的理由，只是因为我写作前酝酿与思索了好久，并在一瞬间感到，自己在保持冷静这件事情上、也许是保持冷酷这件事情上，才刚刚达到他的十分之一。但这也算是灵光乍现了。事实上为了写这篇文字，我还有很多准备工作没有做好，但这些事情让我犹豫迟疑，让我心生恐惧。我所恐惧的不过是发觉自己仍然像以前那样情绪化，不能自已，口无遮拦。所以我决定，还是不要将自己置于情绪激发的风险中。</p><p>人都是矛盾的。一个人的头脑里面必然容得下两种完全相反的想法，这个冲突发生的点就是人的思想活动之所依附的位置。如果脑子里面没有矛盾了，一个人的思想活动也就停止了。眼睛一睁，世界涌入感官中与一时认识的静止是矛盾；眼睛一闭，理性的片面性又会自动产生矛盾。既然一生的思想也是由矛盾来驱动，那么一时的行为也不可能只具有单一的取向，而是由一个人自身思想的复杂性决定的。倘若一个人并不知道自己未来要怎么样，那只是因为这种复杂性超过了任何的意向，那样的思维当中包容了更多的矛盾，允许更多潜在的道路。</p><p>这种人如果受到外力的影响，要祂们在心中掐灭一种念头，消除一种可能性。表面上看是都可以接受，所以要选一个也无所谓。但实际上使祂们满意的不是选项是否合意，而是保留诸选项的权力。如果有人作势要迫使祂选择，实际上是一种对自主权的威胁，那我们知道哈基米不舒服会自己哈气的，这个时候祂就呈现出逃避或是歇斯底里的状态。与之相对的，如果一个人在某方面已经确定好了一个方向，此时却还要取消这个方向，那么结果只有抵抗，无非是消极抵抗、彻底放弃与积极抵抗、作困兽之斗的区别。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;L</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>对 kernel 中的 TCP 实现进行基于模型的测试(Model Based Testing)</title>
+    <link href="https://tilnel.github.io/20250816-tcp/"/>
+    <id>https://tilnel.github.io/20250816-tcp/</id>
+    <published>2026-02-07T16:00:00.000Z</published>
+    <updated>2026-02-07T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote><p>提问于 2025-08-16。最终做了一个较为简化的原型程序，测得结果参见 <a href="/20250925-freebsd_tcp/">FreeBSD TCP 的两个问题</a>。暂未开源，开源计划未知。思路供参考。</p><p>另误打误撞发现 Linux TCP 可能存在一处与重传超时有关的 Data Race 问题，但并未验明。有兴趣可以联系讨论。</p></blockquote><p>我问了 Gemini 这个问题，光是问题就阐述得很长。</p><hr><h1><a href="#wen-ti" class="header-anchor">#</a><span id="wen-ti">问题</span></h1><p>我现在正在做对 TCP 协议实现的验证功能。我的做法是这样的：先根据 RFC793&#x2F;RFC9293 的描述，构建一套 TCP 协议的连接状态转移的 spec，可以理解为一个状态机；然后从这套状态机出发，生成状态转移中发生的事件，包括用户调用、消息收发。具体参考 RFC793 的 EventProcess 部分，有 Listen, Connect, Send, Recv, Shutdown, SegmentArrive(Close&#x2F;Listen&#x2F;SynSent&#x2F;SynReceived&#x2F;Established&#x2F;FinWait1&#x2F;…)，TimeWaitTimeout, RetransmissionTimeout 等等。</p><p>状态机的状态，总体来说是一对 Socket 的状态，包括它们各自的 TCP 状态（CLOSE, LISTEN, ESTABLISHED, FINWAIT1, CLOSEWAIT 等），重传队列，segment receive buffer，stream receive buffer，send buffer，以及传输控制块（snd.nxt, snd.una, rcv.nxt，etc）</p><p>由此，事件还会进一步细化为以下的类型：</p><ul><li>server call invoke</li><li>server call return</li><li>client send segment</li><li>client receive segment</li></ul><p>目前，我对 TCP 的建模已经完成，它可以随机地在状态机中游走，生成序列。现在我将它与现实的 TCP 实现进行比较，目前在 linux TCP 上做实验。我的比较方式是这样的。首先有一端是 linux TCP 实现端，称为 server，另一端是测试框架端，称为 client。我按顺序处理状态机生成的序列：</p><ul><li>如果事件是在 server 上发生，则<ul><li>如果是 Call invoke 事件，则让server 进行对应的调用；</li><li>如果是 Call return 事件，则等待直到 server 的调用返回。</li></ul></li><li>如果事件是在 client 上发生，则<ul><li>如果是 Send segment，则发送对应的 segment</li><li>如果是 Receive segment，则等待对应的 segment 到来然后返回</li></ul></li></ul><p>client 通过 RAW socket 直接构造 IP datagram 进行发送，并接受 tcp server 端的 datagram并解析。</p><p>这一套机制目前能够勉强运转，其核心问题在于 linux TCP 对于事件的处理带有一定的不确定性，最终导致 client 端有可能在 receive segment 时接收不到期待的 segment。譬如 linux TCP 可能会根据延迟、窗口等不明确的具体运行时的变量，自行决定多个 send call 是否被合并作一个 segment 处理；或是在 client 卡着 ACK 不发送的情况下，linux TCP 会在 send() usercall 调用成功的同时，依然只对之前未确认的 segment 进行重传。</p><p>事实上就是，我的 model&#x2F;状态机几乎不可能与真实的事件序列严格匹配。</p><p>目前有模糊的想法，即在某些情况下把 Linux TCP 产生的真实 segment 输入到状态机当中，再进行下一步的生成。但这似乎违背了初衷：初衷是对 TCP 协议的行为进行验证；这样做相当于直接接受了 TCP 实现产生的行为是正确的。</p><p>希望从以下几个可能的方面得到解惑：</p><p>1、是否可以在一定程度上控制 linux TCP 的行为，使其符合生成的 trace？比如对于每一个 send 调用，其内容永远不被合并到一个 segment 发送？</p><p>2、是否可以通过模糊的方式进行 segment 的匹配，使得这样的对比序列的方式至少可以执行下去？</p><p>3、如果说把 linux TCP 产生的真实 segment 输入到状态机当中，那么在什么情况下可以这样做，使得我的验证框架能够保留一定的验证能力？</p><h1><a href="#hui-da" class="header-anchor">#</a><span id="hui-da">回答</span></h1><p>您好，您提出的问题非常专业且切中要害，是进行网络协议一致性测试时必然会遇到的核心挑战：<strong>如何处理规范（Spec&#x2F;Model）的确定性与现实实现（Implementation）的非确定性之间的鸿沟</strong>。</p><p>您的测试框架设计思路非常清晰，即基于模型（状态机）生成测试序列，然后通过一个测试驱动（Test Driver）来执行和观察真实系统的响应，这在测试领域被称为“Model-Based Testing”。您遇到的问题是这个领域的经典问题。</p><p>下面我将针对您提出的三个问题，结合协议测试的理论与实践，为您提供一些深入的解答和建议。</p><hr><h3><a href="#1-shi-fou-ke-yi-zai-yi-ding-cheng-du-shang-kong-zhi-linux-tcp-de-xing-wei-shi-qi-fu-he-sheng-cheng-de-trace" class="header-anchor">#</a><span id="1-shi-fou-ke-yi-zai-yi-ding-cheng-du-shang-kong-zhi-linux-tcp-de-xing-wei-shi-qi-fu-he-sheng-cheng-de-trace">1. 是否可以在一定程度上控制 Linux TCP 的行为，使其符合生成的 trace？</span></h3><p>是的，可以在一定程度上“驯服”Linux TCP 的行为，减少其不确定性，使其更接近一个理想化的模型。但这无法做到 100% 的控制。以下是一些关键的控制手段：</p><h4><a href="#a-kong-zhi-segment-de-he-bing-nagle-suan-fa" class="header-anchor">#</a><span id="a-kong-zhi-segment-de-he-bing-nagle-suan-fa">a. 控制 Segment 的合并（Nagle 算法）</span></h4><p>您提到的“多个 send call 是否被合并作一个 segment 处理”主要是由 Nagle 算法导致的。您可以通过设置 socket 选项来禁用它：</p><ul><li><strong><code>TCP_NODELAY</code></strong>: 这是最直接的方法。在一个 socket上设置 <code>TCP_NODELAY</code> 选项后，<code>send()</code> 或 <code>write()</code> 系统调用会尝试立即将数据包发送出去，而不会等待之前的小数据包被对端 ACK。<ul><li><strong>用法</strong>: 在您的 server 端代码中，对 accept 后的新 socket 设置此选项。</li><li><strong>效果</strong>: 设置后，每次 <code>send()</code> 调用（如果数据量小于 MSS）通常会对应一个独立的 TCP Segment。这可以极大地提高您的模型与实现行为的一致性。</li></ul></li></ul><h4><a href="#b-kong-zhi-ack-de-fa-song-shi-ji-delayed-ack" class="header-anchor">#</a><span id="b-kong-zhi-ack-de-fa-song-shi-ji-delayed-ack">b. 控制 ACK 的发送时机（Delayed ACK）</span></h4><p>Linux TCP 默认会启用延迟确认（Delayed ACK），即收到数据后不会立即发送 ACK，而是会等待一小段时间（例如 40ms），期望能将 ACK 和它自己要发送的数据“捎带”在一个 Segment 中。这会影响您在 client 端 <code>Receive segment</code> 的时机。</p><ul><li><strong><code>TCP_QUICKACK</code></strong>: 这个 socket 选项可以用来临时禁用 Delayed ACK。<ul><li><strong>用法</strong>: 调用 <code>setsockopt</code> 设置 <code>TCP_QUICKACK</code> 为 1 后，内核会立即发送一个 ACK。但请注意，<strong>这个选项是临时的</strong>，它会在下一次收到数据后被内核重置。因此，如果您希望每次收到数据都立即 ACK，您需要在每次 <code>recv()</code> 之后都重新设置 <code>TCP_QUICKACK</code>。</li><li><strong>效果</strong>: 这使得您可以更精确地控制 ACK 的时序，让 server 端的行为更容易预测。</li></ul></li></ul><h4><a href="#c-kong-zhi-tcp-segmentation-offload-tso-x2f-gso" class="header-anchor">#</a><span id="c-kong-zhi-tcp-segmentation-offload-tso-x2f-gso">c. 控制 TCP Segmentation Offload (TSO&#x2F;GSO)</span></h4><p>即使禁用了 Nagle，一个非常大的 <code>send()</code> 调用（大于 MSS）依然会被 TCP 协议栈分割成多个 Segments。更底层地，网卡驱动还可能有 TSO&#x2F;GSO (Generic Segmentation Offload) 功能，即协议栈将一个大的数据块传给网卡，由网卡硬件来负责切分成 TCP Segment。</p><ul><li><strong>控制方法</strong>:<ol><li><strong>应用层控制</strong>: 在您的测试用例生成中，确保每次 <code>send()</code> 调用的数据量都小于路径的 MSS (Maximum Segment Size)。这样可以避免 TCP 主动分片。</li><li><strong>系统级控制</strong>: 可以通过 <code>ethtool</code> 命令关闭网卡的 TSO&#x2F;GSO 功能 (<code>ethtool -K &lt;interface&gt; tso off gso off</code>)。这在测试环境中是可行的，能确保分片行为完全由内核 TCP 协议栈控制。</li></ol></li></ul><h4><a href="#d-kong-zhi-chong-chuan-chao-shi-rto" class="header-anchor">#</a><span id="d-kong-zhi-chong-chuan-chao-shi-rto">d. 控制重传超时 (RTO)</span></h4><p>重传行为由 RTO 决定，而 RTO 是根据动态变化的 RTT（Round-Trip Time）计算的。在测试环境中，可以尝试固定 RTO 来减少不确定性。</p><ul><li><strong>控制方法</strong>: 这通常比较困难，但可以通过 <code>ip route</code> 命令为特定路由设置固定的 RTT 和 RTO 初始值。例如： <code>ip route change 192.168.1.0/24 dev eth0 rtt 10ms rto_min 20ms</code> 这需要 root 权限，并且仅在受控的网络环境中有效。</li></ul><p><strong>小结</strong>: 通过组合使用 <code>TCP_NODELAY</code>、<code>TCP_QUICKACK</code>、控制发送数据大小以及在测试环境中关闭 TSO&#x2F;GSO，您可以显著降低 Linux TCP 的行为不确定性，让您的 trace 匹配成功率大大提高。</p><hr><h3><a href="#2-shi-fou-ke-yi-tong-guo-mo-hu-de-fang-shi-jin-xing-segment-de-pi-pei" class="header-anchor">#</a><span id="2-shi-fou-ke-yi-tong-guo-mo-hu-de-fang-shi-jin-xing-segment-de-pi-pei">2. 是否可以通过模糊的方式进行 segment 的匹配？</span></h3><p>完全正确，<strong>模糊匹配（Fuzzy Matching）或者说基于属性的匹配（Property-Based Matching）是解决这个问题的正道</strong>。与其期待一个完全一致的 Segment，不如验证收到的 Segment 是否满足“某些关键属性”。</p><p>您的 <code>Receive segment</code> 事件不应该等待一个字节完全相同的 Segment，而应该等待一个<strong>满足特定条件的 Segment</strong>。</p><h4><a href="#a-pi-pei-shi-me-hu-lue-shi-me" class="header-anchor">#</a><span id="a-pi-pei-shi-me-hu-lue-shi-me">a. 匹配什么，忽略什么？</span></h4><ul><li><strong>必须严格匹配的</strong>:<ul><li><strong>关键控制位 (Flags)</strong>: <code>SYN</code>, <code>FIN</code>, <code>RST</code>。这些标志直接定义了连接状态的转移，必须精确匹配。</li><li><strong>ACK 确认号 (<code>ack_seq</code>)</strong>: <code>ack_seq</code> 必须准确地确认了 client 发送的最后一个字节。这是协议正确性的核心。</li></ul></li><li><strong>需要模糊匹配的</strong>:<ul><li><strong>序列号和数据 (<code>seq</code> 和 payload)</strong>: 当期待数据时，不应期待一个特定 <code>seq</code> 和 <code>len</code> 的包。而应该维护一个“期望接收的数据流窗口”，例如 <code>[rcv.nxt, rcv.nxt + rcv.wnd)</code>。收到的任何 Segment，只要其数据范围 <code>[seg.seq, seg.seq + seg.len)</code> 在这个窗口内，并且是顺序的，就应该被接受。</li><li><strong>实现方式</strong>: client 端需要自己实现一个简化的接收缓冲区（Stream Receive Buffer）。当收到一个数据包时，将其放入缓冲区，然后检查缓冲区中是否已经凑齐了模型所期望的下一个应用层数据块（例如，一个完整的 <code>send</code> 调用对应的数据）。</li></ul></li><li><strong>应该忽略的</strong>:<ul><li><strong>窗口大小 (<code>window_size</code>)</strong>: 除非您正在专门测试流量控制，否则窗口大小是动态变化的，不应作为匹配的刚性条件。</li><li><strong>TCP 选项 (Options)</strong>: 像 Timestamps, SACK 等选项，其具体值是高度动态的，除非测试目标是这些选项本身，否则应该忽略其具体值，只检查其是否存在即可。</li><li><strong>源端口号 (Source Port)</strong>: 对于 server 发来的包，源端口是固定的。但对于 client 来说，它无关紧要。</li></ul></li></ul><h4><a href="#b-shi-li" class="header-anchor">#</a><span id="b-shi-li">b. 示例：</span></h4><p>假设您的模型生成了如下序列：</p><ol><li><code>server: send(&quot;hello&quot;)</code> -&gt; 期待 server 发送一个带 “hello” 的包。</li><li><code>server: send(&quot;world&quot;)</code> -&gt; 期待 server 发送一个带 “world” 的包。</li></ol><p>传统的严格匹配会失败，因为 Linux TCP 可能会发出一个包含 “helloworld” 的包。</p><p><strong>模糊匹配的做法</strong>:</p><ol><li>模型生成 <code>server: send(&quot;hello&quot;)</code>。测试驱动调用 <code>send(sock, &quot;hello&quot;, 5)</code>。</li><li>Client 的 <code>Receive segment</code> 事件不再是“等待一个 <code>seq=X, len=5, data=&#39;hello&#39;</code> 的包”，而是“<strong>等待凑齐’hello’这段数据</strong>”。</li><li>Client 开始接收。它可能会收到一个 <code>seq=X, len=10, data=&#39;helloworld&#39;</code> 的包。</li><li>Client 的匹配逻辑检查：<ul><li>收到的数据 <code>helloworld</code> 的前 5 个字节是 <code>hello</code>。匹配成功！</li><li>将 <code>helloworld</code> 存入 client 的接收缓冲区。</li><li>此时，第一个 <code>Receive</code> 事件完成。</li></ul></li><li>模型继续生成 <code>server: send(&quot;world&quot;)</code>。</li><li>Client 的 <code>Receive segment</code> 事件现在是“<strong>等待凑齐’world’这段数据</strong>”。</li><li>Client 检查其接收缓冲区，发现 <code>world</code> 已经存在。于是，这个 <code>Receive</code> 事件也立即完成。</li></ol><p>这种方式将匹配的粒度从单个网络包（Segment）提升到了应用层的数据块（Stream），这与 TCP 的本质（流式协议）是相符的。</p><hr><h3><a href="#3-ru-guo-ba-linux-tcp-chan-sheng-de-zhen-shi-segment-shu-ru-dao-zhuang-tai-ji-dang-zhong-ru-he-bao-liu-yan-zheng-neng-li" class="header-anchor">#</a><span id="3-ru-guo-ba-linux-tcp-chan-sheng-de-zhen-shi-segment-shu-ru-dao-zhuang-tai-ji-dang-zhong-ru-he-bao-liu-yan-zheng-neng-li">3. 如果把 Linux TCP 产生的真实 segment 输入到状态机当中，如何保留验证能力？</span></h3><p>这是非常高级且有效的测试思想，通常被称为**在线测试（On-the-fly Testing）**或**运行时监控（Runtime Monitoring）**。您完全没有违背初衷，反而让您的验证框架变得更加强大和实用。</p><p>关键思想是：<strong>您的模型不应再作为测试用例的“生成器”，而应作为真实系统行为的“裁决者”或“预言机”（Oracle）。</strong></p><h4><a href="#a-gong-zuo-liu-cheng-de-zhuan-bian" class="header-anchor">#</a><span id="a-gong-zuo-liu-cheng-de-zhuan-bian">a. 工作流程的转变：</span></h4><ol><li><strong>从“生成-执行”到“引导-观察-验证”</strong>:<ul><li><strong>引导 (Guide)</strong>: 您的模型不再生成一个严格的事件序列。而是根据当前状态，告诉测试框架：“现在，一个合法的外部事件可以是<code>用户调用send()</code>，或者<code>收到一个ACK包</code>，或者<code>重传计时器超时</code>”。它提供一个<strong>合法输入&#x2F;事件的集合</strong>。</li><li><strong>执行 (Act)</strong>: 测试框架从这个合法集合中选择一个事件来执行。例如，选择 <code>用户调用send()</code>，于是就去调用 Linux server 的 <code>send()</code>。</li><li><strong>观察 (Observe)</strong>: 测试框架捕获 Linux TCP 产生的<strong>真实输出</strong>（一个或多个 TCP Segments）。</li><li><strong>验证 (Verify)</strong>:<ol><li><strong>将观察到的真实输出（如收到的 Segment S’）作为输入，喂给您的状态机模型。</strong></li><li><strong>模型进行状态转移。</strong></li><li><strong>核心验证点</strong>：<ul><li><strong>合法性检查 (Legality Check)</strong>: 在模型当前的状态下，接收到 Segment S’ 是否是一个<strong>合法的、允许的</strong>转移？如果模型认为在当前状态下根本不应该收到这样的包（例如，在一个已经收到 FIN 的连接上收到了新的数据包），那么您就发现了一个协议实现缺陷。<strong>这就是验证能力所在！</strong></li><li><strong>状态一致性检查 (State Consistency Check)</strong>: 转移后，模型的新状态是否满足协议的不变量（Invariants）？例如，<code>snd.una &lt;= snd.nxt</code> 是否依然成立？各种缓冲区的状态是否逻辑自洽？</li></ul></li></ol></li></ul></li></ol><h4><a href="#b-zhe-chong-fang-shi-de-you-shi" class="header-anchor">#</a><span id="b-zhe-chong-fang-shi-de-you-shi">b. 这种方式的优势：</span></h4><ul><li><strong>拥抱不确定性</strong>: 它不再试图消除不确定性，而是将其作为测试的一部分。无论 Linux TCP 因为什么内部原因（调度、负载等）选择发送这个包而不是那个包，只要它发送的包是符合 RFC 规范的，测试就会继续。</li><li><strong>更强的发现能力</strong>: 这种方法可以探索到更多由静态序列生成无法覆盖的、由真实系统动态行为触发的边缘状态和路径。如果 Linux TCP 产生了一个模型完全没预料到的合法行为，您的模型会学习并跟随这条路径，继续进行验证。如果它产生了一个不合法的行为，测试就会立即失败并报告错误。</li><li><strong>解决了同步问题</strong>: 由于模型的状态总是由真实系统的输出驱动更新的，两者之间始终保持同步，避免了 trace 分歧导致测试无法继续的问题。</li></ul><p><strong>结论</strong>: 您应该大胆地采用这种方法。它并没有削弱您的验证能力，而是将验证的焦点从“<strong>你是否严格按照我写的剧本演？</strong>”（Trace a a’ la Trace B）转移到了“<strong>你的每一个即兴表演是否都符合戏剧（RFC）的基本规则？</strong>”（Is Action a’ valid in State S?）。后者显然是一种更深刻、更有效的验证。</p><p>希望以上分析能为您提供清晰的思路和方向。您的项目非常有价值，祝您成功！</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;blockquote&gt;
+&lt;p&gt;提问于</summary>
+        
+      
+    
+    
+    
+    <category term="Network" scheme="https://tilnel.github.io/categories/Network/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>死是凉爽的夏夜</title>
+    <link href="https://tilnel.github.io/20260207-misc/"/>
+    <id>https://tilnel.github.io/20260207-misc/</id>
+    <published>2026-02-07T16:00:00.000Z</published>
+    <updated>2026-02-07T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote><p>死不可怕，死是凉爽的夏夜，可供人无忧地安眠。    ——曹操（陈建斌饰） of 新三国</p></blockquote><p>本月刚开始，我几乎要把折棒的新三国吐槽二百多期刷完了。这句话其实是海涅的诗，不过从新三国曹大佐嘴里说出来也许是天意使然，我想我也只能释然了。看来如果我无忧地安眠，那我可能死了，也可能活着，也就是生死不明，那就是死了。死在这南京城，不愧是中原第一雄关，我看比徐州城要雄壮十倍，如饮美酒，使人陶醉，不由得当浮一大白，若是不浮，我真是枉为我自己啊。毕竟酒是老英雄，越喝越奋勇，喝完之后，即使不说出吾名，也能吓你一跳。但记住不要愤怒，因为愤怒会降低你的智慧。败了又能如何，败兵必哀而哀兵必胜，只要三军听令，随我接战，战至最后一刻，就可自刎归天。</p><p><a href="https://www.bilibili.com/video/BV1vqBkBrEzy">Music: 关羽之歌</a> 每日释怀，接着奏乐</p><p>以上为纯犯病硬玩梗部分，毕竟新三国很难说有什么人类成分。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;blockquote&gt;
+&lt;p&gt;死不可怕，死是凉爽的夏夜，可供人无忧地安眠。  </summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>穿过一场雪</title>
+    <link href="https://tilnel.github.io/20260207-snow/"/>
+    <id>https://tilnel.github.io/20260207-snow/</id>
+    <published>2026-02-06T16:00:00.000Z</published>
+    <updated>2026-02-06T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>掰着指头数数，南京的冬天已经不剩下几天。成天躺在宿舍奇思妙想只会心里止不住地发毛，于是开着自动驾驶模式出门。说实话完全不知道这个点还能去哪里，但既然是自动驾驶，只要不停在路口选一个喜欢的方向就好了。</p><p>走出宿舍大门，发现天气预报的湿雪已如期而至，好在帽子、手套、防雨衣装备齐全，便懒得回头取伞来。</p><p>出学校一路向西，风大作，接得一脸雨雪。迎风走深感衣服单薄，更紧要的是头被冷风吹得有点晕乎乎的。我想如果这样在外面走几小时，是不是会落到失温的境地，不觉脚下加速想要多产生点热量。眼前是没有尽头的仙林大道，两侧有树，树以外除了河湖就是草地，须到下一个地铁站才能看到建筑，眼看着想躲也无处可躲。</p><p>每走一段，都需抖一抖身上的雨雪，以免在身上融化吸掉更多的热量。湿雪并不和人讲任何道理，只是依附在外衣上，任凭你甩甩胳膊，还是跳动几下，都不为所动。只有拽着衣襟猛地摇晃摇晃才行，冷空气就借此大举进攻，庆幸南京才将将零度。</p><p>一路上不管怎么看，都只有我一个行人。余下的都是下班的或是送外卖的电动车。仙林大道本就不适合人行，这种天气压马路的主意也就只有我开着自动驾驶模式才能想得出来。</p><p>走过羊山湖再往前有个商场，此时出现在眼前就像在游戏里到达了安全屋。走进一扇小门是电梯间，地上铺着地毯。脱下外衣郑重地抖了抖，再套在身上走进去。空调一吹感到身上很暖和，脸上甚至已经有点发烫，想必一定红扑扑的。</p><p>如果此时能蜷着身睡下就好了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何买衣服</title>
+    <link href="https://tilnel.github.io/20260128-buy/"/>
+    <id>https://tilnel.github.io/20260128-buy/</id>
+    <published>2026-01-27T16:00:00.000Z</published>
+    <updated>2026-01-27T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>购物车里积攒了大量想买的衣服，但并非每件都是合理的选择。如果随着个人喜好的话，容易动不动就购买许多定位相同的单品。也许需要重新思考一下如何合理地购买衣服。</p><p>首先应该知道我们对于衣服有哪些具体的需求，而需求取决于场景，也就是基于个人的活动来选择衣服。宽泛地说有工作、休闲、运动、户外、通勤、商旅、仪式、聚会等等。在每个场景下，又有一些细分的情景。</p><p>对于所有场景，季节与气象都是需要仔细考虑的。此外每一类场景都有其特殊的需求。对于通勤&#x2F;户外场景来说，移动方式与具体的天气会影响衣物的选择：比如夏天简单穿个衬衫，大风天需要防风外套。如果是下雨天，那么不可能随便穿一层容易被水损坏的衣物在最外层，通常会穿一层轻微防水或至少是防泼水的面料。对于聚会&#x2F;仪式的场景，就有正式程度的差别。运动模式下，穿衣还取决于类型、强度与具体环境，比如环法自行车运动和高海拔登山运动，其所需的装备天差地别。商旅则要在耐用、便携与正式度之间做权衡，既需要在旅途中保证衣物强度足够不容易损伤，也要保持尽量得体。</p><p>另有一些个人喜好相关的，如个人对面料舒适程度的体感，对衣物风格的偏好，以及对护理方式的选择也会影响衣物的选择。</p><p>确定好所有可能的场景后，就可以针对这种场景列举对于衣物的具体需求了。</p><p>面料材质方面的特性主要有：防水、防风、防油、吸湿、透气、速干、轻薄、抗皱、垂顺、挺拔、光滑、粗糙、弹力、光泽、厚度、颜色、织法、纹路样式等。</p><p>版型方面的特性主要有：正肩落肩插肩、肩宽、领胸腰下摆围、腰臀大腿裤脚围、前后浪（这些体现了合体程度）、衣长、裤长、袖长（这些反映了便携程度与风格）等。</p><p>设计上的小特点就太多了，翻领立领无领、口袋形式（唇袋、明贴袋、盖袋等）、内袋、腰带、风纪扣、喉襻、袖带、下摆收紧带、裤腰类别（那不勒斯、廓尔喀、好莱坞、常规腰）、翻折裤脚、衬衫袖（法式袖&#x2F;常规袖）、瀑布褶（袖与背部）、风琴褶、裤褶数量……</p><p>我们来试着分析某些场景下对于衣物的具体需求。</p><p>例1：冬天，通勤，较大风，无雨雪。移动方式涵盖乘车、自行车、步行。</p><p>首先需要确定的一定是功能性方面的需求。大风的冬天，防风保暖是第一位，着衣时就需要保暖层以及防风层。由于无雨雪，因而不需要达到防水等级。由于移动方式包括了自行车，所以需要便于活动。同时，在轻微活动的情况下，排汗也需要纳入考虑。</p><p>假设上身遵守某种三层穿衣法，那么需要考虑的需求如下：</p><ul><li>吸湿排汗性较好的最内层</li><li>容纳热空气的保温层</li><li>防风性能强的最外层</li></ul><p>为了便于活动，则衣长在站立时不易超过手指；为了维持防风不漏风，衣长也不宜过短，下摆应在裆部以下。</p><p>依次考虑后，最内层可以考虑速干科技面料内衣或羊毛衫；保温层可以是抓绒，摇粒绒夹克，或是填充 p 棉的棉服，或是重磅的羊毛呢夹克；防风层可以是防风面料的M65野战夹克，或者是软硬壳冲锋衣。当然由于不需要防水，也可以合并外两层为一件羽绒服，不过不能是长款。</p><p>接下来在这些选择之中，就可以再根据个人风格偏好选择合适颜色、材质、样式的单品。总之丰俭由人。就好比“防风面料的M65野战夹克”，当然可以选择带有聚氨酯防水压层的面料会比较便宜；也可以选择LP的Storm System&#x2F;Rain System等。</p><p>例2：夏天，仪式，较正式，室内（室温20℃）</p><p>这里并不单单要考虑单独的场景，而是有场景的转换。不管是什么活动，人都要首先移动到活动场地，肯定会去到室外，就要考虑如何在两层衣服的情况下也尽量凉快。需求如下</p><ul><li>得体的内层，单穿也没问题</li><li>透气凉爽的外层，不会把汗闷在里面。同时面料垂顺无过多褶皱</li><li>轻薄透气干爽亲肤的长裤</li></ul><p>总的来说，夏天的贴身层不适宜穿速干面料以外的化纤面料。其拒水性会导致肤感不好。而速干科技面料并不会拿来做正装。内层几乎只能选择衬衫的情况下，可以选择棉质的泡泡纱面料，或者是亚麻&#x2F;棉麻混纺材质。外层可以选择毛麻混纺&#x2F;泡泡纱&#x2F;强捻的西服外套。较正式的情况下，几乎只能选择藏蓝色，当然这也取决于参与者的身份。西裤可选用强捻羊毛、毛麻混纺。</p><p>这类场合的可选项的确不多。甚至不适合选择黑色西装，因为正式程度太高了。</p><p>例3：温暖的春天，休闲，室外，随时可能下小到中雨</p><p>春天基本上是所有人穿五花八门漂亮衣服的时候了，选择是相对自由的。以上场景其实可以分成两种情况</p><p>1、试图通过衣物临时挡雨，等待雨势减弱再移动</p><p>2、我带伞了</p><p>第二种情况我们就随便掏一个内搭加一个外套就可以了。对于外套的偏好可能促使人选择风衣、野战夹克、猎装夹克、西装夹克、飞行夹克、哈灵顿夹克等不同的选项（长度）。第一种情况呢还是需要防水面料的衣物，而且要么衣服自带帽子，要么有单独的宽檐帽且上衣的衣领可以关紧，以防雨水灌入。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://tilnel.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>新年序曲</title>
+    <link href="https://tilnel.github.io/20260113-misc/"/>
+    <id>https://tilnel.github.io/20260113-misc/</id>
+    <published>2026-01-12T16:00:00.000Z</published>
+    <updated>2026-01-12T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>自摔断腿纪年法的诞生以来真是发生了很多事，我同时因为时光被填满而感到漫长，又因为事情接踵而至感到仓促。</p><p>年初在家养伤的时间都在自由充电。被禁锢在床上的三个月里可消遣的项目也只有读书看电影，从各种媒介接受输入。要问收获恐怕已经答不上什么，潜移默化的影响也许有吧。三月慢慢出来走动，在学校过了几个月的逍遥独居日子。也没做什么，和社里快要毕业滚蛋的同学混日子，也许只有我在纯粹地混日子。本来没打算实习，但先是在第三领域被企业的人抓着投简历，转头老板又来电话让我改投另一个部门，这样实习经历的问题也解决了。搬到上海住了几个月，秋招拖拖拉拉到十月才开始忙活，借公司的会议室面试别的公司，在痛苦的等待中接了好像还不错的合同。十一月回到南京，在二〇二五年的末尾进入了彻底的躺平模式，仿佛毕业论文已与我无关。</p><p>年内去了镇江，丹阳，徐州，西安；在上海和南京之间多次往返。拖着还不算很灵活的腿脚到处乱跑，脚力也许就能多回复一点。其中只有西安把我折腾得够呛：从华清池到兵谏亭好一段山路，原来蒋光头当年体力也还不错。</p><p>八月底和在学校认识的女人谈恋爱，十二月底又分手了。这已经是上了大学之后最久的一段了。没什么利益上的考虑反而让我觉得没什么好妥协的，很干脆地放弃了。我想也许长长久久的恋爱不属于我认同的爱情的范式。所以兴许需要重新思考婚姻这件事。</p><p>在那之后又得知两位国际友人分手的消息，当即比我自己分手还要感到遗憾。孩子们，桌游组可能彻底歇逼了。随着毕业的分手的诸如此类的不可抗力因素奖池还在累计，往日种种最终还是再无话说速速动手。届时也许会变成：“我做出这一决定，是基于原则性的考虑的……”。</p><blockquote><p>夫人之相与，俯仰一世，或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。虽趣舍万殊，静躁不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。</p></blockquote><p>我始终认为这段话是在说人的相处，本就是一群人个性各不相同，偶然找到一个暂时的共通之处，相处而快乐一阵。后来不可避免地有所厌倦，人之间的感情又随着现实的发展产生了变化，只能对当时的欢乐以及后来的变迁感慨一下。这样理解太符合我的认知，甚至是符合我的愿望以至于我现在不知道王羲之原本想表达的是什么了。也许在绝大多数情况下，人与人的关系就像一阵风。</p><p>只有一件事是确定的。那就是我也说不清楚这些是为什么，不知道我在期待什么，不知道自己在想什么。答案只能凝结在寻找的过程当中。</p><hr><p>祝看完的老板永远健康永远快乐永远不死永远爽。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>杂谈</title>
+    <link href="https://tilnel.github.io/20260113-misc2/"/>
+    <id>https://tilnel.github.io/20260113-misc2/</id>
+    <published>2026-01-12T16:00:00.000Z</published>
+    <updated>2026-01-12T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>人毕竟不是铁打的，意志力只是有限资源。我常常刻意强调san值很重要。san值低了之后做出的事情容易让人掉HP，如果做事情不考虑情绪成本，最终一定会自己斩杀自己。</p><p>&lt;未完&gt;</p><p>一个月后接着想写已经不知道当时想说什么了。真遗憾啊。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何洗衬衫</title>
+    <link href="https://tilnel.github.io/20251218-shirt/"/>
+    <id>https://tilnel.github.io/20251218-shirt/</id>
+    <published>2025-12-17T16:00:00.000Z</published>
+    <updated>2025-12-17T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>这里讨论的是一般的纯棉衬衫应该怎么<strong>机洗</strong>。更耐造的面料是通用的，但是娇贵的还是请专业人员。</p><p>准备一堆穿过的衬衫、衣领净、洗衣液、衣物消毒液（选用）。</p><p>首先是预处理。衬衫在穿着的过程中，领口、袖口和腋下是比较容易脏的。对于我来说，主要是领口。我觉得这个可能会看得比较直观。穿过的白色衬衫领口会泛黄；对于彩色的衬衫，一般领口处的颜色会因为皮肤油脂渗入，变得深一点。这种我们提前喷好衣领净再去洗。</p><p>处理好特殊部位之后，开始扣扣子。一般的衬衫是7颗纽扣，可以都扣上。如果人比较懒也可以隔一个扣一个。然后我们把衬衫的大身内外翻过来，袖子留在大身的里面，领子你就立起来。这样在洗的时候面料可以把纽扣尽量包裹住，不容易在洗衣机里转的时候把扣子打碎了（树脂扣几分一个，贝壳扣一块钱）。另外袖子在里面呢也防止在洗衣机里拉拉扯扯。扣扣子这一会儿，基本刚才衣领净也就在起效了。</p><p>接下来就正常机洗流程。</p><p>出锅之后把衬衫完全翻到正面来，其实基本上在洗衣机里面就已经翻得差不多了。挂一个肩宽适合的衣架，然后需要手动拉扯整平一下。对于几处要特殊注意：</p><ul><li>门襟，可能比较容易起波浪起皱</li><li>大身侧缝</li><li>袖子与大身的接缝</li><li>袖子的缝合处</li><li>袖子开袖衩处</li><li>袖口衬与袖子的缝合处</li><li>后肩片与后片的接缝</li></ul><p>*总之，就是各种两片布料缝合的地方以及一些边缘，都可以扽一扽去整平。</p><p>一般，我们就悬挂晾干。</p><p>如果要烘干，建议考虑一下几点：</p><ul><li><p>制作精美的衬衫尽量不要烘干，高温损伤会比较严重（使用的辅料的抗造程度、性质不同，可能导致产生的效果很哈人）</p></li><li><p>亚麻面料不要烘干，起皱严重</p></li><li><p>含粘胶纤维不要烘干。又缩又起泡</p></li><li><p>袖口、领底是粘合衬不要烘干。会起泡。当然水洗也会起泡</p></li></ul><p>对于我而言，主要是领子清洁那一步和最后整理的一步很重要。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://tilnel.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>和爱人</title>
+    <link href="https://tilnel.github.io/20251004-misc/"/>
+    <id>https://tilnel.github.io/20251004-misc/</id>
+    <published>2025-10-03T16:00:00.000Z</published>
+    <updated>2025-10-03T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>近期和爱人很好。这是实习以来鼓舞我的事情之一。</p><p>我颇有私心地将我的感情作为磨练我爱人、理解人的能力的一种考验。其实我并不知道我到底做得怎样好，或者怎样坏。也许这样的程度就是“将将好”，也许总归还是不够。我觉得我的热情其实是不足的，但索性爱人没有给我任何大考。说是没有，其实换任何另外的人来也许都不能做得比我好，毕竟她喝完酒之后就会陷入一种深深的…摆出激烈的回撤的姿态。我总是劝慰她下次别喝那么多，而她总是下次一定。在一起的时光甜蜜，而分开的时候，能算是稳定吗？也许我的热情不足这块给了她一些不安，但总之——只要见面就好。这点也不一定会奏效。</p><p>我们有无数的时间不能在一起，这一点可预见地并不会随着我们脱离了学生的身份之后就好转，尤其在我四处物色发展机会的时候，这里要去北京了，那里要去新疆了。而爱人又分离焦虑爆炸，我不敢赌定我是不是每次都能够处理好。也许只有一次次地在城市之间往返，稍微平息一下那样的冲动。</p><p>感情中的我过于稳定了，既像爱人最开始喜欢上我的某一点，也就是一种 NPC 感。我又何尝不是以第三人称视角来看这份感情呢？不过我们彼此之间都没有强迫，于她而言可能是怕添麻烦，而于我而言…可能更多是无所求。这种热情消失的感觉并非是逐渐的，而是从一开始就如此，甚至在别的方面也有体现。</p><p>我似乎并不能一下就说出很多大话来了，同任何人交谈的时候，我开始首先审视自己的态度，然后再审视别人的态度。最后尽量想端水，或者说平衡。我说不清楚这里到底经历了什么。</p><p>我有一个理想中的世界，以及理想中的对话者。祂应当秉持着什么样的态度与我对话。我承认人都有主观的偏好，甚至过于承认了。我拒绝人把主观的偏好推而广之，不加以提示地告诉所有人。也就是拒绝一些“小马过河”式的建议。我希望所有的话都是“我自己的经验是xxx，我觉得xxx。你可以参考一下。”如果有人突然就祂自己的经验而发表论断，我一时竟会感到愤怒，然后想祂也有祂自己的原因，最后多少表达抗议。</p><p>我自己也在逐渐避免这样，也许。为别人提供视角，越来越大于提供观点。因此我也总是把一两个寓言故事挂在口头，作为一种随时的提醒。但我的观点又不能说不强烈，事实上我为我认识到、想明白一些事情感到非常骄傲，或者说是自信。但为了与理想中的对话者这种描述自洽，又不得不收敛一点——兴许在其他人的眼里我可能还是比较 mean。不过我已经努力了。</p><p>与爱人也是这样。我觉得路要自己走，我觉得我不是任何救世主。所以我只是陪伴，以及从旁观看。事实上说也不可能说通，她的焦虑与痛苦，我知道是由她的本性决定，以及可能是因为我而引发的。但如果不爆发出来的话，我也就只能用三言两语去宽慰一下，然后陪伴等待。这是我作为一个对等点能做的所有事。对这个世界的态度，并不是能够学来的；终归有些事，并不是我能解决的…</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="情感" scheme="https://tilnel.github.io/categories/%E6%83%85%E6%84%9F/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>FreeBSD TCP 实现中发现的两个 BUG</title>
+    <link href="https://tilnel.github.io/20250925-freebsd_tcp/"/>
+    <id>https://tilnel.github.io/20250925-freebsd_tcp/</id>
+    <published>2025-09-24T16:00:00.000Z</published>
+    <updated>2025-09-24T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote><p>我宣布现在没人比我更懂 TCP。</p></blockquote><p>见邮件列表 <a href="https://lists.freebsd.org/archives/freebsd-net/2025-September/007578.html">Two different places between TCP socket behavior and RFC documents</a></p><p>虽然没有肉眼可见的 vulunerability &#x2F; exposure 但多少还是被承认为 BUG 了…对方锐意修复中。</p><p>问题1. 关闭时有待处理数据，但未能发送 RST</p><p>根据 RFC 2525 第 2.17 节，当 <code>close()</code> 一个套接字时，如果其接收缓冲区中仍有待读取的数据，应该发送 RST（复位）。</p><p>根据 RFC 1122：主机可以实现一种“半双工”TCP 关闭序列，…不能继续读取数据…如果接收缓冲区中仍有待处理数据时进行 CLOSE 调用，或者在调用 CLOSE 后接收到新数据，TCP 应该发送一个 RST 以表明数据已丢失。</p><p>然而，FreeBSD 的 TCP 套接字并非如此。以下是 TCPDUMP 的输出，显示在套接字有待处理数据时调用 <code>close()</code> 发出的是 FIN（结束）而非 RST：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 2636678338, win 65535, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 1969223298, ack 2636678339, win 65535, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 1277, length 0</span><br><span class="line">A &gt; B: Flags [P.], seq 1:6, ack 1, win 1277, length 5</span><br><span class="line">B &gt; A: Flags [.], ack 6, win 1277, length 0</span><br><span class="line">B &gt; A: Flags [F.], seq 1, ack 6, win 1277, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 2, win 1277, length 0</span><br></pre></td></tr></table></figure><p>无论是 <code>close()</code>、<code>shutdown(SHUT_RDWR)</code>、<code>shutdown(SHUT_RD)</code>，还是 <code>SO_LINGER</code> 设置为开启或关闭，都得到相同的结果。而在 Linux 上，同样的操作会得到以下结果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 2879877684, win 65495, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 1538598692, ack 2879877685, win 65483, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 512, length 0</span><br><span class="line">A &gt; B: Flags [P.], seq 1:6, ack 1, win 512, length 5</span><br><span class="line">B &gt; A: Flags [.], ack 6, win 512, length 0</span><br><span class="line">B &gt; A: Flags [R.], seq 1, ack 6, win 512, length 0</span><br></pre></td></tr></table></figure><p>当然，虽然没有发送 RST，但是这里不会像预期的那样导致连接一直保持。因为它的 FIN segment 实际上重新打开了窗口。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [.], ack 1, win 510, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 66137, win 0, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 510, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 66137, win 0, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 510, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 66137, win 0, length 0</span><br><span class="line">B &gt; A: Flags [F.], seq 1, ack 66137, win 1027, length 0</span><br></pre></td></tr></table></figure><p>我们通过发送大量数据，使得对面最终通告了 0 窗口。但在对面进行<code>close()</code> 后，它又打开了窗口。此时发送端就又可以发送数据，包括发送 FIN 了。</p><p>如果发送数据，而对面已经做了接受方向的关闭，则会得到一个 RST；如果发送 FIN，也就能完成四次挥手。看起来都能够使连接关闭。但这里的问题在于，打开接收窗口与关闭接受方向显然是矛盾的。尤其是，打开窗口邀请对面发送数据，而这数据是必定会被自己所拒绝的，这造成了一些不必要的网络流量以及处理资源的浪费。</p><p>另一方面，FIN 标志着优雅地关闭了连接。但这里显然并不优雅。我们需要用清晰的报文来标志异常。</p><p>数据发送&#x2F;强制重置比起主动重置除了少量资源消耗以外，使得关闭这件事整体变得复杂了….</p><p>问题2. 在 SYN-RECEIVED 状态下对旧序列 segment 回复 RST 而非确认</p><p>根据 RFC 793 第 69 页：如果一个传入的 segment 不可接受，应该回复一个确认（这里“应该”没有大写）。</p><p>这应该适用于包括 SYN-RECEIVED 在内的所有状态，但 FreeBSD 的 TCP 套接字并非如此。我用手动构造的 TCP 分段发现了这个问题：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 4054810353, ack 2, win 65535, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [R], seq 4054810354, win 0, length 0</span><br></pre></td></tr></table></figure><p>预期的行为是发送一个空的确认：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A &gt; B: Flags [S], seq 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [S.], seq 3620804602, ack 2, win 65495, length 0</span><br><span class="line">A &gt; B: Flags [.], ack 1, win 8192, length 0</span><br><span class="line">B &gt; A: Flags [.], ack 1, win 65495, length 0</span><br></pre></td></tr></table></figure><p>这与 Linux 的行为是一致的。</p><p>上文发送后，维护者似乎不是很明白，于是我作了如下解释：</p><p>考虑以下 TCP 握手序列：</p><ol><li>套接字 A 向处于 TCP_LISTEN 状态的套接字 B 发送一个 SYN（同步）分段 <code>&lt;CTL=SYN&gt;&lt;SEQ=x&gt;</code>。</li><li>套接字 B 转换为 TCP_SYN_RECV 状态，并以 <code>&lt;CTL=SYN,ACK&gt;&lt;SEQ=y&gt;&lt;ACK=x+1&gt;</code> 进行响应。</li><li>套接字 A 没有发送预期的 <code>&lt;CTL=ACK&gt;&lt;SEQ=x+1&gt;&lt;ACK=y+1&gt;</code> 来完成三次握手，而是错误地发送了 <code>&lt;CTL=ACK&gt;&lt;SEQ=x&gt;&lt;ACK=y+1&gt;</code>。</li></ol><p>根据 RFC 文档，对这种窗口外 ACK 的恰当响应应是一个空的 ACK 分段 <code>&lt;CTL=ACK&gt;&lt;SEQ=y+1&gt;&lt;ACK=x+1&gt;</code>。之后，套接字 B 应等待一个有效的 ACK，或者在必要时重新传输 SYN-ACK。</p><p>然而，在 FreeBSD 当前的实现中，它发送了一个 RST（复位）分段，格式为 <code>&lt;CTL=RST&gt;&lt;SEQ=y+1&gt;</code>，这会 prematurely 终止连接。</p><p>这种行为似乎偏离了 RFC 的指导，并可能导致不必要的连接重置。</p><p>对于窗口不同程度的偏离都观察到了这一现象</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1. expect seq=2, actual seq=0x80000001</span><br><span class="line">2. expect seq=2, actual seq=0x80000002</span><br><span class="line">3. expect seq=2, actual seq=0x80000003</span><br><span class="line">4. expect seq=2, actual seq=0x90000000</span><br><span class="line">5. expect seq=2000001 (0x1e8481), actual seq=1</span><br><span class="line">6. expect seq=1, actual seq=2000001 (0x1e8481)</span><br><span class="line">All of them, under FreeBSD, give a RST reply. Here is the tcpdump of the first</span><br><span class="line">case.</span><br><span class="line"></span><br><span class="line">A &gt; B: Flags [S], seq 1, win 8192, length 0</span><br><span class="line">    0x0000:  4500 0028 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b9 22b8 0000 0001 0000 0000</span><br><span class="line">    0x0020:  5002 2000 4c6e 0000</span><br><span class="line">B &gt; A: Flags [S.], seq 1643153760, ack 2, win 65535, options [mss</span><br><span class="line">16344], length 0</span><br><span class="line">    0x0000:  4500 002c 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b8 22b9 61f0 8960 0000 0002</span><br><span class="line">    0x0020:  6012 ffff fe20 0000 0204 3fd8</span><br><span class="line">A &gt; B: Flags [.], seq 2147483648, ack 1, win 8192, length 0</span><br><span class="line">    0x0000:  4500 0028 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b9 22b8 8000 0001 61f0 8961</span><br><span class="line">    0x0020:  5010 2000 e10d 0000</span><br><span class="line">B &gt; A: Flags [R], seq 1643153761, win 0, length 0</span><br><span class="line">    0x0000:  4500 0028 0000 4000 4006 0000 7f00 0001</span><br><span class="line">    0x0010:  7f00 0001 22b8 22b9 61f0 8961 0000 0000</span><br><span class="line">    0x0020:  5004 0000 fe1c 0000</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;blockquote&gt;
+&lt;p&gt;我宣布现在没人比我更懂</summary>
+        
+      
+    
+    
+    
+    <category term="网络" scheme="https://tilnel.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C23 标准手册拾遗（四）</title>
+    <link href="https://tilnel.github.io/20250828-c23/"/>
+    <id>https://tilnel.github.io/20250828-c23/</id>
+    <published>2025-08-27T16:00:00.000Z</published>
+    <updated>2025-08-27T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>今天想赶快把 ext4 的教程翻完。<code>setjmp</code> 拖一下。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;今天想赶快把 ext4 的教程翻完。&lt;code&gt;setjmp&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C23 标准手册拾遗（三）</title>
+    <link href="https://tilnel.github.io/20250827-c23/"/>
+    <id>https://tilnel.github.io/20250827-c23/</id>
+    <published>2025-08-26T16:00:00.000Z</published>
+    <updated>2025-08-26T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><strong>注意到</strong> enum 可以有 underlying type</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">no_underlying</span> &#123;</span></span><br><span class="line">  a0</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="keyword">_Generic</span>(a0, </span><br><span class="line">        <span class="type">int</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">  );</span><br><span class="line">  <span class="type">int</span> b = <span class="keyword">_Generic</span>((<span class="keyword">enum</span> no_underlying)a0,</span><br><span class="line">        <span class="type">int</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>此时 a 一定是 2，没有 underlying type 的枚举值默认是 int。而 b 是实现定义的：enum 的 underlying type 只要能容纳其枚举值即可。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">underlying</span> :</span> <span class="type">unsigned</span> <span class="type">char</span> &#123;</span><br><span class="line">  a0</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="keyword">_Generic</span>(a0, </span><br><span class="line">        <span class="type">int</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">  );</span><br><span class="line">  <span class="type">int</span> b = <span class="keyword">_Generic</span>((<span class="keyword">enum</span> no_underlying)a0,</span><br><span class="line">        <span class="type">int</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>保证一定是 1。</p><p><strong>注意到</strong> restrict qualifier</p><img src="image-20250827013334753.png" alt="image-20250827013334753" style="zoom:50%;"><p>像是一种优化提示，告诉编译器我这些指针指向的内容在函数运行期间不会被其他的任何途径访问到。</p><img src="image-20250827013430592.png" alt="image-20250827013430592" style="zoom:50%;"><p>场景：数组在函数当中不会被访问</p><img src="image-20250827013540660.png" alt="image-20250827013540660" style="zoom:50%;"><p>Restriction：只能从作用域内向外访问。</p><img src="image-20250827013815713.png" alt="image-20250827013815713" style="zoom:50%;"><p>例外是作为返回值：</p><img src="image-20250827014023957.png" alt="image-20250827014023957" style="zoom:50%;"><p>详见 6.7.3.1。大半夜读读剩下来几个例子我有点 <strong>注意力涣散</strong></p><p><strong>注意力涣散</strong> 函数声明</p><img src="image-20250827015649287.png" alt="image-20250827015649287" style="zoom:50%;"><p>我以前还真的没有想过，对数组名取地址到底有什么效果。（其实就是普通的取地址）</p><img src="image-20250827015919054.png" alt="image-20250827015919054" style="zoom:50%;"><img src="image-20250827020340055.png" alt="image-20250827020340055" style="zoom:50%;"><blockquote><p>It’s pointer to <code>int[3]</code>，i.e. <code>int (*)[3]</code></p></blockquote><p>scanf 似乎接受 <code>char s[]</code> 字符串的地址 <code>&amp;s</code>，以及字符串的指针 <code>s</code>。它们只是值相同而类型不同。前者会给出类型不匹配的 warning。</p><p><strong>注意到</strong> 这个可以用来作 C 语言课程的教学内容</p><img src="image-20250827020801413.png" alt="image-20250827020801413" style="zoom:50%;"><p>还是在想，是不是 C 语言课程应该首先科普 “指针” 的概念？然后再教别的。在这之前，首先要介绍 “内存” 是怎么工作的。。。</p><blockquote><p>第一节课，应该是数据：类型和数组——的机器和 C 语言表示，以及少量 io。所有东西都简化到内存中去，不考虑寄存器。</p></blockquote><img src="image-20250827021642377.png" alt="image-20250827021642377" style="zoom:50%;"><p>initializer 也会有踩踏。</p><p><strong>注意到</strong> standard attributes</p><img src="image-20250827021900324.png" alt="image-20250827021900324" style="zoom:50%;"><img src="image-20250827023056250.png" alt="image-20250827023056250" style="zoom:50%;"><p>这看起来很能函数式。还有 <code>[[unsequenced]]</code>。明天来写个详细的。</p><blockquote><p>是不是以后算 <code>fib</code> 都不用记忆化存储的？</p></blockquote><p>–答案是不能。看似这个 attr 只能优化掉编译期可以推导出的参数，而不是动态地 cache 相同参数的结果。testcase：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* foo.c */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">foo</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> n + <span class="number">42</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* bar.c */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">foo</span><span class="params">(<span class="type">int</span> n)</span>[[reproducible]];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> foo(<span class="number">0</span>) + foo(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果没有 <code>[[reproducible]]</code> 声明，在编译单元 bar.c 中不知道 <code>foo</code> 是纯函数，为了保留副作用，会进行两次调用。声明之后，有两次 <code>foo(0)</code> 纯函数调用，会被合并为一次。</p><img src="image-20250827205144770.png" alt="结果：只调用了一次" style="zoom:50%;"><p><code>0124 = 84 = 42 + 42</code>。</p><p>如果 <code>foo</code> 的调用参数里有运行期变量的话，就一次也无法优化。具体的例子是：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) foo(i);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; <span class="number">11</span>; i++) foo(i);</span><br></pre></td></tr></table></figure><p>这样会调用 20 次而不是推导出两个循环里有相同参数的调用。</p><p>要观察到这个现象不能放在一个文件里。否则常量折叠会直接干碎所有调用。另外注意添加 <code>-O2/-O3</code> 优化，毕竟 attr 是为了优化而生的。</p><p>检查编译器是否支持：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static_assert</span>(__has_c_attribute(reproducible) == <span class="number">202311L</span>);   <span class="comment">// 写在代码任意位置</span></span><br></pre></td></tr></table></figure><p><strong>注意到</strong> C23 支持了 <code>#embed</code>，编译期嵌入二进制文件。</p><img src="image-20250827215953347.png" alt="image-20250827215953347" style="zoom:50%;"><p>哈哈，数学公式爆了</p><img src="image-20250827220402199.png" alt="image-20250827220402199" style="zoom:50%;"><p>使用例：</p><img src="image-20250827220617836.png" alt="image-20250827220617836" style="zoom:50%;"><p>这个编译期嵌入随机数的例子还挺有意思的：</p><img src="image-20250827220804831.png" alt="image-20250827220804831" style="zoom:50%;"><img src="image-20250827221836799.png" alt="image-20250827221836799" style="zoom:50%;"><p><code>limit</code> 参数将影响 <code>if_empty</code> 的判断。</p><p><strong>注意力涣散</strong> 感觉很复杂的 <code>__VA_OPT__</code> 但是一时不知道该怎么用</p><img src="image-20250827223058235.png" alt="image-20250827223058235" style="zoom:50%;"><img src="image-20250827223249347.png" alt="image-20250827223249347" style="zoom:50%;"><img src="image-20250827223303835.png" alt="image-20250827223303835" style="zoom:50%;"><p>看了第二个例子感觉有点懂了。如果 <code>...</code> 存在的话，就把 <code>__VA_OPT__</code> 的参数放进去。没有的话就不放。</p><p>这不是构造函数吗（？）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> H5A(...) __VA_OPT__(0)<span class="comment">/**/</span>__VA_OPT__(1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> H5B(X) a ## X ## b</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> H5C(X) H5B(X)</span></span><br><span class="line">H5C(H5A(<span class="number">1</span>)) <span class="comment">// replaced by a0 1b</span></span><br></pre></td></tr></table></figure><p>最后一个例子换一下，中间就会多一个空格。说明每一个 <code>__VA_OPT__</code> 都会产生一个单独的 pp-tokens 而不是连成一个。</p><p><strong>注意力集中</strong> <code>## == # ## # != ##</code></p><img src="image-20250827225010738.png" alt="image-20250827225010738" style="zoom:50%;"><p><strong>注意到</strong> <code>assert()</code> 将会被 <code>NDEBUG</code> 宏 disable</p><img src="image-20250827231726116.png" alt="image-20250827231726116" style="zoom:50%;"><p>有这样的一个 pragma：</p><img src="image-20250827232634911.png" alt="image-20250827232634911" style="zoom:50%;"><p>可以让用户保证类型安全的情况下用这些公式进行计算。</p><img src="image-20250827233027320.png" alt="image-20250827233027320" style="zoom:50%;"><p>复变反三角函数是一个多值函数。因而要 cut 它的一个解析分支出来</p><img src="image-20250827233051809.png" alt="image-20250827233051809" style="zoom:50%;"><p><code>cacos</code> 剪掉了实轴上 [-1, +1] 以外所有的定义域，只保留主值。 （表达可能不精准，我没咋学过复变）</p><p>其他三角函数也类似。</p><p><strong>注意到</strong> <code>&lt;math.h&gt;</code> 中的函数除非文档显式说明了，否则保证不会抛出 <code>SIGFPE</code></p><img src="image-20250828001650146.png" alt="image-20250828001650146" style="zoom:50%;"><p><strong>?</strong></p><img src="image-20250828003521915.png" alt="image-20250828003521915" style="zoom:50%;"><p><strong>注意到</strong> 这些函数可以对齐浮点数的阶数</p><img src="image-20250828010344968.png" alt="image-20250828010344968" style="zoom:50%;"><p>并有判断函数</p><img src="image-20250828010442529.png" alt="image-20250828010442529" style="zoom:50%;"><p>前面还有函数能够 “返回下一个可表示的数”，大概是用于数值计算一类的应用或者是 debug 浮点实现。</p><p>安全的浮点数比较：</p><img src="image-20250828010718800.png" alt="image-20250828010718800" style="zoom:50%;"><p>明天来开 <code>setjmp.h</code>。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;&lt;strong&gt;注意到&lt;/strong&gt; enum 可以有</summary>
+        
+      
+    
+    
+    
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C 赋值运算符条件探讨一则</title>
+    <link href="https://tilnel.github.io/20250825-compatible/"/>
+    <id>https://tilnel.github.io/20250825-compatible/</id>
+    <published>2025-08-25T16:00:00.000Z</published>
+    <updated>2025-08-25T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote><p>前置知识：至少需要知道 C 语言中的 (<code>const</code>) qualifier 的修饰对象</p></blockquote><p>读 C23 手册读到了赋值运算符下面的一个例子：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> **cpp;</span><br><span class="line"><span class="type">char</span> *p;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span> c = ’A’;</span><br><span class="line">cpp = &amp;p; <span class="comment">// constraint violation</span></span><br><span class="line">*cpp = &amp;c; <span class="comment">// valid</span></span><br><span class="line">*p = <span class="number">0</span>; <span class="comment">// valid</span></span><br></pre></td></tr></table></figure><p>假如 line 4 的赋值可以执行，那么最终 line 6 会改变 <code>const char c</code> 的值。因此不被允许。</p><p>但是仔细想想其实这件事情有点反直觉。因为 line 4 中，<code>cpp</code> 是 <code>const char **</code>，<code>&amp;c</code> 是 <code>char **</code>。这里 <code>cpp</code> 显然是变量而不是常量，因为 <code>const</code> 修饰的是 <code>char</code>。而且因为右操作数是 <code>char **</code>，因而这个赋值似乎并没有 discard 任何的 qualifier（实际上有）。尽管笔者理解不能使得上面的例子成功执行，这样一种目的上的设计“原因”；但并不明白，是哪几条设计或机制在事实上让这样的程序编译得不到通过。毕竟看起来是这么合理。有多合理呢？看看下面的例子：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. assign char * to const char *</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *c;</span><br><span class="line"><span class="type">char</span> *b;</span><br><span class="line">c = b;   <span class="comment">// OK</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. assign char ** to const char **</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> **c;</span><br><span class="line"><span class="type">char</span> **b;</span><br><span class="line">c = b;  <span class="comment">// FAIL</span></span><br></pre></td></tr></table></figure><p>第一个例子看起来无比自然、甚至非常常见，以至于我就算在群友的提示下还是花了很久才弄明白第二个为什么不能通过。</p><p>这是为什么呢？我今天下了班再来写…最后那天晚上一回来就一觉睡到早上了。</p><p>首先我们来介绍一个概念：Compatible Type（兼容类型）</p><p>C 语言标准手册 6.2.7 中说：两种类型是 <em>compatible types</em> 如果它们相同。这一小节里介绍了结构、联合体和枚举类型的 compatible 规则。总结下来就是<strong>一一对应</strong>。可以认为，它们的每个成员必须保持类型 compatible、qualifier 一致、attribute 一致且成员名一致。另外，对于数组类型，有一套独特的规则：</p><img src="image-20250826214926309.png" alt="就不翻译了吧" style="zoom:50%;"><p>总之可以理解为全等。</p><p>在此基础上，在 6.7.6.1 里介绍了指针类型的 compatible 规则：</p><blockquote><p>For two pointer types to be compatible, both shall be identically qualified and both shall be pointers to compatible types.</p></blockquote><p>指针本身的 qualifier 必须全等，并且它们指向的类型需要 compatible。</p><p>在 6.7.3 里介绍了一般类型的 compatible 规则：</p><blockquote><p>For two qualified types to be compatible, both shall have the identically qualified version of a compatible type; the order of type qualifiers within a list of specifiers or qualifiers does not affect the specified type.</p></blockquote><p>两个类型必须表达（不是拥有的 “have”）相等地 qualified 版本的 compatible 类型。比如 <code>const volatile int</code> 和 <code>volatile const int</code>。就是说，顺序可以不一样，但是个数和类型必须一样。</p><p>原文里给了一个极端的例子：</p><img src="image-20250826215843215.png" alt="有 qualifier 就是要用" style="zoom:50%;"><blockquote><p>这里可以看出，<code>const</code> 不一定是常量，而是不应被程序修改的量。</p></blockquote><p>接下来回到今天的例子。</p><p><code>char</code> 和 <code>const char</code> 并不 compatible。因为它们是 compatible type <code>char</code> 的 differently-qualified version。</p><p>因而 <code>char *</code> 和 <code>const char *</code> 并不 compatible。因为它们分别指向 incompatible type <code>char</code> 和 <code>const char</code>。</p><p>因而 <code>char **</code> 和 <code>const char **</code> 并不 compatible。因为它们分别指向 incompatible type <code>char *</code> 和 <code>const char *</code>。</p><p>……</p><p>根据我们的观察，我们不可以把 <code>char</code> 赋值给 <code>const char</code>:</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> a;</span><br><span class="line"><span class="type">char</span> b;</span><br><span class="line">a = b;  <span class="comment">// FAIL</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> c = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure><p>因为 Assignment 表达式的通用约束是：</p><img src="image-20250826224645200.png" alt="Assignment operator constraint" style="zoom:50%;"><blockquote><p>左操作数必须是可修改的左值。</p></blockquote><p>注意到 line 5 的写法是 Initialization（6.7.10）。它由 initdeclarator 构成：</p><img src="image-20250826232839654.png" alt="image-20250826232839654" style="zoom:50%;"><img src="image-20250826233012845.png" alt="image-20250826233012845" style="zoom:50%;"><p>initializer 进一步包含了 Assignment-expression（6.5.16）。但是这个 Assignment 表达式并不一定是带等号的式子，它经过语法单元的分解，最终下降到了 primary-expression。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">assignment-expression:</span><br><span class="line">  conditional-expression:</span><br><span class="line">    logical-OR-expression:</span><br><span class="line">      logical-AND-expression:</span><br><span class="line">        inclusive-OR-expression:</span><br><span class="line">          exclusive-OR-expression:</span><br><span class="line">            AND-expression:</span><br><span class="line">              equality-expression:</span><br><span class="line">                relational-expression:</span><br><span class="line">                  shift-expression:</span><br><span class="line">                    additive-expression:</span><br><span class="line">                      multiplicative-expression:</span><br><span class="line">                        cast-expression:</span><br><span class="line">                          unary-expression:</span><br><span class="line">                            postfix-expression:</span><br><span class="line">                              primary-expression:</span><br><span class="line">                                identifier</span><br><span class="line">                                constant</span><br><span class="line">                                string-literal</span><br><span class="line">                                ( expression )</span><br><span class="line">                                generic-selection</span><br></pre></td></tr></table></figure><p>所以，line 5 中的 assignment-expression 其实是 <code>b</code>。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> c       <span class="comment">// declarator</span></span><br><span class="line">    =              <span class="comment">// =</span></span><br><span class="line">  b;               <span class="comment">// initializer -&gt; assignment-expression -&gt; -&gt; .... -&gt; identifier</span></span><br></pre></td></tr></table></figure><p>在初始化当中，</p><img src="image-20250826225221876.png" alt="image-20250826225221876" style="zoom:50%;"><p>规则就和 simple assignment 类似，其中 initializer 取标量类型的 unqualified 版本作为其声明类型。</p><blockquote><p>手册没说聚合类型怎么办，虽然实际上都是推广了的。也有可能是我找错位置了。</p></blockquote><p>我们可以把 <code>char *</code> 赋值给 <code>const char *</code>：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *a;</span><br><span class="line"><span class="type">char</span> *b;</span><br><span class="line">a = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure><p>其成立的理由在于，它两侧的类型符合 <strong>Assignment 表达式</strong> 的要求。</p><img src="image-20250826220652853.png" alt="part1" style="zoom:50%;"><img src="image-20250826220727168.png" alt="part2" style="zoom:50%;"><p>此处适应的条件是第三个：</p><blockquote><p>左操作数有 atomic, qualified or not 的指针类型（也就是任意指针），而两个操作数都指向了 <strong>或者是 qualified，或者是 unqualified 版本的</strong> compatible types，其中：左操作数指向的类型拥有右操作数指向的类型拥有的全部 qualifier。</p></blockquote><p>我们依次来看：</p><ul><li>左操作数是指针类型。Good</li><li>左操作数指向了 <code>const</code> qualified 的 <code>char</code> 类型；右操作数指向了 unqualified 的 <code>char</code> 类型。char-char 之间 compatible。且 <code>&#123;const&#125;</code> 包含空集。Good</li></ul><p>因而这个赋值表达式的约束成立。</p><p>再来看主角：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> **a;</span><br><span class="line"><span class="type">char</span> **b;</span><br><span class="line">a = b;  <span class="comment">// FAIL</span></span><br></pre></td></tr></table></figure><ul><li>左操作数是指针类型。Good</li><li>左操作数指向了 unqualified 的 <code>const char *</code> 类型；右操作数指向了 unqualified 的 <code>char *</code> 类型。上文提到，<code>const char *</code> 和 <code>char *</code> 并不 compatible。Bad</li></ul><p>即为这段代码编译不过的形式原因。</p><p><code>char *</code> 的 <code>const</code>-qualified 类型是 <code>char *const</code>。所以可以：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="type">const</span> *a;</span><br><span class="line"><span class="type">char</span> **b;</span><br><span class="line">a = b;  <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;blockquote&gt;
+&lt;p&gt;前置知识：至少需要知道 C 语言中的</summary>
+        
+      
+    
+    
+    
+    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>对四因说的一点解释</title>
+    <link href="https://tilnel.github.io/20250825-cause/"/>
+    <id>https://tilnel.github.io/20250825-cause/</id>
+    <published>2025-08-24T16:00:00.000Z</published>
+    <updated>2025-08-24T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>亚里士多德提出了四因说，我在这里给出一解。</p><p>质料因，就是全部矛盾的全部方面，主要是主要矛盾的两个方面。矛盾发展当中有什么样的势力，这些势力强弱如何，在质料上决定了矛盾的发展方向。</p><p>形式因，就是主要矛盾本身。什么样的矛盾存在，就会有什么样的发展。</p><p>动力因，就是推动矛盾发展收敛的那个力量。矛盾本来就有怎样的趋势，但经过这样的推手，矛盾看起来突然有了一个显著的方向。可以说质料因充当了这个矛盾的热力学因素&#x2F;必然性，动力因充当了矛盾发展的动力学因素&#x2F;偶然性。</p><p>目的因，就是这一矛盾最终要扬弃自身的趋势。</p><p>跳跃到精神分析的“断句”实践——我喜欢管这个叫实践而不是技巧、技术。在听到提问原因的时候，其实提问者总是在期待这四种当中的某种，通常是动力因和目的因。这时候其实可以回答前两类原因。</p><p>Q：你为什么要问这个？</p><p>A：因为我最近听说xxx感到有点好奇（动力因）&#x2F; 因为我好奇这件事（目的因）&#x2F; 因为我是一个好奇的人而你看起来知道（质料因）&#x2F; 因为我俩在这总得聊点啥（形式因）</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+  </entry>
+  
+</feed>
