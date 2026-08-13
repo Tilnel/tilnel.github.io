@@ -6,6 +6,9 @@
   if (!cfg) return;
 
   var rootUrl = cfg.dataUrl.replace(/moments\/moments\.json.*$/, '');
+  // 评论区仅在 Moments 页启用，且要求已配置 giscus 的 repo_id/category_id
+  var commentsOn = cfg.mode === 'page' && cfg.comments &&
+    cfg.comments.repo_id && cfg.comments.category_id;
 
   /* ---------------- 灯箱 ---------------- */
 
@@ -110,7 +113,76 @@
       });
       card.appendChild(grid);
     }
+
+    if (commentsOn) attachComments(card, m);
     return card;
+  }
+
+  /* ---------------- 评论区（giscus 懒加载，单线程手风琴） ---------------- */
+  /* giscus client.js 总是挂载到页面第一个 .giscus 容器，因此同一时刻只保留一个
+     实例：展开某条动态的评论时收起其他已展开的，且只在首次点击时才加载脚本。 */
+
+  var giscusBox = null;
+
+  function loadGiscus(term) {
+    if (!giscusBox) {
+      giscusBox = document.createElement('div');
+      giscusBox.className = 'giscus';
+    }
+    // 上一轮的 script 已随容器移出 DOM；重建一个以更新 data-term
+    var old = document.getElementById('giscus-moments');
+    if (old) old.parentNode.removeChild(old);
+    var gc = cfg.comments;
+    var s = document.createElement('script');
+    s.id = 'giscus-moments';
+    s.src = 'https://giscus.app/client.js';
+    s.async = true;
+    s.setAttribute('data-repo', gc.repo);
+    s.setAttribute('data-repo-id', gc.repo_id);
+    s.setAttribute('data-category', gc.category);
+    s.setAttribute('data-category-id', gc.category_id);
+    s.setAttribute('data-mapping', 'specific');
+    s.setAttribute('data-term', term);
+    s.setAttribute('data-lang', gc.lang);
+    s.setAttribute('data-theme', gc.theme);
+    s.setAttribute('data-input-position', gc.input_position);
+    s.setAttribute('data-reactions-enabled', '1');
+    s.setAttribute('data-emit-metadata', '0');
+    giscusBox.appendChild(s); // script 执行时会清空容器并注入 iframe
+    return giscusBox;
+  }
+
+  function closeComments(foot) {
+    var wrap = foot.querySelector('.moment-comments');
+    if (!wrap.classList.contains('open')) return;
+    wrap.classList.remove('open');
+    foot.querySelector('.moment-comments-toggle').classList.remove('active');
+    if (giscusBox && giscusBox.parentNode === wrap) wrap.removeChild(giscusBox);
+  }
+
+  function attachComments(card, m) {
+    var label = cfg.commentsLabel || 'Comments';
+    var foot = el('div', 'moment-foot');
+    var wrap = el('div', 'moment-comments');
+    var btn = el('button', 'moment-comments-toggle');
+    btn.type = 'button';
+    btn.innerHTML = '<i class="fa fa-comments-o"></i>';
+    btn.appendChild(document.createTextNode(' ' + label));
+    btn.addEventListener('click', function () {
+      if (wrap.classList.contains('open')) { closeComments(foot); return; }
+      // 手风琴：先收起其他动态已展开的评论区
+      var list = card.parentNode;
+      for (var i = 0; i < list.children.length; i++) {
+        var other = list.children[i].querySelector('.moment-foot');
+        if (other && other !== foot) closeComments(other);
+      }
+      wrap.classList.add('open');
+      btn.classList.add('active');
+      wrap.appendChild(loadGiscus('moment-' + m.id));
+    });
+    foot.appendChild(btn);
+    foot.appendChild(wrap);
+    card.appendChild(foot);
   }
 
   /* ---------------- 数据加载与分发 ---------------- */

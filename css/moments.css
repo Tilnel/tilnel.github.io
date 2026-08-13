@@ -104,6 +104,32 @@
   }
 }
 
+.moment-foot .moment-comments-toggle {
+  margin-top: 8px;
+  padding: 4px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #777;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+.moment-foot .moment-comments-toggle:hover {
+  color: #444;
+  border-color: #bbb;
+}
+.moment-foot .moment-comments-toggle.active {
+  color: #444;
+  border-color: #aaa;
+}
+.moment-foot .moment-comments {
+  display: none;
+  margin-top: 12px;
+}
+.moment-foot .moment-comments.open {
+  display: block;
+}
+
 .moment-highlight {
   animation: moment-flash 2.5s ease-out;
 }
