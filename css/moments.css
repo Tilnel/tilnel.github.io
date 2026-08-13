@@ -104,8 +104,14 @@
   }
 }
 
-.moment-foot .moment-comments-toggle {
-  margin-top: 8px;
+.moment-comments {
+  margin-top: 12px;
+  /* 等价于 giscus default.css（client.js 会自动注入，直挂 iframe 时需自行提供） */
+}
+.moment-comments .moment-comments-head {
+  margin-bottom: 6px;
+}
+.moment-comments .moment-comments-head .moment-comments-toggle {
   padding: 4px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -114,20 +120,18 @@
   font-size: 0.85em;
   cursor: pointer;
 }
-.moment-foot .moment-comments-toggle:hover {
+.moment-comments .moment-comments-head .moment-comments-toggle:hover {
   color: #444;
   border-color: #bbb;
 }
-.moment-foot .moment-comments-toggle.active {
+.moment-comments .moment-comments-head .moment-comments-toggle.active {
   color: #444;
   border-color: #aaa;
 }
-.moment-foot .moment-comments {
-  display: none;
-  margin-top: 12px;
-}
-.moment-foot .moment-comments.open {
-  display: block;
+.moment-comments .giscus-frame {
+  width: 100%;
+  min-height: 150px;
+  border: none;
 }
 
 .moment-highlight {

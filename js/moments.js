@@ -118,71 +118,125 @@
     return card;
   }
 
-  /* ---------------- 评论区（giscus 懒加载，单线程手风琴） ---------------- */
-  /* giscus client.js 总是挂载到页面第一个 .giscus 容器，因此同一时刻只保留一个
-     实例：展开某条动态的评论时收起其他已展开的，且只在首次点击时才加载脚本。 */
+  /* ---------------- 评论区（giscus 多实例） ---------------- */
+  /* giscus client.js 只支持单实例（总是挂载到页面第一个 .giscus 容器），因此按
+     widget URL 直接挂 iframe：每条动态一个线程（origin 以 #m-<id> 区分，会话
+     共享 localStorage），iframe 原生懒加载。输入框默认隐藏（自定义主题 CSS），
+     点「写评论」通过 postMessage setConfig 切回内置主题，无需重载。 */
 
-  var giscusBox = null;
+  var GC_ORIGIN = 'https://giscus.app';
+  var gcHiddenTheme = location.origin + rootUrl + 'css/giscus-moments.css';
 
-  function loadGiscus(term) {
-    if (!giscusBox) {
-      giscusBox = document.createElement('div');
-      giscusBox.className = 'giscus';
+  // 会话与 giscus client.js 一致：OAuth 回调带 ?giscus= 参数 → 存 localStorage
+  var gcSearch = new URLSearchParams(location.search);
+  var gcSession = gcSearch.get('giscus') || '';
+  var gcPageUrl = location.origin + location.pathname +
+    (gcSearch.toString() ? '?' + gcSearch.toString() : '');
+  if (gcSession) {
+    localStorage.setItem('giscus-session', JSON.stringify(gcSession));
+    gcSearch.delete('giscus');
+    gcPageUrl = location.origin + location.pathname +
+      (gcSearch.toString() ? '?' + gcSearch.toString() : '');
+    history.replaceState(null, document.title, gcPageUrl + location.hash);
+  } else {
+    try { gcSession = JSON.parse(localStorage.getItem('giscus-session') || 'null') || ''; }
+    catch (e) { gcSession = ''; }
+  }
+
+  var gcFrames = {}; // m.id -> { frame, term, writing, loaded }
+
+  function giscusSrc(term, theme) {
+    var q = {
+      origin: gcPageUrl + '#m-' + term,
+      session: gcSession,
+      theme: theme,
+      reactionsEnabled: '1',
+      emitMetadata: '0',
+      inputPosition: cfg.comments.input_position || 'top',
+      repo: cfg.comments.repo,
+      repoId: cfg.comments.repo_id,
+      category: cfg.comments.category,
+      categoryId: cfg.comments.category_id,
+      strict: '0',
+      term: term,
+    };
+    return GC_ORIGIN + (cfg.comments.lang ? '/' + cfg.comments.lang : '') +
+      '/widget?' + new URLSearchParams(q).toString();
+  }
+
+  function giscusReloadAll() {
+    for (var id in gcFrames) {
+      var st = gcFrames[id];
+      st.frame.src = giscusSrc(st.term, st.writing ? (cfg.comments.theme || 'light') : gcHiddenTheme);
     }
-    // 上一轮的 script 已随容器移出 DOM；重建一个以更新 data-term
-    var old = document.getElementById('giscus-moments');
-    if (old) old.parentNode.removeChild(old);
-    var gc = cfg.comments;
-    var s = document.createElement('script');
-    s.id = 'giscus-moments';
-    s.src = 'https://giscus.app/client.js';
-    s.async = true;
-    s.setAttribute('data-repo', gc.repo);
-    s.setAttribute('data-repo-id', gc.repo_id);
-    s.setAttribute('data-category', gc.category);
-    s.setAttribute('data-category-id', gc.category_id);
-    s.setAttribute('data-mapping', 'specific');
-    s.setAttribute('data-term', term);
-    s.setAttribute('data-lang', gc.lang);
-    s.setAttribute('data-theme', gc.theme);
-    s.setAttribute('data-input-position', gc.input_position);
-    s.setAttribute('data-reactions-enabled', '1');
-    s.setAttribute('data-emit-metadata', '0');
-    giscusBox.appendChild(s); // script 执行时会清空容器并注入 iframe
-    return giscusBox;
   }
 
-  function closeComments(foot) {
-    var wrap = foot.querySelector('.moment-comments');
-    if (!wrap.classList.contains('open')) return;
-    wrap.classList.remove('open');
-    foot.querySelector('.moment-comments-toggle').classList.remove('active');
-    if (giscusBox && giscusBox.parentNode === wrap) wrap.removeChild(giscusBox);
-  }
+  window.addEventListener('message', function (e) {
+    if (e.origin !== GC_ORIGIN) return;
+    var g = e.data && e.data.giscus;
+    if (!g) return;
+    if (g.resizeHeight) { // 调整对应 iframe 高度
+      for (var id in gcFrames) {
+        if (gcFrames[id].frame.contentWindow === e.source) {
+          gcFrames[id].frame.style.height = g.resizeHeight + 'px';
+          break;
+        }
+      }
+    } else if (g.signOut) {
+      localStorage.removeItem('giscus-session');
+      gcSession = '';
+      giscusReloadAll();
+    } else if (g.error && (g.error.indexOf('Bad credentials') !== -1 ||
+        g.error.indexOf('Invalid state value') !== -1 ||
+        g.error.indexOf('State has expired') !== -1)) {
+      localStorage.removeItem('giscus-session');
+      gcSession = '';
+      giscusReloadAll();
+    }
+  });
 
   function attachComments(card, m) {
-    var label = cfg.commentsLabel || 'Comments';
-    var foot = el('div', 'moment-foot');
+    var writeLabel = cfg.commentsWriteLabel || 'Write a comment';
+    var collapseLabel = cfg.commentsCollapseLabel || 'Collapse';
+    var term = 'moment-' + m.id;
     var wrap = el('div', 'moment-comments');
+    var head = el('div', 'moment-comments-head');
     var btn = el('button', 'moment-comments-toggle');
     btn.type = 'button';
-    btn.innerHTML = '<i class="fa fa-comments-o"></i>';
-    btn.appendChild(document.createTextNode(' ' + label));
+    head.appendChild(btn);
+    wrap.appendChild(head);
+
+    var frame = document.createElement('iframe');
+    frame.className = 'giscus-frame';
+    frame.title = 'Comments';
+    frame.setAttribute('scrolling', 'no');
+    frame.setAttribute('allow', 'clipboard-write');
+    frame.loading = 'lazy';
+    frame.src = giscusSrc(term, gcHiddenTheme);
+    wrap.appendChild(frame);
+
+    var st = { frame: frame, term: term, writing: false, loaded: false };
+    gcFrames[m.id] = st;
+    frame.addEventListener('load', function () { st.loaded = true; });
+
+    var setLabel = function () {
+      btn.innerHTML = '<i class="fa fa-pencil-square-o"></i>';
+      btn.appendChild(document.createTextNode(' ' + (st.writing ? collapseLabel : writeLabel)));
+    };
+    setLabel();
     btn.addEventListener('click', function () {
-      if (wrap.classList.contains('open')) { closeComments(foot); return; }
-      // 手风琴：先收起其他动态已展开的评论区
-      var list = card.parentNode;
-      for (var i = 0; i < list.children.length; i++) {
-        var other = list.children[i].querySelector('.moment-foot');
-        if (other && other !== foot) closeComments(other);
+      st.writing = !st.writing;
+      btn.classList.toggle('active', st.writing);
+      setLabel();
+      var theme = st.writing ? (cfg.comments.theme || 'light') : gcHiddenTheme;
+      if (st.loaded) {
+        frame.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, GC_ORIGIN);
+      } else {
+        frame.src = giscusSrc(term, theme); // iframe 尚未就绪，直接换 src
       }
-      wrap.classList.add('open');
-      btn.classList.add('active');
-      wrap.appendChild(loadGiscus('moment-' + m.id));
     });
-    foot.appendChild(btn);
-    foot.appendChild(wrap);
-    card.appendChild(foot);
+
+    card.appendChild(wrap);
   }
 
   /* ---------------- 数据加载与分发 ---------------- */
