@@ -1,0 +1,167 @@
+@charset "UTF-8";
+/* 评论区（自托管评论 API）样式：轻量、紧凑，视觉上弱于正文 */
+.mc-host {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed #e5e5e5; /* 块内区隔：细虚线，弱于块间实线 */
+  font-size: 13px;
+  color: #555;
+}
+
+.mc-head {
+  margin-bottom: 6px;
+}
+.mc-head .mc-toggle {
+  padding: 2px 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #999;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+.mc-head .mc-toggle:hover {
+  color: #666;
+  border-color: #ddd;
+  background-color: #fafafa;
+}
+.mc-head .mc-toggle.mc-active {
+  color: #666;
+  border-color: #ddd;
+}
+
+.mc-empty {
+  color: #aaa;
+  padding: 4px 0;
+}
+
+/* ---- 评论条目 ---- */
+.mc-item {
+  padding: 6px 0 2px;
+}
+
+.mc-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.mc-item-head .mc-nick-text {
+  font-weight: 600;
+  color: #666;
+  text-decoration: none;
+}
+.mc-item-head .mc-nick-text:hover {
+  color: #444;
+  text-decoration: underline;
+}
+.mc-item-head .mc-nick-text.mc-muted {
+  font-weight: 400;
+  color: #aaa;
+}
+.mc-item-head .mc-time {
+  color: #bbb;
+  font-size: 0.85em;
+}
+
+.mc-body {
+  line-height: 1.7;
+  word-wrap: break-word;
+  color: #555;
+}
+.mc-body a {
+  color: #888;
+}
+.mc-body.mc-muted {
+  color: #aaa;
+}
+
+.mc-item-foot .mc-reply {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #aaa;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+.mc-item-foot .mc-reply:hover {
+  color: #666;
+}
+
+/* 嵌套回复：左侧细线缩进 */
+.mc-children {
+  margin: 2px 0 2px 8px;
+  padding-left: 12px;
+  border-left: 1px solid #f0f0f0;
+}
+
+/* ---- 输入表单 ---- */
+.mc-form {
+  margin-top: 8px;
+  /* 蜜罐：对真实用户不可见 */
+}
+.mc-form.mc-hidden {
+  display: none;
+}
+.mc-form .mc-nick,
+.mc-form .mc-textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #555;
+  font-size: 13px;
+  font-family: inherit;
+}
+.mc-form .mc-nick:focus,
+.mc-form .mc-textarea:focus {
+  outline: none;
+  border-color: #ccc;
+}
+.mc-form .mc-nick {
+  padding: 5px 8px;
+  margin-bottom: 6px;
+}
+.mc-form .mc-textarea {
+  padding: 6px 8px;
+  min-height: 60px;
+  resize: vertical;
+}
+.mc-form .mc-hp {
+  position: absolute;
+  left: -9999px;
+}
+.mc-form .mc-submit {
+  margin-top: 6px;
+  padding: 3px 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fafafa;
+  color: #666;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+.mc-form .mc-submit:hover {
+  color: #444;
+  border-color: #bbb;
+}
+.mc-form .mc-submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.mc-form .mc-error {
+  margin-top: 4px;
+  color: #c66;
+  font-size: 0.85em;
+  min-height: 1em;
+}
+
+.mc-form-reply {
+  margin: 6px 0 4px;
+  padding-left: 12px;
+  border-left: 2px solid #f5f5f5;
+}
+.mc-form-reply .mc-textarea {
+  min-height: 48px;
+}
