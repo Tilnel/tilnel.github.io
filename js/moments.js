@@ -50,7 +50,18 @@
 
   function showLightbox() {
     var img = lb.querySelector('.mlb-img');
-    img.src = lbImages[lbIndex];
+    var cur = lbImages[lbIndex];
+    // 先用缩略图占位，原图加载完成后再替换（用户翻页后过期回调直接丢弃）
+    img.src = cur.thumb800 || cur.thumb400 || cur.full;
+    var idx = lbIndex;
+    var full = new Image();
+    full.onload = function () { if (lbIndex === idx) img.src = cur.full; };
+    full.src = cur.full;
+    // 预取相邻原图，减少翻页等待
+    [-1, 1].forEach(function (d) {
+      var next = lbImages[lbIndex + d];
+      if (next) { (new Image()).src = next.full; }
+    });
     var multi = lbImages.length > 1;
     lb.querySelector('.mlb-prev').style.display = multi ? '' : 'none';
     lb.querySelector('.mlb-next').style.display = multi ? '' : 'none';
@@ -98,18 +109,41 @@
       card.appendChild(el('div', 'moment-text', m.text));
     }
 
-    var imgs = (m.images || []).map(function (r) { return rootUrl + r; });
+    var imgs = (m.images || []).map(function (r) {
+      if (typeof r === 'string') return { full: rootUrl + r }; // 旧 moments.json 兼容
+      var thumb400 = r.thumbs && r.thumbs['400'] ? rootUrl + r.thumbs['400'] : '';
+      var thumb800 = r.thumbs && r.thumbs['800'] ? rootUrl + r.thumbs['800'] : '';
+      return { full: rootUrl + r.route, thumb400: thumb400, thumb800: thumb800 };
+    });
     if (imgs.length) {
       var n = imgs.length;
+      var MAX_GRID = 9;
       var gridCls = (n === 1) ? 'grid-1' : (n === 2 || n === 4) ? 'grid-2' : 'grid-3';
+      var sizesAttr = gridCls === 'grid-1'
+        ? '(max-width: 767px) 240px, 320px'
+        : '(max-width: 767px) 100px, 150px';
       var grid = el('div', 'moment-grid nofancybox ' + gridCls);
-      imgs.forEach(function (src, i) {
+      var more = n - MAX_GRID;
+      imgs.slice(0, MAX_GRID).forEach(function (imgData, i) {
+        var item = el('div', 'moment-grid-item');
         var im = el('img');
-        im.src = src;
+        if (imgData.thumb400) {
+          im.src = imgData.thumb400;
+          im.srcset = imgData.thumb400 + ' 400w, ' + imgData.thumb800 + ' 800w';
+          im.sizes = sizesAttr;
+        } else {
+          im.src = imgData.full;
+        }
         im.loading = 'lazy';
         im.alt = '';
         im.addEventListener('click', function () { openLightbox(imgs, i); });
-        grid.appendChild(im);
+        item.appendChild(im);
+        if (more > 0 && i === MAX_GRID - 1) {
+          item.classList.add('moment-more');
+          im.classList.add('moment-more-img');
+          item.appendChild(el('span', 'moment-more-count', '+' + more));
+        }
+        grid.appendChild(item);
       });
       card.appendChild(grid);
     }
