@@ -127,7 +127,9 @@
   margin-top: 10px;
   padding-top: 8px;
   border-top: 1px dashed #e5e5e5; /* 块内区隔：细虚线，弱于块间实线 */
-  /* 等价于 giscus default.css（client.js 会自动注入，直挂 iframe 时需自行提供） */
+  /* 直挂 iframe 需自行提供 default.css 等价样式；初始高度给很小，
+     避免空评论区占用大片空白——widget 加载后经 resizeHeight 消息
+     设置真实内容高度（空线程约一行的头部区）。 */
 }
 .moment-comments .moment-comments-head {
   margin-bottom: 6px;
@@ -152,7 +154,8 @@
 }
 .moment-comments .giscus-frame {
   width: 100%;
-  min-height: 150px;
+  min-height: 40px;
+  height: 40px;
   border: none;
 }
 
