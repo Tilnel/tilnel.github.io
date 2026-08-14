@@ -137,17 +137,19 @@ main {
 .gsc-comment { font-size: 0.8125rem; line-height: 1.5; }
 .gsc-comment-header { padding: 0.25rem 0.5rem 0; }
 .gsc-comment-content { padding: 0.125rem 0.5rem 0.25rem; }
-/* 移除已发表评论的框线与底色（widget 用 primer utility：border/color-bg-primary 等） */
-.gsc-comment-content,
-.gsc-comment-content .border,
-.gsc-reply-content,
-.gsc-reply-content .border {
+/* 移除已发表评论的框线与底色：widget 把整条评论包在
+   <div class="color-bg-primary w-full min-w-0 rounded-md border color-box-border-info"> 里
+   （.gsc-comment 的直接子 div）；回复区块 .gsc-replies 为 color-bg-inset + 边框 */
+.gsc-comment > div {
   border: 0 !important;
+  background: transparent !important;
 }
-.gsc-comment-content,
-.gsc-comment-content .color-bg-primary,
-.gsc-reply-content,
-.gsc-reply-content .color-bg-primary {
+.gsc-replies {
+  border: 0 !important;
+  background: transparent !important;
+}
+.gsc-comment-content.minimized {
+  border: 0 !important;
   background: transparent !important;
 }
 .gsc-comment-content .markdown-body { font-size: 0.8125rem; }
@@ -183,3 +185,4 @@ main {
 .gsc-toolbar-item { padding: 0.125rem; }
 .gsc-comment-replies-count { font-size: 0.75rem; color: #999; }
 .gsc-pagination-button { font-size: 0.75rem; }
+</div>
