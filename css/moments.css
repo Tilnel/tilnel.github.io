@@ -123,42 +123,7 @@
   }
 }
 
-.moment-comments {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed #e5e5e5; /* 块内区隔：细虚线，弱于块间实线 */
-  /* 直挂 iframe 需自行提供 default.css 等价样式；初始高度给很小，
-     避免空评论区占用大片空白——widget 加载后经 resizeHeight 消息
-     设置真实内容高度（空线程约一行的头部区）。 */
-}
-.moment-comments .moment-comments-head {
-  margin-bottom: 6px;
-}
-.moment-comments .moment-comments-head .moment-comments-toggle {
-  padding: 2px 10px;
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #999;
-  font-size: 0.8em;
-  cursor: pointer;
-}
-.moment-comments .moment-comments-head .moment-comments-toggle:hover {
-  color: #666;
-  border-color: #ddd;
-  background-color: #fafafa;
-}
-.moment-comments .moment-comments-head .moment-comments-toggle.active {
-  color: #666;
-  border-color: #ddd;
-}
-.moment-comments .giscus-frame {
-  width: 100%;
-  min-height: 40px;
-  height: 40px;
-  border: none;
-}
-
+/* 评论区（自托管评论 API）样式见 comments.scss：.mc-host 提供块内虚线区隔 */
 /* Moments 页分组排布：(内容-评论区) 块间用实线分隔并加大留白，不加底框 */
 .moments-page .moment {
   padding: 14px 0 22px;
