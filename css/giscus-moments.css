@@ -104,3 +104,69 @@ main .gsc-loading-image {
 .gsc-comment-box:not(.gsc-comment-box-is-reply) {
   display: none;
 }
+
+/* ---- 紧凑轻量覆盖：字号/间距缩小、边框与配色淡化，视觉上轻于正文 ---- */
+main {
+  --color-fg-default: #555;
+  --color-fg-muted: #999;
+  --color-fg-subtle: #aaa;
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: transparent;
+  --color-canvas-inset: #fafafa;
+  --color-border-default: #eee;
+  --color-border-muted: #f0f0f0;
+  --color-btn-bg: transparent;
+  --color-btn-border: #e8e8e8;
+  --color-btn-text: #777;
+  --color-btn-hover-bg: #fafafa;
+  --color-btn-hover-border: #e0e0e0;
+  --color-btn-active-bg: #f5f5f5;
+  --color-btn-active-border: #e0e0e0;
+  --color-accent-fg: #777;
+  --color-accent-emphasis: #777;
+  --color-accent-subtle: transparent;
+  --color-text-link: #666;
+  --color-attention-subtle: #fff8c5;
+  --color-social-reaction-bg-hover: #fafafa;
+  --color-social-reaction-bg-reacted-hover: #f5f5f5;
+}
+
+.gsc-main { gap: 0.75rem; }
+.gsc-comments { gap: 0.5rem; }
+.gsc-timeline { gap: 0.125rem; }
+.gsc-comment { font-size: 0.8125rem; line-height: 1.5; }
+.gsc-comment-header { padding: 0.25rem 0.5rem 0; }
+.gsc-comment-content { padding: 0.125rem 0.75rem 0.25rem; }
+.gsc-comment-content .markdown-body { font-size: 0.8125rem; }
+.gsc-reply-content .markdown-body { font-size: 0.8125rem; }
+.gsc-comment-author-avatar img { width: 20px; height: 20px; }
+.gsc-reply-author-avatar img { width: 16px; height: 16px; }
+.gsc-comment-footer { margin-bottom: 0.125rem; }
+.gsc-comments-count,
+.gsc-comments-count-separator { font-weight: 500; font-size: 0.8125rem; color: #999; }
+.gsc-reactions-button {
+  background-color: transparent;
+  border-color: #eee;
+  color: #999;
+  height: 22px;
+  width: 22px;
+  font-size: 0.6875rem;
+}
+.gsc-reactions-count { font-weight: 500; }
+.gsc-social-reaction-summary-item {
+  background-color: transparent;
+  border-color: #eee;
+  color: #999;
+  font-size: 0.75rem;
+}
+.gsc-social-reaction-summary-item-count { font-weight: 500; }
+.gsc-reply-content { padding-bottom: 0.125rem; }
+.gsc-reply-box {
+  padding-inline: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-top-color: #f0f0f0;
+}
+.gsc-toolbar-item { padding: 0.125rem; }
+.gsc-comment-replies-count { font-size: 0.75rem; color: #999; }
+.gsc-pagination-button { font-size: 0.75rem; }

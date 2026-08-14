@@ -60,6 +60,7 @@
   gap: 4px; /* 窄缝平铺 */
   margin: 8px 0;
   width: fit-content; /* 图片列表不铺满整行 */
+  /* 超出 9 图时第 9 张置灰，叠加 +N 计数 */
 }
 .moment .moment-grid img {
   width: 150px;
@@ -67,6 +68,24 @@
   object-fit: cover;
   border-radius: 4px;
   cursor: zoom-in;
+}
+.moment .moment-grid .moment-grid-item {
+  position: relative;
+}
+.moment .moment-grid .moment-more-img {
+  filter: grayscale(1) brightness(0.88);
+}
+.moment .moment-grid .moment-more-count {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.7em;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
 }
 .moment .moment-grid.grid-1 {
   grid-template-columns: 1fr;
@@ -105,33 +124,45 @@
 }
 
 .moment-comments {
-  margin-top: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed #e5e5e5; /* 块内区隔：细虚线，弱于块间实线 */
   /* 等价于 giscus default.css（client.js 会自动注入，直挂 iframe 时需自行提供） */
 }
 .moment-comments .moment-comments-head {
   margin-bottom: 6px;
 }
 .moment-comments .moment-comments-head .moment-comments-toggle {
-  padding: 4px 12px;
-  border: 1px solid #ddd;
+  padding: 2px 10px;
+  border: 1px solid #e8e8e8;
   border-radius: 4px;
-  background-color: #fff;
-  color: #777;
-  font-size: 0.85em;
+  background-color: transparent;
+  color: #999;
+  font-size: 0.8em;
   cursor: pointer;
 }
 .moment-comments .moment-comments-head .moment-comments-toggle:hover {
-  color: #444;
-  border-color: #bbb;
+  color: #666;
+  border-color: #ddd;
+  background-color: #fafafa;
 }
 .moment-comments .moment-comments-head .moment-comments-toggle.active {
-  color: #444;
-  border-color: #aaa;
+  color: #666;
+  border-color: #ddd;
 }
 .moment-comments .giscus-frame {
   width: 100%;
   min-height: 150px;
   border: none;
+}
+
+/* Moments 页分组排布：(内容-评论区) 块间用实线分隔并加大留白，不加底框 */
+.moments-page .moment {
+  padding: 14px 0 22px;
+  border-bottom: 1px solid #ddd;
+}
+.moments-page .moment:last-child {
+  border-bottom: none;
 }
 
 .moment-highlight {
