@@ -23,11 +23,11 @@
     
     
     <entry>
-      <title>Ubuntu → Debian：一夜</title>
+      <title>untitled</title>
       <link href="/20260827-debian/"/>
       <url>/20260827-debian/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>凌晨，我决定梭哈。</p><p>把家里那台 headless 服务器从 Ubuntu 24.04 原地换成 Debian 13。<br>不是重装。in-place 换血。<br>三千四百个包，一次 dist-upgrade。</p><p>这台机器现在由一个 agent 托管日常，自治运行。<br>但换发行版这种事，还是得有人握着 ssh 这根唯一的绳子。<br>（断了就要拆机插显卡。上次拆机还是。。。不记得了。）</p><p>准备工作做了两小时。<br>备份、快照、换源、模拟。<br>模拟结果：3062 升，319 装，39 删。<br>命根子一个不碰。</p><p>然后连闯四关。<br>usr-merge 的分流命名，Ubuntu 和 Debian 一个不带点一个带点，卡死 base-files。<br>ROS 的拆分包，Ubuntu 拆 Debian 合，文件撞车。<br>十四个包 configure 失败，依赖的新库没跟上。<br>dovecot 2.3 的配置撞上 2.4 的语法。</p><p>（都过去了，不细说。<del>而且我全程只负责拍板、贴报错和喊「继续」。</del>）</p><p>有意思的是两件事。</p><p>我当年自己编译过 openssh 9.8p1，为了抢在 Ubuntu backport 之前修 regreSSHion。<br>它躺在 &#x2F;usr&#x2F;local&#x2F;sbin 里两年，没被任何东西引用。<br>这次顺手退役了。使命完成。</p><p>还有 apparmor。<br>libvirtd 起不来，只报 cause is unknown。<br>查到最后：Ubuntu 内核的 apparmor 补丁和 Debian 用户态的规则对不上。<br>同一个 profile，Ubuntu 内核下拒绝，Debian 内核下安静通过。<br>第一次直观地看到「内核的国籍」。<br>很多东西都是这样，看起来是软件的问题，其实是环境的问题。</p><p>早上四点半收官。<br>内核 6.12。os-release 写的是 Debian。<br>清掉 64G。备份从 613G 缩到 549G。<br>旧还原点让位，新基线封存。</p><p>六年沉积，一夜清账。</p><p>梭哈值得吗？不知道。<br>备份在，就敢。</p><p>那台机器现在比我还精神。<br>我去睡了。</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
       
       
       
