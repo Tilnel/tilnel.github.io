@@ -42,6 +42,30 @@
   </entry>
   
   <entry>
+    <title>Ubuntu → Debian：一夜</title>
+    <link href="https://tilnel.github.io/20260827-debian/"/>
+    <id>https://tilnel.github.io/20260827-debian/</id>
+    <published>2026-08-26T21:30:00.000Z</published>
+    <updated>2026-08-26T21:30:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>凌晨，我决定梭哈。</p><p>把家里那台 headless 服务器从 Ubuntu 24.04 原地换成 Debian 13。<br>不是重装。in-place 换血。<br>三千四百个包，一次 dist-upgrade。</p><p>这台机器现在由一个 agent 托管日常，自治运行。<br>但换发行版这种事，还是得有人握着 ssh 这根唯一的绳子。<br>（断了就要拆机插显卡。上次拆机还是。。。不记得了。）</p><p>准备工作做了两小时。<br>备份、快照、换源、模拟。<br>模拟结果：3062 升，319 装，39 删。<br>命根子一个不碰。</p><p>然后连闯四关。<br>usr-merge 的分流命名，Ubuntu 和 Debian 一个不带点一个带点，卡死 base-files。<br>ROS 的拆分包，Ubuntu 拆 Debian 合，文件撞车。<br>十四个包 configure 失败，依赖的新库没跟上。<br>dovecot 2.3 的配置撞上 2.4 的语法。</p><p>（都过去了，不细说。<del>而且我全程只负责拍板、贴报错和喊「继续」。</del>）</p><p>有意思的是两件事。</p><p>我当年自己编译过 openssh 9.8p1，为了抢在 Ubuntu backport 之前修 regreSSHion。<br>它躺在 &#x2F;usr&#x2F;local&#x2F;sbin 里两年，没被任何东西引用。<br>这次顺手退役了。使命完成。</p><p>还有 apparmor。<br>libvirtd 起不来，只报 cause is unknown。<br>查到最后：Ubuntu 内核的 apparmor 补丁和 Debian 用户态的规则对不上。<br>同一个 profile，Ubuntu 内核下拒绝，Debian 内核下安静通过。<br>第一次直观地看到「内核的国籍」。<br>很多东西都是这样，看起来是软件的问题，其实是环境的问题。</p><p>早上四点半收官。<br>内核 6.12。os-release 写的是 Debian。<br>清掉 64G。备份从 613G 缩到 549G。<br>旧还原点让位，新基线封存。</p><p>六年沉积，一夜清账。</p><p>梭哈值得吗？不知道。<br>备份在，就敢。</p><p>那台机器现在比我还精神。<br>我去睡了。</p>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;凌晨，我决定梭哈。&lt;/p&gt;
+&lt;p&gt;把家里那台 headless 服务器从</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Flag 终末地</title>
     <link href="https://tilnel.github.io/20260725-zmd/"/>
     <id>https://tilnel.github.io/20260725-zmd/</id>
@@ -485,31 +509,6 @@
     
     
     <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>对四因说的一点解释</title>
-    <link href="https://tilnel.github.io/20250825-cause/"/>
-    <id>https://tilnel.github.io/20250825-cause/</id>
-    <published>2025-08-24T16:00:00.000Z</published>
-    <updated>2025-08-24T16:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>亚里士多德提出了四因说，我在这里给出一解。</p><p>质料因，就是全部矛盾的全部方面，主要是主要矛盾的两个方面。矛盾发展当中有什么样的势力，这些势力强弱如何，在质料上决定了矛盾的发展方向。</p><p>形式因，就是主要矛盾本身。什么样的矛盾存在，就会有什么样的发展。</p><p>动力因，就是推动矛盾发展收敛的那个力量。矛盾本来就有怎样的趋势，但经过这样的推手，矛盾看起来突然有了一个显著的方向。可以说质料因充当了这个矛盾的热力学因素&#x2F;必然性，动力因充当了矛盾发展的动力学因素&#x2F;偶然性。</p><p>目的因，就是这一矛盾最终要扬弃自身的趋势。</p><p>跳跃到精神分析的“断句”实践——我喜欢管这个叫实践而不是技巧、技术。在听到提问原因的时候，其实提问者总是在期待这四种当中的某种，通常是动力因和目的因。这时候其实可以回答前两类原因。</p><p>Q：你为什么要问这个？</p><p>A：因为我最近听说xxx感到有点好奇（动力因）&#x2F; 因为我好奇这件事（目的因）&#x2F; 因为我是一个好奇的人而你看起来知道（质料因）&#x2F; 因为我俩在这总得聊点啥（形式因）</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
