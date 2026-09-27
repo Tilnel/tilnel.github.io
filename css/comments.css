@@ -165,3 +165,22 @@
 .mc-form-reply .mc-textarea {
   min-height: 48px;
 }
+
+/* 评论里的图片：完整 data URL / https 图渲染成图；截断的数据显示占位说明 */
+.mc-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 6px 0;
+  border-radius: 4px;
+}
+
+.mc-img-broken {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: #f5f5f5;
+  color: #999;
+  font-size: 0.9em;
+  cursor: help;
+}

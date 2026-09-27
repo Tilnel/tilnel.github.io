@@ -45,13 +45,68 @@
       ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
   }
 
-  // 纯文本渲染：转义 + 自动链接 + 保留换行
-  function fmtBody(text) {
-    return esc(text)
+  // 正文渲染：转义 + 图片 + 自动链接 + 保留换行
+  // 图片支持两种写法：markdown ![alt](url)（url 为 https 或 data:image/...;base64,...）
+  // 以及裸的 data:image URL。data URL 不是 4 的倍数（或格式不支持）视为**数据不完整**，
+  // 显示占位说明而不是把 base64 糊一屏（历史评论经 Valine 导入时被截断就是这个形态）。
+  var IMG_FMT_OK = /^(png|jpe?g|gif|webp|avif)$/i;
+  var DATA_URL = /(data:image\/([A-Za-z0-9.+-]+);base64,[A-Za-z0-9+/=]*)/gi;
+  var MD_IMG = /!\[([^\]]*)\]\(([^)\s]+)\)/g;
+
+  function imgTag(url, alt, link) {
+    var img = '<img class="mc-img" loading="lazy" decoding="async" alt="' + esc(alt || '') +
+      '" src="' + esc(url) + '">';
+    if (link) {
+      return '<a href="' + esc(url) + '" target="_blank" rel="nofollow noopener">' + img + '</a>';
+    }
+    return img;
+  }
+
+  function brokenImg(alt) {
+    return '<span class="mc-img-broken" title="图片数据不完整（很可能是导入时被截断），无法显示">' +
+      '🖼 ' + esc(alt || '图片') + '：数据不完整，无法显示</span>';
+  }
+
+  function renderDataUrl(fmt, url, alt) {
+    // base64 长度必须是 4 的倍数；截断的数据解出来是坏图，直接给占位
+    var b64 = url.slice(url.indexOf('base64,') + 7);
+    if (!IMG_FMT_OK.test(fmt) || b64.length % 4 !== 0) return brokenImg(alt);
+    return imgTag(url, alt, false);
+  }
+
+  function plain(s) {
+    return esc(s)
       .replace(/(https?:\/\/[^\s<]+)/g, function (m) {
         return '<a href="' + m + '" target="_blank" rel="nofollow noopener">' + m + '</a>';
       })
       .replace(/\n/g, '<br>');
+  }
+
+  function fmtBody(text) {
+    var out = '', last = 0, m;
+    MD_IMG.lastIndex = DATA_URL.lastIndex = 0;
+    // 先处理完整的 markdown 图片，剩下的交给裸 data URL 处理
+    while ((m = MD_IMG.exec(text))) {
+      var url = m[2];
+      out += plain(text.slice(last, m.index));
+      if (/^https?:\/\//i.test(url)) {
+        out += imgTag(url, m[1], true);
+      } else {
+        var d = /^data:image\/([A-Za-z0-9.+-]+);base64,/i.exec(url);
+        out += d ? renderDataUrl(d[1], url, m[1]) : plain('![' + m[1] + '](' + url + ')');
+      }
+      last = m.index + m[0].length;
+    }
+    var rest = text.slice(last), plainParts = '', pLast = 0, dm;
+    DATA_URL.lastIndex = 0;
+    while ((dm = DATA_URL.exec(rest))) {
+      var before = rest.slice(pLast, dm.index);
+      // 被截断的 markdown 头（"![alt](" 后面没有收尾括号）跟着一起去掉
+      before = before.replace(/!?\[[^\]]*\]\($/, '');
+      plainParts += plain(before) + renderDataUrl(dm[2], dm[1], '');
+      pLast = dm.index + dm[0].length;
+    }
+    return out + plainParts + plain(rest.slice(pLast));
   }
 
   /* ---------------- 批量拉取 ---------------- */
