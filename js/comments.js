@@ -19,7 +19,13 @@
     deleted: cfg.deletedLabel || '该评论已删除',
     failed: cfg.failedLabel || '提交失败，请稍后再试',
     bodyRequired: cfg.bodyRequiredLabel || '内容不能为空',
+    pasteHint: cfg.pasteHintLabel || '可粘贴/拖入截图（自动压缩后内联）',
+    imgTooLarge: cfg.imgTooLargeLabel || '图片太大，请压缩后再试',
+    bodyTooLong: cfg.bodyTooLongLabel || '内容过长',
   };
+
+  var MAX_BODY_JS = 800000;    // 与服务端 MAX_BODY 对齐
+  var MAX_IMG_CHARS = 700000;  // 单张图 data URL 上限（给正文留余量）
 
   /* ---------------- 工具 ---------------- */
 
@@ -180,6 +186,74 @@
     return w;
   }
 
+  /* ---------------- 评论内嵌图片（粘贴/拖入 → 压缩 → data URL 内联） ---------------- */
+
+  function insertAtCursor(area, text) {
+    var s = area.selectionStart || 0;
+    var e = area.selectionEnd || 0;
+    var v = area.value;
+    area.value = v.slice(0, s) + text + v.slice(e);
+    var pos = s + text.length;
+    try { area.setSelectionRange(pos, pos); } catch (err) { /* 忽略 */ }
+  }
+
+  // 大图先缩放再用（无损 PNG 优先，截图文字更清晰；过大再退 JPEG）
+  function compressImage(file, cb) {
+    var objUrl = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      var maxSide = 1600;
+      var scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+      var w = Math.max(1, Math.round(img.width * scale));
+      var h = Math.max(1, Math.round(img.height * scale));
+      var cv = document.createElement('canvas');
+      cv.width = w;
+      cv.height = h;
+      cv.getContext('2d').drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(objUrl);
+      var out = cv.toDataURL('image/png');
+      if (out.length > MAX_IMG_CHARS) out = cv.toDataURL('image/jpeg', 0.85);
+      cb(out);
+    };
+    img.onerror = function () { URL.revokeObjectURL(objUrl); cb(null); };
+    img.src = objUrl;
+  }
+
+  function handleFiles(area, err, files) {
+    for (var i = 0; i < files.length; i++) {
+      if (!/^image\//.test(files[i].type || '')) continue;
+      compressImage(files[i], function (dataUrl) {
+        if (!dataUrl) { err.textContent = L.failed; return; }
+        if (dataUrl.length > MAX_IMG_CHARS ||
+            area.value.length + dataUrl.length + 20 > MAX_BODY_JS) {
+          err.textContent = L.imgTooLarge;
+          return;
+        }
+        err.textContent = '';
+        insertAtCursor(area, '![image](' + dataUrl + ')');
+      });
+    }
+  }
+
+  function attachImageInput(area, err) {
+    area.addEventListener('paste', function (e) {
+      var items = (e.clipboardData && e.clipboardData.items) || [];
+      var files = [];
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].kind === 'file' && /^image\//.test(items[i].type || '')) {
+          var f = items[i].getAsFile();
+          if (f) files.push(f);
+        }
+      }
+      if (files.length) { e.preventDefault(); handleFiles(area, err, files); }
+    });
+    area.addEventListener('dragover', function (e) { e.preventDefault(); });
+    area.addEventListener('drop', function (e) {
+      var files = (e.dataTransfer && e.dataTransfer.files) || [];
+      if (files.length) { e.preventDefault(); handleFiles(area, err, files); }
+    });
+  }
+
   function buildForm(w, parent) {
     var form = el('form', parent ? 'mc-form mc-form-reply' : 'mc-form');
     var nick = el('input', 'mc-nick');
@@ -187,8 +261,8 @@
     nick.placeholder = L.nick + '(可留空)';
     nick.maxLength = 40;
     var area = el('textarea', 'mc-textarea');
-    area.placeholder = parent ? L.reply + ' @' + parent.nick : '';
-    area.maxLength = 2000;
+    area.placeholder = parent ? L.reply + ' @' + parent.nick : L.pasteHint;
+    area.maxLength = MAX_BODY_JS;
     var hp = el('input', 'mc-hp'); // 蜜罐：真实用户不可见，机器人填了会被服务端静默丢弃
     hp.type = 'text';
     hp.name = 'website';
@@ -197,6 +271,7 @@
     var submit = el('button', 'mc-submit', L.submit);
     submit.type = 'submit';
     var err = el('div', 'mc-error');
+    attachImageInput(area, err);
     form.appendChild(nick);
     form.appendChild(area);
     form.appendChild(hp);
@@ -207,6 +282,7 @@
       e.preventDefault();
       var body = area.value.trim();
       if (!body) { err.textContent = L.bodyRequired; return; }
+      if (body.length > MAX_BODY_JS) { err.textContent = L.bodyTooLong; return; }
       submit.disabled = true;
       var payload = { nick: nick.value.trim(), body: body, website: hp.value };
       if (parent) payload.parent = parent.id;
