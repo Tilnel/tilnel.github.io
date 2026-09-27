@@ -23,6 +23,19 @@
     
     
     <entry>
+      <title></title>
+      <link href="/20260927-months/"/>
+      <url>/20260927-months/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu 24.04 升级 Debian trixie (全程 agent 托管)</title>
       <link href="/20260827-debian/"/>
       <url>/20260827-debian/</url>
