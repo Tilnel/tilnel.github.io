@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Tilnel&#39;s Blog</title>
-  <icon>https://tilnel.github.io/icon.png</icon>
+  <icon>https://blog.tilnel.com/icon.png</icon>
   <subtitle>我需要先行到光年以外，为列星指明公转的轨道，否则你便看不到下一夜的闪烁与纷纭。</subtitle>
-  <link href="https://tilnel.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.tilnel.com/atom.xml" rel="self"/>
   
-  <link href="https://tilnel.github.io/"/>
+  <link href="https://blog.tilnel.com/"/>
   <updated>2099-12-31T15:59:59.000Z</updated>
-  <id>https://tilnel.github.io/</id>
+  <id>https://blog.tilnel.com/</id>
   
   <author>
     <name>Tilnel</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Preface-一月十三日</title>
-    <link href="https://tilnel.github.io/20991231-top/"/>
-    <id>https://tilnel.github.io/20991231-top/</id>
+    <link href="https://blog.tilnel.com/20991231-top/"/>
+    <id>https://blog.tilnel.com/20991231-top/</id>
     <published>2099-12-31T15:59:59.000Z</published>
     <updated>2099-12-31T15:59:59.000Z</updated>
     
@@ -36,15 +36,15 @@
     
     
     
-    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://blog.tilnel.com/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="https://tilnel.github.io/20260927-months/"/>
-    <id>https://tilnel.github.io/20260927-months/</id>
+    <link href="https://blog.tilnel.com/20260927-months/"/>
+    <id>https://blog.tilnel.com/20260927-months/</id>
     <published>2026-09-27T11:34:06.414Z</published>
     <updated>2026-09-27T11:34:06.414Z</updated>
     
@@ -66,8 +66,8 @@
   
   <entry>
     <title>Ubuntu 24.04 升级 Debian trixie (全程 agent 托管)</title>
-    <link href="https://tilnel.github.io/20260827-debian/"/>
-    <id>https://tilnel.github.io/20260827-debian/</id>
+    <link href="https://blog.tilnel.com/20260827-debian/"/>
+    <id>https://blog.tilnel.com/20260827-debian/</id>
     <published>2026-08-26T21:30:00.000Z</published>
     <updated>2026-08-26T21:30:00.000Z</updated>
     
@@ -90,8 +90,8 @@
   
   <entry>
     <title>Flag 终末地</title>
-    <link href="https://tilnel.github.io/20260725-zmd/"/>
-    <id>https://tilnel.github.io/20260725-zmd/</id>
+    <link href="https://blog.tilnel.com/20260725-zmd/"/>
+    <id>https://blog.tilnel.com/20260725-zmd/</id>
     <published>2026-07-25T16:00:00.000Z</published>
     <updated>2026-07-25T16:00:00.000Z</updated>
     
@@ -113,8 +113,8 @@
   
   <entry>
     <title>DetSim for Go runtime</title>
-    <link href="https://tilnel.github.io/20260402go/"/>
-    <id>https://tilnel.github.io/20260402go/</id>
+    <link href="https://blog.tilnel.com/20260402go/"/>
+    <id>https://blog.tilnel.com/20260402go/</id>
     <published>2026-04-01T16:00:00.000Z</published>
     <updated>2026-04-01T16:00:00.000Z</updated>
     
@@ -131,15 +131,15 @@
     
     
     
-    <category term="DetSim" scheme="https://tilnel.github.io/categories/DetSim/"/>
+    <category term="DetSim" scheme="https://blog.tilnel.com/categories/DetSim/"/>
     
     
   </entry>
   
   <entry>
     <title>TCP 面试题（困难版）</title>
-    <link href="https://tilnel.github.io/20260331-tcp/"/>
-    <id>https://tilnel.github.io/20260331-tcp/</id>
+    <link href="https://blog.tilnel.com/20260331-tcp/"/>
+    <id>https://blog.tilnel.com/20260331-tcp/</id>
     <published>2026-03-30T16:00:00.000Z</published>
     <updated>2026-03-30T16:00:00.000Z</updated>
     
@@ -156,15 +156,15 @@
     
     
     
-    <category term="网络" scheme="https://tilnel.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    <category term="网络" scheme="https://blog.tilnel.com/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
   </entry>
   
   <entry>
     <title>提问</title>
-    <link href="https://tilnel.github.io/20260315-kimi/"/>
-    <id>https://tilnel.github.io/20260315-kimi/</id>
+    <link href="https://blog.tilnel.com/20260315-kimi/"/>
+    <id>https://blog.tilnel.com/20260315-kimi/</id>
     <published>2026-03-14T16:00:00.000Z</published>
     <updated>2026-03-14T16:00:00.000Z</updated>
     
@@ -186,8 +186,8 @@
   
   <entry>
     <title>play with Kimi-Code</title>
-    <link href="https://tilnel.github.io/20260305-kimi/"/>
-    <id>https://tilnel.github.io/20260305-kimi/</id>
+    <link href="https://blog.tilnel.com/20260305-kimi/"/>
+    <id>https://blog.tilnel.com/20260305-kimi/</id>
     <published>2026-03-04T16:00:00.000Z</published>
     <updated>2026-03-04T16:00:00.000Z</updated>
     
@@ -209,8 +209,8 @@
   
   <entry>
     <title>坏孩子</title>
-    <link href="https://tilnel.github.io/20260221-badkid/"/>
-    <id>https://tilnel.github.io/20260221-badkid/</id>
+    <link href="https://blog.tilnel.com/20260221-badkid/"/>
+    <id>https://blog.tilnel.com/20260221-badkid/</id>
     <published>2026-02-20T16:00:00.000Z</published>
     <updated>2026-02-20T16:00:00.000Z</updated>
     
@@ -227,15 +227,15 @@
     
     
     
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    <category term="杂谈" scheme="https://blog.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
   
   <entry>
     <title>对 kernel 中的 TCP 实现进行基于模型的测试(Model Based Testing)</title>
-    <link href="https://tilnel.github.io/20250816-tcp/"/>
-    <id>https://tilnel.github.io/20250816-tcp/</id>
+    <link href="https://blog.tilnel.com/20250816-tcp/"/>
+    <id>https://blog.tilnel.com/20250816-tcp/</id>
     <published>2026-02-07T16:00:00.000Z</published>
     <updated>2026-02-07T16:00:00.000Z</updated>
     
@@ -253,15 +253,15 @@
     
     
     
-    <category term="Network" scheme="https://tilnel.github.io/categories/Network/"/>
+    <category term="Network" scheme="https://blog.tilnel.com/categories/Network/"/>
     
     
   </entry>
   
   <entry>
     <title>死是凉爽的夏夜</title>
-    <link href="https://tilnel.github.io/20260207-misc/"/>
-    <id>https://tilnel.github.io/20260207-misc/</id>
+    <link href="https://blog.tilnel.com/20260207-misc/"/>
+    <id>https://blog.tilnel.com/20260207-misc/</id>
     <published>2026-02-07T16:00:00.000Z</published>
     <updated>2026-02-07T16:00:00.000Z</updated>
     
@@ -279,15 +279,15 @@
     
     
     
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    <category term="杂谈" scheme="https://blog.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
   
   <entry>
     <title>穿过一场雪</title>
-    <link href="https://tilnel.github.io/20260207-snow/"/>
-    <id>https://tilnel.github.io/20260207-snow/</id>
+    <link href="https://blog.tilnel.com/20260207-snow/"/>
+    <id>https://blog.tilnel.com/20260207-snow/</id>
     <published>2026-02-06T16:00:00.000Z</published>
     <updated>2026-02-06T16:00:00.000Z</updated>
     
@@ -304,15 +304,15 @@
     
     
     
-    <category term="日常" scheme="https://tilnel.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://blog.tilnel.com/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
   </entry>
   
   <entry>
     <title>如何买衣服</title>
-    <link href="https://tilnel.github.io/20260128-buy/"/>
-    <id>https://tilnel.github.io/20260128-buy/</id>
+    <link href="https://blog.tilnel.com/20260128-buy/"/>
+    <id>https://blog.tilnel.com/20260128-buy/</id>
     <published>2026-01-27T16:00:00.000Z</published>
     <updated>2026-01-27T16:00:00.000Z</updated>
     
@@ -329,15 +329,15 @@
     
     
     
-    <category term="生活" scheme="https://tilnel.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://blog.tilnel.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
   </entry>
   
   <entry>
     <title>新年序曲</title>
-    <link href="https://tilnel.github.io/20260113-misc/"/>
-    <id>https://tilnel.github.io/20260113-misc/</id>
+    <link href="https://blog.tilnel.com/20260113-misc/"/>
+    <id>https://blog.tilnel.com/20260113-misc/</id>
     <published>2026-01-12T16:00:00.000Z</published>
     <updated>2026-01-12T16:00:00.000Z</updated>
     
@@ -354,15 +354,15 @@
     
     
     
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    <category term="杂谈" scheme="https://blog.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
   
   <entry>
     <title>杂谈</title>
-    <link href="https://tilnel.github.io/20260113-misc2/"/>
-    <id>https://tilnel.github.io/20260113-misc2/</id>
+    <link href="https://blog.tilnel.com/20260113-misc2/"/>
+    <id>https://blog.tilnel.com/20260113-misc2/</id>
     <published>2026-01-12T16:00:00.000Z</published>
     <updated>2026-01-12T16:00:00.000Z</updated>
     
@@ -379,15 +379,15 @@
     
     
     
-    <category term="杂谈" scheme="https://tilnel.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    <category term="杂谈" scheme="https://blog.tilnel.com/categories/%E6%9D%82%E8%B0%88/"/>
     
     
   </entry>
   
   <entry>
     <title>如何洗衬衫</title>
-    <link href="https://tilnel.github.io/20251218-shirt/"/>
-    <id>https://tilnel.github.io/20251218-shirt/</id>
+    <link href="https://blog.tilnel.com/20251218-shirt/"/>
+    <id>https://blog.tilnel.com/20251218-shirt/</id>
     <published>2025-12-17T16:00:00.000Z</published>
     <updated>2025-12-17T16:00:00.000Z</updated>
     
@@ -404,15 +404,15 @@
     
     
     
-    <category term="生活" scheme="https://tilnel.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://blog.tilnel.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
   </entry>
   
   <entry>
     <title>和爱人</title>
-    <link href="https://tilnel.github.io/20251004-misc/"/>
-    <id>https://tilnel.github.io/20251004-misc/</id>
+    <link href="https://blog.tilnel.com/20251004-misc/"/>
+    <id>https://blog.tilnel.com/20251004-misc/</id>
     <published>2025-10-03T16:00:00.000Z</published>
     <updated>2025-10-03T16:00:00.000Z</updated>
     
@@ -429,15 +429,15 @@
     
     
     
-    <category term="情感" scheme="https://tilnel.github.io/categories/%E6%83%85%E6%84%9F/"/>
+    <category term="情感" scheme="https://blog.tilnel.com/categories/%E6%83%85%E6%84%9F/"/>
     
     
   </entry>
   
   <entry>
     <title>FreeBSD TCP 实现中发现的两个 BUG</title>
-    <link href="https://tilnel.github.io/20250925-freebsd_tcp/"/>
-    <id>https://tilnel.github.io/20250925-freebsd_tcp/</id>
+    <link href="https://blog.tilnel.com/20250925-freebsd_tcp/"/>
+    <id>https://blog.tilnel.com/20250925-freebsd_tcp/</id>
     <published>2025-09-24T16:00:00.000Z</published>
     <updated>2025-09-24T16:00:00.000Z</updated>
     
@@ -455,15 +455,15 @@
     
     
     
-    <category term="网络" scheme="https://tilnel.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    <category term="网络" scheme="https://blog.tilnel.com/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
   </entry>
   
   <entry>
     <title>C23 标准手册拾遗（四）</title>
-    <link href="https://tilnel.github.io/20250828-c23/"/>
-    <id>https://tilnel.github.io/20250828-c23/</id>
+    <link href="https://blog.tilnel.com/20250828-c23/"/>
+    <id>https://blog.tilnel.com/20250828-c23/</id>
     <published>2025-08-27T16:00:00.000Z</published>
     <updated>2025-08-27T16:00:00.000Z</updated>
     
@@ -480,15 +480,15 @@
     
     
     
-    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
+    <category term="C" scheme="https://blog.tilnel.com/categories/C/"/>
     
     
   </entry>
   
   <entry>
     <title>C23 标准手册拾遗（三）</title>
-    <link href="https://tilnel.github.io/20250827-c23/"/>
-    <id>https://tilnel.github.io/20250827-c23/</id>
+    <link href="https://blog.tilnel.com/20250827-c23/"/>
+    <id>https://blog.tilnel.com/20250827-c23/</id>
     <published>2025-08-26T16:00:00.000Z</published>
     <updated>2025-08-26T16:00:00.000Z</updated>
     
@@ -505,7 +505,7 @@
     
     
     
-    <category term="C" scheme="https://tilnel.github.io/categories/C/"/>
+    <category term="C" scheme="https://blog.tilnel.com/categories/C/"/>
     
     
   </entry>
