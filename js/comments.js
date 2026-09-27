@@ -21,6 +21,7 @@
     bodyRequired: cfg.bodyRequiredLabel || '内容不能为空',
     pasteHint: cfg.pasteHintLabel || '可粘贴/拖入截图（自动压缩后内联）',
     imgTooLarge: cfg.imgTooLargeLabel || '图片太大，请压缩后再试',
+    imgRemove: cfg.imgRemoveLabel || '移除图片',
     bodyTooLong: cfg.bodyTooLongLabel || '内容过长',
   };
 
@@ -186,15 +187,58 @@
     return w;
   }
 
-  /* ---------------- 评论内嵌图片（粘贴/拖入 → 压缩 → data URL 内联） ---------------- */
+  /* ---------------- 评论内嵌图片（缩略图附件：粘贴/拖入 → 压缩 → 缩略图，正文里不放 base64） ---------------- */
 
-  function insertAtCursor(area, text) {
-    var s = area.selectionStart || 0;
-    var e = area.selectionEnd || 0;
-    var v = area.value;
-    area.value = v.slice(0, s) + text + v.slice(e);
-    var pos = s + text.length;
-    try { area.setSelectionRange(pos, pos); } catch (err) { /* 忽略 */ }
+  // 编辑框高度自适应：随内容长高，最高半屏，超出则内部滚动
+  function autoGrow(area) {
+    var resize = function () {
+      var max = Math.max(96, Math.round(window.innerHeight * 0.5));
+      area.style.height = 'auto';
+      var h = area.scrollHeight;
+      area.style.height = Math.min(h, max) + 'px';
+      area.style.overflowY = h > max ? 'auto' : 'hidden';
+    };
+    area.addEventListener('input', resize);
+    area.addEventListener('focus', resize);
+    window.addEventListener('resize', resize);
+    resize();
+    return resize;
+  }
+
+  // 附件区：缩略图 + 删除按钮；提交时才拼成 markdown
+  function buildAttachments(container) {
+    var items = [];
+    function sync() {
+      while (container.firstChild) container.removeChild(container.firstChild);
+      container.style.display = items.length ? 'flex' : 'none';
+      items.forEach(function (it, idx) {
+        var box = el('span', 'mc-att');
+        var img = el('img', 'mc-att-thumb');
+        img.src = it;
+        img.alt = '';
+        var del = el('button', 'mc-att-del', '×');
+        del.type = 'button';
+        del.title = L.imgRemove;
+        del.addEventListener('click', function () {
+          items.splice(idx, 1);
+          sync();
+        });
+        box.appendChild(img);
+        box.appendChild(del);
+        container.appendChild(box);
+      });
+    }
+    sync();
+    return {
+      add: function (dataUrl) { items.push(dataUrl); sync(); },
+      chars: function () {
+        return items.reduce(function (n, d) { return n + d.length + 12; }, 0);
+      },
+      markdown: function () {
+        return items.map(function (d) { return '![image](' + d + ')'; }).join('\n');
+      },
+      clear: function () { items = []; sync(); }
+    };
   }
 
   // 大图先缩放再用（无损 PNG 优先，截图文字更清晰；过大再退 JPEG）
@@ -219,23 +263,22 @@
     img.src = objUrl;
   }
 
-  function handleFiles(area, err, files) {
-    for (var i = 0; i < files.length; i++) {
-      if (!/^image\//.test(files[i].type || '')) continue;
-      compressImage(files[i], function (dataUrl) {
-        if (!dataUrl) { err.textContent = L.failed; return; }
-        if (dataUrl.length > MAX_IMG_CHARS ||
-            area.value.length + dataUrl.length + 20 > MAX_BODY_JS) {
-          err.textContent = L.imgTooLarge;
-          return;
-        }
-        err.textContent = '';
-        insertAtCursor(area, '![image](' + dataUrl + ')');
-      });
+  function attachImageInput(area, err, atts) {
+    function take(files) {
+      for (var i = 0; i < files.length; i++) {
+        if (!/^image\//.test(files[i].type || '')) continue;
+        compressImage(files[i], function (dataUrl) {
+          if (!dataUrl) { err.textContent = L.failed; return; }
+          if (dataUrl.length > MAX_IMG_CHARS ||
+              area.value.length + atts.chars() + dataUrl.length + 40 > MAX_BODY_JS) {
+            err.textContent = L.imgTooLarge;
+            return;
+          }
+          err.textContent = '';
+          atts.add(dataUrl);
+        });
+      }
     }
-  }
-
-  function attachImageInput(area, err) {
     area.addEventListener('paste', function (e) {
       var items = (e.clipboardData && e.clipboardData.items) || [];
       var files = [];
@@ -245,13 +288,18 @@
           if (f) files.push(f);
         }
       }
-      if (files.length) { e.preventDefault(); handleFiles(area, err, files); }
+      if (files.length) { e.preventDefault(); take(files); }
     });
     area.addEventListener('dragover', function (e) { e.preventDefault(); });
     area.addEventListener('drop', function (e) {
       var files = (e.dataTransfer && e.dataTransfer.files) || [];
-      if (files.length) { e.preventDefault(); handleFiles(area, err, files); }
+      if (files.length) { e.preventDefault(); take(files); }
     });
+  }
+
+  // 正文组装：文字在前，图片以 markdown 追加（编辑框里只显示缩略图，不显示 base64）
+  function assembleBody(text, atts) {
+    return [String(text || '').trim(), atts.markdown()].filter(Boolean).join('\n\n');
   }
 
   function buildForm(w, parent) {
@@ -271,16 +319,21 @@
     var submit = el('button', 'mc-submit', L.submit);
     submit.type = 'submit';
     var err = el('div', 'mc-error');
-    attachImageInput(area, err);
+    var attsBox = el('div', 'mc-atts');
+    var atts = buildAttachments(attsBox);
+    var resize = autoGrow(area);
+    attachImageInput(area, err, atts);
     form.appendChild(nick);
     form.appendChild(area);
+    form.appendChild(attsBox);
     form.appendChild(hp);
     form.appendChild(submit);
     form.appendChild(err);
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var body = area.value.trim();
+      // 正文 = 文字 + 附件（图片以 markdown 追加在末尾，编辑框里只显示缩略图）
+      var body = assembleBody(area.value, atts);
       if (!body) { err.textContent = L.bodyRequired; return; }
       if (body.length > MAX_BODY_JS) { err.textContent = L.bodyTooLong; return; }
       submit.disabled = true;
@@ -298,6 +351,8 @@
             if (thread) {
               w.fill(thread);
               area.value = '';
+              atts.clear();
+              resize();
               nick.value = '';
               err.textContent = '';
             }
