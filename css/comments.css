@@ -97,6 +97,7 @@
 /* ---- 输入表单 ---- */
 .mc-form {
   margin-top: 8px;
+  /* 图片附件：粘贴/拖入后显示缩略图，不把 base64 灌进编辑框 */
   /* 蜜罐：对真实用户不可见 */
 }
 .mc-form.mc-hidden {
@@ -126,7 +127,46 @@
 .mc-form .mc-textarea {
   padding: 6px 8px;
   min-height: 60px;
-  resize: vertical;
+  max-height: 50vh; /* 与 JS 的自适应上限一致：最高半屏，超出内部滚动 */
+  resize: none; /* 高度由 JS 随内容自动调整 */
+  overflow-y: hidden;
+}
+.mc-form .mc-atts {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 2px;
+}
+.mc-form .mc-att {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+.mc-form .mc-att-thumb {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  background: #fafafa;
+}
+.mc-form .mc-att-del {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 13px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.mc-form .mc-att-del:hover {
+  background: rgba(0, 0, 0, 0.75);
 }
 .mc-form .mc-hp {
   position: absolute;
