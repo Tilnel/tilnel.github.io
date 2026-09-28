@@ -157,7 +157,9 @@
 
   function fetchData(cb) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', cfg.dataUrl, true);
+    // 加运行时缓存戳：moments.json 必须每次取新的（曾因启发式缓存导致新动态几小时刷不出来）
+    var url = cfg.dataUrl + (cfg.dataUrl.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now();
+    xhr.open('GET', url, true);
     xhr.onreadystatechange = function () {
       if (xhr.readyState !== 4) return;
       if (xhr.status >= 200 && xhr.status < 300) {
